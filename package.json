@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build --cache-dir=.turbo",
     "watch": "turbo run watch --concurrency=50 --continue",
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",
