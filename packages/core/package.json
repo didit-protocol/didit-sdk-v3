@@ -1,0 +1,37 @@
+{
+  "name": "@didit-protocol/core",
+  "version": "0.0.1",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "watch": "npm run build -- --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "test": "vitest run --dir tests",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@didit-protocol/eslint-config": "workspace:*",
+    "@didit-protocol/tsconfig": "workspace:*",
+    "tsup": "^8.0.2"
+  },
+  "keywords": [
+    "didit",
+    "web3",
+    "crypto",
+    "siwe",
+    "walletconnect",
+    "gamium",
+    "ethereum"
+  ],
+  "author": "",
+  "license": "MIT"
+}

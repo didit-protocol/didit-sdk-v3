@@ -1,0 +1,6 @@
+{
+  "extends": "@didit-protocol/tsconfig/base.json",
+  "compilerOptions": {
+    "incremental": false,
+  },
+}

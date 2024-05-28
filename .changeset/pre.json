@@ -1,0 +1,10 @@
+{
+  "mode": "pre",
+  "tag": "test",
+  "initialVersions": {
+    "@didit-protocol/core": "0.0.1",
+    "@didit-protocol/eslint-config": "0.0.1",
+    "@didit-protocol/tsconfig": "0.0.1"
+  },
+  "changesets": []
+}

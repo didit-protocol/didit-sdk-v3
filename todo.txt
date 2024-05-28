@@ -1,0 +1,2 @@
+TODO: follow this to publish for a beta/alpha/test version
+https://github.com/changesets/changesets/blob/main/docs/prereleases.md
