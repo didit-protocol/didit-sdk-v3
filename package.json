@@ -6,9 +6,9 @@
   "scripts": {
     "build": "turbo run build --cache-dir=.turbo",
     "watch": "turbo run watch --concurrency=50 --continue",
-    "test": "turbo run test",
-    "typecheck": "turbo run typecheck",
-    "lint": "turbo run lint",
+    "test": "turbo run test --cache-dir=.turbo",
+    "typecheck": "turbo run typecheck --cache-dir=.turbo",
+    "lint": "turbo run lint --cache-dir=.turbo",
     "prettier": "prettier --check .",
     "prettier:format": "prettier --write .",
     "build:clean": "turbo run build:clean",
