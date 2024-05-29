@@ -1,4 +1,6 @@
 .changeset
+.github
+.husky
 
 packages/eslint-config
 

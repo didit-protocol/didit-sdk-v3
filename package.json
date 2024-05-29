@@ -15,6 +15,7 @@
     "clean": "rm -rf `find . -type d -name node_modules -o -name dist -o -name .next -o -name out`; rm pnpm-lock.yaml",
     "changeset:pre": "changeset pre enter",
     "changeset:pre:exit": "changeset pre exit",
+    "changeset:add": "changeset",
     "changeset:v": "changeset; changeset version",
     "publish:latest": "changeset publish",
     "publish:alpha": "pnpm install; turbo run build lint test; changeset publish --tag alpha",
