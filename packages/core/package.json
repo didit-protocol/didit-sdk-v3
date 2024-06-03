@@ -21,7 +21,7 @@
   "devDependencies": {
     "@didit-protocol/eslint-config": "workspace:*",
     "@didit-protocol/tsconfig": "workspace:*",
-    "tsup": "^8.0.2"
+    "tsup": "^8.1.0"
   },
   "keywords": [
     "didit",
