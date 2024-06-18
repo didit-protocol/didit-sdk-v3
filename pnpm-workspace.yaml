@@ -1,4 +1,7 @@
 packages:
-  - 'apps/*'
   - 'examples/*'
-  - 'packages/*'
+  - 'apps/docs'
+  - 'apps/page'
+  - 'packages/eslint-config'
+  - 'packages/tsconfig'
+  - 'packages/core'

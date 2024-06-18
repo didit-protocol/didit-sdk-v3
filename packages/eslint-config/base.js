@@ -9,7 +9,7 @@ const project = resolve(process.cwd(), "tsconfig.json");
 module.exports = {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "prettier"],
   "extends": [
     "eslint:all",
     "plugin:@typescript-eslint/stylistic-type-checked",
@@ -36,6 +36,8 @@ module.exports = {
   ],
   "rules": {
     // Core
+    "indent": "off",
+    "prettier/prettier": "error",
     "func-style": ["error", "declaration"],
     "newline-before-return": "error",
     "one-var": ["error", "never"],
@@ -61,18 +63,6 @@ module.exports = {
     "no-use-before-define": "off",
     "require-atomic-updates": "off",
     "no-bitwise": "off",
-    "no-restricted-imports": [
-      "error",
-      {
-        "paths": [
-          {
-            "name": "lit/decorators.js",
-            "importNames": ["customElement"],
-            "message": "Use import 'customElement' from '@didit-protocol/ui' instead."
-          }
-        ]
-      }
-    ],
 
     // Typescript
     "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],

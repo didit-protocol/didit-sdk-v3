@@ -1,5 +1,5 @@
 {
-  "name": "@didit-protocol/tsconfig",
+  "name": "@didit-sdk/tsconfig",
   "license": "MIT",
   "version": "0.0.2",
   "private": true

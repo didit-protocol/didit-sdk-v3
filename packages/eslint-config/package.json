@@ -1,5 +1,5 @@
 {
-  "name": "@didit-protocol/eslint-config",
+  "name": "@didit-sdk/eslint-config",
   "license": "MIT",
   "version": "0.0.2",
   "private": true,

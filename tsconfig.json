@@ -1,5 +1,5 @@
 {
-  "extends": "@didit-protocol/tsconfig/base.json",
+  "extends": "@didit-sdk/tsconfig/base.json",
   "compilerOptions": {
     "incremental": false,
   },

@@ -1,5 +1,5 @@
 {
-  "name": "@didit-protocol/core",
+  "name": "@didit-sdk/core",
   "version": "0.0.2",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -15,13 +15,40 @@
     "watch": "npm run build -- --watch",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "test": "vitest run --dir tests",
     "clean": "rm -rf dist"
   },
+  "dependencies": {
+    "@walletconnect/ethereum-provider": "2.13.1",
+    "@web3modal/common": "3",
+    "@web3modal/ui": "^3.5.7",
+    "crypto-js": "^4.2.0",
+    "valtio": "1.11.2"
+  },
   "devDependencies": {
-    "@didit-protocol/eslint-config": "workspace:*",
-    "@didit-protocol/tsconfig": "workspace:*",
-    "tsup": "^8.0.2"
+    "@didit-sdk/eslint-config": "workspace:*",
+    "@didit-sdk/tsconfig": "workspace:*",
+    "@wagmi/connectors": ">=4",
+    "@wagmi/core": ">=2",
+    "react": ">=18",
+    "react-dom": ">=18",
+    "viem": ">=2"
+  },
+  "peerDependencies": {
+    "@wagmi/connectors": ">=4",
+    "@wagmi/core": ">=2",
+    "react": ">=18",
+    "react-dom": ">=18",
+    "viem": ">=2"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
   },
   "keywords": [
     "didit",
@@ -32,6 +59,14 @@
     "gamium",
     "ethereum"
   ],
-  "author": "",
-  "license": "MIT"
+  "author": "Didit <didit.me>",
+  "license": "MIT",
+  "homepage": "TODO: didit new repo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diditme/didit.git"
+  },
+  "bugs": {
+    "url": "git+https://github.com/diditme/didit/issues"
+  }
 }
