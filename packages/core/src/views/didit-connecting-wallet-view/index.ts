@@ -36,7 +36,6 @@ export class DiditConnectingWalletView extends DiditWeb3Connecting {
         }
         await ConnectionController.connectExternal(this.connector)
 
-        // TODOX: go to the SIWE page
         RouterController.push('ConnectingDiditSiwe')
 
         EventsController.sendEvent({

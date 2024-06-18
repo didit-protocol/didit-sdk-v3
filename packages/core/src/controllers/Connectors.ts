@@ -2,7 +2,6 @@ import { subscribeKey as subKey } from 'valtio/vanilla/utils'
 import { proxy, ref } from 'valtio/vanilla'
 import type { Connector, WcWallet } from '../types'
 import { CoreHelperUtil } from '../utils'
-import { ConfigurationController } from './Configuration'
 
 // -- Types --------------------------------------------- //
 export interface ConnectorControllerState {
@@ -57,12 +56,5 @@ export const ConnectorController = {
     return state.connectors
       .filter(CoreHelperUtil.isWeb3Connector)
       .find(c => c.explorerId === id || c.info?.rdns === rdns)
-  },
-
-  getConnectorImageUrl(id: string) {
-    const projectId = ConfigurationController.state.projectId
-
-    // TODOX: move api to api Controller
-    return `https://explorer-api.walletconnect.com/v3/logo/sm/${id}?projectId=${projectId}`
   }
 }

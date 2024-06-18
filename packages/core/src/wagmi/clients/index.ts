@@ -1,8 +1,9 @@
 import type { EthereumProvider } from '@walletconnect/ethereum-provider'
-import { ConstantsUtil, CoreHelperUtil } from '../../utils'
+import { ConstantsUtil, CoreHelperUtil, StorageUtil } from '../../utils'
 import { connect, disconnect, getChainId, reconnect, signMessage, switchChain } from '@wagmi/core'
 import type { CoreConfig } from '../../client'
 import {
+  AccountController,
   DiditAuthController,
   type ConnectionControllerClient,
   type DiditAuthControllerClient
@@ -155,7 +156,7 @@ export function createDiditAuthControllerMethods(options: DiditAuthControllerOpt
 
       return tokens
     },
-    async getSession(accessToken?: string) {
+    async getSession(accessToken?: string, refreshToken?: string): Promise<DiditSession | null> {
       // Call next inrospect endpoint
       if (!accessToken) {
         throw new Error('DiditAuthControllerClient:getSession - accessToken is undefined')
@@ -163,28 +164,46 @@ export function createDiditAuthControllerMethods(options: DiditAuthControllerOpt
       try {
         const data = await DiditApiController.introspectToken(accessToken)
         if (data?.active) {
-          // TODOX: set timeout for refresh token before it expires
           return {
-            uuid: data.sub,
+            id: data.sub,
             identifier: data.identifier,
-            identifierType: data.identifier_type
+            identifierType: data.identifier_type,
+            claims: data.claims,
+            exp: data.exp
           }
         }
-        // TODOX: refresh token
 
         return null
       } catch (error) {
-        // TODOX: refresh token
+        if (refreshToken) {
+          // Refresh token before assuming session is invalid
+          const tokens = await DiditApiController.refreshTokens(refreshToken)
+          if (tokens) {
+            StorageUtil.setDiditAuthTokens(tokens)
+            const data = await DiditApiController.introspectToken(tokens?.access_token)
+            if (data?.active) {
+              return {
+                id: data.sub,
+                identifier: data.identifier,
+                identifierType: data.identifier_type,
+                claims: data.claims,
+                exp: data.exp
+              }
+            }
+          }
+        }
 
         return null
       }
     },
-    async signOut() {
-      /*
-       * TODO: Disconnect from didit api
-       */
 
-      return Promise.resolve(true)
+    async signOut() {
+      const { accessToken, authMethod } = AccountController.state
+      if (authMethod !== 'wallet' && accessToken) {
+        await DiditApiController.logoutSocialProvider(accessToken)
+      }
+
+      return true
     },
 
     async verifySocialOAuthCode(code: string) {
@@ -203,15 +222,12 @@ export function createDiditAuthControllerMethods(options: DiditAuthControllerOpt
     },
 
     onSignIn(session: DiditSession) {
-      console.log('DiditAuthControllerClient:onSignIn - onSignIn')
       options?.onSignIn?.(session)
     },
     onSignOut() {
-      console.log('DiditAuthControllerClient:onSignOut - onSignOut')
       options?.onSignOut?.()
     },
     onError(error: unknown) {
-      console.log('DiditAuthControllerClient:onError - onError', error)
       options?.onError?.(error)
     }
   }

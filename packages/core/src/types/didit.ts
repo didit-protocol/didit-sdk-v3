@@ -17,9 +17,11 @@ export interface DiditUser {
 }
 
 export interface DiditSession {
-  uuid: string
+  id: string
   identifier: string
   identifierType: DiditAuthMethod
+  claims: string[]
+  exp: number
 }
 
 export interface DiditWalletAuthorization {

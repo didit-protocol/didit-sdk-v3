@@ -2,6 +2,7 @@ import { subscribeKey as subKey } from 'valtio/vanilla/utils'
 import { proxy, ref } from 'valtio/vanilla'
 import { CoreHelperUtil } from '../utils/CoreHelperUtil.js'
 import type { SocialConnectorType, Web3Connector } from '../types/index.js'
+import { AccountController } from './Account.js'
 
 // -- Types --------------------------------------------- //
 export interface ConnectExternalOptions {
@@ -125,6 +126,7 @@ export const ConnectionController = {
 
   async disconnect() {
     await this._getClient().disconnect()
+    AccountController.resetAccount()
     this.resetWcConnection()
   }
 }

@@ -41,7 +41,7 @@ module.exports = {
     "func-style": ["error", "declaration"],
     "newline-before-return": "error",
     "one-var": ["error", "never"],
-    "no-console": ["error", { "allow": ["warn"] }],
+    "no-console": ["error", { "allow": ["warn", "info"] }],
     "curly": "error",
     "sort-imports": "off",
     "sort-keys": "off",

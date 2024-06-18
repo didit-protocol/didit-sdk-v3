@@ -9,6 +9,7 @@ import type { Connector, WcWallet } from '../../types/index.js'
 import { RouterController } from '../../controllers/Router.js'
 import { CoreHelperUtil } from '../../utils/CoreHelperUtil.js'
 import { ConnectionController } from '../../controllers/Connection.js'
+import { DiditApiController } from '../../controllers/DiditApi.js'
 
 @customElement('didit-wallets-view')
 export class DiditWalletsView extends LitElement {
@@ -62,7 +63,7 @@ export class DiditWalletsView extends LitElement {
 
     let imageUrl = connector.imageUrl
     if (!imageUrl && CoreHelperUtil.isWeb3Connector(connector) && connector.imageId) {
-      imageUrl = ConnectorController.getConnectorImageUrl(connector.imageId)
+      imageUrl = DiditApiController.getConnectorImageUrl(connector.imageId)
     }
 
     return html`
@@ -168,7 +169,7 @@ export class DiditWalletsView extends LitElement {
       CoreHelperUtil.isWeb3Connector(coinbaseConnector) &&
       coinbaseConnector.imageId
     ) {
-      imageUrl = ConnectorController.getConnectorImageUrl(coinbaseConnector.imageId)
+      imageUrl = DiditApiController.getConnectorImageUrl(coinbaseConnector.imageId)
     }
 
     return html`

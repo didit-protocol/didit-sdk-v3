@@ -44,11 +44,11 @@ export interface WcWallet {
   firefox_store?: string | null
   rdns?: string | null
   injected?:
-  | {
-    namespace?: string
-    injected_id?: string
-  }[]
-  | null
+    | {
+        namespace?: string
+        injected_id?: string
+      }[]
+    | null
 }
 
 export interface LinkingRecord {

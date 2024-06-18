@@ -54,7 +54,6 @@ export class DiditConnectingWcView extends LitElement {
       const { wcPairingExpiry } = ConnectionController.state
       if (retry || CoreHelperUtil.isPairingExpired(wcPairingExpiry)) {
         ConnectionController.connectWalletConnect()
-        // TODOX: store wallet/connector image to StorageUtil if needed
         await ConnectionController.state.wcPromise
         this.finalizeConnection()
         RouterController.push('ConnectingDiditSiwe')
@@ -76,8 +75,6 @@ export class DiditConnectingWcView extends LitElement {
 
   private finalizeConnection() {
     const { wcLinking } = ConnectionController.state
-
-    // TODOX: stogre wallet/connector wc linking to StorageUtil if needed
 
     EventsController.sendEvent({
       type: 'track',

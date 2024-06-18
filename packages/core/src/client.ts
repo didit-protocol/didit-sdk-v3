@@ -45,7 +45,7 @@ export interface DiditClientOptions<C extends Config> {
   projectId: ConfigurationControllerState['projectId']
   clientId: ConfigurationControllerState['clientId']
   clientSecret?: ConfigurationControllerState['clientSecret']
-  authBaseUrl?: DiditApiControllerState['authBaseUrl']
+  walletAuthBaseUrl?: DiditApiControllerState['walletAuthBaseUrl']
   walletAuthorizationPath?: DiditApiControllerState['walletAuthorizationPath']
   tokenAuthorizationPath?: DiditApiControllerState['tokenAuthorizationPath']
   redirectUri?: DiditApiControllerState['redirectUri']
@@ -78,7 +78,7 @@ export class DiditSdk {
   private wagmiConfig: DiditClientOptions<CoreConfig>['wagmiConfig']
 
   public constructor(options: DiditSdkOptions<CoreConfig>) {
-    const { wagmiConfig, _sdkVersion, ...diditSdkOptions } = options
+    const { wagmiConfig, _sdkVersion, scope, claims, ...diditSdkOptions } = options
     if (!wagmiConfig) {
       throw new Error('diditsdk:constructor: wagmiConfig is required')
     }
@@ -89,8 +89,15 @@ export class DiditSdk {
       throw new Error('diditsdk:constructor: clientId is required')
     }
 
+    if (scope && !CoreHelperUtil.isValideScopeString(scope)) {
+      throw new Error('diditsdk:constructor: Invalid scope string')
+    }
+
+    if (claims && !CoreHelperUtil.isValidClaimsString(claims)) {
+      throw new Error('diditsdk:constructor: Invalid claims string')
+    }
+
     const connectionControllerClient = createConnectionControllerClient(wagmiConfig)
-    // TODOX: implement diditAuthClient
     const diditAuthClientMethods = createDiditAuthControllerMethods({
       onError: diditSdkOptions.onError,
       onSignIn: diditSdkOptions.onSignIn,
@@ -145,7 +152,10 @@ export class DiditSdk {
       },
       async socialSignIn(code: string) {
         const tokens = await diditAuthClientMethods.verifySocialOAuthCode(code)
-        const session = await diditAuthClientMethods.getSession(tokens.access_token)
+        const session = await diditAuthClientMethods.getSession(
+          tokens.access_token,
+          tokens.refresh_token
+        )
         if (!session) {
           throw new Error('DiditAuthControllerClient:web3SignIn - session is undefined')
         }
@@ -225,21 +235,18 @@ export class DiditSdk {
     if (AccountController.state.isWalletConnected) {
       ConnectionController.disconnect()
     }
-    AccountController.resetDiditSession()
-    AccountController.resetAccount()
-    DiditAuthController.onSignOut?.()
     ModalController.close()
   }
 
   // -- Private ------------------------------------------------------------------
   private syncRequestedNetworks(chains: Chain[]) {
-    // TODOX: generate network image url from chain id (wallerConnect api)
+    // TODOX: generate network image url from chain id (walletConnect api)
     const requestedCaipNetworks: Web3Network[] = chains?.map(chain => ({
       id: chain.id.toString(),
       number: chain.id,
       name: chain.name,
       imageUrl: 'X',
-      imageId: 'X'
+      imageId: PresetsUtil.EIP155NetworkImageIds[chain.id]
     }))
 
     AccountController.setRequestedNetworks(requestedCaipNetworks)
@@ -295,11 +302,7 @@ export class DiditSdk {
     ConfigurationController.setClaims(options.claims ?? ConstantsUtil.DIDIT_CLAIMS)
     ConfigurationController.setScope(options.scope ?? ConstantsUtil.DIDIT_SCOPE)
     ConfigurationController.setSdkVersion(options._sdkVersion)
-    if (options.authBaseUrl) {
-      DiditApiController.setAuthBaseUrl(options.authBaseUrl)
-    } else {
-      DiditApiController.initializeApi()
-    }
+    DiditApiController.setAuthBaseUrl(options.walletAuthBaseUrl)
     if (options.walletAuthorizationPath) {
       DiditApiController.setWalletAuthorizationPath(options.walletAuthorizationPath)
     }
@@ -392,7 +395,6 @@ export class DiditSdk {
         }
       })
     })
-    // TODOX: figureout where to add social connectors
     ConnectorController.setConnectors([...web3Connectors, ...socialConnectors])
   }
 

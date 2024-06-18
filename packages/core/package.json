@@ -29,6 +29,7 @@
   "devDependencies": {
     "@didit-sdk/eslint-config": "workspace:*",
     "@didit-sdk/tsconfig": "workspace:*",
+    "@types/crypto-js": "^4.2.2",
     "@wagmi/connectors": ">=4",
     "@wagmi/core": ">=2",
     "react": ">=18",

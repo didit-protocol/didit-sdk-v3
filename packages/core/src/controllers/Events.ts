@@ -77,7 +77,7 @@ export const EventsController = {
   sendEvent(data: EventsControllerState['data']) {
     state.timestamp = Date.now()
     state.data = data
-    console.log('sendEvent', {
+    console.info('sendEvent', {
       timestamp: state.timestamp,
       data: { ...state.data }
     })

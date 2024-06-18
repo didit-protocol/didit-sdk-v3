@@ -11,12 +11,24 @@ import type {
 import type { SocialConnectorType } from '../types/socials.js'
 
 // -- Helpers ------------------------------------------- //
-const grantType = ConstantsUtil.DIDIT_WALLET_GRANNT_TYPE
+const diditAuthBaseUrl = ConstantsUtil.DIDIT_BASE_AUTH_URL
+const walletGrantType = ConstantsUtil.DIDIT_WALLET_GRANNT_TYPE
+const refreshGrantType = ConstantsUtil.DIDIT_REFRESH_GRANT_TYPE
+const introspectPath = ConstantsUtil.DIDIT_INTROSPECT_PATH
+const refreshTokenPath = ConstantsUtil.DIDIT_WALLET_TOKEN_PATH
+const emailAuthPath = ConstantsUtil.DIDIT_EMAIL_AUTH_PATH
+const emailTokenPath = ConstantsUtil.DIDIT_EMAIL_TOKEN_PATH
+const emailLogoutPath = ConstantsUtil.DIDIT_EMAIL_LOGOUT_PATH
+const emailCodeChallengeMethod = ConstantsUtil.DIDIT_EMAIL_CODE_CHALLENGE_METHOD
+const emailResponseType = ConstantsUtil.DIDIT_EMAIL_RESPONSE_TYPE
+const emailGrantType = ConstantsUtil.DIDIT_EMAIL_GRANNT_TYPE
+const wcAssetsWalletLogoPath = ConstantsUtil.WC_ASSETS_API_WALLET_LOGO_PATH
+const wcAssetsApiUrl = ConstantsUtil.WC_ASSETS_API_URL
 
 // -- Types --------------------------------------------- //
 export interface DiditApiControllerState {
   api: FetchUtil | null
-  authBaseUrl: string
+  walletAuthBaseUrl: string
   walletAuthorizationPath: string
   tokenAuthorizationPath: string
   redirectUri?: string
@@ -28,7 +40,7 @@ type StateKey = keyof DiditApiControllerState
 // -- State --------------------------------------------- //
 const state = proxy<DiditApiControllerState>({
   api: null,
-  authBaseUrl: ConstantsUtil.DIDIT_BASE_AUTH_URL,
+  walletAuthBaseUrl: ConstantsUtil.DIDIT_BASE_AUTH_URL,
   walletAuthorizationPath: ConstantsUtil.DIDIT_WALLET_AUTH_PATH,
   tokenAuthorizationPath: ConstantsUtil.DIDIT_WALLET_TOKEN_PATH,
   redirectUri: ConstantsUtil.DIDIT_AUTH_REDIRECT_URL,
@@ -44,13 +56,18 @@ export const DiditApiController = {
   },
 
   initializeApi() {
-    const { authBaseUrl } = state
-    state.api = new FetchUtil({ baseUrl: authBaseUrl })
+    const { walletAuthBaseUrl } = state
+    state.api = new FetchUtil({ baseUrl: walletAuthBaseUrl })
   },
 
-  setAuthBaseUrl(baseUrl: string) {
-    state.authBaseUrl = baseUrl
-    state.api = new FetchUtil({ baseUrl })
+  setAuthBaseUrl(baseUrl?: string) {
+    if (baseUrl) {
+      state.walletAuthBaseUrl = baseUrl
+      this._initializeApi(baseUrl)
+    } else {
+      const { walletAuthBaseUrl } = state
+      this._initializeApi(walletAuthBaseUrl)
+    }
   },
 
   setWalletAuthorizationPath(walletAuthorizationPath: string) {
@@ -63,6 +80,10 @@ export const DiditApiController = {
 
   setRedirectUri(redirectUri: string) {
     state.redirectUri = redirectUri
+  },
+
+  _initializeApi(baseUrl: string) {
+    state.api = new FetchUtil({ baseUrl })
   },
 
   _getWalletAuthHeader() {
@@ -100,7 +121,7 @@ export const DiditApiController = {
     const headers = DiditApiController._getWalletAuthHeader()
     const data = {
       code,
-      grant_type: grantType,
+      grant_type: walletGrantType,
       wallet_signature: walletSignature
     }
     const response = await state.api?.post<DiditTokenAuthorization>({
@@ -121,15 +142,60 @@ export const DiditApiController = {
      * Introspect token should call didit api directly this.baseAuthUrl is
      * override by the user to implement custom auth endpoints
      */
-    const response = await state.api?.postWithBaseUrl<DiditTokenInfo>(
+    const response = await state.api?.postWithBaseUrl<DiditTokenInfo>(diditAuthBaseUrl, {
+      path: introspectPath,
+      headers
+    })
+
+    return response
+  },
+
+  async refreshTokens(refreshToken: string) {
+    const { clientId } = ConfigurationController.state
+    const headers = DiditApiController._getWalletAuthHeader()
+    const data = {
+      client_id: clientId,
+      grant_type: refreshGrantType,
+      refresh_token: refreshToken
+    }
+    const response = await state.api?.postWithBaseUrl<DiditTokenAuthorization>(diditAuthBaseUrl, {
+      path: refreshTokenPath,
+      body: data,
+      headers
+    })
+
+    return response
+  },
+
+  async verifySocialOAuthCode(code: string, codeVerifier: string) {
+    const { clientId } = ConfigurationController.state
+    const tokenBody = new URLSearchParams()
+    tokenBody.append('client_id', clientId)
+    tokenBody.append('code', code)
+    tokenBody.append('code_verifier', codeVerifier)
+    tokenBody.append('grant_type', emailGrantType)
+    tokenBody.append('redirect_uri', state.redirectUri || '')
+
+    const response = await state.api?.postWithBaseUrl<DiditTokenAuthorization>(
       ConstantsUtil.DIDIT_BASE_AUTH_URL,
       {
-        path: ConstantsUtil.DIDIT_INTROSPECT_PATH,
-        headers
+        path: emailTokenPath,
+        body: tokenBody
       }
     )
 
     return response
+  },
+
+  async logoutSocialProvider(accessToken: string) {
+    const res = await state.api?.getWithBaseUrl<null>(diditAuthBaseUrl, {
+      path: emailLogoutPath,
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    })
+
+    return res
   },
 
   genetateProviderAuthUrl(
@@ -138,26 +204,17 @@ export const DiditApiController = {
     codeChallenge: string
   ) {
     const { clientId, claims, scope } = ConfigurationController.state
-    /*
-     * Configure the Didit auth popup
-     * const authorizationUrl = `${ConstantsUtil.DIDIT_BASE_AUTH_URL}${ConstantsUtil.DIDIT_EMAIL_AUTH_PATH}`
-     */
-    const authorizationUrl = new URL(
-      ConstantsUtil.DIDIT_EMAIL_AUTH_PATH,
-      ConstantsUtil.DIDIT_BASE_AUTH_URL
-    )
+    const authorizationUrl = new URL(emailAuthPath, diditAuthBaseUrl)
 
-    const codeChallengeMethod = ConstantsUtil.DIDIT_EMAIL_CODE_CHALLENGE_METHOD
-    const responseType = ConstantsUtil.DIDIT_EMAIL_RESPONSE_TYPE
     const params = {
       claims,
       client_id: clientId,
       code_challenge: codeChallenge,
-      code_challenge_method: codeChallengeMethod,
+      code_challenge_method: emailCodeChallengeMethod,
       code_verifier: codeVerifier,
       idp: provider,
       redirect_uri: state.redirectUri,
-      response_type: responseType,
+      response_type: emailResponseType,
       scope
     }
 
@@ -171,20 +228,11 @@ export const DiditApiController = {
     return authorizationUrl.toString()
   },
 
-  async verifySocialOAuthCode(code: string, codeVerifier: string) {
-    const { clientId } = ConfigurationController.state
-    const tokenBody = new URLSearchParams()
-    tokenBody.append('client_id', clientId)
-    tokenBody.append('code', code)
-    tokenBody.append('code_verifier', codeVerifier)
-    tokenBody.append('grant_type', ConstantsUtil.DIDIT_EMAIL_GRANNT_TYPE)
-    tokenBody.append('redirect_uri', state.redirectUri || '')
+  getConnectorImageUrl(id: string) {
+    const projectId = ConfigurationController.state.projectId
+    const url = new URL(wcAssetsWalletLogoPath + id, wcAssetsApiUrl)
+    url.searchParams.append('projectId', projectId)
 
-    const response = await state.api?.postWithBaseUrl(ConstantsUtil.DIDIT_BASE_AUTH_URL, {
-      path: ConstantsUtil.DIDIT_EMAIL_TOKEN_PATH,
-      body: tokenBody
-    })
-
-    return response as DiditTokenAuthorization
+    return url.toString()
   }
 }

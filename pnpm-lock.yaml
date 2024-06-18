@@ -112,6 +112,9 @@ importers:
       '@didit-sdk/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      '@types/crypto-js':
+        specifier: ^4.2.2
+        version: 4.2.2
       '@wagmi/connectors':
         specifier: '>=4'
         version: 5.0.14(@wagmi/core@2.11.2)(react-dom@18.3.1)(react-i18next@13.5.0)(react-native@0.74.2)(react@18.3.1)(typescript@5.3.3)(viem@2.13.10)
@@ -3749,6 +3752,10 @@ packages:
     dependencies:
       '@types/node': 20.14.2
     dev: false
+
+  /@types/crypto-js@4.2.2:
+    resolution: {integrity: sha512-sDOLlVbHhXpAUAL0YHDUUwDZf3iN4Bwi4W6a0W0b+QcAezUbRtH4FVb+9J4h+XFPW7l/gQ9F8qC7P+Ec4k8QVQ==}
+    dev: true
 
   /@types/debug@4.1.12:
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}

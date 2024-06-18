@@ -23,7 +23,7 @@ export class DiditSocialsView extends LitElement {
   public constructor() {
     super()
     this.unsubscribe.push(
-      ConnectorController.subscribeKey('connectors', val => (this.connectors = val)),
+      ConnectorController.subscribeKey('connectors', val => (this.connectors = val))
     )
   }
 
@@ -52,18 +52,18 @@ export class DiditSocialsView extends LitElement {
     return html`
       <wui-flex flexDirection="column" gap="xs">
         ${socialConnectors.map(connector => {
-      return html`
-          <wui-list-wallet
-            imageSrc=${connector.imageUrl}
-            name=${connector.name ?? 'Unknown'}
-            tagVariant="success"
-            tagLabel="social"
-            data-testid=${`wallet-selector-${connector.id}`}
-            @click=${() => this.onConnector(connector)}
-          >
-          </wui-list-wallet>
-        `
-    })}
+          return html`
+            <wui-list-wallet
+              imageSrc=${connector.imageUrl}
+              name=${connector.name ?? 'Unknown'}
+              tagVariant="success"
+              tagLabel="social"
+              data-testid=${`wallet-selector-${connector.id}`}
+              @click=${() => this.onConnector(connector)}
+            >
+            </wui-list-wallet>
+          `
+        })}
       </wui-flex>
     `
   }

@@ -7,8 +7,7 @@ export interface ConfigurationControllerState {
   projectId: ProjectId
   clientId: string
   clientSecret?: string
-  // TODOX: add email auth method (pop-up, redirect)
-  claims?: string
+  claims?: `${string}:${string}`
   scope?: string
   enabledSocialLogins?: boolean
   metadata?: Metadata
