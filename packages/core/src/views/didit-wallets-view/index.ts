@@ -90,7 +90,7 @@ export class DiditWalletsView extends LitElement {
     return html`
       <wui-flex flexDirection="column" gap="xs">
         ${announcedConnectors.map(
-      connector => html`
+          connector => html`
             <wui-list-wallet
               imageSrc=${connector.imageUrl}
               name=${connector.name ?? 'Unknown'}
@@ -102,7 +102,7 @@ export class DiditWalletsView extends LitElement {
             >
             </wui-list-wallet>
           `
-    )}
+        )}
       </wui-flex>
     `
   }
@@ -124,18 +124,18 @@ export class DiditWalletsView extends LitElement {
     return html`
       <wui-flex flexDirection="column" gap="xs">
         ${injectedConnectors.map(connector => {
-      if (
-        !CoreHelperUtil.isMobile() &&
-        (connector.name === 'Browser Wallet' || connector.name === 'Injected')
-      ) {
-        return null
-      }
+          if (
+            !CoreHelperUtil.isMobile() &&
+            (connector.name === 'Browser Wallet' || connector.name === 'Injected')
+          ) {
+            return null
+          }
 
-      if (!ConnectionController.checkInstalled()) {
-        return null
-      }
+          if (!ConnectionController.checkInstalled()) {
+            return null
+          }
 
-      return html`
+          return html`
             <wui-list-wallet
               imageSrc=${connector.imageUrl}
               .installed=${true}
@@ -147,7 +147,7 @@ export class DiditWalletsView extends LitElement {
             >
             </wui-list-wallet>
           `
-    })}
+        })}
       </wui-flex>
     `
   }
@@ -197,7 +197,7 @@ export class DiditWalletsView extends LitElement {
     return html`
       <wui-flex flexDirection="column" gap="xs">
         ${wallets.map(
-      wallet => html`
+          wallet => html`
             <wui-list-wallet
               imageSrc=${wallet.image_url}
               name=${wallet.name ?? 'Unknown'}
@@ -205,7 +205,7 @@ export class DiditWalletsView extends LitElement {
             >
             </wui-list-wallet>
           `
-    )}
+        )}
       </wui-flex>
     `
   }

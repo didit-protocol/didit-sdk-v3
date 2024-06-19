@@ -5,3 +5,4 @@ packages:
   - 'packages/eslint-config'
   - 'packages/tsconfig'
   - 'packages/core'
+  - 'packages/ui'

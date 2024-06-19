@@ -1,6 +1,6 @@
 {
-  "name": "@didit-sdk/core",
-  "version": "0.0.2",
+  "name": "@didit-sdk/ui",
+  "version": "0.0.1",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -20,38 +20,18 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@walletconnect/ethereum-provider": "^2.13.1",
-    "@web3modal/common": "3",
-    "@web3modal/ui": "^3.5.7",
-    "crypto-js": "^4.2.0",
-    "valtio": "1.11.2"
+    "lit": "^3.1.0",
+    "qrcode": "^1.5.3"
   },
   "devDependencies": {
     "@didit-sdk/eslint-config": "workspace:*",
     "@didit-sdk/tsconfig": "workspace:*",
-    "@types/crypto-js": "^4.2.2",
-    "@wagmi/connectors": "^5.0.14",
-    "@wagmi/core": "^2.11.2",
-    "react": ">=18",
-    "react-dom": ">=18",
-    "viem": "^2.15.1"
-  },
-  "peerDependencies": {
-    "@wagmi/connectors": ">=4",
-    "@wagmi/core": ">=2",
-    "react": ">=18",
-    "react-dom": ">=18",
-    "viem": ">=2"
-  },
-  "peerDependenciesMeta": {
-    "react": {
-      "optional": true
-    },
-    "react-dom": {
-      "optional": true
-    }
+    "@types/qrcode": "^1.5.5",
+    "eslint-plugin-lit": "^1.11.0",
+    "eslint-plugin-wc": "^2.0.4"
   },
   "keywords": [
+    "ui",
     "didit",
     "web3",
     "crypto",

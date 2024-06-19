@@ -1,0 +1,11 @@
+*.DS_Store
+*.log
+*.env
+tests
+src
+exports
+node_modules
+.eslintrc.js
+.turbo
+package-lock.json
+tsconfig.json
