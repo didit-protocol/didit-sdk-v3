@@ -29,14 +29,14 @@
   "devDependencies": {
     "@didit-sdk/eslint-config": "workspace:*",
     "@didit-sdk/tsconfig": "workspace:*",
-    "@wagmi/connectors": ">=4",
+    "@wagmi/connectors": ">=5",
     "@wagmi/core": ">=2",
     "react": ">=18",
     "react-dom": ">=18",
     "viem": ">=2"
   },
   "peerDependencies": {
-    "@wagmi/connectors": ">=4",
+    "@wagmi/connectors": ">=5",
     "@wagmi/core": ">=2",
     "react": ">=18",
     "react-dom": ">=18",
