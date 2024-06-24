@@ -20,7 +20,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@walletconnect/ethereum-provider": "2.13.1",
+    "@walletconnect/ethereum-provider": "2.13.3",
     "@web3modal/common": "3",
     "@web3modal/ui": "^3.5.7",
     "crypto-js": "^4.2.0",
