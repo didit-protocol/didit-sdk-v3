@@ -24,7 +24,7 @@
     "@web3modal/common": "3",
     "@web3modal/ui": "^3.5.7",
     "crypto-js": "^4.2.0",
-    "valtio": "1.11.2"
+    "valtio": "1.13.2"
   },
   "devDependencies": {
     "@didit-sdk/eslint-config": "workspace:*",
