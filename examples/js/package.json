@@ -14,7 +14,7 @@
     "react-dom": ">=18",
     "tsup": "^8.1.0",
     "viem": ">=2",
-    "wagmi": "^2.10.2"
+    "wagmi": "^2.10.6"
   },
   "devDependencies": {
     "buffer": "^6.0.3",
