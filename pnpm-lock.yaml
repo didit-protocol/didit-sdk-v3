@@ -94,8 +94,8 @@ importers:
         specifier: 2.13.1
         version: 2.13.1(react@18.3.1)
       '@web3modal/common':
-        specifier: '3'
-        version: 3.5.7
+        specifier: '5'
+        version: 5.0.3
       '@web3modal/ui':
         specifier: ^3.5.7
         version: 3.5.7
@@ -4628,9 +4628,10 @@ packages:
       '@walletconnect/window-getters': 1.0.1
       tslib: 1.14.1
 
-  /@web3modal/common@3.5.7:
-    resolution: {integrity: sha512-QUT9VP7GLTbJB+a8DDdLqyi97E7J/VAgFqCZrtO4rTnilI/0CaDP5WkU1sX/O5AJO5CsLfJMxUmBKxppy6kl2g==}
+  /@web3modal/common@5.0.3:
+    resolution: {integrity: sha512-zibCt/h+4IdiJ3vXHiE8jMFD9+KKOY8XwKn1EGAbGA/9HRcWgW8V4YkqEQxLKOKx6p/+atxep28yhcvrtc2CDg==}
     dependencies:
+      bignumber.js: 9.1.2
       dayjs: 1.11.10
     dev: false
 
@@ -4943,6 +4944,10 @@ packages:
     engines: {node: '>=4'}
     dependencies:
       is-windows: 1.0.2
+    dev: false
+
+  /bignumber.js@9.1.2:
+    resolution: {integrity: sha512-2/mKyZH9K85bzOEfhXDBFZTGd1CTs+5IHpeFQo9luiBG7hghdC851Pj2WAhb6E3R6b9tZj/XKhbg4fum+Kepug==}
     dev: false
 
   /binary-extensions@2.3.0:
