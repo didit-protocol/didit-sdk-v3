@@ -22,7 +22,7 @@
   "dependencies": {
     "@walletconnect/ethereum-provider": "2.13.1",
     "@web3modal/common": "3",
-    "@web3modal/ui": "^3.5.7",
+    "@web3modal/ui": "^5.0.3",
     "crypto-js": "^4.2.0",
     "valtio": "1.11.2"
   },

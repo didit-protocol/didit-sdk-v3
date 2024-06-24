@@ -97,8 +97,8 @@ importers:
         specifier: '3'
         version: 3.5.7
       '@web3modal/ui':
-        specifier: ^3.5.7
-        version: 3.5.7
+        specifier: ^5.0.3
+        version: 5.0.3
       crypto-js:
         specifier: ^4.2.0
         version: 4.2.0
@@ -4634,8 +4634,8 @@ packages:
       dayjs: 1.11.10
     dev: false
 
-  /@web3modal/ui@3.5.7:
-    resolution: {integrity: sha512-tXoRq9vZro/5oGYQtGXnq5KZ3YB2NuTNVKJ1evSq6WfHFcQr3AxinWfaJaWryLgkCmvMJXGvL6oSUWpodgTi5Q==}
+  /@web3modal/ui@5.0.3:
+    resolution: {integrity: sha512-wnKWsF2a5//l0IwFLD50MQ6Uw9RtdQSy0phAHh9w6XSk3F/bm5ojE3bdI7/4XfNjaR6eT3AQxhzjaxkNU/d0Og==}
     dependencies:
       lit: 3.1.0
       qrcode: 1.5.3
