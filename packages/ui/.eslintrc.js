@@ -1,3 +1,4 @@
+/** @type {import("eslint").Linter.Config} */
 module.exports = {
   root: true,
   extends: [
@@ -9,5 +10,5 @@ module.exports = {
   "plugins": ["require-extensions"],
   "rules": {
     "lit/attribute-value-entities": "off"
-  }
+  },
 };

@@ -1,6 +1,6 @@
 import './pollyfills'
 import { arbitrum, mainnet } from '@wagmi/core/chains'
-import { createDiditSdk, defaultWagmiCoreConfig } from '@didit-sdk/core'
+import { createDiditSdk, defaultWagmiCoreConfig } from '@didit-sdk/js'
 import { reconnect } from '@wagmi/core'
 
 // 1. Get a project ID at https://cloud.walletconnect.com

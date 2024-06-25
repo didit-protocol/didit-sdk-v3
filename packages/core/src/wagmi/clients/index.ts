@@ -1,15 +1,19 @@
 import type { EthereumProvider } from '@walletconnect/ethereum-provider'
-import { ConstantsUtil, CoreHelperUtil, StorageUtil } from '../../utils'
+import { ConstantsUtil, CoreHelperUtil, StorageUtil } from '../../utils/index.js'
 import { connect, disconnect, getChainId, reconnect, signMessage, switchChain } from '@wagmi/core'
-import type { CoreConfig } from '../../client'
+import type { CoreConfig } from '../../client.js'
 import {
   AccountController,
   DiditAuthController,
   type ConnectionControllerClient,
   type DiditAuthControllerClient
-} from '../../controllers'
-import type { DiditSession, SIWECreateMessageArgs, SIWEVerifyMessageArgs } from '../../types'
-import { DiditApiController } from '../../controllers/DiditApi'
+} from '../../controllers/index.js'
+import type {
+  DiditSession,
+  SIWECreateMessageArgs,
+  SIWEVerifyMessageArgs
+} from '../../types/index.js'
+import { DiditApiController } from '../../controllers/DiditApi.js'
 
 export function createConnectionControllerClient(
   // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents

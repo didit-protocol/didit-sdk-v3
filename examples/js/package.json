@@ -7,7 +7,7 @@
     "build:examples": "vite build"
   },
   "dependencies": {
-    "@didit-sdk/core": "workspace:*",
+    "@didit-sdk/js": "workspace:*",
     "@wagmi/connectors": "^5.0.14",
     "@wagmi/core": "^2.11.2",
     "tsup": "^8.1.0",

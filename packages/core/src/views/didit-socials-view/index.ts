@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { customElement } from '@web3modal/ui'
 import { LitElement, html } from 'lit'
 import { state } from 'lit/decorators.js'
@@ -51,8 +50,8 @@ export class DiditSocialsView extends LitElement {
 
     return html`
       <wui-flex flexDirection="column" gap="xs">
-        ${socialConnectors.map(connector => {
-          return html`
+        ${socialConnectors.map(
+          connector => html`
             <wui-list-wallet
               imageSrc=${connector.imageUrl}
               name=${connector.name ?? 'Unknown'}
@@ -63,7 +62,7 @@ export class DiditSocialsView extends LitElement {
             >
             </wui-list-wallet>
           `
-        })}
+        )}
       </wui-flex>
     `
   }

@@ -1,8 +1,8 @@
 import { customElement } from '@web3modal/ui'
 import { LitElement, html } from 'lit'
 import { property, state } from 'lit/decorators.js'
-import type { Platform } from '../../types'
-import { ConnectionController } from '../../controllers'
+import type { Platform } from '../../types/index.js'
+import { ConnectionController } from '../../controllers/index.js'
 
 @customElement('didit-connecting-header')
 export class DiditConnectingHeader extends LitElement {

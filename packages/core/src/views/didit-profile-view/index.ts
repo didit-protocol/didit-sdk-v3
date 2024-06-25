@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { UiHelperUtil, customElement } from '@web3modal/ui'
 import { LitElement, html } from 'lit'
 import { state } from 'lit/decorators.js'
@@ -11,8 +10,8 @@ import {
   ModalController,
   NotificationsController,
   RouterController
-} from '../../controllers'
-import { CoreHelperUtil } from '../../utils'
+} from '../../controllers/index.js'
+import { CoreHelperUtil } from '../../utils/index.js'
 
 @customElement('didit-profile-view')
 export class W3mAccountDefaultWidget extends LitElement {

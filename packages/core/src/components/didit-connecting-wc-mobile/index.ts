@@ -1,7 +1,7 @@
 import { customElement } from '@web3modal/ui'
-import { DiditWeb3Connecting } from '../didit-web3-connecting'
-import { ConnectionController, EventsController } from '../../controllers'
-import { CoreHelperUtil } from '../../utils'
+import { DiditWeb3Connecting } from '../didit-web3-connecting/index.js'
+import { ConnectionController, EventsController } from '../../controllers/index.js'
+import { CoreHelperUtil } from '../../utils/index.js'
 
 @customElement('didit-connecting-wc-mobile')
 export class DiditConnectingWcMobile extends DiditWeb3Connecting {

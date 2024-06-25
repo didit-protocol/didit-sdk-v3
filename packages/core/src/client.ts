@@ -3,7 +3,7 @@ import type {
   ConfigurationControllerState,
   ConnectionControllerClient,
   DiditAuthControllerClient
-} from './controllers'
+} from './controllers/index.js'
 
 import {
   AccountController,
@@ -11,9 +11,9 @@ import {
   ConnectionController,
   DiditAuthController,
   ModalController
-} from './controllers'
+} from './controllers/index.js'
 import type { Web3Connector, Web3Network } from './types/index.js'
-import { ConstantsUtil, CoreHelperUtil } from './utils'
+import { ConstantsUtil, CoreHelperUtil } from './utils/index.js'
 import {
   wcWallets,
   socialConnectors,
@@ -22,10 +22,13 @@ import {
 } from './wagmi/config/index.js'
 import { watchAccount, watchConnectors, type GetAccountReturnType } from '@wagmi/core'
 import type { Chain, Hex } from 'viem'
-import { PresetsUtil } from './utils/PresetsUtil'
-import { ConnectorController } from './controllers/Connectors'
-import { createConnectionControllerClient, createDiditAuthControllerMethods } from './wagmi/clients'
-import { DiditApiController, type DiditApiControllerState } from './controllers/DiditApi'
+import { PresetsUtil } from './utils/PresetsUtil.js'
+import { ConnectorController } from './controllers/Connectors.js'
+import {
+  createConnectionControllerClient,
+  createDiditAuthControllerMethods
+} from './wagmi/clients/index.js'
+import { DiditApiController, type DiditApiControllerState } from './controllers/DiditApi.js'
 
 // Import { ConstantsUtil, CoreHelperUtil } from './utils'
 

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 export type ProjectId = string
 
 export type Web3ConnectorType = 'EXTERNAL' | 'WALLET_CONNECT' | 'INJECTED' | 'ANNOUNCED'

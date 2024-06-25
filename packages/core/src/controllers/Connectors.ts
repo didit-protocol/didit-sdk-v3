@@ -1,7 +1,7 @@
 import { subscribeKey as subKey } from 'valtio/vanilla/utils'
 import { proxy, ref } from 'valtio/vanilla'
-import type { Connector, WcWallet } from '../types'
-import { CoreHelperUtil } from '../utils'
+import type { Connector, WcWallet } from '../types/index.js'
+import { CoreHelperUtil } from '../utils/index.js'
 
 // -- Types --------------------------------------------- //
 export interface ConnectorControllerState {

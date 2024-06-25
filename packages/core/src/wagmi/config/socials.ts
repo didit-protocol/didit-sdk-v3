@@ -1,4 +1,4 @@
-import type { SocialConnector } from '../../types'
+import type { SocialConnector } from '../../types/index.js'
 
 export const socialConnectors: SocialConnector[] = [
   {

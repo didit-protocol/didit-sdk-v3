@@ -1,13 +1,6 @@
 {
   "name": "@didit-sdk/eslint-config",
   "license": "MIT",
-  "version": "0.0.2",
-  "private": true,
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "7.10.0",
-    "@typescript-eslint/parser": "7.10.0",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-prettier": "5.1.3",
-    "eslint-plugin-require-extensions": "0.1.3"
-  }
+  "version": "0.0.1",
+  "private": true
 }

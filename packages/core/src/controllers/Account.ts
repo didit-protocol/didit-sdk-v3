@@ -1,8 +1,13 @@
 import { subscribeKey as subKey } from 'valtio/vanilla/utils'
 import { proxy, subscribe as sub } from 'valtio/vanilla'
-import type { DiditAuthType, DiditSession, DiditTokenAuthorization, Web3Network } from '../types'
-import { ConstantsUtil, StorageUtil } from '../utils'
-import { DiditApiController } from './DiditApi'
+import type {
+  DiditAuthType,
+  DiditSession,
+  DiditTokenAuthorization,
+  Web3Network
+} from '../types/index.js'
+import { ConstantsUtil, StorageUtil } from '../utils/index.js'
+import { DiditApiController } from './DiditApi.js'
 
 // -- Types --------------------------------------------- //
 export interface AccountControllerState {

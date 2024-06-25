@@ -6,9 +6,9 @@ import {
   EventsController,
   NotificationsController,
   RouterController
-} from '../../controllers'
-import type { BaseError, Platform } from '../../types'
-import { ConstantsUtil, CoreHelperUtil } from '../../utils'
+} from '../../controllers/index.js'
+import type { BaseError, Platform } from '../../types/index.js'
+import { ConstantsUtil, CoreHelperUtil } from '../../utils/index.js'
 
 @customElement('didit-connecting-wc-view')
 export class DiditConnectingWcView extends LitElement {

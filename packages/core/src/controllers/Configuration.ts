@@ -1,6 +1,6 @@
 import { subscribeKey as subKey } from 'valtio/vanilla/utils'
 import { proxy, snapshot } from 'valtio/vanilla'
-import type { DiditSdkVersion, Metadata, ProjectId } from '../types'
+import type { DiditSdkVersion, Metadata, ProjectId } from '../types/index.js'
 
 // -- Types --------------------------------------------- //
 export interface ConfigurationControllerState {

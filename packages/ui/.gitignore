@@ -1,6 +1,0 @@
-node_modules
-.turbo
-.DS_Store
-.env
-.env.local
-dist

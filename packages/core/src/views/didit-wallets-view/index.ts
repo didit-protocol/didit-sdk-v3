@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { customElement } from '@web3modal/ui'
 import { LitElement, html } from 'lit'
 import { state } from 'lit/decorators.js'

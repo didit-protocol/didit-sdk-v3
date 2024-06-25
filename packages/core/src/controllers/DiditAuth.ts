@@ -8,9 +8,9 @@ import type {
   SIWEVerifyMessageArgs,
   SocialConnectorType
   // SocialConnectorType
-} from '../types'
-import { StorageUtil } from '../utils'
-import { AccountController } from './Account'
+} from '../types/index.js'
+import { StorageUtil } from '../utils/index.js'
+import { AccountController } from './Account.js'
 
 interface DiditAuthClientMethods {
   // Wallet methods

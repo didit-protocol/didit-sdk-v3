@@ -5,7 +5,7 @@ import type {
   DiditSession,
   DiditTokenAuthorization,
   SocialConnectorType
-} from '../types'
+} from '../types/index.js'
 
 // -- Helpers -----------------------------------------------------------------
 const DIDIT_SESSION = 'DIDIT_AUTH_SESSION'

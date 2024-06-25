@@ -1,5 +1,5 @@
 import { proxy, subscribe as sub } from 'valtio/vanilla'
-import type { Event } from '../types'
+import type { Event } from '../types/index.js'
 /*
  * Import { CoreHelperUtil } from '../utils/CoreHelperUtil.js'
  * import { FetchUtil } from '../utils/FetchUtil.js'
