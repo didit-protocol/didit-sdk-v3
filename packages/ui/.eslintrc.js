@@ -7,6 +7,7 @@ module.exports = {
     "plugin:require-extensions/recommended",
     "@didit-sdk/eslint-config/base.js"
   ],
+  "parserOptions": {},
   "plugins": ["require-extensions"],
   "rules": {
     "lit/attribute-value-entities": "off"

@@ -3,6 +3,6 @@
   "compilerOptions": {
     "composite": true,
   },
-  "include": ["src/index.ts", "tests"],
+  "include": ["src", "tests"],
   "exclude": ["node_modules", "dist", ".turbo"]
 }
