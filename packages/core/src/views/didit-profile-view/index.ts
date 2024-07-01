@@ -1,7 +1,6 @@
-import { UiHelperUtil, customElement } from '@web3modal/ui'
+import { UiHelperUtil, customElement } from '@didit-sdk/ui'
 import { LitElement, html } from 'lit'
 import { state } from 'lit/decorators.js'
-import { ifDefined } from 'lit/directives/if-defined.js'
 import styles from './styles.js'
 import {
   AccountController,
@@ -11,10 +10,10 @@ import {
   NotificationsController,
   RouterController
 } from '../../controllers/index.js'
-import { CoreHelperUtil } from '../../utils/index.js'
+// Import { CoreHelperUtil } from '../../utils/index.js'
 
 @customElement('didit-profile-view')
-export class W3mAccountDefaultWidget extends LitElement {
+export class diditProfileView extends LitElement {
   public static override styles = styles
 
   // -- Members ------------------------------------------- //
@@ -52,64 +51,38 @@ export class W3mAccountDefaultWidget extends LitElement {
 
     // Const networkImage = AssetUtil.getNetworkImage(this.network)
 
-    return html`<wui-flex
+    return html`<ui-flex
         flexDirection="column"
         .padding=${['0', 'xl', 'm', 'xl'] as const}
         alignItems="center"
         gap="l"
       >
-        <wui-avatar
-          alt=${ifDefined(this.authMethod)}
-          address=${ifDefined(this.identifier)}
-          imageSrc=${ifDefined(undefined)}
-        ></wui-avatar>
-        <wui-flex flexDirection="column" alignItems="center">
-          <wui-flex gap="3xs" alignItems="center" justifyContent="center">
-            <wui-text variant="medium-title-600" color="fg-100">
+        <ui-flex flexDirection="column" alignItems="center">
+          <ui-flex gap="3xs" alignItems="center" justifyContent="center">
+            <ui-text variant="medium-title-600" color="fg-100">
               ${UiHelperUtil.getTruncateString({
                 string: this.identifier ? this.identifier : '',
                 charsStart: 4,
                 charsEnd: 4,
                 truncate: 'middle'
               })}
-            </wui-text>
-            <wui-icon-link
-              size="md"
-              icon="copy"
-              iconColor="fg-200"
-              @click=${this.onCopyAddress}
-            ></wui-icon-link>
-          </wui-flex>
-        </wui-flex>
-      </wui-flex>
+            </ui-text>
+          </ui-flex>
+        </ui-flex>
+      </ui-flex>
 
-      <wui-flex flexDirection="column" gap="xs" .padding=${['0', 's', 's', 's'] as const}>
-        <w3m-account-auth-button></w3m-account-auth-button>
-
-        <wui-list-item
-          .variant="icon"
-          iconVariant="overlay"
-          icon="networkPlaceholder"
-          ?chevron=${true}
-          @click=${this.onNetworks.bind(this)}
-          data-testid="w3m-account-select-network"
-        >
-          <wui-text variant="paragraph-500" color="fg-100">
-            ${this.network?.name ?? 'Unknown'}
-          </wui-text>
-        </wui-list-item>
-        <wui-list-item
-          variant="icon"
-          iconVariant="overlay"
-          icon="disconnect"
-          ?chevron=${false}
+      <ui-flex flexDirection="column" gap="xs" .padding=${['0', 's', 's', 's'] as const}>
+        <ui-button @click=${this.onNetworks.bind(this)} data-testid="select-network-button">
+          ${this.network?.name ?? 'Unknown'}
+        </ui-button>
+        <ui-button
           .loading=${this.disconnecting}
           @click=${this.onDisconnect.bind(this)}
-          data-testid="disconnect-button"
+          data-testid="select-network-button"
         >
-          <wui-text variant="paragraph-500" color="fg-200">Disconnect</wui-text>
-        </wui-list-item>
-      </wui-flex>`
+          Disconnect
+        </ui-button>
+      </ui-flex>`
   }
 
   // -- Private ------------------------------------------- //
@@ -125,16 +98,18 @@ export class W3mAccountDefaultWidget extends LitElement {
     return isMultiNetwork || !isValidNetwork
   }
 
-  private onCopyAddress() {
-    try {
-      if (this.identifier) {
-        CoreHelperUtil.copyToClopboard(this.identifier)
-        NotificationsController.showSuccess('Address copied')
-      }
-    } catch {
-      NotificationsController.showError('Failed to copy')
-    }
-  }
+  /*
+   * Private onCopyAddress() {
+   *   try {
+   *     if (this.identifier) {
+   *       CoreHelperUtil.copyToClopboard(this.identifier)
+   *       NotificationsController.showSuccess('Address copied')
+   *     }
+   *   } catch {
+   *     NotificationsController.showError('Failed to copy')
+   *   }
+   * }
+   */
 
   private onNetworks() {
     if (this.isAllowedNetworkSwitch()) {
@@ -160,6 +135,6 @@ export class W3mAccountDefaultWidget extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'w3m-account-default-widget': W3mAccountDefaultWidget
+    'didit-profile-view': diditProfileView
   }
 }

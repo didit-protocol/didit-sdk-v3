@@ -39,7 +39,7 @@ export const ConstantsUtil = {
 
   // Wc assets api
   WC_ASSETS_API_URL: 'https://explorer-api.walletconnect.com/',
-  WC_ASSETS_API_WALLET_LOGO_PATH: '/v3/logo/md/',
+  WC_ASSETS_API_WALLET_LOGO_PATH: '/v3/logo/lg/',
 
   // SDK
   DIDIT_SKD_VERSION: '0.0.1'

@@ -1,54 +1,64 @@
 import { css } from 'lit'
 
 export default css`
-  wui-logo {
-    width: 80px;
-    height: 80px;
-    border-radius: var(--wui-border-radius-m);
-  }
-  @keyframes shake {
-    0% {
-      transform: translateX(0);
-    }
-    25% {
-      transform: translateX(3px);
-    }
-    50% {
-      transform: translateX(-3px);
-    }
-    75% {
-      transform: translateX(3px);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-  wui-flex:first-child:not(:only-child) {
+  .didit-linking-container {
     position: relative;
-  }
-  wui-loading-thumbnail {
-    position: absolute;
-  }
-  wui-icon-box {
-    position: absolute;
-    right: calc(var(--wui-spacing-3xs) * -1);
-    bottom: calc(var(--wui-spacing-3xs) * -1);
-    opacity: 0;
-    transform: scale(0.5);
-    transition: all var(--wui-ease-out-power-2) var(--wui-duration-lg);
-  }
-  wui-text[align='center'] {
     width: 100%;
-    padding: 0px var(--wui-spacing-l);
+    max-width: 197px;
+    flex-grow: 1;
   }
-  [data-error='true'] wui-icon-box {
+  @keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-20px);
+    }
+    60% {
+      transform: translateY(-15px);
+    }
+  }
+
+  .ui-didit-link-loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ui-didit-link-loader {
+    width: 150%;
+    height: 150%;
+  }
+
+  .didit-logo {
+    z-index: 1;
+  }
+
+  [data-error='true'] .ui-didit-link-loader {
+    opacity: 0;
+  }
+
+  [data-error='true'] .didit-logo {
+    animation: bounce 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  }
+
+  [data-retry='false'] .retry-button {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  [data-retry='true'] .retry-button {
     opacity: 1;
-    transform: scale(1);
-  }
-  [data-error='true'] > wui-flex:first-child {
-    animation: shake 250ms cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-  }
-  .capitalize {
-    text-transform: capitalize;
+    pointer-events: auto;
   }
 `

@@ -1,4 +1,4 @@
-import { customElement } from '@web3modal/ui'
+import { customElement } from '@didit-sdk/ui'
 import { LitElement } from 'lit'
 
 @customElement('didit-callback')

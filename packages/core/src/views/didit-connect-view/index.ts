@@ -1,4 +1,4 @@
-import { customElement } from '@web3modal/ui'
+import { customElement } from '@didit-sdk/ui'
 import { LitElement, html } from 'lit'
 import styles from './styles.js'
 import { RouterController } from '../../controllers/Router.js'
@@ -16,32 +16,31 @@ export class DiditConnectView extends LitElement {
   // -- Render -------------------------------------------- //
   public override render() {
     return html`
-      <wui-flex flexDirection="column" .padding=${['3xs', 's', 's', 's']}>
-        <wui-list-wallet
-          name="Continue with Socials"
-          walletIcon="allWallets"
-          @click=${this.onContinueSocialsClick.bind(this)}
-          tagVariant="shade"
-          data-testid="all-wallets"
-        ></wui-list-wallet>
-        <wui-list-wallet
-          name="Continue with Wallet"
-          walletIcon="allWallets"
+      <ui-flex flexDirection="column" .padding=${['3xl', '0', '0', '0']}>
+        <ui-flex gap="xs">
+          <ui-text variant="styled-label" color="foreground">login with</ui-text>
+          <ui-text variant="styled-label" color="primary">didit</ui-text>
+        </ui-flex>
+        <ui-text variant="title-1" color="foreground" class="title">
+          Your trusted decentralized identity
+        </ui-text>
+        <didit-socials-view></didit-socials-view>
+        <ui-button
+          variant="primary"
+          text="Connect wallet"
+          icon="connect"
+          textSize="lg"
+          data-testid=${`wallets-button`}
           @click=${this.onContinueWalletClick.bind(this)}
-          tagVariant="shade"
-          data-testid="all-wallets"
-        ></wui-list-wallet>
-      </wui-flex>
-      <didit-legal-footer></didit-legal-footer>
+        ></ui-button>
+      </ui-flex>
     `
+    // <didit-legal-footer></didit-legal-footer>
   }
 
   // -- Private Methods ----------------------------------- //
   private onContinueWalletClick() {
     RouterController.push('Wallets')
-  }
-  private onContinueSocialsClick() {
-    RouterController.push('Socials')
   }
 }
 

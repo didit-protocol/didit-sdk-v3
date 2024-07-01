@@ -3,6 +3,7 @@ import { proxy, ref } from 'valtio/vanilla'
 import { CoreHelperUtil } from '../utils/CoreHelperUtil.js'
 import type { SocialConnectorType, Web3Connector } from '../types/index.js'
 import { AccountController } from './Account.js'
+import { StorageUtil } from '../utils/StorageUtil.js'
 
 // -- Types --------------------------------------------- //
 export interface ConnectExternalOptions {
@@ -38,6 +39,11 @@ export interface ConnectionControllerState {
   }
   wcError?: boolean
   buffering: boolean
+  recentWallet?: {
+    id: string
+    name: string
+    imageUrl: string
+  }
 }
 
 type StateKey = keyof ConnectionControllerState
@@ -114,11 +120,17 @@ export const ConnectionController = {
     state.buffering = false
   },
 
-  /*
-   * SetRecentWallet(wallet: ConnectionControllerState['recentWallet']) {
-   *   state.recentWallet = wallet
-   * },
-   */
+  setRecentWallet(wallet: ConnectionControllerState['recentWallet']) {
+    if (!wallet) {
+      return
+    }
+    StorageUtil.setRecentWallet(wallet)
+    state.recentWallet = wallet
+  },
+
+  getRecentWallet() {
+    return state.recentWallet || StorageUtil.getRecentWallet()
+  },
 
   setBuffering(buffering: ConnectionControllerState['buffering']) {
     state.buffering = buffering

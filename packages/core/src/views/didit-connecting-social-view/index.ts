@@ -1,14 +1,14 @@
-import { customElement } from '@web3modal/ui'
+import { customElement } from '@didit-sdk/ui'
 import { LitElement, html } from 'lit'
 import { state } from 'lit/decorators.js'
 import { ifDefined } from 'lit/directives/if-defined.js'
-import styles from './styles.js'
 import { AccountController } from '../../controllers/Account.js'
 import { RouterController } from '../../controllers/Router.js'
 import { NotificationsController } from '../../controllers/Notifications.js'
 import { ModalController } from '../../controllers/Modal.js'
 import { DiditAuthController } from '../../controllers/DiditAuth.js'
 import { ConstantsUtil } from '../../utils/ConstantsUtil.js'
+import styles from './styles.js'
 
 @customElement('didit-connecting-social-view')
 export class DiditConnectingSocialView extends LitElement {
@@ -24,11 +24,15 @@ export class DiditConnectingSocialView extends LitElement {
 
   @state() protected monitorInterval: ReturnType<typeof setInterval> | undefined
 
+  @state() protected label = `Continue with ${this.socialProvider ?? 'Social'}`
+
+  @state() protected subLabel = 'Login using the provider window'
+
   @state() protected error = false
 
   @state() protected connecting = false
 
-  @state() protected message = 'Connect in the provider window'
+  @state() private showRetry = false
 
   @state() protected timeOut: ReturnType<typeof setTimeout> | undefined
 
@@ -46,7 +50,12 @@ export class DiditConnectingSocialView extends LitElement {
           }
         }),
         DiditAuthController.subscribeKey('socialProvider', val => (this.socialProvider = val)),
-        DiditAuthController.subscribeKey('popupWindow', val => (this.popupWindow = val))
+        DiditAuthController.subscribeKey('popupWindow', val => {
+          this.popupWindow = val
+          if (val) {
+            this.monitorPopupStatus()
+          }
+        })
       ]
     )
     if (this.socailConnector) {
@@ -60,56 +69,68 @@ export class DiditConnectingSocialView extends LitElement {
 
   public override disconnectedCallback() {
     this.unsubscribe.forEach(unsubscribe => unsubscribe())
-    if (this.timeOut) {
-      clearTimeout(this.timeOut)
-    }
+    this.stopMonitoringPopupStatus()
+    DiditAuthController.resetSocialData()
   }
 
   // -- Render -------------------------------------------- //
   public override render() {
+    this.onShowRetry()
+
     return html`
-      <wui-flex
+      <ui-flex
+        .padding=${['3xl', '0', '0', '0']}
         data-error=${ifDefined(this.error)}
+        data-retry=${ifDefined(this.showRetry)}
         flexDirection="column"
         alignItems="center"
-        .padding=${['3xl', 'xl', 'xl', 'xl'] as const}
-        gap="xl"
+        gap="3xl"
       >
-        <wui-flex justifyContent="center" alignItems="center">
-          <wui-logo logo=${ifDefined(this.socialProvider)}></wui-logo>
-          ${this.error ? null : this.loaderTemplate()}
-          <wui-icon-box
-            backgroundColor="error-100"
-            background="opaque"
-            iconColor="error-100"
-            icon="close"
-            size="sm"
-            border
-            borderColor="wui-color-bg-125"
-          ></wui-icon-box>
-        </wui-flex>
-        <wui-flex flexDirection="column" alignItems="center" gap="xs">
-          <wui-text align="center" variant="paragraph-500" color="fg-100"
-            >Log in with
-            <span class="capitalize">${this.socialProvider ?? 'Social'}</span></wui-text
-          >
-          <wui-text align="center" variant="small-400" color=${this.error ? 'error-100' : 'fg-200'}
-            >${this.message}</wui-text
-          ></wui-flex
+        <ui-flex
+          flexDirection="column"
+          alignItems="center"
+          .padding=${['xl', '0', 'xl', '0']}
+          gap="xxl"
         >
-      </wui-flex>
+          <ui-didit-link
+            connectorIcon=${this.socialProvider}
+            ?loading=${!this.error}
+            ?logoBouncing=${this.error}
+          >
+          </ui-didit-link>
+          <ui-flex flexDirection="column" alignItems="center" gap="s">
+            <ui-text variant="title-4" color=${this.error ? 'error' : 'foreground'}>
+              ${this.label}
+            </ui-text>
+            <ui-text align="center" variant="paragraph-1" color="surface-md"
+              >${this.subLabel}</ui-text
+            >
+          </ui-flex>
+        </ui-flex>
+        <ui-flex class="buttons-container" flexDirection="column" alignItems="center" gap="xxl">
+          ${this.refreshButtonTemplate()}
+        </ui-flex>
+      </ui-flex>
     `
   }
 
   // -- Private ------------------------------------------- //
-  private loaderTemplate() {
-    /*
-     * Const borderRadiusMaster = ThemeController.state.themeVariables['--w3m-border-radius-master']
-     * BorderRadiusMaster ? parseInt(borderRadiusMaster.replace('px', ''), 10) : 4
-     */
-    const radius = 4
+  private refreshButtonTemplate() {
+    return html`
+      <ui-link
+        class="retry-button"
+        icon="refresh"
+        ?hasIconLeft=${true}
+        ?disabled=${!this.error || this.connecting}
+        @click=${this.onTryAgain.bind(this)}
+      >
+        Try again
+      </ui-link>
+    `
+  }
 
-    return html`<wui-loading-thumbnail radius=${radius * 9}></wui-loading-thumbnail>`
+  private onTryAgain() {
+    RouterController.goBack()
   }
 
   private handleSocialConnection = async (event: MessageEvent) => {
@@ -120,18 +141,22 @@ export class DiditConnectingSocialView extends LitElement {
           if (this.connecting) {
             return
           }
+          this.error = false
           this.connecting = true
-          this.updateMessage()
+          this.label = 'Connecting to Didit'
+          this.subLabel = 'Please wait...'
           const { code, error, errorDescription } = event.data
           if (error || !code) {
             this.error = true
-            this.updateMessage(errorDescription)
+            this.label = error ?? 'Connection failed'
+            this.subLabel = errorDescription ?? 'Something went wrong! Please try again'
           }
           await DiditAuthController.socialSignIn(code)
           this.finalizeConnection()
         } catch (error) {
           this.error = true
-          this.updateMessage()
+          this.label = 'Connection failed'
+          this.subLabel = 'Something went wrong! Please try again'
         }
         if (this.timeOut) {
           clearTimeout(this.timeOut)
@@ -145,7 +170,8 @@ export class DiditConnectingSocialView extends LitElement {
 
   private handleTimeout() {
     this.error = true
-    this.updateMessage('Connection timed out')
+    this.label = 'Connection timeout'
+    this.subLabel = 'Connection failed! Please try again'
     DiditAuthController.resetSocialData()
   }
 
@@ -165,7 +191,8 @@ export class DiditConnectingSocialView extends LitElement {
 
   private handlePopupWindowClose() {
     this.error = true
-    this.updateMessage('Connection aborted')
+    this.label = 'Connection declined'
+    this.subLabel = 'Connection failed! Please try again'
     DiditAuthController.resetSocialData()
   }
 
@@ -180,16 +207,6 @@ export class DiditConnectingSocialView extends LitElement {
     }
     DiditAuthController.deleteCodeVerifier()
     ModalController.close()
-  }
-
-  private updateMessage(message?: string) {
-    if (this.error) {
-      this.message = message ?? 'Something went wrong'
-    } else if (this.connecting) {
-      this.message = 'Retrieving user data'
-    } else {
-      this.message = 'Connect in the provider window'
-    }
   }
 
   private monitorPopupStatus() {
@@ -209,6 +226,17 @@ export class DiditConnectingSocialView extends LitElement {
     if (this.monitorInterval) {
       clearInterval(this.monitorInterval)
       this.monitorInterval = undefined
+    }
+  }
+
+  private onShowRetry() {
+    if (this.error && !this.showRetry) {
+      this.showRetry = true
+      const retryButton = this.shadowRoot?.querySelector('ui-link')
+      retryButton?.animate([{ opacity: 0 }, { opacity: 1 }], {
+        fill: 'forwards',
+        easing: 'ease'
+      })
     }
   }
 }

@@ -1,9 +1,9 @@
-import { customElement } from '@web3modal/ui'
+import { customElement } from '@didit-sdk/ui'
 import { LitElement, html } from 'lit'
 import { state } from 'lit/decorators.js'
 import { ConnectorController } from '../../controllers/Connectors.js'
 import styles from './styles.js'
-import type { SocialConnector } from '../../types/index.js'
+import type { SocialConnector, SocialConnectorType } from '../../types/index.js'
 import { RouterController } from '../../controllers/Router.js'
 import { CoreHelperUtil } from '../../utils/CoreHelperUtil.js'
 import { DiditAuthController } from '../../controllers/DiditAuth.js'
@@ -32,11 +32,7 @@ export class DiditSocialsView extends LitElement {
 
   // -- Render -------------------------------------------- //
   public override render() {
-    return html`
-      <wui-flex flexDirection="column" padding="s" gap="xs">
-        ${this.connectSocialsTemplate()}
-      </wui-flex>
-    `
+    return html` <ui-flex gap="s" alignItems="center"> ${this.connectSocialsTemplate()} </ui-flex> `
   }
 
   // -- Private ------------------------------------------- //
@@ -49,22 +45,30 @@ export class DiditSocialsView extends LitElement {
     }
 
     return html`
-      <wui-flex flexDirection="column" gap="xs">
-        ${socialConnectors.map(
-          connector => html`
-            <wui-list-wallet
-              imageSrc=${connector.imageUrl}
-              name=${connector.name ?? 'Unknown'}
-              tagVariant="success"
-              tagLabel="social"
-              data-testid=${`wallet-selector-${connector.id}`}
-              @click=${() => this.onConnector(connector)}
-            >
-            </wui-list-wallet>
-          `
-        )}
-      </wui-flex>
+      ${socialConnectors.map(
+        connector => html`
+          <ui-button
+            variant=${this.getButtonVariant(connector.type)}
+            text=${`Signin with ${connector.name}`}
+            icon=${connector.type}
+            data-testid=${`socail-selector-${connector.id}`}
+            @click=${() => this.onConnector(connector)}
+          >
+          </ui-button>
+        `
+      )}
     `
+  }
+
+  private getButtonVariant(type: SocialConnectorType) {
+    switch (type) {
+      case 'google':
+        return 'secondary'
+      case 'apple':
+        return 'tertiary'
+      default:
+        return 'secondary'
+    }
   }
 
   private onConnector(connector: SocialConnector) {

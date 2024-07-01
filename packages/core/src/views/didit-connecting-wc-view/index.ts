@@ -1,4 +1,4 @@
-import { customElement } from '@web3modal/ui'
+import { customElement } from '@didit-sdk/ui'
 import { LitElement, html } from 'lit'
 import { state } from 'lit/decorators.js'
 import {
@@ -37,14 +37,16 @@ export class DiditConnectingWcView extends LitElement {
   // -- Render -------------------------------------------- //
   public override render() {
     if (!this.wallet) {
-      return html`<didit-connecting-wc-qrcode></didit-connecting-wc-qrcode>`
+      return html`<didit-connecting-wc-qrcode ?walletConnect=${true}></didit-connecting-wc-qrcode>`
     }
 
     this.determinePlatforms()
 
     return html`
-      ${this.headerTemplate()}
-      <div>${this.platformTemplate()}</div>
+      <ui-flex flexDirection="column" .padding=${['xxl', '0', '0', '0']}>
+        ${this.headerTemplate()}
+        <div>${this.platformTemplate()}</div>
+      </ui-flex>
     `
   }
 

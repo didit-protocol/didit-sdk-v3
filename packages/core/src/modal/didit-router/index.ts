@@ -1,4 +1,4 @@
-import { customElement } from '@web3modal/ui'
+import { customElement } from '@didit-sdk/ui'
 import { LitElement, html } from 'lit'
 import { state } from 'lit/decorators.js'
 import styles from './styles.js'
@@ -56,8 +56,6 @@ export class DiditRouter extends LitElement {
     switch (this.view) {
       case 'Connect':
         return html`<didit-connect-view></didit-connect-view>`
-      case 'Socials':
-        return html`<didit-socials-view></didit-socials-view>`
       case 'Wallets':
         return html`<didit-wallets-view></didit-wallets-view>`
       case 'ConnectWallet':

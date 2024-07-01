@@ -1,4 +1,4 @@
-import { customElement } from '@web3modal/ui'
+import { customElement } from '@didit-sdk/ui'
 import { LitElement, html } from 'lit'
 import { state } from 'lit/decorators.js'
 import styles from './styles.js'
@@ -9,9 +9,6 @@ import { ModalController } from '../../controllers/Modal.js'
 import type { RouterView } from '../../types/config.js'
 import { DiditAuthController } from '../../controllers/DiditAuth.js'
 
-// -- Constants ----------------------------------------- //
-const BETA_SCREENS = ['Swap', 'SwapSelectToken', 'SwapPreview']
-
 // -- Helpers ------------------------------------------- //
 
 function headings(): { [key in RouterView]: string } {
@@ -21,20 +18,15 @@ function headings(): { [key in RouterView]: string } {
   const name = walletName ?? connectorName
 
   return {
-    Connect: `Connect With Didit`,
-    Socials: 'All socials',
-    Wallets: 'Connect wallet',
-    ConnectWallet: `Connect with ${name}`,
-    ConnectWalletConnect: `Connect with ${name}`,
-    ConnectSocial: `Connect with ${name}`,
-    ConnectingDiditSiwe: 'Connecting with Didit',
-    Help: 'What is a wallet?',
+    Connect: `Connect with Didit`,
+    Wallets: 'Select wallet',
+    ConnectWallet: `Connecting ${name ?? 'wallet'}`,
+    ConnectWalletConnect: `Connecting ${name ?? 'wallet'}`,
+    ConnectSocial: `Signin with ${name}`,
+    ConnectingDiditSiwe: 'Signature request',
+    Help: 'How to signin with Didit',
     Profile: 'Profile',
-    Networks: `Switch Network: ${networkName}`,
-    Downloads: name ? `Get ${name}` : 'Downloads'
-    /*
-     * GetWallet: 'Get a wallet',
-     */
+    Networks: `Switch Network: ${networkName}`
   }
 }
 
@@ -70,15 +62,16 @@ export class DiditHeader extends LitElement {
   // -- Render -------------------------------------------- //
   public override render() {
     return html`
-      <wui-flex .padding=${this.getPadding()} justifyContent="space-between" alignItems="center">
+      <ui-flex alignItems="center" gap="s">
         ${this.dynamicButtonTemplate()} ${this.titleTemplate()}
-        <wui-icon-link
+        <ui-icon-link
+          class="close-button"
           ?disabled=${this.buffering}
           icon="close"
           @click=${this.onClose.bind(this)}
-          data-testid="w3m-header-close"
-        ></wui-icon-link>
-      </wui-flex>
+          data-testid="didit-header-close"
+        ></ui-icon-link>
+      </ui-flex>
     `
   }
 
@@ -98,50 +91,41 @@ export class DiditHeader extends LitElement {
   }
 
   private titleTemplate() {
-    const isBeta = BETA_SCREENS.includes(RouterController.state.view)
-
     return html`
-      <wui-flex class="w3m-header-title" alignItems="center" gap="xs">
-        <wui-text variant="paragraph-700" color="fg-100">${this.heading}</wui-text>
-        ${isBeta ? html`<wui-tag variant="main">Beta</wui-tag>` : null}
-      </wui-flex>
+      <ui-flex class="ui-header-title" alignItems="center" gap="xs">
+        <ui-text variant="title-4" color="foreground"> ${this.heading} </ui-text>
+      </ui-flex>
     `
   }
 
   private dynamicButtonTemplate() {
     const { view } = RouterController.state
     const isConnectHelp = view === 'Connect'
-
-    // TODOX: hide back button on connecting through api
-    const shouldHideBack = false
+    const shouldHideBack = view === 'ConnectingDiditSiwe'
 
     if (this.showBack && !shouldHideBack) {
-      return html`<wui-icon-link
+      return html`<ui-icon-link
         id="dynamic"
-        icon="chevronLeft"
+        icon="arrowLeft"
         ?disabled=${this.buffering}
         @click=${this.onGoBack.bind(this)}
-      ></wui-icon-link>`
+      ></ui-icon-link>`
     }
 
-    return html`<wui-icon-link
+    if (shouldHideBack) {
+      return null
+    }
+
+    return html`<ui-icon-link
       data-hidden=${!isConnectHelp}
       id="dynamic"
-      icon="helpCircle"
+      icon="help"
       @click=${this.onWalletHelp.bind(this)}
-    ></wui-icon-link>`
-  }
-
-  private getPadding() {
-    if (this.heading) {
-      return ['l', '2l', 'l', '2l'] as const
-    }
-
-    return ['l', '2l', '0', '2l'] as const
+    ></ui-icon-link>`
   }
 
   private async onViewChange(view: RouterControllerState['view']) {
-    const headingEl = this.shadowRoot?.querySelector('wui-flex.w3m-header-title')
+    const headingEl = this.shadowRoot?.querySelector('ui-flex.ui-header-title')
 
     if (headingEl) {
       const preset = headings()[view]

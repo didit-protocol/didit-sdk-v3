@@ -1,4 +1,4 @@
-import type { IconType } from '@web3modal/ui'
+import type { IconType } from '@didit-sdk/ui'
 import { LitElement, html } from 'lit'
 import { property, state } from 'lit/decorators.js'
 import { ifDefined } from 'lit/directives/if-defined.js'
@@ -7,6 +7,7 @@ import { RouterController } from '../../controllers/Router.js'
 import { CoreHelperUtil } from '../../utils/CoreHelperUtil.js'
 import { ConnectionController } from '../../controllers/Connection.js'
 import { NotificationsController } from '../../controllers/Notifications.js'
+import { DiditApiController } from '../../controllers/DiditApi.js'
 
 export class DiditWeb3Connecting extends LitElement {
   public static override styles = styles
@@ -30,11 +31,11 @@ export class DiditWeb3Connecting extends LitElement {
 
   protected onAutoConnect?: (() => void) | (() => Promise<void>) = undefined
 
-  protected isWalletConnect = true
+  protected show = true
 
   private unsubscribe: (() => void)[] = []
 
-  private imageSrc = ''
+  private imageSrc = this.wallet?.image_url ?? this.connector?.imageUrl
 
   private name = this.wallet?.name ?? this.connector?.name ?? 'Wallet'
 
@@ -101,69 +102,96 @@ export class DiditWeb3Connecting extends LitElement {
       label = 'Connection declined'
     }
 
+    if (
+      this.connector &&
+      CoreHelperUtil.isWeb3Connector(this.connector) &&
+      this.connector.imageId
+    ) {
+      this.imageSrc = DiditApiController.getConnectorImageUrl(this.connector.imageId)
+    }
+
     return html`
-      <wui-flex
+      <ui-flex
+        .padding=${['3xl', '0', '0', '0']}
         data-error=${ifDefined(this.error)}
         data-retry=${this.showRetry}
         flexDirection="column"
         alignItems="center"
-        .padding=${['3xl', 'xl', 'xl', 'xl'] as const}
-        gap="xl"
+        gap="3xl"
       >
-        <wui-flex justifyContent="center" alignItems="center">
-          <wui-wallet-image size="lg" imageSrc=${ifDefined(this.imageSrc)}></wui-wallet-image>
-
-          ${this.error ? null : this.loaderTemplate()}
-
-          <wui-icon-box
-            backgroundColor="error-100"
-            background="opaque"
-            iconColor="error-100"
-            icon="close"
-            size="sm"
-            border
-            borderColor="wui-color-bg-125"
-          ></wui-icon-box>
-        </wui-flex>
-
-        <wui-flex flexDirection="column" alignItems="center" gap="xs">
-          <wui-text variant="paragraph-500" color=${this.error ? 'error-100' : 'fg-100'}>
-            ${label}
-          </wui-text>
-          <wui-text align="center" variant="small-500" color="fg-200">${subLabel}</wui-text>
-        </wui-flex>
-
-        <wui-button
-          variant="accent"
-          size="md"
-          ?disabled=${!this.error && this.buffering}
-          @click=${this.onTryAgain.bind(this)}
+        <ui-flex
+          flexDirection="column"
+          alignItems="center"
+          .padding=${['xl', '0', 'xl', '0']}
+          gap="xxl"
         >
-          <wui-icon color="inherit" slot="iconLeft" name=${this.secondaryBtnIcon}></wui-icon>
-          ${this.secondaryBtnLabel}
-        </wui-button>
-      </wui-flex>
-
-      ${this.isWalletConnect
-        ? html`
-            <wui-flex .padding=${['0', 'xl', 'xl', 'xl'] as const} justifyContent="center">
-              <wui-link @click=${this.onCopyUri} color="fg-200">
-                <wui-icon size="xs" color="fg-200" slot="iconLeft" name="copy"></wui-icon>
-                Copy link
-              </wui-link>
-            </wui-flex>
-          `
-        : null}
-
-      <didit-mobile-download-links .wallet=${this.wallet}></didit-mobile-download-links>
+          <ui-flex class="connector-logo" justifyContent="center" alignItems="center">
+            <ui-wallet-image
+              size="xl"
+              ?withPadding=${true}
+              imageSrc=${ifDefined(this.imageSrc)}
+            ></ui-wallet-image>
+          </ui-flex>
+          <ui-flex flexDirection="column" alignItems="center" gap="s">
+            <ui-text variant="title-4" color=${this.error ? 'error' : 'foreground'}>
+              ${label}
+            </ui-text>
+            <ui-text align="center" variant="paragraph-1" color="surface-md">${subLabel}</ui-text>
+          </ui-flex>
+        </ui-flex>
+        <ui-flex class="buttons-container" flexDirection="column" alignItems="center" gap="xxl">
+          ${this.refreshButtonTemplate()}
+          ${html`<didit-mobile-download-links
+            .wallet=${this.wallet}
+          ></didit-mobile-download-links>`}
+          ${this.openLinkButtonTemplate()}
+        </ui-flex>
+      </ui-flex>
     `
   }
 
   // -- Private ------------------------------------------- //
+
+  private refreshButtonTemplate() {
+    if (this.secondaryBtnIcon === 'refresh') {
+      return html`
+        <ui-link
+          class="retry-button"
+          icon=${this.secondaryBtnIcon}
+          ?hasIconLeft=${true}
+          ?disabled=${!this.error && this.buffering}
+          @click=${this.onTryAgain.bind(this)}
+        >
+          ${this.secondaryBtnLabel}
+        </ui-link>
+      `
+    }
+
+    return null
+  }
+
+  private openLinkButtonTemplate() {
+    if (this.secondaryBtnIcon === 'externalLink') {
+      return html`
+        <ui-button
+          class="open-link-button"
+          variant="primary"
+          text=${this.secondaryBtnLabel}
+          icon=${this.secondaryBtnIcon}
+          data-testid=${`open-link-button`}
+          ?fullWidth=${true}
+          @click=${this.onTryAgain.bind(this)}
+        ></ui-button>
+      `
+    }
+
+    return null
+  }
+
   private onShowRetry() {
     if (this.error && !this.showRetry) {
       this.showRetry = true
-      const retryButton = this.shadowRoot?.querySelector('wui-button') as HTMLElement
+      const retryButton = this.shadowRoot?.querySelector('ui-link')
       retryButton?.animate([{ opacity: 0 }, { opacity: 1 }], {
         fill: 'forwards',
         easing: 'ease'
@@ -181,15 +209,6 @@ export class DiditWeb3Connecting extends LitElement {
         this.onConnect?.()
       }
     }
-  }
-
-  private loaderTemplate() {
-    /*
-     * Const borderRadiusMaster = ThemeController.state.themeVariables['--w3m-border-radius-master']
-     * const radius = borderRadiusMaster ? parseInt(borderRadiusMaster.replace('px', ''), 10) : 4
-     */
-
-    return html`<wui-loading-thumbnail radius=${120}></wui-loading-thumbnail>`
   }
 
   // -- Protected ----------------------------------------- //

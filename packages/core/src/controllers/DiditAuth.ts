@@ -145,6 +145,8 @@ export const DiditAuthController = {
     await client.signOut()
     this.setStatus('ready')
     AccountController.resetDiditSession()
+    this.resetSocialData()
+    this.resetAuthData()
     client.onSignOut?.()
   },
 
@@ -217,10 +219,17 @@ export const DiditAuthController = {
 
   resetSocialData() {
     state.codeVerifier = undefined
+    state.socialProvider = undefined
     state.popupWindow?.close()
     state.popupWindow = null
-    state.status = 'ready'
     StorageUtil.deleteConnectedSocialProvider()
     StorageUtil.deleteSocialCodeVerifier()
+  },
+
+  resetAuthData() {
+    state.status = 'ready'
+    state.session = undefined
+    state.nonce = undefined
+    state.message = undefined
   }
 }

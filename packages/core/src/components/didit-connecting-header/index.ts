@@ -1,8 +1,8 @@
-import { customElement } from '@web3modal/ui'
 import { LitElement, html } from 'lit'
 import { property, state } from 'lit/decorators.js'
 import type { Platform } from '../../types/index.js'
 import { ConnectionController } from '../../controllers/index.js'
+import { customElement } from '@didit-sdk/ui'
 
 @customElement('didit-connecting-header')
 export class DiditConnectingHeader extends LitElement {
@@ -34,13 +34,13 @@ export class DiditConnectingHeader extends LitElement {
     const tabs = this.generateTabs()
 
     return html`
-      <wui-flex justifyContent="center" .padding=${['0', '0', 'l', '0'] as const}>
-        <wui-tabs
+      <ui-flex justifyContent="center">
+        <ui-tabs
           ?disabled=${this.buffering}
           .tabs=${tabs}
           .onTabChange=${this.onTabChange.bind(this)}
-        ></wui-tabs>
-      </wui-flex>
+        ></ui-tabs>
+      </ui-flex>
     `
   }
 
@@ -48,18 +48,18 @@ export class DiditConnectingHeader extends LitElement {
   private generateTabs() {
     const tabs = this.platforms.map(platform => {
       if (platform === 'browser') {
-        return { label: 'Browser', icon: 'extension', platform: 'browser' } as const
+        return { label: 'Browser', platform: 'browser' } as const
       } else if (platform === 'mobile') {
-        return { label: 'Mobile', icon: 'mobile', platform: 'mobile' } as const
+        return { label: 'Mobile', platform: 'mobile' } as const
       } else if (platform === 'qrcode') {
-        return { label: 'Mobile', icon: 'mobile', platform: 'qrcode' } as const
+        return { label: 'Mobile', platform: 'qrcode' } as const
       } else if (platform === 'web') {
-        return { label: 'Webapp', icon: 'browser', platform: 'web' } as const
+        return { label: 'Webapp', platform: 'web' } as const
       } else if (platform === 'desktop') {
-        return { label: 'Desktop', icon: 'desktop', platform: 'desktop' } as const
+        return { label: 'Desktop', platform: 'desktop' } as const
       }
 
-      return { label: 'Browser', icon: 'extension', platform: 'unsupported' } as const
+      return { label: 'Browser', platform: 'unsupported' } as const
     })
 
     this.platformTabs = tabs.map(({ platform }) => platform)
