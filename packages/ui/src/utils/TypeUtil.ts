@@ -4,10 +4,10 @@ export interface ThemeVariables {
   '--modal-font-family'?: string
   '--modal-font-size-master'?: string
   '--modal-border-radius-master'?: string
-  '--modal-color-primary'?: string,
-  '--modal-color-soft'?: string,
-  '--modal-color-background'?: string,
-  '--modal-color-foreground'?: string,
+  '--modal-color-primary'?: string
+  '--modal-color-soft'?: string
+  '--modal-color-background'?: string
+  '--modal-color-foreground'?: string
   '--modal-z-index'?: number
 }
 
@@ -104,7 +104,7 @@ export type IconType =
   | 'externalLink'
   | 'loading'
 
-export type TagType = 'main' | 'shade' | 'error' | 'success'
+export type TagType = 'primary' | 'secondary' | 'error' | 'success'
 
 export type TruncateType = 'start' | 'middle' | 'end'
 export type TruncateOptions = {

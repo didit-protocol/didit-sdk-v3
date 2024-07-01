@@ -1,8 +1,4 @@
-import {
-  customElement,
-  initializeTheming,
-  UiHelperUtil
-} from '@didit-sdk/ui'
+import { customElement, initializeTheming, UiHelperUtil } from '@didit-sdk/ui'
 import { LitElement, html } from 'lit'
 import { state } from 'lit/decorators.js'
 import styles from './styles.js'

@@ -11,7 +11,7 @@ export class UiTag extends LitElement {
   public static override styles = [resetStyles, styles]
 
   // -- State & Properties -------------------------------- //
-  @property() public variant: TagType = 'main'
+  @property() public variant: TagType = 'primary'
 
   @property() public size: 'lg' | 'md' = 'lg'
 

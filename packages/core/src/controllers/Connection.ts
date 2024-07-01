@@ -121,10 +121,9 @@ export const ConnectionController = {
   },
 
   setRecentWallet(wallet: ConnectionControllerState['recentWallet']) {
-    if (!wallet) {
-      return
+    if (wallet) {
+      StorageUtil.setRecentWallet(wallet)
     }
-    StorageUtil.setRecentWallet(wallet)
     state.recentWallet = wallet
   },
 

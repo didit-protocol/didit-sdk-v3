@@ -85,11 +85,11 @@ function createRootStyles(themeVariables?: ThemeVariables) {
         --dui-modal-width: 400px;
         --dui-font-family: ${unsafeCSS(themeVariables?.['--modal-font-family'] || diditFontFamily)};
         --dui-font-size-master: ${unsafeCSS(
-      themeVariables?.['--modal-font-size-master'] || '10px'
-    )};
+          themeVariables?.['--modal-font-size-master'] || '10px'
+        )};
         --dui-border-radius-master: ${unsafeCSS(
-      themeVariables?.['--modal-border-radius-master'] || '4px'
-    )};
+          themeVariables?.['--modal-border-radius-master'] || '4px'
+        )};
         --dui-z-index: ${unsafeCSS(themeVariables?.['--modal-z-index'] || 999)};
 
         --ui-font-family: var(--dui-font-family);
@@ -193,15 +193,15 @@ function createRootStyles(themeVariables?: ThemeVariables) {
     light: css`
       :root {
         --dui-primary: ${unsafeCSS(
-      getDiditThemeVariables(themeVariables, 'light')['--dui-primary']
-    )};
+          getDiditThemeVariables(themeVariables, 'light')['--dui-primary']
+        )};
         --dui-soft: ${unsafeCSS(getDiditThemeVariables(themeVariables, 'light')['--dui-soft'])};
         --dui-background: ${unsafeCSS(
-      getDiditThemeVariables(themeVariables, 'light')['--dui-background']
-    )};
+          getDiditThemeVariables(themeVariables, 'light')['--dui-background']
+        )};
         --dui-foreground: ${unsafeCSS(
-      getDiditThemeVariables(themeVariables, 'light')['--dui-foreground']
-    )};
+          getDiditThemeVariables(themeVariables, 'light')['--dui-foreground']
+        )};
         --dui-black: ${unsafeCSS(getDiditThemeVariables(themeVariables, 'light')['--dui-black'])};
         --dui-white: ${unsafeCSS(getDiditThemeVariables(themeVariables, 'light')['--dui-white'])};
 
@@ -233,15 +233,15 @@ function createRootStyles(themeVariables?: ThemeVariables) {
       :root {
         --dark-mode: true;
         --dui-primary: ${unsafeCSS(
-      getDiditThemeVariables(themeVariables, 'dark')['--dui-primary']
-    )};
+          getDiditThemeVariables(themeVariables, 'dark')['--dui-primary']
+        )};
         --dui-soft: ${unsafeCSS(getDiditThemeVariables(themeVariables, 'dark')['--dui-soft'])};
         --dui-background: ${unsafeCSS(
-      getDiditThemeVariables(themeVariables, 'dark')['--dui-background']
-    )};
+          getDiditThemeVariables(themeVariables, 'dark')['--dui-background']
+        )};
         --dui-foreground: ${unsafeCSS(
-      getDiditThemeVariables(themeVariables, 'dark')['--dui-foreground']
-    )};
+          getDiditThemeVariables(themeVariables, 'dark')['--dui-foreground']
+        )};
         --dui-black: ${unsafeCSS(getDiditThemeVariables(themeVariables, 'dark')['--dui-black'])};
         --dui-white: ${unsafeCSS(getDiditThemeVariables(themeVariables, 'dark')['--dui-white'])};
 

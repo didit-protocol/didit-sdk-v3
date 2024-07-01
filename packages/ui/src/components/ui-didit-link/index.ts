@@ -33,7 +33,7 @@ export class UiDiditLink extends LitElement {
         <ui-wallet-image
           size="xl"
           ?withPadding=${true}
-          walletImage=${this.connectorImage}
+          imageSrc=${this.connectorImage}
           walletIcon=${this.connectorIcon}
         >
         </ui-wallet-image>

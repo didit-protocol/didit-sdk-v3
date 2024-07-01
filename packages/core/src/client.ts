@@ -1,12 +1,17 @@
 import { watchAccount, watchConnectors, type GetAccountReturnType } from '@wagmi/core'
 import type { Chain, Hex } from 'viem'
-import { setColorTheme, setThemeVariables, type ThemeMode, type ThemeVariables } from '@didit-sdk/ui'
+import {
+  setColorTheme,
+  setThemeVariables,
+  type ThemeMode,
+  type ThemeVariables
+} from '@didit-sdk/ui'
 import type {
   AccountControllerState,
   ConfigurationControllerState,
   ConnectionControllerClient,
   DiditAuthControllerClient,
-  ThemeControllerState,
+  ThemeControllerState
 } from './controllers/index.js'
 import {
   AccountController,
@@ -14,7 +19,7 @@ import {
   ConnectionController,
   DiditAuthController,
   ModalController,
-  ThemeController,
+  ThemeController
 } from './controllers/index.js'
 import type { DiditAuthStatus, Web3Connector, Web3Network } from './types/index.js'
 import { ConstantsUtil, CoreHelperUtil } from './utils/index.js'
@@ -71,7 +76,11 @@ export type DiditSdkOptions<C extends Config> = Omit<
   'connectionControllerClient' | 'diditAuthControllerClient'
 >
 
-interface DiditSdkState extends Omit<AccountControllerState, 'network' | 'requestedNetworks' | 'diditSession' | 'timeout'> {
+interface DiditSdkState
+  extends Omit<
+    AccountControllerState,
+    'network' | 'requestedNetworks' | 'diditSession' | 'timeout'
+  > {
   user: Omit<AccountControllerState['diditSession'], 'exp'>
   selectedNetworkId: number | undefined
   selectedNetworkName: string | undefined
@@ -220,7 +229,7 @@ export class DiditSdk {
         id: accountState.diditSession?.id,
         identifier: accountState.diditSession?.identifier,
         identifierType: accountState.diditSession?.identifierType,
-        claims: accountState.diditSession?.claims,
+        claims: accountState.diditSession?.claims
       },
       accessToken: accountState.accessToken,
       refreshToken: accountState.refreshToken,
@@ -243,7 +252,7 @@ export class DiditSdk {
           id: newState.diditSession?.id,
           identifier: newState.diditSession?.identifier,
           identifierType: newState.diditSession?.identifierType,
-          claims: newState.diditSession?.claims,
+          claims: newState.diditSession?.claims
         },
         accessToken: newState.accessToken,
         refreshToken: newState.refreshToken,
@@ -261,8 +270,8 @@ export class DiditSdk {
     const accountState = AccountController.state
     const { network } = accountState
 
-    let diditAuthStatus: DiditAuthStatus = accountState.isAuthenticated === undefined ?
-      'loading' : 'unauthenticated'
+    let diditAuthStatus: DiditAuthStatus =
+      accountState.isAuthenticated === undefined ? 'loading' : 'unauthenticated'
     if (accountState.isAuthenticated) {
       diditAuthStatus = 'authenticated'
     }

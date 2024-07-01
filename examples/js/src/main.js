@@ -1,5 +1,5 @@
 import { arbitrum, mainnet } from '@wagmi/core/chains'
-import { createDiditSdk, defaultWagmiCoreConfig, DiditSdk } from '@didit-sdk/js'
+import { createDiditSdk, defaultWagmiConfig } from '@didit-sdk/js'
 import { reconnect } from '@wagmi/core'
 
 // 1. Get a project ID at https://cloud.walletconnect.com
@@ -17,7 +17,7 @@ const metadata = {
 
 const chains = [mainnet, arbitrum]
 // 2. Create wagmiConfig
-const wagmiConfig = defaultWagmiCoreConfig({
+const wagmiConfig = defaultWagmiConfig({
   chains,
   projectId,
   metadata
@@ -33,7 +33,7 @@ const diditSDk = createDiditSdk({
   clientSecret,
   themeMode: 'dark',
   themeVariables: {
-    '--modal-border-radius-master': '0px',
+    '--modal-border-radius-master': '0px'
   }
 })
 
@@ -71,11 +71,9 @@ logoutBtn.addEventListener('click', () => {
   diditSDk.signOut()
 })
 
-
-
-
-
-diditSDk.subscribeTheme(theme => { console.log('themeModeChanged...', theme.themeMode) })
+diditSDk.subscribeTheme(theme => {
+  console.log('themeModeChanged...', theme.themeMode)
+})
 
 const themeBtn = document.getElementById('theme-btn')
 

@@ -21,8 +21,6 @@ export class DiditConnectingSiweView extends LitElement {
   // -- Members ------------------------------------------- //
   private readonly dappName = ConfigurationController.state.metadata?.name || 'Didit'
 
-  private readonly wallet = ConnectionController.getRecentWallet()
-
   @state() private status: 'idle' | 'signing' | 'completed' | 'error' = 'idle'
 
   // -- Render -------------------------------------------- //
@@ -36,8 +34,7 @@ export class DiditConnectingSiweView extends LitElement {
 
   public override render() {
     this.onRender()
-
-    const walletImageUrl = this.wallet?.imageUrl || ''
+    const recent = ConnectionController.getRecentWallet()
 
     return html`
       <ui-flex
@@ -54,7 +51,7 @@ export class DiditConnectingSiweView extends LitElement {
           .padding=${['xl', '0', 'xl', '0']}
         >
           <ui-didit-link
-            connectorImage=${walletImageUrl}
+            connectorImage=${recent?.imageUrl}
             connectorIcon="wallet"
             ?loading=${this.status}
             ?logoBouncing=${this.status === 'error'}

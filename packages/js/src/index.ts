@@ -1,7 +1,6 @@
 import type { DiditClientOptions, CoreConfig } from '@didit-sdk/core'
 import { DiditSdk, ConstantsUtil } from '@didit-sdk/core'
 
-
 export type { DiditSdk, DiditAuthStatus, DiditAuthMethod } from '@didit-sdk/core'
 export type DiditSdkOptions = Omit<DiditClientOptions<CoreConfig>, '_sdkVersion'>
 

@@ -20,12 +20,12 @@ export default css`
     transform: translateY(5%);
   }
 
-  :host([data-variant='main']) {
+  :host([data-variant='primary']) {
     border: 1px solid var(--ui-color-primary);
     color: var(--ui-color-primary);
   }
 
-  :host([data-variant='shade']) {
+  :host([data-variant='secondary']) {
     border: 1px solid var(--ui-color-soft);
     color: var(--ui-color-soft);
   }
