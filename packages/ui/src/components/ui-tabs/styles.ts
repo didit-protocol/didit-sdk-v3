@@ -50,7 +50,7 @@ export default css`
   }
 
   button[data-active='true'] > ui-text {
-    color: var(--ui-color-foreground);
+    color: var(--ui-color-black);
   }
 
   button[data-active='false'] > ui-text {
@@ -85,12 +85,18 @@ export default css`
 
   button:hover:enabled,
   button:active:enabled {
-    background-color: var(--ui-color-white);
+    background-color: var(--ui-color-ulo);
     opacity: 0.8;
   }
 
   button:hover:enabled > ui-text,
   button:active:enabled > ui-text {
     color: var(--ui-color-foreground);
+  }
+
+  button[data-active='true'],
+  button:hover:enabled > ui-text,
+  button:active:enabled > ui-text {
+    color: var(--ui-color-black);
   }
 `

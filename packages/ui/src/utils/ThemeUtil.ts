@@ -21,7 +21,7 @@ export function initializeTheming(themeVariables?: ThemeVariables, themeMode?: T
 
 export function setColorTheme(themeMode?: string) {
   if (darkModeTag && lightModeTag) {
-    if (themeMode === 'dark') {
+    if (themeMode === 'light') {
       lightModeTag.removeAttribute('media')
       darkModeTag.media = 'enabled'
     } else {
@@ -40,40 +40,57 @@ export function setThemeVariables(themeVariables: ThemeVariables) {
 }
 
 const diditColorScheme = {
-  primary: '#2667FF',
-  soft: '#E8EAF8',
-  black: '#1A1A1A',
-  white: '#FEFEFE',
-  sufaceHi: '#4B5058',
-  sufaceMd: '#9DA1A1',
-  sufaceMdLo: '#C4C7C7',
-  surfaceLo: '#F4F4F6',
-  surfaceULo: '#F8F8F8',
-  systemSuccess: '#41D97F',
-  systemError: '#FF4141'
+  light: {
+    primary: '#2667FF',
+    soft: '#E8EAF8',
+    black: '#1A1A1A',
+    white: '#FEFEFE',
+    sufaceHi: '#4B5058',
+    sufaceMd: '#9DA1A1',
+    sufaceMdLo: '#C4C7C7',
+    surfaceLo: '#F4F4F6',
+    surfaceULo: '#F8F8F8',
+    systemSuccess: '#41D97F',
+    systemError: '#FF4141'
+  },
+  dark: {
+    primary: '#2667FF',
+    soft: 'rgba(38, 103, 255, 0.20)',
+    black: '#1A1A1A',
+    white: '#FEFEFE',
+    sufaceHi: '#4B5058',
+    sufaceMd: '#9DA1A1',
+    sufaceMdLo: '#C4C7C7',
+    surfaceLo: '#2F2F2F',
+    surfaceULo: 'rgba(248, 248, 248, 0.05)',
+    systemSuccess: '#41D97F',
+    systemError: '#FF4141'
+  }
 }
 
 const diditFontFamily = '"Roboto", sans-serif'
 
 function getDiditThemeVariables(themeVariables?: ThemeVariables, themeType?: ThemeType) {
-  if (themeType === 'dark') {
+  if (themeType === 'light') {
     return {
-      '--dui-primary': themeVariables?.['--modal-color-primary'] || diditColorScheme.primary,
-      '--dui-soft': themeVariables?.['--modal-color-soft'] || diditColorScheme.soft,
-      '--dui-background': themeVariables?.['--modal-color-background'] || diditColorScheme.white,
-      '--dui-foreground': themeVariables?.['--modal-color-foreground'] || diditColorScheme.black,
-      '--dui-black': diditColorScheme.black,
-      '--dui-white': diditColorScheme.white
+      '--dui-primary': themeVariables?.['--modal-color-primary'] || diditColorScheme.light.primary,
+      '--dui-soft': themeVariables?.['--modal-color-soft'] || diditColorScheme.light.soft,
+      '--dui-background':
+        themeVariables?.['--modal-color-background'] || diditColorScheme.light.white,
+      '--dui-foreground':
+        themeVariables?.['--modal-color-foreground'] || diditColorScheme.light.black,
+      '--dui-black': diditColorScheme.light.black,
+      '--dui-white': diditColorScheme.light.white
     }
   }
 
   return {
-    '--dui-primary': themeVariables?.['--modal-color-primary'] || diditColorScheme.primary,
-    '--dui-soft': themeVariables?.['--modal-color-soft'] || diditColorScheme.soft,
-    '--dui-background': themeVariables?.['--modal-color-background'] || diditColorScheme.black,
-    '--dui-foreground': themeVariables?.['--modal-color-foreground'] || diditColorScheme.white,
-    '--dui-black': diditColorScheme.black,
-    '--dui-white': diditColorScheme.white
+    '--dui-primary': themeVariables?.['--modal-color-primary'] || diditColorScheme.dark.primary,
+    '--dui-soft': themeVariables?.['--modal-color-soft'] || diditColorScheme.dark.soft,
+    '--dui-background': themeVariables?.['--modal-color-background'] || diditColorScheme.dark.black,
+    '--dui-foreground': themeVariables?.['--modal-color-foreground'] || diditColorScheme.dark.white,
+    '--dui-black': diditColorScheme.dark.black,
+    '--dui-white': diditColorScheme.dark.white
   }
 }
 
@@ -219,14 +236,14 @@ function createRootStyles(themeVariables?: ThemeVariables) {
 
         --ui-cover: rgba(157, 161, 161, 0.8);
 
-        --ui-color-surface-ulo: ${unsafeCSS(diditColorScheme.surfaceULo)};
-        --ui-color-surface-lo: ${unsafeCSS(diditColorScheme.surfaceLo)};
-        --ui-color-surface-mdlo: ${unsafeCSS(diditColorScheme.sufaceMdLo)};
-        --ui-color-surface-md: ${unsafeCSS(diditColorScheme.sufaceMd)};
-        --ui-color-surface-hi: ${unsafeCSS(diditColorScheme.sufaceHi)};
+        --ui-color-surface-ulo: ${unsafeCSS(diditColorScheme.light.surfaceULo)};
+        --ui-color-surface-lo: ${unsafeCSS(diditColorScheme.light.surfaceLo)};
+        --ui-color-surface-mdlo: ${unsafeCSS(diditColorScheme.light.sufaceMdLo)};
+        --ui-color-surface-md: ${unsafeCSS(diditColorScheme.light.sufaceMd)};
+        --ui-color-surface-hi: ${unsafeCSS(diditColorScheme.light.sufaceHi)};
 
-        --ui-color-success: ${unsafeCSS(diditColorScheme.systemSuccess)};
-        --ui-color-error: ${unsafeCSS(diditColorScheme.systemError)};
+        --ui-color-success: ${unsafeCSS(diditColorScheme.light.systemSuccess)};
+        --ui-color-error: ${unsafeCSS(diditColorScheme.light.systemError)};
       }
     `,
     dark: css`
@@ -259,14 +276,14 @@ function createRootStyles(themeVariables?: ThemeVariables) {
 
         --ui-cover: rgba(157, 161, 161, 0.8);
 
-        --ui-color-surface-ulo: ${unsafeCSS(diditColorScheme.surfaceULo)};
-        --ui-color-surface-lo: ${unsafeCSS(diditColorScheme.surfaceLo)};
-        --ui-color-surface-mdlo: ${unsafeCSS(diditColorScheme.sufaceMdLo)};
-        --ui-color-surface-md: ${unsafeCSS(diditColorScheme.sufaceMd)};
-        --ui-color-surface-hi: ${unsafeCSS(diditColorScheme.sufaceHi)};
+        --ui-color-surface-ulo: ${unsafeCSS(diditColorScheme.dark.surfaceULo)};
+        --ui-color-surface-lo: ${unsafeCSS(diditColorScheme.dark.surfaceLo)};
+        --ui-color-surface-mdlo: ${unsafeCSS(diditColorScheme.dark.sufaceMdLo)};
+        --ui-color-surface-md: ${unsafeCSS(diditColorScheme.dark.sufaceMd)};
+        --ui-color-surface-hi: ${unsafeCSS(diditColorScheme.dark.sufaceHi)};
 
-        --ui-color-success: ${unsafeCSS(diditColorScheme.systemSuccess)};
-        --ui-color-error: ${unsafeCSS(diditColorScheme.systemError)};
+        --ui-color-success: ${unsafeCSS(diditColorScheme.dark.systemSuccess)};
+        --ui-color-error: ${unsafeCSS(diditColorScheme.dark.systemError)};
       }
     `
   }

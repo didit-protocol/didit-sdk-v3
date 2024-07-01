@@ -64,11 +64,10 @@ export class UiButton extends LitElement {
   private templateButtonIcon() {
     if (this.icon || this.loading) {
       const _icon = this.loading ? 'loading' : this.icon
-      const iconVariant = this.variant === 'default' ? 'foreground' : this.variant
 
       return html`
         <div class="icon-box">
-          <ui-icon class=${`icon-${iconVariant}`} size="md" name=${_icon}></ui-icon>
+          <ui-icon class=${`icon-${this.variant}`} size="md" name=${_icon}></ui-icon>
         </div>
       `
     }

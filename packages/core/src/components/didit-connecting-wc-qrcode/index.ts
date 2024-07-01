@@ -14,7 +14,7 @@ import { DiditApiController } from '../../controllers/DiditApi.js'
 export class DiditConnectingWcQrcode extends DiditWeb3Connecting {
   public static override styles = styles
 
-  // -- Properties ---------------------------------------- //
+  // -- Properties and States ---------------------------------------- //
 
   @property({ type: Boolean }) public walletConnect = false
 
@@ -90,6 +90,7 @@ export class DiditConnectingWcQrcode extends DiditWeb3Connecting {
         uri=${this.uri}
         imageSrc=${ifDefined(imageSrc)}
         alt=${ifDefined(alt)}
+        theme=${this.themeMode}
         data-testid="ui-qr-code"
       ></ui-qr-code>
     `

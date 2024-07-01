@@ -4,6 +4,7 @@ import { QrCodeUtil } from '../../utils/QrCode.js'
 import { resetStyles } from '../../utils/ThemeUtil.js'
 import { customElement } from '../../utils/WebComponentsUtil.js'
 import styles from './styles.js'
+import type { ThemeMode } from '../../index.js'
 
 @customElement('ui-qr-code')
 export class UiQrCode extends LitElement {
@@ -16,12 +17,15 @@ export class UiQrCode extends LitElement {
 
   @property() public imageSrc?: string = undefined
 
+  @property() public theme?: ThemeMode = 'light'
+
   @property() public alt?: string = undefined
 
   @property({ type: Boolean }) public arenaClear?: boolean = undefined
 
   // -- Render -------------------------------------------- //
   public override render() {
+    this.dataset['theme'] = this.theme
     this.dataset['clear'] = String(this.arenaClear)
     this.style.cssText = `--local-size: ${this.size}px`
 
@@ -30,9 +34,11 @@ export class UiQrCode extends LitElement {
 
   // -- Private ------------------------------------------- //
   private templateSvg() {
+    const size = this.theme === 'light' ? this.size : this.size - 16 * 2
+
     return svg`
-      <svg height=${this.size} width=${this.size}>
-        ${QrCodeUtil.generate(this.uri, this.size, this.arenaClear ? 0 : this.size / 4)}
+      <svg height=${size} width=${size}>
+        ${QrCodeUtil.generate(this.uri, size, this.arenaClear ? 0 : size / 4)}
       </svg>
     `
   }

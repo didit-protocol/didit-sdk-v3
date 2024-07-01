@@ -69,6 +69,10 @@ export default css`
     color: var(--ui-color-foreground) !important;
   }
 
+  .icon-default {
+    color: var(--ui-color-black) !important;
+  }
+
   .icon-primary {
     color: var(--ui-color-primary) !important;
   }
