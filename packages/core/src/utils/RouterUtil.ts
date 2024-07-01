@@ -1,5 +1,5 @@
-import { ModalController } from '../controllers/Modal'
-import { RouterController } from '../controllers/Router'
+import { ModalController } from '../controllers/Modal.js'
+import { RouterController } from '../controllers/Router.js'
 
 export const RouterUtil = {
   goBackOrCloseModal() {

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 export type ProjectId = string
 
 export type Web3ConnectorType = 'EXTERNAL' | 'WALLET_CONNECT' | 'INJECTED' | 'ANNOUNCED'
@@ -44,11 +43,11 @@ export interface WcWallet {
   firefox_store?: string | null
   rdns?: string | null
   injected?:
-  | {
-    namespace?: string
-    injected_id?: string
-  }[]
-  | null
+    | {
+        namespace?: string
+        injected_id?: string
+      }[]
+    | null
 }
 
 export interface LinkingRecord {

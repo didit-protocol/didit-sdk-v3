@@ -8,6 +8,7 @@ import { RouterController } from '../../controllers/Router.js'
 import { NotificationsController } from '../../controllers/Notifications.js'
 import { ModalController } from '../../controllers/Modal.js'
 import { DiditAuthController } from '../../controllers/DiditAuth.js'
+import { ConstantsUtil } from '../../utils/ConstantsUtil.js'
 
 @customElement('didit-connecting-social-view')
 export class DiditConnectingSocialView extends LitElement {
@@ -129,7 +130,6 @@ export class DiditConnectingSocialView extends LitElement {
           await DiditAuthController.socialSignIn(code)
           this.finalizeConnection()
         } catch (error) {
-          console.error('DiditConnectingSocialView:handleSocialConnection - error', error)
           this.error = true
           this.updateMessage()
         }
@@ -157,10 +157,9 @@ export class DiditConnectingSocialView extends LitElement {
       },
       false
     )
-    // Move 30000 to constants
     const to = setTimeout(() => {
       this.handleTimeout()
-    }, 30000)
+    }, ConstantsUtil.TWO_MINUTES_MS)
     this.timeOut = to
   }
 
@@ -179,6 +178,7 @@ export class DiditConnectingSocialView extends LitElement {
     if (this.popupWindow && !this.popupWindow.closed) {
       this.popupWindow.close()
     }
+    DiditAuthController.deleteCodeVerifier()
     ModalController.close()
   }
 

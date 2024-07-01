@@ -1,6 +1,6 @@
 import { customElement } from '@web3modal/ui'
 import { LitElement, html } from 'lit'
-import { EventsController, RouterController } from '../../controllers'
+import { EventsController, RouterController } from '../../controllers/index.js'
 
 @customElement('didit-connecting-wc-unsupported')
 export class DiditConnectingWcUnsupported extends LitElement {

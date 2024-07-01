@@ -1,9 +1,9 @@
 import { customElement } from '@web3modal/ui'
-import { DiditWeb3Connecting } from '../didit-web3-connecting'
-import { ConnectionController, EventsController, ModalController } from '../../controllers'
-import { ConnectorController } from '../../controllers/Connectors'
-import { CoreHelperUtil } from '../../utils'
-import type { BaseError } from '../../types'
+import { DiditWeb3Connecting } from '../didit-web3-connecting/index.js'
+import { ConnectionController, EventsController, ModalController } from '../../controllers/index.js'
+import { ConnectorController } from '../../controllers/Connectors.js'
+import { CoreHelperUtil } from '../../utils/index.js'
+import type { BaseError } from '../../types/index.js'
 
 @customElement('didit-connecting-wc-browser')
 export class DiditConnectingWcBrowser extends DiditWeb3Connecting {

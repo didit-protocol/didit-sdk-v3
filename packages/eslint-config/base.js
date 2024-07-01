@@ -9,13 +9,12 @@ const project = resolve(process.cwd(), "tsconfig.json");
 module.exports = {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "prettier"],
+  "plugins": ["@typescript-eslint"],
   "extends": [
     "eslint:all",
     "plugin:@typescript-eslint/stylistic-type-checked",
     "plugin:@typescript-eslint/strict-type-checked",
-    "prettier",
-    "plugin:prettier/recommended"
+    "prettier"
   ],
   "parserOptions": {
     "project": ["tsconfig.json"]
@@ -23,7 +22,7 @@ module.exports = {
   "ignorePatterns": [
     "node_modules",
     "*.config.js",
-    '.eslintrc.js',
+    "**/.eslintrc.js",
     "next-env.d.ts",
     "out",
     "dist",
@@ -36,12 +35,10 @@ module.exports = {
   ],
   "rules": {
     // Core
-    "indent": "off",
-    "prettier/prettier": "error",
     "func-style": ["error", "declaration"],
     "newline-before-return": "error",
     "one-var": ["error", "never"],
-    "no-console": ["error", { "allow": ["warn"] }],
+    "no-console": ["error", { "allow": ["warn", "info"] }],
     "curly": "error",
     "sort-imports": "off",
     "sort-keys": "off",
@@ -62,7 +59,6 @@ module.exports = {
     "no-magic-numbers": "off",
     "no-use-before-define": "off",
     "require-atomic-updates": "off",
-    "no-bitwise": "off",
 
     // Typescript
     "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],

@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { customElement } from '@web3modal/ui'
 import { LitElement, html } from 'lit'
 import { state } from 'lit/decorators.js'
@@ -9,6 +8,7 @@ import type { Connector, WcWallet } from '../../types/index.js'
 import { RouterController } from '../../controllers/Router.js'
 import { CoreHelperUtil } from '../../utils/CoreHelperUtil.js'
 import { ConnectionController } from '../../controllers/Connection.js'
+import { DiditApiController } from '../../controllers/DiditApi.js'
 
 @customElement('didit-wallets-view')
 export class DiditWalletsView extends LitElement {
@@ -62,7 +62,7 @@ export class DiditWalletsView extends LitElement {
 
     let imageUrl = connector.imageUrl
     if (!imageUrl && CoreHelperUtil.isWeb3Connector(connector) && connector.imageId) {
-      imageUrl = ConnectorController.getConnectorImageUrl(connector.imageId)
+      imageUrl = DiditApiController.getConnectorImageUrl(connector.imageId)
     }
 
     return html`
@@ -89,7 +89,7 @@ export class DiditWalletsView extends LitElement {
     return html`
       <wui-flex flexDirection="column" gap="xs">
         ${announcedConnectors.map(
-      connector => html`
+          connector => html`
             <wui-list-wallet
               imageSrc=${connector.imageUrl}
               name=${connector.name ?? 'Unknown'}
@@ -101,7 +101,7 @@ export class DiditWalletsView extends LitElement {
             >
             </wui-list-wallet>
           `
-    )}
+        )}
       </wui-flex>
     `
   }
@@ -123,18 +123,18 @@ export class DiditWalletsView extends LitElement {
     return html`
       <wui-flex flexDirection="column" gap="xs">
         ${injectedConnectors.map(connector => {
-      if (
-        !CoreHelperUtil.isMobile() &&
-        (connector.name === 'Browser Wallet' || connector.name === 'Injected')
-      ) {
-        return null
-      }
+          if (
+            !CoreHelperUtil.isMobile() &&
+            (connector.name === 'Browser Wallet' || connector.name === 'Injected')
+          ) {
+            return null
+          }
 
-      if (!ConnectionController.checkInstalled()) {
-        return null
-      }
+          if (!ConnectionController.checkInstalled()) {
+            return null
+          }
 
-      return html`
+          return html`
             <wui-list-wallet
               imageSrc=${connector.imageUrl}
               .installed=${true}
@@ -146,7 +146,7 @@ export class DiditWalletsView extends LitElement {
             >
             </wui-list-wallet>
           `
-    })}
+        })}
       </wui-flex>
     `
   }
@@ -168,7 +168,7 @@ export class DiditWalletsView extends LitElement {
       CoreHelperUtil.isWeb3Connector(coinbaseConnector) &&
       coinbaseConnector.imageId
     ) {
-      imageUrl = ConnectorController.getConnectorImageUrl(coinbaseConnector.imageId)
+      imageUrl = DiditApiController.getConnectorImageUrl(coinbaseConnector.imageId)
     }
 
     return html`
@@ -196,7 +196,7 @@ export class DiditWalletsView extends LitElement {
     return html`
       <wui-flex flexDirection="column" gap="xs">
         ${wallets.map(
-      wallet => html`
+          wallet => html`
             <wui-list-wallet
               imageSrc=${wallet.image_url}
               name=${wallet.name ?? 'Unknown'}
@@ -204,7 +204,7 @@ export class DiditWalletsView extends LitElement {
             >
             </wui-list-wallet>
           `
-    )}
+        )}
       </wui-flex>
     `
   }

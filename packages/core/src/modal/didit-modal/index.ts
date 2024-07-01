@@ -160,10 +160,6 @@ export class W3mModal extends LitElement {
     }
     const previousAddress = this.address
     this.address = newAddress
-    /*
-     * If the address has changed and user is signed in with wallet, sign out
-     * TODOX: get user session from the server for the first render
-     */
     const isAuthWithWallet =
       this.authenticated && this.diditSession?.identifierType === 'wallet_address'
     if (isAuthWithWallet && previousAddress && newAddress && previousAddress !== newAddress) {

@@ -1,5 +1,5 @@
-import type { Web3ConnectorType } from '../types'
-import { ConstantsUtil } from './ConstantsUtil'
+import type { Web3ConnectorType } from '../types/index.js'
+import { ConstantsUtil } from './ConstantsUtil.js'
 
 export const PresetsUtil = {
   ConnectorExplorerIds: {

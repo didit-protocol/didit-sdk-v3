@@ -6,7 +6,7 @@ export const CoreHelperUtil = {
     if (typeof window !== 'undefined') {
       return Boolean(
         window.matchMedia('(pointer:coarse)').matches ||
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|Opera Mini/u.test(navigator.userAgent)
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|Opera Mini/u.test(navigator.userAgent)
       )
     }
 
@@ -97,8 +97,8 @@ export const CoreHelperUtil = {
   parseError(error: any): string {
     if (typeof error === 'string') {
       return error
-    } else if (typeof error?.issues?.[0]?.message === 'string') {
-      return error.issues[0].message
+    } else if (typeof error?.detial === 'string') {
+      return error.detail
     } else if (error instanceof Error) {
       return error.message
     }
@@ -137,5 +137,25 @@ export const CoreHelperUtil = {
     const base64Url = hashed.replace(/\+/g, '-').replace(/\//g, '_').replace(/[=]+$/, '')
 
     return base64Url
+  },
+
+  isValidClaimsString(claims: `${string}:${string}`) {
+    // eslint-disable-next-line prefer-named-capture-group, require-unicode-regexp
+    const claimsRegex = /^(\w+:\w+)(\s\w+:\w+)*$/
+    if (!claimsRegex.test(claims)) {
+      return false
+    }
+
+    return true
+  },
+
+  isValideScopeString(scope: string) {
+    // eslint-disable-next-line prefer-named-capture-group, require-unicode-regexp
+    const scopeRegex = /^(\w+)(\s\w+)*$/
+    if (!scopeRegex.test(scope)) {
+      return false
+    }
+
+    return true
   }
 }

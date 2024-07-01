@@ -17,7 +17,6 @@ interface PostArguments extends RequestArguments {
 async function fetchData(...args: Parameters<typeof fetch>) {
   const response = await fetch(...args)
   if (!response.ok) {
-    // Create error object and reject if not a 2xx response code
     const data = await response.json()
     const err = new Error(`HTTP status code: ${response.status}. reason: ${data}`)
     throw err
@@ -102,7 +101,17 @@ export class FetchUtil {
     return response.json() as T
   }
 
-  public fetchData = fetchData
+  public async getWithBaseUrl<T>(baseUrl: string, { headers, signal, ...args }: RequestArguments) {
+    const url = this.createUrlWithBaseUrl(baseUrl, args)
+    const response = await fetchData(url, { method: 'GET', headers, signal, cache: 'no-cache' })
+
+    const text = await response.text()
+    if (text) {
+      return response.json() as T
+    }
+
+    return {} as T
+  }
 
   public async postWithBaseUrl<T>(
     baseUrl: string,

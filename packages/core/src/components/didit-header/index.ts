@@ -84,9 +84,7 @@ export class DiditHeader extends LitElement {
 
   // -- Private ------------------------------------------- //
 
-  // Temporarily added to test connecting with SIWE, replace with 'WhatIsAWallet' again when approved
   private onWalletHelp() {
-    // TODOX: ADD EVENT_NAME
     EventsController.sendEvent({ type: 'track', event: 'CLICK_CANCEL_SIWE' })
     RouterController.push('Help')
   }
@@ -114,7 +112,7 @@ export class DiditHeader extends LitElement {
     const { view } = RouterController.state
     const isConnectHelp = view === 'Connect'
 
-    // TOODOX: hide back button on connecting through api
+    // TODOX: hide back button on connecting through api
     const shouldHideBack = false
 
     if (this.showBack && !shouldHideBack) {

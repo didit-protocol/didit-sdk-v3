@@ -6,9 +6,9 @@ import {
   EventsController,
   NotificationsController,
   RouterController
-} from '../../controllers'
-import type { BaseError, Platform } from '../../types'
-import { ConstantsUtil, CoreHelperUtil } from '../../utils'
+} from '../../controllers/index.js'
+import type { BaseError, Platform } from '../../types/index.js'
+import { ConstantsUtil, CoreHelperUtil } from '../../utils/index.js'
 
 @customElement('didit-connecting-wc-view')
 export class DiditConnectingWcView extends LitElement {
@@ -54,7 +54,6 @@ export class DiditConnectingWcView extends LitElement {
       const { wcPairingExpiry } = ConnectionController.state
       if (retry || CoreHelperUtil.isPairingExpired(wcPairingExpiry)) {
         ConnectionController.connectWalletConnect()
-        // TODOX: store wallet/connector image to StorageUtil if needed
         await ConnectionController.state.wcPromise
         this.finalizeConnection()
         RouterController.push('ConnectingDiditSiwe')
@@ -76,8 +75,6 @@ export class DiditConnectingWcView extends LitElement {
 
   private finalizeConnection() {
     const { wcLinking } = ConnectionController.state
-
-    // TODOX: stogre wallet/connector wc linking to StorageUtil if needed
 
     EventsController.sendEvent({
       type: 'track',

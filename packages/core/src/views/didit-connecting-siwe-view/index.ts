@@ -10,7 +10,7 @@ import {
   ModalController,
   NotificationsController,
   RouterController
-} from '../../controllers'
+} from '../../controllers/index.js'
 
 @customElement('didit-connecting-siwe-view')
 export class DiditConnectingSiweView extends LitElement {

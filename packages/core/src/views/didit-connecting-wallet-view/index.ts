@@ -1,8 +1,12 @@
 import { customElement } from '@web3modal/ui'
-import { DiditWeb3Connecting } from '../../components/didit-web3-connecting'
-import { ConnectionController, EventsController, RouterController } from '../../controllers'
-import { CoreHelperUtil } from '../../utils'
-import type { BaseError } from '../../types'
+import { DiditWeb3Connecting } from '../../components/didit-web3-connecting/index.js'
+import {
+  ConnectionController,
+  EventsController,
+  RouterController
+} from '../../controllers/index.js'
+import { CoreHelperUtil } from '../../utils/index.js'
+import type { BaseError } from '../../types/index.js'
 
 @customElement('didit-connecting-wallet-view')
 export class DiditConnectingWalletView extends DiditWeb3Connecting {
@@ -36,7 +40,6 @@ export class DiditConnectingWalletView extends DiditWeb3Connecting {
         }
         await ConnectionController.connectExternal(this.connector)
 
-        // TODOX: go to the SIWE page
         RouterController.push('ConnectingDiditSiwe')
 
         EventsController.sendEvent({

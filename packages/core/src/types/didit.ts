@@ -1,5 +1,5 @@
-import type { SocialConnector } from './socials'
-import type { Web3Connector } from './web3'
+import type { SocialConnector } from './socials.js'
+import type { Web3Connector } from './web3.js'
 
 export type DiditSdkVersion = `didit-sdk-${'js' | 'react' | 'vue'}-${string}`
 
@@ -17,9 +17,11 @@ export interface DiditUser {
 }
 
 export interface DiditSession {
-  uuid: string
+  id: string
   identifier: string
   identifierType: DiditAuthMethod
+  claims: string[]
+  exp: number
 }
 
 export interface DiditWalletAuthorization {

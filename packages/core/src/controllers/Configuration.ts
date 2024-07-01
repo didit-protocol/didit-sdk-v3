@@ -1,14 +1,13 @@
 import { subscribeKey as subKey } from 'valtio/vanilla/utils'
 import { proxy, snapshot } from 'valtio/vanilla'
-import type { DiditSdkVersion, Metadata, ProjectId } from '../types'
+import type { DiditSdkVersion, Metadata, ProjectId } from '../types/index.js'
 
 // -- Types --------------------------------------------- //
 export interface ConfigurationControllerState {
   projectId: ProjectId
   clientId: string
   clientSecret?: string
-  // TODOX: add email auth method (pop-up, redirect)
-  claims?: string
+  claims?: `${string}:${string}`
   scope?: string
   enabledSocialLogins?: boolean
   metadata?: Metadata

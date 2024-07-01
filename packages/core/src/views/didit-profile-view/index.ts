@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { UiHelperUtil, customElement } from '@web3modal/ui'
 import { LitElement, html } from 'lit'
 import { state } from 'lit/decorators.js'
@@ -11,8 +10,8 @@ import {
   ModalController,
   NotificationsController,
   RouterController
-} from '../../controllers'
-import { CoreHelperUtil } from '../../utils'
+} from '../../controllers/index.js'
+import { CoreHelperUtil } from '../../utils/index.js'
 
 @customElement('didit-profile-view')
 export class W3mAccountDefaultWidget extends LitElement {
@@ -47,11 +46,9 @@ export class W3mAccountDefaultWidget extends LitElement {
 
   // -- Render -------------------------------------------- //
   public override render() {
-
     if (!this.identifier) {
       throw new Error('didit-profile-view: user is not connected ')
     }
-
 
     // Const networkImage = AssetUtil.getNetworkImage(this.network)
 
@@ -70,11 +67,11 @@ export class W3mAccountDefaultWidget extends LitElement {
           <wui-flex gap="3xs" alignItems="center" justifyContent="center">
             <wui-text variant="medium-title-600" color="fg-100">
               ${UiHelperUtil.getTruncateString({
-      string: this.identifier ? this.identifier : '',
-      charsStart: 4,
-      charsEnd: 4,
-      truncate: 'middle'
-    })}
+                string: this.identifier ? this.identifier : '',
+                charsStart: 4,
+                charsEnd: 4,
+                truncate: 'middle'
+              })}
             </wui-text>
             <wui-icon-link
               size="md"
@@ -117,9 +114,10 @@ export class W3mAccountDefaultWidget extends LitElement {
 
   // -- Private ------------------------------------------- //
 
-
   private isAllowedNetworkSwitch() {
-    if (this.authMethod !== 'wallet_address') { return false }
+    if (this.authMethod !== 'wallet_address') {
+      return false
+    }
     const { requestedNetworks } = AccountController.state
     const isMultiNetwork = requestedNetworks ? requestedNetworks.length > 1 : false
     const isValidNetwork = requestedNetworks?.find(({ id }) => id === this.network?.id)

@@ -8,8 +8,9 @@ import type {
   SIWEVerifyMessageArgs,
   SocialConnectorType
   // SocialConnectorType
-} from '../types'
-import { StorageUtil } from '../utils'
+} from '../types/index.js'
+import { StorageUtil } from '../utils/index.js'
+import { AccountController } from './Account.js'
 
 interface DiditAuthClientMethods {
   // Wallet methods
@@ -21,7 +22,7 @@ interface DiditAuthClientMethods {
   verifySocialOAuthCode: (code: string) => Promise<DiditTokenAuthorization>
 
   // Session methods
-  getSession: (accessToken?: string) => Promise<DiditSession | null>
+  getSession: (accessToken?: string, refreshToken?: string) => Promise<DiditSession | null>
   signOut: () => Promise<boolean>
   // Callbacks
   onSignIn?: (session: DiditSession) => void
@@ -92,7 +93,7 @@ export const DiditAuthController = {
     try {
       const client = this._getClient()
       const tokens = StorageUtil.getDiditAuthTokens()
-      const session = await client.getSession(tokens?.access_token)
+      const session = await client.getSession(tokens?.access_token, tokens?.refresh_token)
       if (session) {
         this.setSession(session)
         this.setStatus('success')
@@ -143,7 +144,7 @@ export const DiditAuthController = {
     const client = this._getClient()
     await client.signOut()
     this.setStatus('ready')
-    this.setSession(undefined)
+    AccountController.resetDiditSession()
     client.onSignOut?.()
   },
 
@@ -194,6 +195,11 @@ export const DiditAuthController = {
     const codeVerifier = StorageUtil.getSocialCodeVerifier()
 
     return codeVerifier ?? state.codeVerifier
+  },
+
+  deleteCodeVerifier() {
+    state.codeVerifier = undefined
+    StorageUtil.deleteSocialCodeVerifier()
   },
 
   setPopup(popupWindow: DiditAuthControllerClientState['popupWindow']) {

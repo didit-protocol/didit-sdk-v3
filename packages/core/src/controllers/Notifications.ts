@@ -1,5 +1,6 @@
 import { subscribeKey as subKey } from 'valtio/vanilla/utils'
 import { proxy } from 'valtio/vanilla'
+import { CoreHelperUtil } from '../utils/index.js'
 
 // -- Types --------------------------------------------- //
 export interface NotificationsControllerState {
@@ -35,11 +36,7 @@ export const NotificationsController = {
   },
 
   showError(message: unknown) {
-    /*
-     * Const errorMessage = CoreHelperUtil.parseError(message)
-     * TODO: Implement CoreHelperUtil.parseError
-     */
-    state.message = message as string
+    state.message = CoreHelperUtil.parseError(message)
     state.variant = 'error'
     state.open = true
   },
