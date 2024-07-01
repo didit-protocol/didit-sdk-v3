@@ -1,16 +1,8 @@
 import { subscribeKey as subKey } from 'valtio/vanilla/utils'
 import { proxy, subscribe as sub } from 'valtio/vanilla'
-/*
- * Import { AccountController } from './AccountController.js'
- * import { ApiController } from './ApiController.js'
- * import { PublicStateController } from './PublicStateController.js'
- * import type { RouterControllerState } from './RouterController.js'
- * import { RouterController } from './RouterController.js'
- */
 import { EventsController } from './Events.js'
 import { RouterController } from './Router.js'
 import { AccountController } from './Account.js'
-// Import { RouterController } from './Router.js'
 
 // -- Types --------------------------------------------- //
 export interface ModalControllerState {
@@ -44,8 +36,10 @@ export const ModalController = {
       RouterController.reset('Profile')
     } else if (isWalletConnected) {
       RouterController.reset('ConnectingDiditSiwe')
+      state.loading = true
     } else {
       RouterController.reset('Connect')
+      state.loading = true
     }
     state.open = true
     EventsController.sendEvent({
@@ -58,6 +52,7 @@ export const ModalController = {
   close() {
     const { isAuthenticated } = AccountController.state
     state.open = false
+    state.loading = false
     EventsController.sendEvent({
       type: 'track',
       event: 'MODAL_CLOSE',

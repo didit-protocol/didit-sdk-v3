@@ -1,10 +1,8 @@
-export * from '@didit-sdk/core'
-
 import type { DiditClientOptions, CoreConfig } from '@didit-sdk/core'
 import { DiditSdk, ConstantsUtil } from '@didit-sdk/core'
 
 
-export type { DiditSdk } from '@didit-sdk/core'
+export type { DiditSdk, DiditAuthStatus, DiditAuthMethod } from '@didit-sdk/core'
 export type DiditSdkOptions = Omit<DiditClientOptions<CoreConfig>, '_sdkVersion'>
 
 export { defaultWagmiCoreConfig as defaultWagmiConfig } from '@didit-sdk/core'

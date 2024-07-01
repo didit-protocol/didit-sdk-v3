@@ -16,7 +16,7 @@ import {
   ModalController,
   ThemeController,
 } from './controllers/index.js'
-import type { Web3Connector, Web3Network } from './types/index.js'
+import type { DiditAuthStatus, Web3Connector, Web3Network } from './types/index.js'
 import { ConstantsUtil, CoreHelperUtil } from './utils/index.js'
 import {
   wcWallets,
@@ -71,7 +71,15 @@ export type DiditSdkOptions<C extends Config> = Omit<
   'connectionControllerClient' | 'diditAuthControllerClient'
 >
 
-interface DiditSdkState extends Omit<AccountControllerState, 'network'> {
+interface DiditSdkState extends Omit<AccountControllerState, 'network' | 'requestedNetworks' | 'diditSession' | 'timeout'> {
+  user: Omit<AccountControllerState['diditSession'], 'exp'>
+  selectedNetworkId: number | undefined
+  selectedNetworkName: string | undefined
+}
+
+interface DiditSdkModalState {
+  isOpen: boolean
+  diditAuthStatus: DiditAuthStatus
   selectedNetworkId: number | undefined
   selectedNetworkName: string | undefined
 }
@@ -202,27 +210,69 @@ export class DiditSdk {
 
   // -- Public -------------------------------------------------------------------
 
-  public getAccountState(): DiditSdkState {
+  public getDiditAccount(): DiditSdkState {
     const accountState = AccountController.state
     const { network } = accountState
 
     return {
-      ...AccountController.state,
+      isAuthenticated: accountState.isAuthenticated,
+      user: {
+        id: accountState.diditSession?.id,
+        identifier: accountState.diditSession?.identifier,
+        identifierType: accountState.diditSession?.identifierType,
+        claims: accountState.diditSession?.claims,
+      },
+      accessToken: accountState.accessToken,
+      refreshToken: accountState.refreshToken,
+      authMethod: accountState.authMethod,
+      isWalletConnected: accountState.isWalletConnected,
+      walletAddress: accountState.walletAddress,
+      addressExplorerUrl: accountState.addressExplorerUrl,
       selectedNetworkId: network?.number,
       selectedNetworkName: network?.name
     }
   }
 
-  public subscribeAccountState(callback: (newState: DiditSdkState) => void) {
+  public subscribeDiditSatate(callback: (newState: DiditSdkState) => void) {
     return AccountController.subscribe((newState: AccountControllerState) => {
       const { network } = newState
 
       return callback({
-        ...newState,
+        isAuthenticated: newState.isAuthenticated,
+        user: {
+          id: newState.diditSession?.id,
+          identifier: newState.diditSession?.identifier,
+          identifierType: newState.diditSession?.identifierType,
+          claims: newState.diditSession?.claims,
+        },
+        accessToken: newState.accessToken,
+        refreshToken: newState.refreshToken,
+        authMethod: newState.authMethod,
+        isWalletConnected: newState.isWalletConnected,
+        walletAddress: newState.walletAddress,
+        addressExplorerUrl: newState.addressExplorerUrl,
         selectedNetworkId: network?.number,
         selectedNetworkName: network?.name
       })
     })
+  }
+
+  public getDiditModalState(): DiditSdkModalState {
+    const accountState = AccountController.state
+    const { network } = accountState
+
+    let diditAuthStatus: DiditAuthStatus = accountState.isAuthenticated === undefined ?
+      'loading' : 'unauthenticated'
+    if (accountState.isAuthenticated) {
+      diditAuthStatus = 'authenticated'
+    }
+
+    return {
+      diditAuthStatus,
+      isOpen: ModalController.state.open,
+      selectedNetworkId: network?.number,
+      selectedNetworkName: network?.name
+    }
   }
 
   public async openModal() {

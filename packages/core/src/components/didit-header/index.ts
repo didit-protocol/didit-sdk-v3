@@ -4,7 +4,6 @@ import { state } from 'lit/decorators.js'
 import styles from './styles.js'
 import { RouterController, type RouterControllerState } from '../../controllers/Router.js'
 import { ConnectionController } from '../../controllers/Connection.js'
-import { EventsController } from '../../controllers/Events.js'
 import { ModalController } from '../../controllers/Modal.js'
 import type { RouterView } from '../../types/config.js'
 import { DiditAuthController } from '../../controllers/DiditAuth.js'
@@ -78,7 +77,6 @@ export class DiditHeader extends LitElement {
   // -- Private ------------------------------------------- //
 
   private onWalletHelp() {
-    EventsController.sendEvent({ type: 'track', event: 'CLICK_CANCEL_SIWE' })
     RouterController.push('Help')
   }
 

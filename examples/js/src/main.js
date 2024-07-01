@@ -47,7 +47,7 @@ openConnectModalBtn.addEventListener('click', () => {
 const accountDiv = document.getElementById('account-div')
 const logoutBtn = document.getElementById('logout')
 
-diditSDk.subscribeAccountState(state => {
+diditSDk.subscribeDiditSatate(state => {
   if (!state.isAuthenticated) {
     logoutBtn.style.display = 'none'
   } else {
@@ -60,6 +60,10 @@ diditSDk.subscribeAccountState(state => {
     <div>network: ${state.selectedNetworkId}: ${state.selectedNetworkName}</div>
     <div>accessToken: ${state.accessToken}</div>
     <div>refreshToken: ${state.refreshToken}</div>
+    <div>user --></div>
+    <div>user id -->${state.user.id}</div>
+    <div>user identifier -->${state.user.identifier}</div>
+    <div>user identifier type -->${state.user.identifierType}</div>
   `
 })
 
