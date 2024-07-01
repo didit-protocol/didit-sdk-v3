@@ -63,7 +63,7 @@
     "@didit-sdk/eslint-config": "workspace:*",
     "@didit-sdk/tsconfig": "workspace:*",
     "@manypkg/cli": "^0.21.4",
-    "@types/node": "^20.12.12",
+    "@types/node": "^20.14.9",
     "@typescript-eslint/eslint-plugin": "^7.10.0",
     "@typescript-eslint/parser": "^7.10.0",
     "eslint": "^8.57.0",
