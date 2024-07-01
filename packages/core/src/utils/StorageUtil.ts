@@ -12,6 +12,7 @@ const DIDIT_SESSION = 'DIDIT_AUTH_SESSION'
 const DIDIT_TOKENS = 'DIDIT_AUTH_TOKENS'
 const DIDIT_SOCIAL_PROVIDER = 'DIDIT_SOCIAL_PROVIDER'
 const DIDIT_SOCIAL_CODE_VERIFIER = 'DIDIT_SOCIAL_CODE_VERIFIER'
+const DIDIT_RECENT_WALLET = 'DIDIT_RECENT_WALLET'
 
 // -- Utility -----------------------------------------------------------------
 export const StorageUtil = {
@@ -130,6 +131,35 @@ export const StorageUtil = {
       localStorage.removeItem(DIDIT_SOCIAL_CODE_VERIFIER)
     } catch {
       console.info('Unable to delete social code verifier')
+    }
+  },
+
+  setRecentWallet(wallet: { id: string; name: string; imageUrl: string }) {
+    try {
+      localStorage.setItem(DIDIT_RECENT_WALLET, JSON.stringify(wallet))
+    } catch {
+      console.info('Unable to set recent wallet')
+    }
+  },
+
+  getRecentWallet(): { id: string; name: string; imageUrl: string } | null {
+    try {
+      const wallet = localStorage.getItem(DIDIT_RECENT_WALLET)
+      if (wallet) {
+        return JSON.parse(wallet)
+      }
+    } catch {
+      console.info('Unable to get recent wallet')
+    }
+
+    return null
+  },
+
+  deleteRecentWallet() {
+    try {
+      localStorage.removeItem(DIDIT_RECENT_WALLET)
+    } catch {
+      console.info('Unable to delete recent wallet')
     }
   }
 }

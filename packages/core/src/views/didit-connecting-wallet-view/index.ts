@@ -1,7 +1,8 @@
-import { customElement } from '@web3modal/ui'
+import { customElement } from '@didit-sdk/ui'
 import { DiditWeb3Connecting } from '../../components/didit-web3-connecting/index.js'
 import {
   ConnectionController,
+  DiditApiController,
   EventsController,
   RouterController
 } from '../../controllers/index.js'
@@ -13,7 +14,7 @@ export class DiditConnectingWalletView extends DiditWeb3Connecting {
   public constructor() {
     super()
     if (!this.connector) {
-      throw new Error('w3m-connecting-view: No connector provided')
+      throw new Error('didit-connecting-view: No connector provided')
     }
 
     EventsController.sendEvent({
@@ -26,7 +27,6 @@ export class DiditConnectingWalletView extends DiditWeb3Connecting {
     })
     this.onConnect = this.onConnectProxy.bind(this)
     this.onAutoConnect = this.onConnectProxy.bind(this)
-    this.isWalletConnect = false
   }
 
   // -- Private ------------------------------------------- //
@@ -39,6 +39,14 @@ export class DiditConnectingWalletView extends DiditWeb3Connecting {
           return
         }
         await ConnectionController.connectExternal(this.connector)
+
+        const imageUrl = DiditApiController.getConnectorImageUrl(this.connector.imageId || '')
+
+        ConnectionController.setRecentWallet({
+          id: this.connector.id,
+          name: this.connector.name || 'External',
+          imageUrl: imageUrl ?? ''
+        })
 
         RouterController.push('ConnectingDiditSiwe')
 

@@ -1,4 +1,4 @@
-import { customElement } from '@web3modal/ui'
+import { customElement } from '@didit-sdk/ui'
 import { LitElement, html } from 'lit'
 import { EventsController, RouterController } from '../../controllers/index.js'
 
@@ -22,18 +22,22 @@ export class DiditConnectingWcUnsupported extends LitElement {
   // -- Render -------------------------------------------- //
   public override render() {
     return html`
-      <wui-flex
+      <ui-flex
         flexDirection="column"
         alignItems="center"
-        .padding=${['3xl', 'xl', 'xl', 'xl'] as const}
-        gap="xl"
+        .padding=${['xxl', '0', '0', '0']}
+        gap="xxl"
       >
-        <wui-wallet-image size="lg" imageSrc=${this.wallet?.image_url}></wui-wallet-image>
+        <ui-wallet-image
+          size="xl"
+          ?withPadding=${true}
+          imageSrc=${this.wallet?.image_url}
+        ></ui-wallet-image>
 
-        <wui-text variant="paragraph-500" color="fg-100">Not Detected</wui-text>
-      </wui-flex>
+        <ui-text variant="paragraph-1" color="surface-md">Not Detected</ui-text>
 
-      <didit-mobile-download-links .wallet=${this.wallet}></didit-mobile-download-links>
+        <didit-mobile-download-links .wallet=${this.wallet}></didit-mobile-download-links>
+      </ui-flex>
     `
   }
 }

@@ -1,4 +1,4 @@
-import { customElement } from '@web3modal/ui'
+import { customElement } from '@didit-sdk/ui'
 import { LitElement, html } from 'lit'
 import { state } from 'lit/decorators.js'
 import { ifDefined } from 'lit/directives/if-defined.js'
@@ -36,11 +36,11 @@ export class DiditWalletsView extends LitElement {
   // -- Render -------------------------------------------- //
   public override render() {
     return html`
-      <wui-flex flexDirection="column" padding="s" gap="xs">
+      <ui-flex flexDirection="column" .padding=${['3xl', '0', '0', '0']} gap="xs">
         ${this.connectWalletConnectTemplate()} ${this.connectAnnouncedTemplate()}
         ${this.connectInjectedTemplate()} ${this.connectCoinbaseTemplate()}
         ${this.connectWcWalletsTemplate()}
-      </wui-flex>
+      </ui-flex>
     `
   }
 
@@ -48,15 +48,11 @@ export class DiditWalletsView extends LitElement {
 
   private connectWalletConnectTemplate() {
     if (CoreHelperUtil.isMobile()) {
-      // This.style.cssText = `display: none`
-
       return null
     }
 
     const connector = this.connectors.find(c => c.type === 'WALLET_CONNECT')
     if (!connector) {
-      // This.style.cssText = `display: none`
-
       return null
     }
 
@@ -66,15 +62,15 @@ export class DiditWalletsView extends LitElement {
     }
 
     return html`
-      <wui-list-wallet
-        imageSrc=${imageUrl}
+      <ui-wallet-button
+        walletImage=${imageUrl}
         name=${connector.name ?? 'Unknown'}
         @click=${() => this.onWalletConnectConnector(connector)}
         tagLabel="qr code"
         tagVariant="main"
         data-testid="wallet-selector-walletconnect"
       >
-      </wui-list-wallet>
+      </ui-wallet-button>
     `
   }
 
@@ -82,27 +78,23 @@ export class DiditWalletsView extends LitElement {
     const announcedConnectors = this.connectors.filter(connector => connector.type === 'ANNOUNCED')
 
     if (!announcedConnectors?.length) {
-      // This.style.cssText = `display: none`
       return null
     }
 
     return html`
-      <wui-flex flexDirection="column" gap="xs">
-        ${announcedConnectors.map(
-          connector => html`
-            <wui-list-wallet
-              imageSrc=${connector.imageUrl}
-              name=${connector.name ?? 'Unknown'}
-              @click=${() => this.onWalletConnectConnector(connector)}
-              tagVariant="success"
-              tagLabel="installed"
-              data-testid=${`wallet-selector-${connector.id}`}
-              .installed=${true}
-            >
-            </wui-list-wallet>
-          `
-        )}
-      </wui-flex>
+      ${announcedConnectors.map(
+        connector => html`
+          <ui-wallet-button
+            walletImage=${connector.imageUrl}
+            name=${connector.name ?? 'Unknown'}
+            @click=${() => this.onWalletConnectConnector(connector)}
+            tagVariant="success"
+            tagLabel="installed"
+            data-testid=${`wallet-selector-${connector.id}`}
+          >
+          </ui-wallet-button>
+        `
+      )}
     `
   }
 
@@ -115,39 +107,34 @@ export class DiditWalletsView extends LitElement {
         injectedConnectors[0]?.name === 'Browser Wallet' &&
         !CoreHelperUtil.isMobile())
     ) {
-      // This.style.cssText = `display: none`
-
       return null
     }
 
     return html`
-      <wui-flex flexDirection="column" gap="xs">
-        ${injectedConnectors.map(connector => {
-          if (
-            !CoreHelperUtil.isMobile() &&
-            (connector.name === 'Browser Wallet' || connector.name === 'Injected')
-          ) {
-            return null
-          }
+      ${injectedConnectors.map(connector => {
+        if (
+          !CoreHelperUtil.isMobile() &&
+          (connector.name === 'Browser Wallet' || connector.name === 'Injected')
+        ) {
+          return null
+        }
 
-          if (!ConnectionController.checkInstalled()) {
-            return null
-          }
+        if (!ConnectionController.checkInstalled()) {
+          return null
+        }
 
-          return html`
-            <wui-list-wallet
-              imageSrc=${connector.imageUrl}
-              .installed=${true}
-              name=${connector.name ?? 'Unknown'}
-              tagVariant="success"
-              tagLabel="installed"
-              data-testid=${`wallet-selector-${connector.id}`}
-              @click=${() => this.onConnector(connector)}
-            >
-            </wui-list-wallet>
-          `
-        })}
-      </wui-flex>
+        return html`
+          <ui-wallet-button
+            walletImage=${connector.imageUrl}
+            name=${connector.name ?? 'Unknown'}
+            @click=${() => this.onWalletConnectConnector(connector)}
+            tagVariant="success"
+            tagLabel="installed"
+            data-testid=${`wallet-selector-${connector.id}`}
+          >
+          </ui-wallet-button>
+        `
+      })}
     `
   }
 
@@ -157,8 +144,6 @@ export class DiditWalletsView extends LitElement {
     )
 
     if (!coinbaseConnector) {
-      // This.style.cssText = `display: none`
-
       return null
     }
 
@@ -172,40 +157,34 @@ export class DiditWalletsView extends LitElement {
     }
 
     return html`
-      <wui-flex flexDirection="column" gap="xs">
-        <wui-list-wallet
-          imageSrc=${ifDefined(imageUrl)}
-          name=${ifDefined(coinbaseConnector.name)}
-          data-testid=${`wallet-selector-${coinbaseConnector.id}`}
-          @click=${() => this.onConnector(coinbaseConnector)}
-        >
-        </wui-list-wallet>
-      </wui-flex>
+      <ui-wallet-button
+        walletImage=${ifDefined(imageUrl)}
+        name=${ifDefined(coinbaseConnector.name)}
+        @click=${() => this.onConnector(coinbaseConnector)}
+        data-testid=${`wallet-selector-${coinbaseConnector.id}`}
+      >
+      </ui-wallet-button>
     `
   }
 
   private connectWcWalletsTemplate() {
     if (!this.wcWallets.length) {
-      // This.style.cssText = `display: none`
-
       return null
     }
 
     const wallets = this.filterOutDuplicateWallets()
 
     return html`
-      <wui-flex flexDirection="column" gap="xs">
-        ${wallets.map(
-          wallet => html`
-            <wui-list-wallet
-              imageSrc=${wallet.image_url}
-              name=${wallet.name ?? 'Unknown'}
-              @click=${() => this.onWcWalletsConnector(wallet)}
-            >
-            </wui-list-wallet>
-          `
-        )}
-      </wui-flex>
+      ${wallets.map(
+        wallet => html`
+          <ui-wallet-button
+            walletImage=${wallet.image_url}
+            name=${wallet.name ?? 'Unknown'}
+            @click=${() => this.onWcWalletsConnector(wallet)}
+          >
+          </ui-wallet-button>
+        `
+      )}
     `
   }
 

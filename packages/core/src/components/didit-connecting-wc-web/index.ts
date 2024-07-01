@@ -1,4 +1,4 @@
-import { customElement } from '@web3modal/ui'
+import { customElement } from '@didit-sdk/ui'
 import { DiditWeb3Connecting } from '../didit-web3-connecting/index.js'
 import { EventsController } from '../../controllers/Events.js'
 import { CoreHelperUtil } from '../../utils/CoreHelperUtil.js'
@@ -12,7 +12,7 @@ export class DiditConnectingWcWeb extends DiditWeb3Connecting {
       throw new Error('didit-connecting-wc-web: No wallet provided')
     }
     this.onConnect = this.onConnectProxy.bind(this)
-    this.secondaryBtnLabel = 'Open'
+    this.secondaryBtnLabel = 'Open in a new tab'
     this.secondaryLabel = 'Open and continue in a new browser tab'
     this.secondaryBtnIcon = 'externalLink'
     EventsController.sendEvent({
@@ -30,7 +30,11 @@ export class DiditConnectingWcWeb extends DiditWeb3Connecting {
         const { webapp_link, name } = this.wallet
         const { redirect, href } = CoreHelperUtil.formatUniversalUrl(webapp_link, this.uri)
         ConnectionController.setWcLinking({ name, href })
-        // ConnectionController.setRecentWallet(this.wallet)
+        ConnectionController.setRecentWallet({
+          id: this.wallet.id,
+          name: this.wallet.name,
+          imageUrl: this.wallet.image_url ?? ''
+        })
         CoreHelperUtil.openHref(redirect, '_blank')
       } catch {
         this.error = true

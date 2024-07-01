@@ -1,14 +1,22 @@
-import { customElement } from '@web3modal/ui'
+import { customElement } from '@didit-sdk/ui'
 import { html } from 'lit'
+import { property } from 'lit/decorators.js'
 import { ifDefined } from 'lit/directives/if-defined.js'
 import styles from './styles.js'
 import { DiditWeb3Connecting } from '../didit-web3-connecting/index.js'
 import { EventsController } from '../../controllers/Events.js'
 import { ConnectionController } from '../../controllers/Connection.js'
+import { ConnectorController } from '../../controllers/Connectors.js'
+import { ConstantsUtil } from '../../utils/ConstantsUtil.js'
+import { DiditApiController } from '../../controllers/DiditApi.js'
 
 @customElement('didit-connecting-wc-qrcode')
 export class DiditConnectingWcQrcode extends DiditWeb3Connecting {
   public static override styles = styles
+
+  // -- Properties ---------------------------------------- //
+
+  @property({ type: Boolean }) public walletConnect = false
 
   public constructor() {
     super()
@@ -16,7 +24,10 @@ export class DiditConnectingWcQrcode extends DiditWeb3Connecting {
     EventsController.sendEvent({
       type: 'track',
       event: 'SELECT_WALLET',
-      properties: { name: this.wallet?.name ?? 'WalletConnect', platform: 'qrcode' }
+      properties: {
+        name: this.wallet?.name ?? 'WalletConnect',
+        platform: 'qrcode'
+      }
     })
   }
 
@@ -30,19 +41,18 @@ export class DiditConnectingWcQrcode extends DiditWeb3Connecting {
     this.onRenderProxy()
 
     return html`
-      <wui-flex
+      <ui-flex
         flexDirection="column"
         alignItems="center"
-        .padding=${['0', 'xl', 'xl', 'xl']}
+        .padding=${['xxl', 'xl', 'xxl', 'xl']}
         gap="xl"
       >
-        <wui-shimmer borderRadius="l" width="100%"> ${this.qrCodeTemplate()} </wui-shimmer>
-
-        <wui-text variant="paragraph-500" color="fg-100">
+        <ui-text variant="paragraph-1" color="surface-md">
           Scan this QR Code with your phone
-        </wui-text>
-        ${this.copyTemplate()}
-      </wui-flex>
+        </ui-text>
+
+        <div class="qr-code-container">${this.qrCodeTemplate()}</div>
+      </ui-flex>
 
       <didit-mobile-download-links .wallet=${this.wallet}></didit-mobile-download-links>
     `
@@ -65,31 +75,29 @@ export class DiditConnectingWcQrcode extends DiditWeb3Connecting {
     const size = this.getBoundingClientRect().width - 40
     const alt = this.wallet ? this.wallet.name : undefined
     ConnectionController.setWcLinking(undefined)
-    // ConnectionController.setRecentWallet(this.wallet)
 
-    // ThemeController.state.themeMode --> 'dark'
-    return html` <wui-qr-code
-      size=${size}
-      theme=${'dark'}
-      uri=${this.uri}
-      imageSrc=${this.wallet?.image_url}
-      alt=${ifDefined(alt)}
-      data-testid="wui-qr-code"
-    ></wui-qr-code>`
+    const imageSrc = this.walletConnect ? this.getWalletConnectImageUrl() : this.wallet?.image_url
+
+    return html`
+      <ui-qr-code
+        size=${size}
+        uri=${this.uri}
+        imageSrc=${ifDefined(imageSrc)}
+        alt=${ifDefined(alt)}
+        data-testid="ui-qr-code"
+      ></ui-qr-code>
+    `
   }
 
-  private copyTemplate() {
-    const inactive = !this.uri || !this.ready
+  private getWalletConnectImageUrl() {
+    const connector = ConnectorController.state.connectors.find(
+      cn => cn.id === ConstantsUtil.WALLET_CONNECT_CONNECTOR_ID
+    )
+    if (connector && 'imageId' in connector && connector.imageId) {
+      return DiditApiController.getConnectorImageUrl(connector.imageId)
+    }
 
-    return html`<wui-link
-      .disabled=${inactive}
-      @click=${this.onCopyUri}
-      color="fg-200"
-      data-testid="copy-wc2-uri"
-    >
-      <wui-icon size="xs" color="fg-200" slot="iconLeft" name="copy"></wui-icon>
-      Copy link
-    </wui-link>`
+    return null
   }
 
   private forceUpdate = () => {

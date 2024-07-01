@@ -44,6 +44,8 @@ openConnectModalBtn.addEventListener('click', () => {
 const accountDiv = document.getElementById('account-div')
 const logoutBtn = document.getElementById('logout')
 
+const platforms = ['mobile', 'desktop', 'browser', 'web', 'qrcode', 'unsupported']
+
 diditSDk.subscribeAccountState(state => {
   if (!state.isAuthenticated) {
     logoutBtn.style.display = 'none'
@@ -57,12 +59,9 @@ diditSDk.subscribeAccountState(state => {
     <div>network: ${state.selectedNetworkId}: ${state.selectedNetworkName}</div>
     <div>accessToken: ${state.accessToken}</div>
     <div>refreshToken: ${state.refreshToken}</div>
-
   `
 })
 
 logoutBtn.addEventListener('click', () => {
   diditSDk.signOut()
 })
-
-// 5. Alternatively use w3m component buttons (see index.html)

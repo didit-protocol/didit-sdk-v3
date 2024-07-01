@@ -1,4 +1,8 @@
-import { customElement, initializeTheming } from '@web3modal/ui'
+import {
+  customElement,
+  initializeTheming as initializeDiditTheming,
+  initializeTheming
+} from '@didit-sdk/ui'
 import { LitElement, html } from 'lit'
 import { state } from 'lit/decorators.js'
 import styles from './styles.js'
@@ -13,8 +17,8 @@ import { RouterController } from '../../controllers/Router.js'
 // -- Helpers --------------------------------------------- //
 const SCROLL_LOCK = 'scroll-lock'
 
-@customElement('w3m-modal')
-export class W3mModal extends LitElement {
+@customElement('didit-modal')
+export class DiditModal extends LitElement {
   public static override styles = styles
 
   // -- Members ------------------------------------------- //
@@ -61,13 +65,13 @@ export class W3mModal extends LitElement {
   public override render() {
     return this.open
       ? html`
-          <wui-flex @click=${this.onOverlayClick.bind(this)}>
-            <wui-card role="alertdialog" aria-modal="true" tabindex="0">
+          <ui-flex @click=${this.onOverlayClick.bind(this)}>
+            <ui-card role="alertdialog" aria-modal="true" tabindex="0">
               <didit-header></didit-header>
               <didit-router></didit-router>
               <didit-toast></didit-toast>
-            </wui-card>
-          </wui-flex>
+            </ui-card>
+          </ui-flex>
         `
       : null
   }
@@ -89,6 +93,7 @@ export class W3mModal extends LitElement {
 
   private initializeTheming() {
     initializeTheming()
+    initializeDiditTheming()
   }
 
   private onClose() {
@@ -108,14 +113,14 @@ export class W3mModal extends LitElement {
 
   private onScrollLock() {
     const styleTag = document.createElement('style')
-    styleTag.dataset['w3m'] = SCROLL_LOCK
+    styleTag.dataset['didit'] = SCROLL_LOCK
     styleTag.textContent = `
       html, body {
         touch-action: none;
         overflow: hidden;
         overscroll-behavior: contain;
       }
-      w3m-modal {
+      didit-modal {
         pointer-events: auto;
       }
     `
@@ -123,7 +128,7 @@ export class W3mModal extends LitElement {
   }
 
   private onScrollUnlock() {
-    const styleTag = document.head.querySelector(`style[data-w3m="${SCROLL_LOCK}"]`)
+    const styleTag = document.head.querySelector(`style[data-didit="${SCROLL_LOCK}"]`)
     if (styleTag) {
       styleTag.remove()
     }
@@ -131,18 +136,13 @@ export class W3mModal extends LitElement {
 
   private onAddKeyboardListener() {
     this.abortController = new AbortController()
-    const card = this.shadowRoot?.querySelector('wui-card')
+    const card = this.shadowRoot?.querySelector('ui-card')
     card?.focus()
     window.addEventListener(
       'keydown',
       event => {
         if (event.key === 'Escape') {
           this.handleClose()
-        } else if (event.key === 'Tab') {
-          const { tagName } = event.target as HTMLElement
-          if (tagName && !tagName.includes('W3M-') && !tagName.includes('WUI-')) {
-            card?.focus()
-          }
         }
       },
       this.abortController
@@ -179,6 +179,6 @@ export class W3mModal extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'w3m-modal': W3mModal
+    'didit-modal': DiditModal
   }
 }

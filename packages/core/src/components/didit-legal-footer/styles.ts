@@ -1,13 +1,13 @@
 import { css } from 'lit'
 
 export default css`
-  wui-flex {
-    background-color: var(--wui-color-gray-glass-005);
+  ui-flex {
+    background-color: var(--ui-color-background);
   }
 
   a {
     text-decoration: none;
-    color: var(--wui-color-fg-175);
+    color: var(--ui-color-soft);
     font-weight: 500;
   }
 `

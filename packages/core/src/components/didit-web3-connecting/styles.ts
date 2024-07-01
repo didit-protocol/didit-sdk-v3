@@ -1,64 +1,41 @@
 import { css } from 'lit'
 
 export default css`
-  @keyframes shake {
-    0% {
-      transform: translateX(0);
-    }
-    25% {
-      transform: translateX(3px);
-    }
-    50% {
-      transform: translateX(-3px);
-    }
-    75% {
-      transform: translateX(3px);
-    }
+  @keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
     100% {
-      transform: translateX(0);
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-20px);
+    }
+    60% {
+      transform: translateY(-15px);
     }
   }
 
-  wui-flex:first-child:not(:only-child) {
-    position: relative;
+  [data-error='true'] .connector-logo {
+    animation: bounce 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   }
 
-  wui-loading-thumbnail {
-    position: absolute;
+  [data-retry='false'] .retry-button {
+    opacity: 0.5;
+    pointer-events: none;
   }
 
-  wui-icon-box {
-    position: absolute;
-    right: calc(var(--wui-spacing-3xs) * -1);
-    bottom: calc(var(--wui-spacing-3xs) * -1);
-    opacity: 0;
-    transform: scale(0.5);
-    transition-property: opacity, transform;
-    transition-duration: var(--wui-duration-lg);
-    transition-timing-function: var(--wui-ease-out-power-2);
-    will-change: opacity, transform;
+  [data-retry='true'] .retry-button {
+    opacity: 1;
+    pointer-events: auto;
   }
 
-  wui-text[align='center'] {
+  .buttons-container {
     width: 100%;
-    padding: 0px var(--wui-spacing-l);
   }
 
-  [data-error='true'] wui-icon-box {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  [data-error='true'] > wui-flex:first-child {
-    animation: shake 250ms cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-  }
-
-  [data-retry='false'] wui-link {
-    display: none;
-  }
-
-  [data-retry='true'] wui-link {
-    display: block;
-    opacity: 1;
+  .open-link-button {
+    grow: 1;
   }
 `

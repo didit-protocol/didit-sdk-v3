@@ -1,6 +1,7 @@
-import { customElement } from '@web3modal/ui'
+import { customElement } from '@didit-sdk/ui'
 import { LitElement, html } from 'lit'
 import { state } from 'lit/decorators.js'
+import { ifDefined } from 'lit/directives/if-defined.js'
 import {
   AccountController,
   ConfigurationController,
@@ -11,72 +12,76 @@ import {
   NotificationsController,
   RouterController
 } from '../../controllers/index.js'
+import styles from './styles.js'
 
 @customElement('didit-connecting-siwe-view')
 export class DiditConnectingSiweView extends LitElement {
+  public static override styles = styles
+
   // -- Members ------------------------------------------- //
-  private readonly dappName = ConfigurationController.state.metadata?.name
+  private readonly dappName = ConfigurationController.state.metadata?.name || 'Didit'
+
+  private readonly wallet = ConnectionController.getRecentWallet()
 
   @state() private isSigning = false
 
+  @state() private error = false
+
   // -- Render -------------------------------------------- //
+
+  public override disconnectedCallback() {
+    super.disconnectedCallback()
+    this.onCancel()
+  }
+
   public override render() {
     this.onRender()
 
+    const walletImageUrl = this.wallet?.imageUrl || ''
+
     return html`
-      <wui-flex justifyContent="center" .padding=${['2xl', '0', 'xxl', '0'] as const}>
-        <didit-connecting-siwe></didit-connecting-siwe>
-      </wui-flex>
-      <wui-flex
-        .padding=${['0', '4xl', 'l', '4xl'] as const}
-        gap="s"
-        justifyContent="space-between"
+      <ui-flex
+        .padding=${['3xl', '0', '0', '0']}
+        data-error=${ifDefined(this.error)}
+        flexDirection="column"
+        alignItems="center"
+        gap="3xl"
       >
-        <wui-text variant="paragraph-500" align="center" color="fg-100"
-          >${this.dappName ?? 'Dapp'} needs to connect to your wallet</wui-text
+        <ui-flex
+          flexDirection="column"
+          alignItems="center"
+          gap="xxl"
+          .padding=${['xl', '0', 'xl', '0']}
         >
-      </wui-flex>
-      <wui-flex
-        .padding=${['0', '3xl', 'l', '3xl'] as const}
-        gap="s"
-        justifyContent="space-between"
-      >
-        <wui-text variant="small-400" align="center" color="fg-200"
-          >Sign this message to prove you own this wallet and proceed. Canceling will disconnect
-          you.</wui-text
-        >
-      </wui-flex>
-      <wui-flex .padding=${['l', 'xl', 'xl', 'xl'] as const} gap="s" justifyContent="space-between">
-        <wui-button
-          size="lg"
-          borderRadius="xs"
-          fullWidth
-          variant="neutral"
-          @click=${this.onCancel.bind(this)}
-          data-testid="didit-connecting-siwe-cancel"
-        >
-          Cancel
-        </wui-button>
-        <wui-button
-          size="lg"
-          borderRadius="xs"
-          fullWidth
-          variant="main"
-          @click=${this.onSign.bind(this)}
+          <ui-didit-link
+            connectorImage=${walletImageUrl}
+            connectorIcon="wallet"
+            ?loading=${this.isSigning}
+            ?logoBouncing=${this.error}
+          >
+          </ui-didit-link>
+          <ui-flex flexDirection="column" alignItems="center" gap="s">
+            <ui-text variant="title-4" color=${this.error ? 'error' : 'foreground'}>
+              Connect your wallet to ${this.dappName}
+            </ui-text>
+            <ui-text align="center" variant="paragraph-1" color="surface-md">
+              Sign this message to connect. Canceling will disconnect your wallet.
+            </ui-text>
+          </ui-flex>
+        </ui-flex>
+        <ui-button
+          text="Sign message"
           ?loading=${this.isSigning}
-          data-testid="didit-connecting-siwe-sign"
-        >
-          ${this.isSigning ? 'Signing...' : 'Sign'}
-        </wui-button>
-      </wui-flex>
+          textSize="lg"
+          data-testid=${`sign-button`}
+          @click=${this.onSign.bind(this)}
+        ></ui-button>
+      </ui-flex>
     `
   }
 
   // -- Private ------------------------------------------- //
 
-  /*
-   * Check if the user is already connected
-   */
   private onRender() {
     if (DiditAuthController.state.session) {
       ModalController.close()
@@ -84,6 +89,7 @@ export class DiditConnectingSiweView extends LitElement {
   }
 
   private async onSign() {
+    this.error = false
     this.isSigning = true
     EventsController.sendEvent({
       event: 'CLICK_SIGN_SIWE_MESSAGE',
@@ -109,6 +115,7 @@ export class DiditConnectingSiweView extends LitElement {
     } catch (error) {
       NotificationsController.showError('Signature declined')
       DiditAuthController.setStatus('error')
+      this.error = true
 
       return EventsController.sendEvent({
         event: 'SIWE_AUTH_ERROR',

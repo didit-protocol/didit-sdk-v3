@@ -50,7 +50,7 @@ export const QrCodeUtil = {
     qrList.forEach(({ x, y }) => {
       const x1 = (matrix.length - QRCODE_MATRIX_MARGIN) * cellSize * x
       const y1 = (matrix.length - QRCODE_MATRIX_MARGIN) * cellSize * y
-      const borderRadius = 0.45
+      const borderRadius = 0.3
       for (let i = 0; i < qrList.length; i += 1) {
         const dotSize = cellSize * (QRCODE_MATRIX_MARGIN - i * 2)
         dots.push(

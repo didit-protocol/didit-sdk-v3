@@ -1,4 +1,4 @@
-import { customElement } from '@web3modal/ui'
+import { customElement } from '@didit-sdk/ui'
 import { LitElement, html } from 'lit'
 import styles from './styles.js'
 
@@ -9,9 +9,11 @@ export class DiditLegalFooter extends LitElement {
   // -- Render -------------------------------------------- //
   public override render() {
     return html`
-      <wui-flex .padding=${['m', 's', 's', 's'] as const} justifyContent="center">
-        <wui-text color="fg-250" variant="small-400" align="center"> scured by Didit </wui-text>
-      </wui-flex>
+      <ui-flex .padding=${['m', 's', 's', 's'] as const} justifyContent="center">
+        <ui-text color="sureface-md" variant="paragraph-2" align="center">
+          scured by Didit
+        </ui-text>
+      </ui-flex>
     `
   }
 

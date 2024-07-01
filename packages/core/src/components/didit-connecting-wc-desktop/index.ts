@@ -1,4 +1,4 @@
-import { customElement } from '@web3modal/ui'
+import { customElement } from '@didit-sdk/ui'
 import { DiditWeb3Connecting } from '../didit-web3-connecting/index.js'
 import { EventsController } from '../../controllers/Events.js'
 import { CoreHelperUtil } from '../../utils/CoreHelperUtil.js'
@@ -37,7 +37,11 @@ export class DiditConnectingWcDesktop extends DiditWeb3Connecting {
         const { desktop_link, name } = this.wallet
         const { redirect, href } = CoreHelperUtil.formatNativeUrl(desktop_link, this.uri)
         ConnectionController.setWcLinking({ name, href })
-        // ConnectionController.setRecentWallet(this.wallet)
+        ConnectionController.setRecentWallet({
+          id: this.wallet.id,
+          name,
+          imageUrl: this.wallet.image_url ?? ''
+        })
         CoreHelperUtil.openHref(redirect, '_blank')
       } catch {
         this.error = true

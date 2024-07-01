@@ -5,7 +5,7 @@ export const wcWallets = [
     homepage: 'https://metamask.io/',
     image_id: '5195e9db-94d8-4579-6f11-ef553be95100',
     image_url:
-      'https://explorer-api.walletconnect.com/v3/logo/sm/5195e9db-94d8-4579-6f11-ef553be95100?projectId=2f05ae7f1116030fde2d36508f472bfb',
+      'https://explorer-api.walletconnect.com/v3/logo/lg/5195e9db-94d8-4579-6f11-ef553be95100?projectId=2f05ae7f1116030fde2d36508f472bfb',
     order: 10,
     mobile_link: 'metamask://',
     universal_link: 'https://metamask.app.link',
@@ -30,7 +30,7 @@ export const wcWallets = [
     homepage: 'https://trustwallet.com/',
     image_id: '7677b54f-3486-46e2-4e37-bf8747814f00',
     image_url:
-      'https://explorer-api.walletconnect.com/v3/logo/sm/7677b54f-3486-46e2-4e37-bf8747814f00?projectId=2f05ae7f1116030fde2d36508f472bfb',
+      'https://explorer-api.walletconnect.com/v3/logo/lg/7677b54f-3486-46e2-4e37-bf8747814f00?projectId=2f05ae7f1116030fde2d36508f472bfb',
     order: 10,
     mobile_link: 'trust://',
     universal_link: 'https://link.trustwallet.com',
@@ -70,7 +70,7 @@ export const wcWallets = [
     firefox_store: null,
     injected: null,
     image_url:
-      'https://explorer-api.walletconnect.com/v3/logo/sm/3913df81-63c2-4413-d60b-8ff83cbed500?projectId=2f05ae7f1116030fde2d36508f472bfb',
+      'https://explorer-api.walletconnect.com/v3/logo/lg/3913df81-63c2-4413-d60b-8ff83cbed500?projectId=2f05ae7f1116030fde2d36508f472bfb',
     universal_link: 'https://app.safe.global/'
   },
 
@@ -99,7 +99,7 @@ export const wcWallets = [
       }
     ],
     image_url:
-      'https://explorer-api.walletconnect.com/v3/logo/sm/7a33d7f1-3d12-4b5c-f3ee-5cd83cb1b500?projectId=2f05ae7f1116030fde2d36508f472bfb'
+      'https://explorer-api.walletconnect.com/v3/logo/lg/7a33d7f1-3d12-4b5c-f3ee-5cd83cb1b500?projectId=2f05ae7f1116030fde2d36508f472bfb'
   },
   {
     id: '8a0ee50d1f22f6651afcae7eb4253e52a3310b90af5daef78a8c4929a9bb99d4',
@@ -107,7 +107,7 @@ export const wcWallets = [
     homepage: 'https://www.binance.com/en/web3wallet',
     image_id: 'ebac7b39-688c-41e3-7912-a4fefba74600',
     image_url:
-      'https://explorer-api.walletconnect.com/v3/logo/sm/ebac7b39-688c-41e3-7912-a4fefba74600?projectId=2f05ae7f1116030fde2d36508f472bfb',
+      'https://explorer-api.walletconnect.com/v3/logo/lg/ebac7b39-688c-41e3-7912-a4fefba74600?projectId=2f05ae7f1116030fde2d36508f472bfb',
     order: 270,
     mobile_link: 'bnc://app.binance.com/cedefi/',
     universal_link: 'https://app.binance.com/cedefi',

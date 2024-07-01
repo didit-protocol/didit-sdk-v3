@@ -1,4 +1,4 @@
-import { customElement } from '@web3modal/ui'
+import { customElement } from '@didit-sdk/ui'
 import { DiditWeb3Connecting } from '../didit-web3-connecting/index.js'
 import { ConnectionController, EventsController, ModalController } from '../../controllers/index.js'
 import { ConnectorController } from '../../controllers/Connectors.js'

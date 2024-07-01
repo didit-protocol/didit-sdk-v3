@@ -1,4 +1,4 @@
-import { customElement } from '@web3modal/ui'
+import { customElement } from '@didit-sdk/ui'
 import { DiditWeb3Connecting } from '../didit-web3-connecting/index.js'
 import { ConnectionController, EventsController } from '../../controllers/index.js'
 import { CoreHelperUtil } from '../../utils/index.js'
@@ -40,7 +40,11 @@ export class DiditConnectingWcMobile extends DiditWeb3Connecting {
         const { mobile_link, name } = this.wallet
         const { redirect, href } = CoreHelperUtil.formatNativeUrl(mobile_link, this.uri)
         ConnectionController.setWcLinking({ name, href })
-        // ConnectionController.setRecentWallet(this.wallet)
+        ConnectionController.setRecentWallet({
+          id: this.wallet.id,
+          name: this.wallet.name,
+          imageUrl: this.wallet.image_url ?? ''
+        })
         CoreHelperUtil.openHref(redirect, '_self')
       } catch {
         this.error = true

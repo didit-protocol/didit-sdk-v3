@@ -2,7 +2,6 @@ export type Platform = 'mobile' | 'desktop' | 'browser' | 'web' | 'qrcode' | 'un
 
 export type RouterView =
   | 'Connect'
-  | 'Socials'
   | 'Wallets'
   | 'ConnectWallet'
   | 'ConnectWalletConnect'
@@ -11,7 +10,6 @@ export type RouterView =
   | 'Help'
   | 'Networks'
   | 'ConnectingDiditSiwe'
-  | 'Downloads'
 
 export type Metadata = {
   name: string
