@@ -232,7 +232,7 @@ export class DiditConnectingSocialView extends LitElement {
   private onShowRetry() {
     if (this.error && !this.showRetry) {
       this.showRetry = true
-      const retryButton = this.shadowRoot?.querySelector('ui-link') as HTMLElement
+      const retryButton = this.shadowRoot?.querySelector('ui-link')
       retryButton?.animate([{ opacity: 0 }, { opacity: 1 }], {
         fill: 'forwards',
         easing: 'ease'
