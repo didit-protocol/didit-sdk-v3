@@ -1,7 +1,4 @@
-/*
- * TODO: Add polyfills
- * import '@didit-sdk/polyfills'
- */
+import '@didit-sdk/polyfills'
 
 import type { CreateConfigParameters } from '@wagmi/core'
 import { http } from 'viem'

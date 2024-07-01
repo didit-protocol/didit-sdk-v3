@@ -33,3 +33,6 @@ export type { DiditApiControllerState } from './DiditApi.js'
 
 export { DiditAuthController } from './DiditAuth.js'
 export type { DiditAuthControllerClientState, DiditAuthControllerClient } from './DiditAuth.js'
+
+export { ThemeController } from './Theme.js'
+export type { ThemeControllerState } from './Theme.js'

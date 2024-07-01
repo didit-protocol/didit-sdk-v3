@@ -1,6 +1,5 @@
-import './pollyfills'
 import { arbitrum, mainnet } from '@wagmi/core/chains'
-import { createDiditSdk, defaultWagmiCoreConfig } from '@didit-sdk/js'
+import { createDiditSdk, defaultWagmiCoreConfig, DiditSdk } from '@didit-sdk/js'
 import { reconnect } from '@wagmi/core'
 
 // 1. Get a project ID at https://cloud.walletconnect.com
@@ -31,7 +30,11 @@ const diditSDk = createDiditSdk({
   wagmiConfig,
   projectId,
   clientId,
-  clientSecret
+  clientSecret,
+  themeMode: 'dark',
+  themeVariables: {
+    '--modal-border-radius-master': '0px',
+  }
 })
 
 // 4. Trigger modal programaticaly
@@ -43,8 +46,6 @@ openConnectModalBtn.addEventListener('click', () => {
 
 const accountDiv = document.getElementById('account-div')
 const logoutBtn = document.getElementById('logout')
-
-const platforms = ['mobile', 'desktop', 'browser', 'web', 'qrcode', 'unsupported']
 
 diditSDk.subscribeAccountState(state => {
   if (!state.isAuthenticated) {
@@ -64,4 +65,23 @@ diditSDk.subscribeAccountState(state => {
 
 logoutBtn.addEventListener('click', () => {
   diditSDk.signOut()
+})
+
+
+
+
+
+diditSDk.subscribeTheme(theme => { console.log('themeModeChanged...', theme.themeMode) })
+
+const themeBtn = document.getElementById('theme-btn')
+
+const themeMode = diditSDk.getThemeMode()
+themeBtn.innerText = themeMode === 'light' ? 'Light' : 'Dark'
+
+themeBtn.addEventListener('click', () => {
+  const themeMode = diditSDk.getThemeMode()
+  const newThemeMode = themeMode === 'light' ? 'dark' : 'light'
+  console.log('newThemeMode', newThemeMode)
+  diditSDk.setThemeMode(newThemeMode)
+  themeBtn.innerText = newThemeMode === 'light' ? 'Light' : 'Dark'
 })

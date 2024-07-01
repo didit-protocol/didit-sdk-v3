@@ -40,7 +40,7 @@ export default css`
 
   .button-primary {
     background-color: var(--ui-color-primary);
-    color: var(--ui-color-background);
+    color: var(--ui-color-white);
   }
 
   .button-secondary {
@@ -50,7 +50,7 @@ export default css`
 
   .button-tertiary {
     background-color: var(--ui-color-surface-hi);
-    color: var(--ui-color-background);
+    color: var(--ui-color-white);
   }
 
   .icon-box {

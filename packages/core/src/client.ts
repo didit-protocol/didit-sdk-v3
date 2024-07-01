@@ -1,16 +1,20 @@
+import { watchAccount, watchConnectors, type GetAccountReturnType } from '@wagmi/core'
+import type { Chain, Hex } from 'viem'
+import { setColorTheme, setThemeVariables, type ThemeMode, type ThemeVariables } from '@didit-sdk/ui'
 import type {
   AccountControllerState,
   ConfigurationControllerState,
   ConnectionControllerClient,
-  DiditAuthControllerClient
+  DiditAuthControllerClient,
+  ThemeControllerState,
 } from './controllers/index.js'
-
 import {
   AccountController,
   ConfigurationController,
   ConnectionController,
   DiditAuthController,
-  ModalController
+  ModalController,
+  ThemeController,
 } from './controllers/index.js'
 import type { Web3Connector, Web3Network } from './types/index.js'
 import { ConstantsUtil, CoreHelperUtil } from './utils/index.js'
@@ -20,8 +24,6 @@ import {
   type defaultWagmiCoreConfig,
   type defaultWagmiReactConfig
 } from './wagmi/config/index.js'
-import { watchAccount, watchConnectors, type GetAccountReturnType } from '@wagmi/core'
-import type { Chain, Hex } from 'viem'
 import { PresetsUtil } from './utils/PresetsUtil.js'
 import { ConnectorController } from './controllers/Connectors.js'
 import {
@@ -48,6 +50,7 @@ export interface DiditClientOptions<C extends Config> {
   projectId: ConfigurationControllerState['projectId']
   clientId: ConfigurationControllerState['clientId']
   clientSecret?: ConfigurationControllerState['clientSecret']
+  metadata?: ConfigurationControllerState['metadata']
   walletAuthBaseUrl?: DiditApiControllerState['walletAuthBaseUrl']
   walletAuthorizationPath?: DiditApiControllerState['walletAuthorizationPath']
   tokenAuthorizationPath?: DiditApiControllerState['tokenAuthorizationPath']
@@ -57,7 +60,8 @@ export interface DiditClientOptions<C extends Config> {
   onSignIn?: DiditAuthControllerClient['onSignIn']
   onSignOut?: DiditAuthControllerClient['onSignOut']
   onError?: DiditAuthControllerClient['onError']
-  metadata?: ConfigurationControllerState['metadata']
+  themeMode?: ThemeMode
+  themeVariables?: ThemeVariables
   _sdkVersion: ConfigurationControllerState['sdkVersion']
   wagmiConfig: C
 }
@@ -241,6 +245,28 @@ export class DiditSdk {
     ModalController.close()
   }
 
+  public getThemeMode() {
+    return ThemeController.state.themeMode
+  }
+
+  public getThemeVariables() {
+    return ThemeController.state.themeVariables
+  }
+
+  public setThemeMode(themeMode: ThemeControllerState['themeMode']) {
+    ThemeController.setThemeMode(themeMode)
+    setColorTheme(ThemeController.state.themeMode)
+  }
+
+  public setThemeVariables(themeVariables: ThemeControllerState['themeVariables']) {
+    ThemeController.setThemeVariables(themeVariables)
+    setThemeVariables(ThemeController.state.themeVariables)
+  }
+
+  public subscribeTheme(callback: (newState: ThemeControllerState) => void) {
+    return ThemeController.subscribe(callback)
+  }
+
   // -- Private ------------------------------------------------------------------
   private syncRequestedNetworks(chains: Chain[]) {
     // TODOX: generate network image url from chain id (walletConnect api)
@@ -321,6 +347,13 @@ export class DiditSdk {
     }
     if (options.metadata) {
       ConfigurationController.setMetadata(options.metadata)
+    }
+    if (options.themeMode) {
+      ThemeController.setThemeMode(options.themeMode)
+    }
+
+    if (options.themeVariables) {
+      ThemeController.setThemeVariables(options.themeVariables)
     }
   }
 

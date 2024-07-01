@@ -21,12 +21,12 @@ export function initializeTheming(themeVariables?: ThemeVariables, themeMode?: T
 
 export function setColorTheme(themeMode?: string) {
   if (darkModeTag && lightModeTag) {
-    if (themeMode === 'light') {
-      darkModeTag.removeAttribute('media')
-      lightModeTag.media = 'enabled'
-    } else {
+    if (themeMode === 'dark') {
       lightModeTag.removeAttribute('media')
       darkModeTag.media = 'enabled'
+    } else {
+      darkModeTag.removeAttribute('media')
+      lightModeTag.media = 'enabled'
     }
   }
 }
@@ -56,22 +56,22 @@ const diditColorScheme = {
 const diditFontFamily = '"Roboto", sans-serif'
 
 function getDiditThemeVariables(themeVariables?: ThemeVariables, themeType?: ThemeType) {
-  if (themeType === 'light') {
+  if (themeType === 'dark') {
     return {
-      '--dui-primary': themeVariables?.['--modal-accent'] || diditColorScheme.primary,
-      '--dui-soft': diditColorScheme.soft,
-      '--dui-background': diditColorScheme.white,
-      '--dui-foreground': diditColorScheme.black,
+      '--dui-primary': themeVariables?.['--modal-color-primary'] || diditColorScheme.primary,
+      '--dui-soft': themeVariables?.['--modal-color-soft'] || diditColorScheme.soft,
+      '--dui-background': themeVariables?.['--modal-color-background'] || diditColorScheme.white,
+      '--dui-foreground': themeVariables?.['--modal-color-foreground'] || diditColorScheme.black,
       '--dui-black': diditColorScheme.black,
       '--dui-white': diditColorScheme.white
     }
   }
 
   return {
-    '--dui-primary': themeVariables?.['--modal-accent'] || diditColorScheme.primary,
-    '--dui-soft': diditColorScheme.soft,
-    '--dui-background': diditColorScheme.black,
-    '--dui-foreground': diditColorScheme.white,
+    '--dui-primary': themeVariables?.['--modal-color-primary'] || diditColorScheme.primary,
+    '--dui-soft': themeVariables?.['--modal-color-soft'] || diditColorScheme.soft,
+    '--dui-background': themeVariables?.['--modal-color-background'] || diditColorScheme.black,
+    '--dui-foreground': themeVariables?.['--modal-color-foreground'] || diditColorScheme.white,
     '--dui-black': diditColorScheme.black,
     '--dui-white': diditColorScheme.white
   }
@@ -85,11 +85,11 @@ function createRootStyles(themeVariables?: ThemeVariables) {
         --dui-modal-width: 400px;
         --dui-font-family: ${unsafeCSS(themeVariables?.['--modal-font-family'] || diditFontFamily)};
         --dui-font-size-master: ${unsafeCSS(
-          themeVariables?.['--modal-font-size-master'] || '10px'
-        )};
+      themeVariables?.['--modal-font-size-master'] || '10px'
+    )};
         --dui-border-radius-master: ${unsafeCSS(
-          themeVariables?.['--modal-border-radius-master'] || '4px'
-        )};
+      themeVariables?.['--modal-border-radius-master'] || '4px'
+    )};
         --dui-z-index: ${unsafeCSS(themeVariables?.['--modal-z-index'] || 999)};
 
         --ui-font-family: var(--dui-font-family);
@@ -193,15 +193,15 @@ function createRootStyles(themeVariables?: ThemeVariables) {
     light: css`
       :root {
         --dui-primary: ${unsafeCSS(
-          getDiditThemeVariables(themeVariables, 'light')['--dui-primary']
-        )};
+      getDiditThemeVariables(themeVariables, 'light')['--dui-primary']
+    )};
         --dui-soft: ${unsafeCSS(getDiditThemeVariables(themeVariables, 'light')['--dui-soft'])};
         --dui-background: ${unsafeCSS(
-          getDiditThemeVariables(themeVariables, 'light')['--dui-background']
-        )};
+      getDiditThemeVariables(themeVariables, 'light')['--dui-background']
+    )};
         --dui-foreground: ${unsafeCSS(
-          getDiditThemeVariables(themeVariables, 'light')['--dui-foreground']
-        )};
+      getDiditThemeVariables(themeVariables, 'light')['--dui-foreground']
+    )};
         --dui-black: ${unsafeCSS(getDiditThemeVariables(themeVariables, 'light')['--dui-black'])};
         --dui-white: ${unsafeCSS(getDiditThemeVariables(themeVariables, 'light')['--dui-white'])};
 
@@ -231,16 +231,17 @@ function createRootStyles(themeVariables?: ThemeVariables) {
     `,
     dark: css`
       :root {
+        --dark-mode: true;
         --dui-primary: ${unsafeCSS(
-          getDiditThemeVariables(themeVariables, 'dark')['--dui-primary']
-        )};
+      getDiditThemeVariables(themeVariables, 'dark')['--dui-primary']
+    )};
         --dui-soft: ${unsafeCSS(getDiditThemeVariables(themeVariables, 'dark')['--dui-soft'])};
         --dui-background: ${unsafeCSS(
-          getDiditThemeVariables(themeVariables, 'dark')['--dui-foreground']
-        )};
+      getDiditThemeVariables(themeVariables, 'dark')['--dui-background']
+    )};
         --dui-foreground: ${unsafeCSS(
-          getDiditThemeVariables(themeVariables, 'dark')['--dui-background']
-        )};
+      getDiditThemeVariables(themeVariables, 'dark')['--dui-foreground']
+    )};
         --dui-black: ${unsafeCSS(getDiditThemeVariables(themeVariables, 'dark')['--dui-black'])};
         --dui-white: ${unsafeCSS(getDiditThemeVariables(themeVariables, 'dark')['--dui-white'])};
 

@@ -1,7 +1,7 @@
 import {
   customElement,
-  initializeTheming as initializeDiditTheming,
-  initializeTheming
+  initializeTheming,
+  UiHelperUtil
 } from '@didit-sdk/ui'
 import { LitElement, html } from 'lit'
 import { state } from 'lit/decorators.js'
@@ -13,6 +13,7 @@ import { DiditAuthController } from '../../controllers/DiditAuth.js'
 import { ConnectionController } from '../../controllers/Connection.js'
 import { NotificationsController } from '../../controllers/Notifications.js'
 import { RouterController } from '../../controllers/Router.js'
+import { ThemeController } from '../../controllers/Theme.js'
 
 // -- Helpers --------------------------------------------- //
 const SCROLL_LOCK = 'scroll-lock'
@@ -92,8 +93,9 @@ export class DiditModal extends LitElement {
   }
 
   private initializeTheming() {
-    initializeTheming()
-    initializeDiditTheming()
+    const { themeVariables, themeMode } = ThemeController.state
+    const defaultThemeMode = UiHelperUtil.getColorTheme(themeMode)
+    initializeTheming(themeVariables, defaultThemeMode)
   }
 
   private onClose() {

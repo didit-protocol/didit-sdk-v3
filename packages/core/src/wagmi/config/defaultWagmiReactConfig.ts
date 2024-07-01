@@ -1,7 +1,4 @@
-/*
- * TODO: add polyfills
- * import '@web3modal/polyfills'
- */
+import '@didit-sdk/polyfills'
 
 import { http } from 'viem'
 import type { CreateConfigParameters, CreateConnectorFn, Config } from 'wagmi'
