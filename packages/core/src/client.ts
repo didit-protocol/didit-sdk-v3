@@ -1,12 +1,17 @@
 import { watchAccount, watchConnectors, type GetAccountReturnType } from '@wagmi/core'
 import type { Chain, Hex } from 'viem'
-import { setColorTheme, setThemeVariables, type ThemeMode, type ThemeVariables } from '@didit-sdk/ui'
+import {
+  setColorTheme,
+  setThemeVariables,
+  type ThemeMode,
+  type ThemeVariables
+} from '@didit-sdk/ui'
 import type {
   AccountControllerState,
   ConfigurationControllerState,
   ConnectionControllerClient,
   DiditAuthControllerClient,
-  ThemeControllerState,
+  ThemeControllerState
 } from './controllers/index.js'
 import {
   AccountController,
@@ -14,7 +19,7 @@ import {
   ConnectionController,
   DiditAuthController,
   ModalController,
-  ThemeController,
+  ThemeController
 } from './controllers/index.js'
 import type { Web3Connector, Web3Network } from './types/index.js'
 import { ConstantsUtil, CoreHelperUtil } from './utils/index.js'

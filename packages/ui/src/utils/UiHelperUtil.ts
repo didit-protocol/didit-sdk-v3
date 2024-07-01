@@ -40,5 +40,5 @@ export const UiHelperUtil = {
     }
 
     return 'light'
-  },
+  }
 }

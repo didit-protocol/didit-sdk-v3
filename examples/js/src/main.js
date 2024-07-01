@@ -33,7 +33,7 @@ const diditSDk = createDiditSdk({
   clientSecret,
   themeMode: 'dark',
   themeVariables: {
-    '--modal-border-radius-master': '0px',
+    '--modal-border-radius-master': '0px'
   }
 })
 
@@ -67,11 +67,9 @@ logoutBtn.addEventListener('click', () => {
   diditSDk.signOut()
 })
 
-
-
-
-
-diditSDk.subscribeTheme(theme => { console.log('themeModeChanged...', theme.themeMode) })
+diditSDk.subscribeTheme(theme => {
+  console.log('themeModeChanged...', theme.themeMode)
+})
 
 const themeBtn = document.getElementById('theme-btn')
 
