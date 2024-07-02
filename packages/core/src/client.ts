@@ -513,7 +513,9 @@ export class DiditSdk {
       this.initPromise = new Promise<void>(async resolve => {
         await Promise.all([import('@didit-sdk/ui'), import('./modal/didit-modal/index.js')])
         const modal = document.createElement('didit-modal')
+        const toastContainer = document.createElement('didit-toast')
         document.body.insertAdjacentElement('beforeend', modal)
+        document.body.insertAdjacentElement('beforeend', toastContainer)
         resolve()
       })
     }

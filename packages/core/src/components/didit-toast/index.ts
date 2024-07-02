@@ -4,21 +4,6 @@ import { state } from 'lit/decorators.js'
 import styles from './styles.js'
 import { NotificationsController } from '../../controllers/Notifications.js'
 
-// -- Helpers ------------------------------------------- //
-const presets = {
-  loading: undefined,
-  success: {
-    backgroundColor: 'success-100',
-    iconColor: 'success-100',
-    icon: 'checkmark'
-  },
-  error: {
-    backgroundColor: 'error-100',
-    iconColor: 'error-100',
-    icon: 'close'
-  }
-} as const
-
 @customElement('didit-toast')
 export class DiditToast extends LitElement {
   public static override styles = styles
@@ -50,12 +35,13 @@ export class DiditToast extends LitElement {
   // -- Render -------------------------------------------- //
   public override render() {
     const { message, variant } = NotificationsController.state
-    const preset = presets[variant]
 
     return html`
-      <div style="border: 1px solid ${preset.backgroundColor}">
-        <span>message: ${message}</span>
-        <span>variant: ${variant}</span>
+      <div data-variant=${variant}>
+        <div class="toast-bar"></div>
+        <div>
+          <ui-text variant="header-4" color="foreground">${message}</ui-text>
+        </div>
       </div>
     `
   }

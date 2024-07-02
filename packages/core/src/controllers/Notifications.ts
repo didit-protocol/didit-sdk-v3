@@ -5,7 +5,7 @@ import { CoreHelperUtil } from '../utils/index.js'
 // -- Types --------------------------------------------- //
 export interface NotificationsControllerState {
   message: string
-  variant: 'error' | 'success'
+  variant: 'info' | 'warning' | 'error' | 'success'
   open: boolean
 }
 
@@ -14,7 +14,7 @@ type StateKey = keyof NotificationsControllerState
 // -- State --------------------------------------------- //
 const state = proxy<NotificationsControllerState>({
   message: '',
-  variant: 'success',
+  variant: 'info',
   open: false
 })
 
@@ -27,6 +27,18 @@ export const NotificationsController = {
     callback: (value: NotificationsControllerState[K]) => void
   ) {
     return subKey(state, key, callback)
+  },
+
+  showInfo(message: NotificationsControllerState['message']) {
+    state.message = message
+    state.variant = 'info'
+    state.open = true
+  },
+
+  showWarning(message: NotificationsControllerState['message']) {
+    state.message = message
+    state.variant = 'warning'
+    state.open = true
   },
 
   showSuccess(message: NotificationsControllerState['message']) {

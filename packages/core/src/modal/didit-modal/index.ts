@@ -66,7 +66,6 @@ export class DiditModal extends LitElement {
             <ui-card role="alertdialog" aria-modal="true" tabindex="0">
               <didit-header></didit-header>
               <didit-router></didit-router>
-              <didit-toast></didit-toast>
             </ui-card>
           </ui-flex>
         `
