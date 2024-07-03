@@ -49,7 +49,7 @@ export type ReactConfig = ReturnType<typeof defaultWagmiReactConfig>
 // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 type Config = ReactConfig | CoreConfig
 
-export interface DiditClientOptions<C extends Config> {
+interface DiditClientOptions<C extends Config> {
   connectionControllerClient: ConnectionControllerClient
   diditAuthControllerClient: DiditAuthControllerClient
   projectId: ConfigurationControllerState['projectId']
