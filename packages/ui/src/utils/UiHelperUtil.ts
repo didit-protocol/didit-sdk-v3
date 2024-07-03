@@ -1,5 +1,4 @@
-/* eslint-disable no-bitwise */
-import type { SpacingType, TruncateOptions } from './TypeUtil.js'
+import type { SpacingType, ThemeType, TruncateOptions } from './TypeUtil.js'
 
 export const UiHelperUtil = {
   getSpacingStyles(spacing: SpacingType | SpacingType[], index: number) {
@@ -26,5 +25,19 @@ export const UiHelperUtil = {
     return `${string.substring(0, Math.floor(charsStart))}...${string.substring(
       string.length - Math.floor(charsEnd)
     )}`
+  },
+
+  getColorTheme(theme: ThemeType | undefined) {
+    if (theme) {
+      return theme
+    } else if (typeof window !== 'undefined' && window.matchMedia) {
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark'
+      }
+
+      return 'light'
+    }
+
+    return 'light'
   }
 }

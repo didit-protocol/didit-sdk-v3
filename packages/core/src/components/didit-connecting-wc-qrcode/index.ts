@@ -14,7 +14,7 @@ import { DiditApiController } from '../../controllers/DiditApi.js'
 export class DiditConnectingWcQrcode extends DiditWeb3Connecting {
   public static override styles = styles
 
-  // -- Properties ---------------------------------------- //
+  // -- Properties and States ---------------------------------------- //
 
   @property({ type: Boolean }) public walletConnect = false
 
@@ -75,15 +75,22 @@ export class DiditConnectingWcQrcode extends DiditWeb3Connecting {
     const size = this.getBoundingClientRect().width - 40
     const alt = this.wallet ? this.wallet.name : undefined
     ConnectionController.setWcLinking(undefined)
+    ConnectionController.setRecentWallet({
+      id: this.wallet?.id ?? ConstantsUtil.WALLET_CONNECT_CONNECTOR_ID,
+      name: this.wallet?.name ?? 'WalletConnect',
+      imageUrl: this.wallet?.image_url ?? ''
+    })
 
     const imageSrc = this.walletConnect ? this.getWalletConnectImageUrl() : this.wallet?.image_url
 
+    // TODOX: check if theme is needed for ui-qr-code background color
     return html`
       <ui-qr-code
         size=${size}
         uri=${this.uri}
         imageSrc=${ifDefined(imageSrc)}
         alt=${ifDefined(alt)}
+        theme=${this.themeMode}
         data-testid="ui-qr-code"
       ></ui-qr-code>
     `

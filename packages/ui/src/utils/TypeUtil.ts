@@ -2,9 +2,12 @@ export type ThemeType = 'dark' | 'light'
 
 export interface ThemeVariables {
   '--modal-font-family'?: string
-  '--modal-accent'?: string
   '--modal-font-size-master'?: string
   '--modal-border-radius-master'?: string
+  '--modal-color-primary'?: string
+  '--modal-color-soft'?: string
+  '--modal-color-background'?: string
+  '--modal-color-foreground'?: string
   '--modal-z-index'?: number
 }
 
@@ -52,6 +55,7 @@ export type TextType =
   | 'title-2'
   | 'title-3'
   | 'title-4'
+  | 'title-5'
   | 'paragraph-1'
   | 'paragraph-2'
   | 'paragraph-3'
@@ -100,8 +104,11 @@ export type IconType =
   | 'refresh'
   | 'externalLink'
   | 'loading'
+  | 'profile'
+  | 'network'
+  | 'logout'
 
-export type TagType = 'main' | 'shade' | 'error' | 'success'
+export type TagType = 'default' | 'primary' | 'secondary' | 'error' | 'success'
 
 export type TruncateType = 'start' | 'middle' | 'end'
 export type TruncateOptions = {

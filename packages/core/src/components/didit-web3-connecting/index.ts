@@ -8,6 +8,7 @@ import { CoreHelperUtil } from '../../utils/CoreHelperUtil.js'
 import { ConnectionController } from '../../controllers/Connection.js'
 import { NotificationsController } from '../../controllers/Notifications.js'
 import { DiditApiController } from '../../controllers/DiditApi.js'
+import { ThemeController } from '../../controllers/Theme.js'
 
 export class DiditWeb3Connecting extends LitElement {
   public static override styles = styles
@@ -44,6 +45,8 @@ export class DiditWeb3Connecting extends LitElement {
   // -- State & Properties -------------------------------- //
   @state() protected uri = ConnectionController.state.wcUri
 
+  @state() protected themeMode = ThemeController.state.themeMode
+
   @state() protected error = ConnectionController.state.wcError
 
   @state() protected ready = false
@@ -68,7 +71,8 @@ export class DiditWeb3Connecting extends LitElement {
           }
         }),
         ConnectionController.subscribeKey('wcError', val => (this.error = val)),
-        ConnectionController.subscribeKey('buffering', val => (this.buffering = val))
+        ConnectionController.subscribeKey('buffering', val => (this.buffering = val)),
+        ThemeController.subscribe(val => (this.themeMode = val.themeMode))
       ]
     )
   }
@@ -176,12 +180,14 @@ export class DiditWeb3Connecting extends LitElement {
         <ui-button
           class="open-link-button"
           variant="primary"
-          text=${this.secondaryBtnLabel}
+          ?centerText=${true}
           icon=${this.secondaryBtnIcon}
           data-testid=${`open-link-button`}
           ?fullWidth=${true}
           @click=${this.onTryAgain.bind(this)}
-        ></ui-button>
+        >
+          ${this.secondaryBtnLabel}
+        </ui-button>
       `
     }
 

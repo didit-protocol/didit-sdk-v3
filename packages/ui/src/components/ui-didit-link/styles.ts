@@ -19,11 +19,6 @@ export default css`
     opacity: var(--local-loader-opacity);
   }
 
-  ui-didit-link-loade {
-    width: 150%;
-    height: 150%;
-  }
-
   .didit-logo {
     z-index: 1;
     animation: var(--local-didit-logo-animation);
@@ -47,5 +42,9 @@ export default css`
 
   [data-bounce='true'] {
     animation: bounce 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  }
+
+  [data-icon='apple'] {
+    color: var(--ui-color-foreground);
   }
 `

@@ -4,5 +4,6 @@ export * from './views/index.js'
 export type { DiditClientOptions, CoreConfig, ReactConfig } from './client.js'
 export { DiditSdk } from './client.js'
 export { ConstantsUtil } from './utils/index.js'
+export type { DiditAuthStatus, DiditAuthMethod, DiditAuthType } from './types/didit.js'
 
 export { defaultWagmiCoreConfig, defaultWagmiReactConfig } from './wagmi/config/index.js'

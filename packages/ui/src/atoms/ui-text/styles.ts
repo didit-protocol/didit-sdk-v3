@@ -60,6 +60,12 @@ export default css`
     letter-spacing: var(--ui-letter-spacing-medium);
   }
 
+  .ui-font-title-5 {
+    font-size: var(--ui-font-size-small);
+    font-weight: var(--ui-font-weight-medium);
+    letter-spacing: var(--ui-letter-spacing-medium);
+  }
+
   .ui-font-paragraph-1 {
     font-size: var(--ui-font-size-paragraph);
     font-weight: var(--ui-font-weight-light);

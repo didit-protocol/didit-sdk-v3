@@ -31,19 +31,19 @@ export class UiDiditLink extends LitElement {
           <ui-didit-link-loader></ui-didit-link-loader>
         </div>
         <ui-wallet-image
+          data-icon=${this.connectorIcon}
           size="xl"
           ?withPadding=${true}
-          walletImage=${this.connectorImage}
+          imageSrc=${this.connectorImage}
           walletIcon=${this.connectorIcon}
         >
         </ui-wallet-image>
-        <ui-icon
-          data-bounce=${this.logoBouncing}
-          class="didit-logo"
-          size="2xl"
-          color="inherit"
-          name="didit"
-        ></ui-icon>
+        <ui-wallet-image
+          data-bounce=${this.logoBouncing ? 'true' : 'false'}
+          size="xl"
+          walletIcon="didit"
+        >
+        </ui-wallet-image>
       </ui-flex>
     `
   }

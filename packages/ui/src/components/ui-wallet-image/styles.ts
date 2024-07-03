@@ -10,6 +10,7 @@ export default css`
     border-radius: inherit;
     border-radius: var(--local-border-radius);
     backckground-color: var(--ui-color-surface-lo);
+    overflow: hidden;
   }
 
   :host > ui-flex {

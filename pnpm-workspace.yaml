@@ -4,6 +4,8 @@ packages:
   - 'apps/page'
   - 'packages/eslint-config'
   - 'packages/tsconfig'
+  - 'packages/polyfills'
   - 'packages/core'
   - 'packages/js'
+  - 'packages/react'
   - 'packages/ui'

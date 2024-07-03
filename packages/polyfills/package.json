@@ -1,0 +1,49 @@
+{
+  "name": "@didit-sdk/polyfills",
+  "version": "0.0.1",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "watch": "npm run build -- --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "test": "vitest run --dir tests",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "buffer": "^6.0.3"
+  },
+  "devDependencies": {
+    "@didit-sdk/eslint-config": "workspace:*",
+    "@didit-sdk/tsconfig": "workspace:*"
+  },
+  "keywords": [
+    "sdk",
+    "didit",
+    "web3",
+    "crypto",
+    "siwe",
+    "walletconnect",
+    "gamium",
+    "ethereum"
+  ],
+  "author": "Didit <didit.me>",
+  "license": "MIT",
+  "homepage": "TODO: didit new repo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diditme/didit.git"
+  },
+  "bugs": {
+    "url": "git+https://github.com/diditme/didit/issues"
+  }
+}

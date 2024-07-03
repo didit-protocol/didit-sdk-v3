@@ -1,18 +1,27 @@
+import { watchAccount, watchConnectors, type GetAccountReturnType } from '@wagmi/core'
+import type { Chain, Hex } from 'viem'
+import {
+  setColorTheme,
+  setThemeVariables,
+  type ThemeMode,
+  type ThemeVariables
+} from '@didit-sdk/ui'
 import type {
   AccountControllerState,
   ConfigurationControllerState,
   ConnectionControllerClient,
-  DiditAuthControllerClient
+  DiditAuthControllerClient,
+  ThemeControllerState
 } from './controllers/index.js'
-
 import {
   AccountController,
   ConfigurationController,
   ConnectionController,
   DiditAuthController,
-  ModalController
+  ModalController,
+  ThemeController
 } from './controllers/index.js'
-import type { Web3Connector, Web3Network } from './types/index.js'
+import type { DiditAuthStatus, Web3Connector, Web3Network } from './types/index.js'
 import { ConstantsUtil, CoreHelperUtil } from './utils/index.js'
 import {
   wcWallets,
@@ -20,8 +29,6 @@ import {
   type defaultWagmiCoreConfig,
   type defaultWagmiReactConfig
 } from './wagmi/config/index.js'
-import { watchAccount, watchConnectors, type GetAccountReturnType } from '@wagmi/core'
-import type { Chain, Hex } from 'viem'
 import { PresetsUtil } from './utils/PresetsUtil.js'
 import { ConnectorController } from './controllers/Connectors.js'
 import {
@@ -48,6 +55,7 @@ export interface DiditClientOptions<C extends Config> {
   projectId: ConfigurationControllerState['projectId']
   clientId: ConfigurationControllerState['clientId']
   clientSecret?: ConfigurationControllerState['clientSecret']
+  metadata?: ConfigurationControllerState['metadata']
   walletAuthBaseUrl?: DiditApiControllerState['walletAuthBaseUrl']
   walletAuthorizationPath?: DiditApiControllerState['walletAuthorizationPath']
   tokenAuthorizationPath?: DiditApiControllerState['tokenAuthorizationPath']
@@ -57,7 +65,8 @@ export interface DiditClientOptions<C extends Config> {
   onSignIn?: DiditAuthControllerClient['onSignIn']
   onSignOut?: DiditAuthControllerClient['onSignOut']
   onError?: DiditAuthControllerClient['onError']
-  metadata?: ConfigurationControllerState['metadata']
+  themeMode?: ThemeMode
+  themeVariables?: ThemeVariables
   _sdkVersion: ConfigurationControllerState['sdkVersion']
   wagmiConfig: C
 }
@@ -67,7 +76,19 @@ export type DiditSdkOptions<C extends Config> = Omit<
   'connectionControllerClient' | 'diditAuthControllerClient'
 >
 
-interface DiditSdkState extends Omit<AccountControllerState, 'network'> {
+interface DiditSdkState
+  extends Omit<
+    AccountControllerState,
+    'network' | 'requestedNetworks' | 'diditSession' | 'timeout'
+  > {
+  user: Omit<AccountControllerState['diditSession'], 'exp'>
+  selectedNetworkId: number | undefined
+  selectedNetworkName: string | undefined
+}
+
+interface DiditSdkModalState {
+  isOpen: boolean
+  diditAuthStatus: DiditAuthStatus
   selectedNetworkId: number | undefined
   selectedNetworkName: string | undefined
 }
@@ -198,27 +219,69 @@ export class DiditSdk {
 
   // -- Public -------------------------------------------------------------------
 
-  public getAccountState(): DiditSdkState {
+  public getDiditAccount(): DiditSdkState {
     const accountState = AccountController.state
     const { network } = accountState
 
     return {
-      ...AccountController.state,
+      isAuthenticated: accountState.isAuthenticated,
+      user: {
+        id: accountState.diditSession?.id,
+        identifier: accountState.diditSession?.identifier,
+        identifierType: accountState.diditSession?.identifierType,
+        claims: accountState.diditSession?.claims
+      },
+      accessToken: accountState.accessToken,
+      refreshToken: accountState.refreshToken,
+      authMethod: accountState.authMethod,
+      isWalletConnected: accountState.isWalletConnected,
+      walletAddress: accountState.walletAddress,
+      addressExplorerUrl: accountState.addressExplorerUrl,
       selectedNetworkId: network?.number,
       selectedNetworkName: network?.name
     }
   }
 
-  public subscribeAccountState(callback: (newState: DiditSdkState) => void) {
+  public subscribeDiditSatate(callback: (newState: DiditSdkState) => void) {
     return AccountController.subscribe((newState: AccountControllerState) => {
       const { network } = newState
 
       return callback({
-        ...newState,
+        isAuthenticated: newState.isAuthenticated,
+        user: {
+          id: newState.diditSession?.id,
+          identifier: newState.diditSession?.identifier,
+          identifierType: newState.diditSession?.identifierType,
+          claims: newState.diditSession?.claims
+        },
+        accessToken: newState.accessToken,
+        refreshToken: newState.refreshToken,
+        authMethod: newState.authMethod,
+        isWalletConnected: newState.isWalletConnected,
+        walletAddress: newState.walletAddress,
+        addressExplorerUrl: newState.addressExplorerUrl,
         selectedNetworkId: network?.number,
         selectedNetworkName: network?.name
       })
     })
+  }
+
+  public getDiditModalState(): DiditSdkModalState {
+    const accountState = AccountController.state
+    const { network } = accountState
+
+    let diditAuthStatus: DiditAuthStatus =
+      accountState.isAuthenticated === undefined ? 'loading' : 'unauthenticated'
+    if (accountState.isAuthenticated) {
+      diditAuthStatus = 'authenticated'
+    }
+
+    return {
+      diditAuthStatus,
+      isOpen: ModalController.state.open,
+      selectedNetworkId: network?.number,
+      selectedNetworkName: network?.name
+    }
   }
 
   public async openModal() {
@@ -239,6 +302,28 @@ export class DiditSdk {
       ConnectionController.disconnect()
     }
     ModalController.close()
+  }
+
+  public getThemeMode() {
+    return ThemeController.state.themeMode
+  }
+
+  public getThemeVariables() {
+    return ThemeController.state.themeVariables
+  }
+
+  public setThemeMode(themeMode: ThemeControllerState['themeMode']) {
+    ThemeController.setThemeMode(themeMode)
+    setColorTheme(ThemeController.state.themeMode)
+  }
+
+  public setThemeVariables(themeVariables: ThemeControllerState['themeVariables']) {
+    ThemeController.setThemeVariables(themeVariables)
+    setThemeVariables(ThemeController.state.themeVariables)
+  }
+
+  public subscribeTheme(callback: (newState: ThemeControllerState) => void) {
+    return ThemeController.subscribe(callback)
   }
 
   // -- Private ------------------------------------------------------------------
@@ -321,6 +406,13 @@ export class DiditSdk {
     }
     if (options.metadata) {
       ConfigurationController.setMetadata(options.metadata)
+    }
+    if (options.themeMode) {
+      ThemeController.setThemeMode(options.themeMode)
+    }
+
+    if (options.themeVariables) {
+      ThemeController.setThemeVariables(options.themeVariables)
     }
   }
 
@@ -421,7 +513,9 @@ export class DiditSdk {
       this.initPromise = new Promise<void>(async resolve => {
         await Promise.all([import('@didit-sdk/ui'), import('./modal/didit-modal/index.js')])
         const modal = document.createElement('didit-modal')
+        const toastContainer = document.createElement('didit-toast')
         document.body.insertAdjacentElement('beforeend', modal)
+        document.body.insertAdjacentElement('beforeend', toastContainer)
         resolve()
       })
     }

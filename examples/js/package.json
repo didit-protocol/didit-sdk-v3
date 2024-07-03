@@ -4,7 +4,7 @@
   "version": "4.2.3",
   "scripts": {
     "dev:example": "vite --port 3000",
-    "build:examples": "vite build"
+    "build:example": "vite build"
   },
   "dependencies": {
     "@didit-sdk/js": "workspace:*",
@@ -12,10 +12,10 @@
     "@wagmi/core": "^2.11.2",
     "tsup": "^8.1.0",
     "viem": "^2.15.1",
-    "wagmi": "^2.10.2"
+    "wagmi": "^2.10.8"
   },
   "devDependencies": {
     "buffer": "^6.0.3",
-    "vite": "5.2.11"
+    "vite": "^5.3.1"
   }
 }

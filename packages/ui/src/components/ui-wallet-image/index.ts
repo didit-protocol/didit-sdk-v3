@@ -46,21 +46,8 @@ export class UiWalletImage extends LitElement {
 
   // -- Private ------------------------------------------- //
   private templateVisual() {
-    let borderRadius = '5xs'
-    if (this.size === 'lg' || this.size === 'xl') {
-      borderRadius = '3xs'
-    } else if (this.size === 'md') {
-      borderRadius = '4xs'
-    } else {
-      borderRadius = '5xs'
-    }
     if (this.imageSrc) {
-      return html`<ui-image
-        borderRadius=${borderRadius}
-        class="wallet-image"
-        src=${this.imageSrc}
-        alt=${this.name}
-      ></ui-image>`
+      return html`<ui-image class="wallet-image" src=${this.imageSrc} alt=${this.name}></ui-image>`
     }
 
     return html`<ui-icon

@@ -13,10 +13,12 @@ export * from './components/ui-tag/index.js'
 export * from './components/ui-link/index.js'
 export * from './components/ui-tabs/index.js'
 export * from './components/ui-didit-link/index.js'
+export * from './components/ui-user-card/index.js'
 
 export * from './layout/ui-flex/index.js'
 
 export { initializeTheming, setColorTheme, setThemeVariables } from './utils/ThemeUtil.js'
+export type { ThemeType as ThemeMode, ThemeVariables } from './utils/TypeUtil.js'
 export { UiHelperUtil } from './utils/UiHelperUtil.js'
 export { customElement } from './utils/WebComponentsUtil.js'
 
