@@ -88,48 +88,11 @@ importers:
         version: 2.16.5(typescript@5.3.3)
       wagmi:
         specifier: ^2.10.8
-        version: 2.10.8(@tanstack/react-query@5.49.2)(react-dom@18.3.1)(react-i18next@13.5.0)(react-native@0.74.2)(react@18.3.1)(typescript@5.3.3)(viem@2.16.5)
+        version: 2.10.8(@tanstack/react-query@5.49.2)(react-i18next@13.5.0)(react-native@0.74.2)(react@18.3.1)(typescript@5.3.3)(viem@2.16.5)
     devDependencies:
       buffer:
         specifier: ^6.0.3
         version: 6.0.3
-      vite:
-        specifier: ^5.3.1
-        version: 5.3.2(@types/node@20.14.9)
-
-  examples/react:
-    dependencies:
-      '@didit-sdk/react':
-        specifier: workspace:*
-        version: link:../../packages/react
-      '@tanstack/react-query':
-        specifier: ^5.49.2
-        version: 5.49.2(react@18.3.1)
-      buffer:
-        specifier: ^6.0.3
-        version: 6.0.3
-      react:
-        specifier: ^18.2.0
-        version: 18.3.1
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.3.1(react@18.3.1)
-      viem:
-        specifier: ^2.15.1
-        version: 2.16.5(typescript@5.3.3)
-      wagmi:
-        specifier: ^2.10.8
-        version: 2.10.8(@tanstack/react-query@5.49.2)(react-dom@18.3.1)(react-i18next@13.5.0)(react-native@0.74.2)(react@18.3.1)(typescript@5.3.3)(viem@2.16.5)
-    devDependencies:
-      '@didit-sdk/eslint-config':
-        specifier: workspace:*
-        version: link:../../packages/eslint-config
-      '@didit-sdk/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
-      '@vitejs/plugin-react':
-        specifier: 4.2.1
-        version: 4.2.1(vite@5.3.2)
       vite:
         specifier: ^5.3.1
         version: 5.3.2(@types/node@20.14.9)
@@ -213,34 +176,6 @@ importers:
       '@didit-sdk/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
-
-  packages/react:
-    dependencies:
-      '@didit-sdk/core':
-        specifier: workspace:*
-        version: link:../core
-    devDependencies:
-      '@didit-sdk/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
-      '@didit-sdk/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
-      '@tanstack/react-query':
-        specifier: ^5.49.2
-        version: 5.49.2(react@18.3.1)
-      react:
-        specifier: ^18.2.0
-        version: 18.3.1
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.3.1(react@18.3.1)
-      viem:
-        specifier: ^2.15.1
-        version: 2.16.5(typescript@5.3.3)
-      wagmi:
-        specifier: ^2.10.8
-        version: 2.10.8(@tanstack/react-query@5.49.2)(react-dom@18.3.1)(react-i18next@13.5.0)(react-native@0.74.2)(react@18.3.1)(typescript@5.3.3)(viem@2.16.5)
 
   packages/tsconfig: {}
 
@@ -3639,6 +3574,7 @@ packages:
 
   /@tanstack/query-core@5.49.1:
     resolution: {integrity: sha512-JnC9ndmD1KKS01Rt/ovRUB1tmwO7zkyXAyIxN9mznuJrcNtOrkmOnQqdJF2ib9oHzc2VxHomnEG7xyfo54Npkw==}
+    dev: false
 
   /@tanstack/react-query@5.49.2(react@18.3.1):
     resolution: {integrity: sha512-6rfwXDK9BvmHISbNFuGd+wY3P44lyW7lWiA9vIFGT/T0P9aHD1VkjTvcM4SDAIbAQ9ygEZZoLt7dlU1o3NjMVA==}
@@ -3647,35 +3583,7 @@ packages:
     dependencies:
       '@tanstack/query-core': 5.49.1
       react: 18.3.1
-
-  /@types/babel__core@7.20.5:
-    resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
-    dependencies:
-      '@babel/parser': 7.24.7
-      '@babel/types': 7.24.7
-      '@types/babel__generator': 7.6.8
-      '@types/babel__template': 7.4.4
-      '@types/babel__traverse': 7.20.6
-    dev: true
-
-  /@types/babel__generator@7.6.8:
-    resolution: {integrity: sha512-ASsj+tpEDsEiFr1arWrlN6V3mdfjRMZt6LtK/Vp/kreFLnr5QH5+DhvD5nINYZXzwJvXeGq+05iUXcAzVrqWtw==}
-    dependencies:
-      '@babel/types': 7.24.7
-    dev: true
-
-  /@types/babel__template@7.4.4:
-    resolution: {integrity: sha512-h/NUaSyG5EyxBIp8YRxo4RMe2/qQgvyowRwVMzhYhBCONbW8PUsg4lkFMrhgZhUe5z3L3MiLDuvyJ/CaPa2A8A==}
-    dependencies:
-      '@babel/parser': 7.24.7
-      '@babel/types': 7.24.7
-    dev: true
-
-  /@types/babel__traverse@7.20.6:
-    resolution: {integrity: sha512-r1bzfrm0tomOI8g1SzvCaQHo6Lcv6zu0EA+W2kHrt8dyrHQxGzBBL4kdkzIS+jBMV+EYcMAEAqXqYaLJq5rOZg==}
-    dependencies:
-      '@babel/types': 7.24.7
-    dev: true
+    dev: false
 
   /@types/conventional-commits-parser@5.0.0:
     resolution: {integrity: sha512-loB369iXNmAZglwWATL+WRe+CRMmmBPtpolYzIebFaX4YA3x+BEfLqhUAV9WanycKI3TG1IMr5bMJDajDKLlUQ==}
@@ -3904,22 +3812,6 @@ packages:
 
   /@ungap/structured-clone@1.2.0:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
-
-  /@vitejs/plugin-react@4.2.1(vite@5.3.2):
-    resolution: {integrity: sha512-oojO9IDc4nCUUi8qIR11KoQm0XFFLIwsRBwHRR4d/88IWghn1y6ckz/bJ8GHDCsYEJee8mDzqtJxh15/cisJNQ==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    peerDependencies:
-      vite: ^4.2.0 || ^5.0.0
-    dependencies:
-      '@babel/core': 7.24.7
-      '@babel/plugin-transform-react-jsx-self': 7.24.7(@babel/core@7.24.7)
-      '@babel/plugin-transform-react-jsx-source': 7.24.7(@babel/core@7.24.7)
-      '@types/babel__core': 7.20.5
-      react-refresh: 0.14.2
-      vite: 5.3.2(@types/node@20.14.9)
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
 
   /@vitest/expect@1.6.0:
     resolution: {integrity: sha512-ixEvFVQjycy/oNgHjqsL6AZCDduC+tflRluaHIzKIsdbzkLn2U/iBnVeJwB6HsIjQBdfMR8Z0tRxKUsvFJEeWQ==}
@@ -9855,7 +9747,7 @@ packages:
     resolution: {integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==}
     engines: {node: '>=0.10.0'}
 
-  /wagmi@2.10.8(@tanstack/react-query@5.49.2)(react-dom@18.3.1)(react-i18next@13.5.0)(react-native@0.74.2)(react@18.3.1)(typescript@5.3.3)(viem@2.16.5):
+  /wagmi@2.10.8(@tanstack/react-query@5.49.2)(react-i18next@13.5.0)(react-native@0.74.2)(react@18.3.1)(typescript@5.3.3)(viem@2.16.5):
     resolution: {integrity: sha512-25xJCTEQ3ug6tl86MnngzhXOJUo4tJufUUxlnb2qRz+aZFAcRGL+hhuBBZOJ552T49UPF0Hs9c6Rd4BKvwHLrg==}
     peerDependencies:
       '@tanstack/react-query': '>=5.0.0'
@@ -9900,6 +9792,7 @@ packages:
       - uWebSockets.js
       - utf-8-validate
       - zod
+    dev: false
 
   /walker@1.0.8:
     resolution: {integrity: sha512-ts/8E8l5b7kY0vlWLewOkDXMmPdLcVV4GmOQLyxuSswIJsweeFZtAsMF7k1Nszz+TYBQrlYRmzOnr398y1JemQ==}
