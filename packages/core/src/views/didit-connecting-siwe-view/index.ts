@@ -21,28 +21,25 @@ export class DiditConnectingSiweView extends LitElement {
   // -- Members ------------------------------------------- //
   private readonly dappName = ConfigurationController.state.metadata?.name || 'Didit'
 
-  private readonly wallet = ConnectionController.getRecentWallet()
-
-  @state() private isSigning = false
-
-  @state() private error = false
+  @state() private status: 'idle' | 'signing' | 'completed' | 'error' = 'idle'
 
   // -- Render -------------------------------------------- //
 
   public override disconnectedCallback() {
     super.disconnectedCallback()
-    this.onCancel()
+    if (this.status !== 'completed' && this.status !== 'signing') {
+      this.onCancel()
+    }
   }
 
   public override render() {
     this.onRender()
-
-    const walletImageUrl = this.wallet?.imageUrl || ''
+    const recent = ConnectionController.getRecentWallet()
 
     return html`
       <ui-flex
         .padding=${['3xl', '0', '0', '0']}
-        data-error=${ifDefined(this.error)}
+        data-error=${ifDefined(this.status === 'error' ? 'true' : undefined)}
         flexDirection="column"
         alignItems="center"
         gap="3xl"
@@ -54,14 +51,14 @@ export class DiditConnectingSiweView extends LitElement {
           .padding=${['xl', '0', 'xl', '0']}
         >
           <ui-didit-link
-            connectorImage=${walletImageUrl}
+            connectorImage=${recent?.imageUrl}
             connectorIcon="wallet"
-            ?loading=${this.isSigning}
-            ?logoBouncing=${this.error}
+            ?loading=${this.status === 'signing'}
+            ?logoBouncing=${this.status === 'error'}
           >
           </ui-didit-link>
           <ui-flex flexDirection="column" alignItems="center" gap="s">
-            <ui-text variant="title-4" color=${this.error ? 'error' : 'foreground'}>
+            <ui-text variant="title-4" color=${this.status === 'error' ? 'error' : 'foreground'}>
               Connect your wallet to ${this.dappName}
             </ui-text>
             <ui-text align="center" variant="paragraph-1" color="surface-md">
@@ -70,12 +67,14 @@ export class DiditConnectingSiweView extends LitElement {
           </ui-flex>
         </ui-flex>
         <ui-button
-          text="Sign message"
-          ?loading=${this.isSigning}
+          ?loading=${this.status === 'signing'}
           textSize="lg"
+          ?centerText=${true}
           data-testid=${`sign-button`}
           @click=${this.onSign.bind(this)}
-        ></ui-button>
+        >
+          Sign message
+        </ui-button>
       </ui-flex>
     `
   }
@@ -89,8 +88,7 @@ export class DiditConnectingSiweView extends LitElement {
   }
 
   private async onSign() {
-    this.error = false
-    this.isSigning = true
+    this.status = 'signing'
     EventsController.sendEvent({
       event: 'CLICK_SIGN_SIWE_MESSAGE',
       type: 'track',
@@ -111,21 +109,22 @@ export class DiditConnectingSiweView extends LitElement {
         }
       })
 
-      return session
+      this.status = 'completed'
+      if (session) {
+        ModalController.close()
+      }
     } catch (error) {
       NotificationsController.showError('Signature declined')
       DiditAuthController.setStatus('error')
-      this.error = true
+      this.status = 'error'
 
-      return EventsController.sendEvent({
+      EventsController.sendEvent({
         event: 'SIWE_AUTH_ERROR',
         type: 'track',
         properties: {
           network: AccountController.state.network?.id || ''
         }
       })
-    } finally {
-      this.isSigning = false
     }
   }
 
@@ -133,7 +132,6 @@ export class DiditConnectingSiweView extends LitElement {
     const { isWalletConnected } = AccountController.state
     if (isWalletConnected) {
       await ConnectionController.disconnect()
-      ModalController.close()
     } else {
       RouterController.push('Connect')
     }

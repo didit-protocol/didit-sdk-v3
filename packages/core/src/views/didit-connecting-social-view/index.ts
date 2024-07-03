@@ -152,6 +152,7 @@ export class DiditConnectingSocialView extends LitElement {
             this.subLabel = errorDescription ?? 'Something went wrong! Please try again'
           }
           await DiditAuthController.socialSignIn(code)
+          NotificationsController.showSuccess('Connected successfully to Didit!')
           this.finalizeConnection()
         } catch (error) {
           this.error = true
@@ -172,7 +173,6 @@ export class DiditConnectingSocialView extends LitElement {
     this.error = true
     this.label = 'Connection timeout'
     this.subLabel = 'Connection failed! Please try again'
-    DiditAuthController.resetSocialData()
   }
 
   private connectSocial() {
@@ -193,7 +193,6 @@ export class DiditConnectingSocialView extends LitElement {
     this.error = true
     this.label = 'Connection declined'
     this.subLabel = 'Connection failed! Please try again'
-    DiditAuthController.resetSocialData()
   }
 
   private finalizeConnection() {

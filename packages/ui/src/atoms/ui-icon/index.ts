@@ -20,6 +20,9 @@ import { diditLogoSvg } from '../../assets/icons/didit-logo.js'
 import { arrowRightSvg } from '../../assets/icons/arrow-right.js'
 import { externalLinkSvg } from '../../assets/icons/external-link.js'
 import { spinnerSvg } from '../../assets/icons/spinner.js'
+import { profileSvg } from '../../assets/icons/profile.js'
+import { networkSvg } from '../../assets/icons/network.js'
+import { logoutSvg } from '../../assets/icons/logout.js'
 
 // TODOX: --local-color is not define
 
@@ -36,7 +39,10 @@ const svgOptions: Record<IconType, TemplateResult<2>> = {
   didit: diditLogoSvg,
   refresh: retrySvg,
   externalLink: externalLinkSvg,
-  loading: spinnerSvg
+  loading: spinnerSvg,
+  profile: profileSvg,
+  network: networkSvg,
+  logout: logoutSvg
 }
 
 @customElement('ui-icon')

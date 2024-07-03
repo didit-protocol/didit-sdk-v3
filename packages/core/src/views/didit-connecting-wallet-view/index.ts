@@ -39,13 +39,11 @@ export class DiditConnectingWalletView extends DiditWeb3Connecting {
           return
         }
         await ConnectionController.connectExternal(this.connector)
-
         const imageUrl = DiditApiController.getConnectorImageUrl(this.connector.imageId || '')
-
         ConnectionController.setRecentWallet({
           id: this.connector.id,
-          name: this.connector.name || 'External',
-          imageUrl: imageUrl ?? ''
+          name: this.connector.name || 'Enjected',
+          imageUrl: this.connector.imageUrl ?? imageUrl
         })
 
         RouterController.push('ConnectingDiditSiwe')

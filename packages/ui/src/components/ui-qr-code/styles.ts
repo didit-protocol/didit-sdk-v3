@@ -11,6 +11,13 @@ export default css`
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--ui-color-white);
+  }
+
+  :host([data-theme='dark']) {
+    border-radius: clamp(0px, var(--ui-border-radius-l), 40px);
+    background-color: var(--ui-color-white);
+    padding: var(--ui-spacing-l);
   }
 
   :host([data-clear='true']) > ui-icon {

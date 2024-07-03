@@ -222,7 +222,6 @@ export const DiditAuthController = {
     state.socialProvider = undefined
     state.popupWindow?.close()
     state.popupWindow = null
-    StorageUtil.deleteConnectedSocialProvider()
     StorageUtil.deleteSocialCodeVerifier()
   },
 

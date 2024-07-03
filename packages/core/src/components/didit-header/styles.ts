@@ -7,8 +7,8 @@ export default css`
   .close-button {
     margin-left: auto;
   }
+
   ui-icon-link[data-hidden='true'] {
-    opacity: 0 !important;
-    pointer-events: none;
+    display: none;
   }
 `

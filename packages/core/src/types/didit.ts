@@ -7,6 +7,8 @@ export type DiditAuthMethod = 'email' | 'wallet_address'
 
 export type DiditAuthType = 'wallet' | 'apple' | 'google'
 
+export type DiditAuthStatus = 'loading' | 'authenticated' | 'unauthenticated'
+
 export type Connector = Web3Connector | SocialConnector
 
 export interface DiditUser {

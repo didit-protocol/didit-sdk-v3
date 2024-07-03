@@ -61,13 +61,16 @@ export class DiditWalletsView extends LitElement {
       imageUrl = DiditApiController.getConnectorImageUrl(connector.imageId)
     }
 
+    const recentWallet = ConnectionController.getRecentWallet()
+    const isRecent = connector.id === recentWallet?.id
+
     return html`
       <ui-wallet-button
         walletImage=${imageUrl}
         name=${connector.name ?? 'Unknown'}
         @click=${() => this.onWalletConnectConnector(connector)}
-        tagLabel="qr code"
-        tagVariant="main"
+        tagLabel=${isRecent ? 'recent' : 'QrCode'}
+        tagVariant=${isRecent ? 'secondary' : 'primary'}
         data-testid="wallet-selector-walletconnect"
       >
       </ui-wallet-button>
@@ -80,21 +83,24 @@ export class DiditWalletsView extends LitElement {
     if (!announcedConnectors?.length) {
       return null
     }
+    const recentWallet = ConnectionController.getRecentWallet()
 
     return html`
-      ${announcedConnectors.map(
-        connector => html`
+      ${announcedConnectors.map(connector => {
+        const isRecent = connector.id === recentWallet?.id
+
+        return html`
           <ui-wallet-button
             walletImage=${connector.imageUrl}
             name=${connector.name ?? 'Unknown'}
             @click=${() => this.onWalletConnectConnector(connector)}
-            tagVariant="success"
-            tagLabel="installed"
+            tagVariant=${isRecent ? 'secondary' : 'success'}
+            tagLabel=${isRecent ? 'recent' : 'announced'}
             data-testid=${`wallet-selector-${connector.id}`}
           >
           </ui-wallet-button>
         `
-      )}
+      })}
     `
   }
 
@@ -122,14 +128,16 @@ export class DiditWalletsView extends LitElement {
         if (!ConnectionController.checkInstalled()) {
           return null
         }
+        const recentWallet = ConnectionController.getRecentWallet()
+        const isRecent = connector.id === recentWallet?.id
 
         return html`
           <ui-wallet-button
             walletImage=${connector.imageUrl}
             name=${connector.name ?? 'Unknown'}
             @click=${() => this.onWalletConnectConnector(connector)}
-            tagVariant="success"
-            tagLabel="installed"
+            tagVariant=${isRecent ? 'secondary' : 'success'}
+            tagLabel=${isRecent ? 'recent' : 'injected'}
             data-testid=${`wallet-selector-${connector.id}`}
           >
           </ui-wallet-button>
@@ -156,12 +164,18 @@ export class DiditWalletsView extends LitElement {
       imageUrl = DiditApiController.getConnectorImageUrl(coinbaseConnector.imageId)
     }
 
+    const recentWallet = ConnectionController.getRecentWallet()
+
+    const isRecent = coinbaseConnector.id === recentWallet?.id
+
     return html`
       <ui-wallet-button
         walletImage=${ifDefined(imageUrl)}
         name=${ifDefined(coinbaseConnector.name)}
         @click=${() => this.onConnector(coinbaseConnector)}
         data-testid=${`wallet-selector-${coinbaseConnector.id}`}
+        tagVariant=${isRecent ? 'secondary' : undefined}
+        tagLabel=${isRecent ? 'recent' : ''}
       >
       </ui-wallet-button>
     `

@@ -13,6 +13,7 @@ export * from './components/ui-tag/index.js'
 export * from './components/ui-link/index.js'
 export * from './components/ui-tabs/index.js'
 export * from './components/ui-didit-link/index.js'
+export * from './components/ui-user-card/index.js'
 
 export * from './layout/ui-flex/index.js'
 

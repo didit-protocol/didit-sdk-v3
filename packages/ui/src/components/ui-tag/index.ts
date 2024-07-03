@@ -11,18 +11,14 @@ export class UiTag extends LitElement {
   public static override styles = [resetStyles, styles]
 
   // -- State & Properties -------------------------------- //
-  @property() public variant: TagType = 'main'
-
-  @property() public size: 'lg' | 'md' = 'lg'
+  @property() public variant: TagType = 'default'
 
   // -- Render -------------------------------------------- //
   public override render() {
     this.dataset['variant'] = this.variant
-    this.dataset['size'] = this.size
-    const textVariant = this.size === 'md' ? 'styles-label' : 'label'
 
     return html`
-      <ui-text data-variant=${this.variant} variant=${textVariant} color="inherit">
+      <ui-text data-variant=${this.variant} variant="label" color="inherit">
         <slot></slot>
       </ui-text>
     `

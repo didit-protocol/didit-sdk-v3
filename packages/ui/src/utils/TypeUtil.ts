@@ -55,6 +55,7 @@ export type TextType =
   | 'title-2'
   | 'title-3'
   | 'title-4'
+  | 'title-5'
   | 'paragraph-1'
   | 'paragraph-2'
   | 'paragraph-3'
@@ -103,8 +104,11 @@ export type IconType =
   | 'refresh'
   | 'externalLink'
   | 'loading'
+  | 'profile'
+  | 'network'
+  | 'logout'
 
-export type TagType = 'main' | 'shade' | 'error' | 'success'
+export type TagType = 'default' | 'primary' | 'secondary' | 'error' | 'success'
 
 export type TruncateType = 'start' | 'middle' | 'end'
 export type TruncateOptions = {

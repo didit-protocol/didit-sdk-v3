@@ -18,7 +18,7 @@ export class UiWalletButton extends LitElement {
 
   @property() public tagLabel?: string
 
-  @property() public tagVariant?: TagType
+  @property() public tagVariant?: TagType = 'primary'
 
   @property({ type: Boolean }) public disabled = false
 
@@ -32,7 +32,7 @@ export class UiWalletButton extends LitElement {
         </ui-flex>
         <ui-flex class="left-side" alignItems="center" gap="1xs">
           ${this.templateStatus()}
-          <ui-icon size="xl" name="arrowRight"></ui-icon>
+          <ui-icon size="md" color="surface-md" name="arrowRight"></ui-icon>
         </ui-flex>
       </button>
     `
@@ -41,7 +41,7 @@ export class UiWalletButton extends LitElement {
   // -- Private ------------------------------------------- //
 
   private templateStatus() {
-    if (this.tagLabel && this.tagVariant) {
+    if (this.tagLabel) {
       return html`<ui-tag variant=${this.tagVariant}>${this.tagLabel}</ui-tag>`
     }
 

@@ -1,4 +1,3 @@
-/* eslint-disable no-bitwise */
 import type { SpacingType, ThemeType, TruncateOptions } from './TypeUtil.js'
 
 export const UiHelperUtil = {
