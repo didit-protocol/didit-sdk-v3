@@ -32,7 +32,11 @@ export class DiditSocialsView extends LitElement {
 
   // -- Render -------------------------------------------- //
   public override render() {
-    return html` <ui-flex gap="s" alignItems="center"> ${this.connectSocialsTemplate()} </ui-flex> `
+    return html`
+      <ui-flex gap="s" flexWrap="wrap" alignItems="center">
+        ${this.connectSocialsTemplate()}
+      </ui-flex>
+    `
   }
 
   // -- Private ------------------------------------------- //
@@ -49,11 +53,11 @@ export class DiditSocialsView extends LitElement {
         connector => html`
           <ui-button
             variant=${this.getButtonVariant(connector.type)}
-            text=${`Signin with ${connector.name}`}
             icon=${connector.type}
             data-testid=${`socail-selector-${connector.id}`}
             @click=${() => this.onConnector(connector)}
           >
+            ${`Signin with ${connector.name}`}
           </ui-button>
         `
       )}

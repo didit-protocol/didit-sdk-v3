@@ -53,7 +53,7 @@ export class DiditConnectingSiweView extends LitElement {
           <ui-didit-link
             connectorImage=${recent?.imageUrl}
             connectorIcon="wallet"
-            ?loading=${this.status}
+            ?loading=${this.status === 'signing'}
             ?logoBouncing=${this.status === 'error'}
           >
           </ui-didit-link>
@@ -67,12 +67,13 @@ export class DiditConnectingSiweView extends LitElement {
           </ui-flex>
         </ui-flex>
         <ui-button
-          text="Sign message"
           ?loading=${this.status === 'signing'}
           textSize="lg"
           data-testid=${`sign-button`}
           @click=${this.onSign.bind(this)}
-        ></ui-button>
+        >
+          Sign message
+        </ui-button>
       </ui-flex>
     `
   }

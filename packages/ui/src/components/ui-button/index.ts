@@ -15,7 +15,6 @@ export class UiButton extends LitElement {
   public static override styles = [resetStyles, elementStyles, styles]
 
   // -- State & Properties -------------------------------- //
-  @property() public text = ''
 
   @property() public variant: ButtonVariant = 'default'
 
@@ -44,7 +43,9 @@ export class UiButton extends LitElement {
 
     return html`
       <button class=${classMap(classes)} ?disabled=${this.disabled} ontouchstart>
-        <ui-text variant=${textVariant} color="inherit">${this.text}</ui-text>
+        <ui-text variant=${textVariant} color="inherit">
+          <slot></slot>
+        </ui-text>
         ${this.templateButtonIcon()}
       </button>
     `

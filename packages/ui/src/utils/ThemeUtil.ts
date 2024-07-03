@@ -194,12 +194,13 @@ function createRootStyles(themeVariables?: ThemeVariables) {
         --ui-icon-size-lg: 20px;
         --ui-icon-size-xl: 24px;
         --ui-icon-size-xxl: 32px;
-        --ui-icon-size-2xl: 62px;
+        --ui-icon-size-2xl: 36px;
+        --ui-icon-size-3xl: 62px;
 
         --ui-wallet-image-size-inherit: inherit;
         --ui-wallet-image-size-sm: 24px;
         --ui-wallet-image-size-md: 32px;
-        --ui-wallet-image-size-mdl: 40px;
+        --ui-wallet-image-size-mdl: 36px;
         --ui-wallet-image-size-lg: 56px;
         --ui-wallet-image-size-xl: 62px;
         --ui-wallet-image-size-xxl: 80px;

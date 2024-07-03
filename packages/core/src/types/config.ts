@@ -36,6 +36,7 @@ type EventKind =
   | 'EMAIL_LOGIN_SELECTED'
   | 'EMAIL_SUBMITTED'
   | 'SWITCH_NETWORK'
+  | 'CLICK_PROFILE_LINK'
 
 export interface Event {
   type: 'track'

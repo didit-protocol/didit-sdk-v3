@@ -180,12 +180,13 @@ export class DiditWeb3Connecting extends LitElement {
         <ui-button
           class="open-link-button"
           variant="primary"
-          text=${this.secondaryBtnLabel}
           icon=${this.secondaryBtnIcon}
           data-testid=${`open-link-button`}
           ?fullWidth=${true}
           @click=${this.onTryAgain.bind(this)}
-        ></ui-button>
+        >
+          ${this.secondaryBtnLabel}
+        </ui-button>
       `
     }
 

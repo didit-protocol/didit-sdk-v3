@@ -32,6 +32,9 @@ export const ModalController = {
 
   open() {
     const { isAuthenticated, isWalletConnected } = AccountController.state
+    if (isAuthenticated === undefined) {
+      return
+    }
     if (isAuthenticated) {
       RouterController.reset('Profile')
     } else if (isWalletConnected) {

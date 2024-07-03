@@ -40,7 +40,7 @@ export class UiDiditLink extends LitElement {
         <ui-icon
           data-bounce=${this.logoBouncing}
           class="didit-logo"
-          size="2xl"
+          size="3xl"
           color="inherit"
           name="didit"
         ></ui-icon>

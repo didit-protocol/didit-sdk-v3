@@ -27,12 +27,13 @@ export class DiditConnectView extends LitElement {
         <didit-socials-view></didit-socials-view>
         <ui-button
           variant="primary"
-          text="Connect wallet"
           icon="connect"
           textSize="lg"
           data-testid=${`wallets-button`}
           @click=${this.onContinueWalletClick.bind(this)}
-        ></ui-button>
+        >
+          Connect wallet
+        </ui-button>
       </ui-flex>
     `
     // <didit-legal-footer></didit-legal-footer>

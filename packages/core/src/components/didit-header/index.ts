@@ -1,4 +1,4 @@
-import { customElement } from '@didit-sdk/ui'
+import { customElement, UiHelperUtil } from '@didit-sdk/ui'
 import { LitElement, html } from 'lit'
 import { state } from 'lit/decorators.js'
 import styles from './styles.js'
@@ -7,13 +7,14 @@ import { ConnectionController } from '../../controllers/Connection.js'
 import { ModalController } from '../../controllers/Modal.js'
 import type { RouterView } from '../../types/config.js'
 import { DiditAuthController } from '../../controllers/DiditAuth.js'
+import { AccountController } from '../../controllers/Account.js'
 
 // -- Helpers ------------------------------------------- //
 
 function headings(): { [key in RouterView]: string } {
   const connectorName = RouterController.state.data?.connector?.name
   const walletName = RouterController.state.data?.wallet?.name
-  const networkName = RouterController.state.data?.network?.name
+  const networkName = AccountController.state.network?.name
   const name = walletName ?? connectorName
 
   return {
@@ -43,6 +44,8 @@ export class DiditHeader extends LitElement {
 
   @state() private showBack = false
 
+  @state() private session = AccountController.state.diditSession
+
   public constructor() {
     super()
     this.unsubscribe.push(
@@ -50,7 +53,8 @@ export class DiditHeader extends LitElement {
         this.onViewChange(val)
         this.onHistoryChange()
       }),
-      ConnectionController.subscribeKey('buffering', val => (this.buffering = val))
+      ConnectionController.subscribeKey('buffering', val => (this.buffering = val)),
+      AccountController.subscribeKey('diditSession', val => (this.session = val))
     )
   }
 
@@ -89,8 +93,29 @@ export class DiditHeader extends LitElement {
   }
 
   private titleTemplate() {
+    if (RouterController.state.view === 'Profile') {
+      let name = ''
+
+      if (this.session?.identifierType === 'wallet_address') {
+        name = UiHelperUtil.getTruncateString({
+          string: this.session.identifier ? this.session.identifier : '',
+          charsStart: 4,
+          charsEnd: 4,
+          truncate: 'middle'
+        })
+      } else {
+        name = this.session?.identifier || ''
+      }
+
+      return html`
+        <ui-flex class="ui-header-title">
+          <ui-user-card identifier=${name} /> </ui-user-card>
+        <ui-flex class="ui-header-title">
+      `
+    }
+
     return html`
-      <ui-flex class="ui-header-title" alignItems="center" gap="xs">
+      <ui-flex class="ui-header-title">
         <ui-text variant="title-4" color="foreground"> ${this.heading} </ui-text>
       </ui-flex>
     `
@@ -99,7 +124,10 @@ export class DiditHeader extends LitElement {
   private dynamicButtonTemplate() {
     const { view } = RouterController.state
     const isConnectHelp = view === 'Connect'
-    const shouldHideBack = view === 'ConnectingDiditSiwe'
+    const isProfile = view === 'Profile'
+    const isConnectingDiditSIWE = view === 'ConnectingDiditSiwe'
+
+    const shouldHideBack = isProfile || isConnectingDiditSIWE
 
     if (this.showBack && !shouldHideBack) {
       return html`<ui-icon-link
@@ -110,16 +138,14 @@ export class DiditHeader extends LitElement {
       ></ui-icon-link>`
     }
 
-    if (shouldHideBack) {
-      return null
-    }
-
-    return html`<ui-icon-link
-      data-hidden=${!isConnectHelp}
-      id="dynamic"
-      icon="help"
-      @click=${this.onWalletHelp.bind(this)}
-    ></ui-icon-link>`
+    return html`
+      <ui-icon-link
+        data-hidden=${!isConnectHelp}
+        id="dynamic"
+        icon="help"
+        @click=${this.onWalletHelp.bind(this)}
+      ></ui-icon-link>
+    `
   }
 
   private async onViewChange(view: RouterControllerState['view']) {
