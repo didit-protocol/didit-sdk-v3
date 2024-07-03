@@ -1,6 +1,7 @@
 {
   "extends": "@didit-sdk/tsconfig/base.json",
   "compilerOptions": {
+    "jsx": "react",
     "incremental": false,
   },
   "include": ["src", "tests"],

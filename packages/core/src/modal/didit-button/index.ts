@@ -46,23 +46,24 @@ export class DiditButton extends LitElement {
 
   // -- Render -------------------------------------------- //
   public override render() {
-    if (this.isAccount === undefined) {
-      return null
+    if (this.isAccount && !this.isLoading) {
+      return html`
+        <didit-account-button .disabled=${Boolean(this.disabled)}> </didit-account-button>
+      `
     }
 
-    return this.isAccount && !this.isLoading
-      ? html` <didit-account-button .disabled=${Boolean(this.disabled)}> </didit-account-button> `
-      : html`
-          <ui-button
-            ?loading=${this.isLoading}
-            variant="primary"
-            icon="connect"
-            @click=${this.onClick.bind(this)}
-            data-testid="didit-connect-button"
-          >
-            ${this.isLoading ? this.loadingLabel : this.label}
-          </ui-button>
-        `
+    return html`
+      <ui-button
+        .disabled=${this.isAccount === undefined}
+        ?loading=${this.isLoading}
+        variant="primary"
+        icon="connect"
+        @click=${this.onClick.bind(this)}
+        data-testid="didit-connect-button"
+      >
+        ${this.isLoading ? this.loadingLabel : this.label}
+      </ui-button>
+    `
   }
 
   // -- Private ------------------------------------------- //

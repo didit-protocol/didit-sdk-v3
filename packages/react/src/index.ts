@@ -1,7 +1,7 @@
+import { defaultWagmiReactConfig } from '@didit-sdk/core'
 import { getDiditSdk } from './hooks.js'
-import type { DiditClientOptions, ReactConfig } from '@didit-sdk/core'
-import { DiditSdk, ConstantsUtil, defaultWagmiReactConfig } from '@didit-sdk/core'
-
+import type { DiditSdkOptions as DiditClientOptions, ReactConfig } from '@didit-sdk/core'
+import { DiditSdk, ConstantsUtil } from '@didit-sdk/core'
 // -- Types -------------------------------------------------------------------
 export type { DiditSdk } from '@didit-sdk/core'
 export type DiditSdkOptions = Omit<DiditClientOptions<ReactConfig>, '_sdkVersion'>
@@ -21,9 +21,8 @@ export function createDiditSdk(options: DiditSdkOptions) {
   return modal
 }
 
-// -- functions ---------------------------------------------------------------
-
+// -- Helpers ---------------------------------------------------------------
 export const defaultWagmiConfig = defaultWagmiReactConfig
 
 // -- Hooks -------------------------------------------------------------------
-export { useDiditSdk } from './hooks.js'
+export { useDiditSdk, useDiditSdkTheme, useDiditState, useDiditSignOut } from './hooks.js'

@@ -157,5 +157,13 @@ export const CoreHelperUtil = {
     }
 
     return true
+  },
+
+  getDiditAuthStatus(isAuthenticated?: boolean) {
+    if (isAuthenticated) {
+      return 'authenticated'
+    }
+
+    return isAuthenticated === undefined ? 'loading' : 'unauthenticated'
   }
 }

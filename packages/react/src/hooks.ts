@@ -1,28 +1,15 @@
 // Import { useEffect, useState, useSyncExternalStore } from 'react'
-import {
-  // DiditConnectButton,
-  DiditSdk
-} from '@didit-sdk/core'
+import { DiditButton, DiditSdk } from '@didit-sdk/core'
+import type { ThemeMode, ThemeVariables, DiditSdkState, DiditSdkModalState } from '@didit-sdk/core'
+import { useCallback, useEffect, useState } from 'react'
 
-/*
- * Type ThemeModeOptions = Parameters<DiditModal['setThemeMode']>[0]
- *
- * type ThemeVariablesOptions = Parameters<DiditModal['setThemeVariables']>[0]
- */
-
-/*
- * Declare global {
- *   namespace JSX {
- *     interface IntrinsicElements {
- *       'w3m-connect-button': Pick<W3mConnectButton, 'size' | 'label' | 'loadingLabel'>
- *       'w3m-account-button': Pick<W3mAccountButton, 'disabled' | 'balance'>
- *       'w3m-button': Pick<W3mButton, 'size' | 'label' | 'loadingLabel' | 'disabled' | 'balance'>
- *       'w3m-network-button': Pick<W3mNetworkButton, 'disabled'>
- *       'w3m-onramp-widget': Pick<W3mOnrampWidget, 'disabled'>
- *     }
- *   }
- * }
- */
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'didit-button': Pick<DiditButton, 'disabled' | 'label' | 'loadingLabel'>
+    }
+  }
+}
 
 let diditSDK: DiditSdk | undefined = undefined
 
@@ -33,115 +20,98 @@ export function getDiditSdk(diditsdk: any) {
   }
 }
 
-/*
- * Export function useDiditSdkTheme() {
- *   if (!modal) {
- *     throw new Error('Please call "createDiditSdk" before using "useDiditSdkTheme" hook')
- *   }
- */
+export function useDiditSdkTheme() {
+  if (!diditSDK) {
+    throw new Error('Please call "createDiditSdk" before using "useDiditSdkTheme" hook')
+  }
 
-/*
- *   Function setThemeMode(themeMode: ThemeModeOptions) {
- *     modal?.setThemeMode(themeMode)
- *   }
- */
+  function setThemeMode(themeMode: ThemeMode) {
+    diditSDK?.setThemeMode(themeMode)
+  }
 
-/*
- *   Function setThemeVariables(themeVariables: ThemeVariablesOptions) {
- *     modal?.setThemeVariables(themeVariables)
- *   }
- */
+  function setThemeVariables(themeVariables: ThemeVariables) {
+    diditSDK?.setThemeVariables(themeVariables)
+  }
 
-/*
- *   Const [themeMode, setInternalThemeMode] = useState(modal.getThemeMode())
- *   const [themeVariables, setInternalThemeVariables] = useState(modal.getThemeVariables())
- */
+  const [themeMode, setInternalThemeMode] = useState(diditSDK?.getThemeMode())
+  const [themeVariables, setInternalThemeVariables] = useState(diditSDK?.getThemeVariables())
 
-/*
- *   UseEffect(() => {
- *     const unsubscribe = modal?.subscribeTheme(state => {
- *       setInternalThemeMode(state.themeMode)
- *       setInternalThemeVariables(state.themeVariables)
- *     })
- */
+  useEffect(() => {
+    const unsubscribe = diditSDK?.subscribeTheme(state => {
+      setInternalThemeMode(state.themeMode)
+      setInternalThemeVariables(state.themeVariables)
+    })
 
-/*
- *     Return () => {
- *       unsubscribe?.()
- *     }
- *   }, [])
- */
+    return () => {
+      unsubscribe?.()
+    }
+  }, [])
 
-/*
- *   Return {
- *     themeMode,
- *     themeVariables,
- *     setThemeMode,
- *     setThemeVariables
- *   }
- * }
- */
+  return {
+    themeMode,
+    themeVariables,
+    setThemeMode,
+    setThemeVariables
+  }
+}
 
 export function useDiditSdk() {
+  const [state, setState] = useState<DiditSdkModalState>()
+
   if (!diditSDK) {
     throw new Error('Please call "createDiditSdk" before using "useDiditSdk" hook')
   }
 
-  async function open() {
+  const openModal = useCallback(async () => {
     await diditSDK?.openModal()
-  }
+  }, [])
 
-  async function close() {
+  const closeModal = useCallback(async () => {
     await diditSDK?.closeModal()
-  }
+  }, [])
 
-  return { open, close }
+  useEffect(() => {
+    const unsubscribe = diditSDK?.subscribeDiditModalState(newState => {
+      setState(newState)
+    })
+
+    return () => {
+      unsubscribe?.()
+    }
+  }, [])
+
+  return {
+    isOpen: state?.isOpen,
+    isLoding: state?.isLoading,
+    openModal,
+    closeModal
+  }
 }
 
-/*
- * Export function useWalletInfo() {
- *   if (!diditSDK) {
- *     throw new Error('Please call "createDiditSdk" before using "useDiditSdk" hook')
- *   }
- */
+export function useDiditSignOut() {
+  const signOut = useCallback(async () => {
+    await diditSDK?.signOut()
+  }, [])
 
-/*
- *   Const walletInfo = useSyncExternalStore(
- *     diditSDK.subscribeWalletInfo,
- *     diditSDK.getWalletInfo,
- *     diditSDK.getWalletInfo
- *   )
- */
+  return signOut
+}
 
-/*
- *   Return { walletInfo }
- * }
- */
+export function useDiditState(): DiditSdkState {
+  if (!diditSDK) {
+    throw new Error('Please call "createDiditSdk" before using "useDiditState" hook')
+  }
 
-/*
- * Export function useDiditSdkState() {
- *   if (!modal) {
- *     throw new Error('Please call "createDiditSdk" before using "useDiditSdkState" hook')
- *   }
- */
+  const [state, setState] = useState(diditSDK.getDiditState())
 
-//   Const [state, setState] = useState(modal.getState())
+  useEffect(() => {
+    const unsubscribe = diditSDK?.subscribeDiditState(newState => {
+      setState({ ...newState })
+    })
 
-/*
- *   UseEffect(() => {
- *     const unsubscribe = modal?.subscribeState(newState => {
- *       setState({ ...newState })
- *     })
- */
+    return () => {
+      unsubscribe?.()
+    }
+  }, [])
 
-/*
- *     Return () => {
- *       unsubscribe?.()
- *     }
- *   }, [])
- */
-
-/*
- *   Return state
- * }
- */
+  return state
+}

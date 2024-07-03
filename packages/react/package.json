@@ -25,8 +25,7 @@
   "devDependencies": {
     "@didit-sdk/eslint-config": "workspace:*",
     "@didit-sdk/tsconfig": "workspace:*",
-    "@tanstack/react-query": "^5.49.2",
-    "react": "^18.2.0",
+    "react": "^18.3.1",
     "react-dom": "^18.2.0",
     "viem": "^2.15.1",
     "wagmi": "^2.10.8"
