@@ -14,15 +14,14 @@ export default css`
     align-items: center;
     justify-content: center;
     gap: var(--ui-spacing-xs);
-    padding: var(--ui-spacing-s) var(--local-left-padding, var(--ui-spacing-1xs))
-      var(--ui-spacing-s) var(--ui-spacing-1xs);
+    padding: var(--ui-spacing-s) var(--ui-spacing-1xs) var(--ui-spacing-s) var(--local-left-padding);
   }
 
   button > ui-text {
+    width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: center;
   }
 
   button:disabled {
@@ -65,8 +64,8 @@ export default css`
     right: var(--ui-spacing-1xs);
   }
 
-  ui-icon {
-    color: var(--ui-color-foreground) !important;
+  [data-loading='true'] {
+    animation: spin 1s linear infinite;
   }
 
   .icon-default {
@@ -75,5 +74,18 @@ export default css`
 
   .icon-primary {
     color: var(--ui-color-primary) !important;
+  }
+
+  .icon-tertiary {
+    color: var(--ui-color-black) !important;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 `

@@ -52,6 +52,7 @@ export class DiditSocialsView extends LitElement {
       ${socialConnectors.map(
         connector => html`
           <ui-button
+            data-provider=${connector.provider}
             variant=${this.getButtonVariant(connector.type)}
             icon=${connector.type}
             data-testid=${`socail-selector-${connector.id}`}

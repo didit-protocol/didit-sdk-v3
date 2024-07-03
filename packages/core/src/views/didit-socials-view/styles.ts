@@ -6,5 +6,10 @@ export default css`
   }
   ui-button {
     flex-grow: 1;
+    min-width: 150px;
+  }
+
+  [data-provider='apple'] {
+    color: var(--ui-color-black);
   }
 `

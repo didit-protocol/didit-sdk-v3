@@ -33,57 +33,33 @@ const diditSDk = createDiditSdk({
   clientSecret,
   themeMode: 'dark',
   themeVariables: {
-    '--modal-border-radius-master': '0px'
+    // '--modal-border-radius-master': '0px'
   }
-})
-
-// 4. Trigger modal programaticaly
-const openConnectModalBtn = document.getElementById('open-connect-modal')
-
-openConnectModalBtn.addEventListener('click', () => {
-  diditSDk.openModal()
-})
-
-const accountDiv = document.getElementById('account-div')
-const logoutBtn = document.getElementById('logout')
-
-diditSDk.subscribeDiditSatate(state => {
-  if (!state.isAuthenticated) {
-    logoutBtn.style.display = 'none'
-  } else {
-    logoutBtn.style.display = 'block'
-  }
-  accountDiv.innerHTML = `
-    <div>authenticated: ${state.isAuthenticated}</div>
-    <div>connected: ${state.isWalletConnected}</div>
-    <div>walletAddress: ${state.walletAddress}</div>
-    <div>network: ${state.selectedNetworkId}: ${state.selectedNetworkName}</div>
-    <div>accessToken: ${state.accessToken}</div>
-    <div>refreshToken: ${state.refreshToken}</div>
-    <div>user --></div>
-    <div>user id -->${state.user.id}</div>
-    <div>user identifier -->${state.user.identifier}</div>
-    <div>user identifier type -->${state.user.identifierType}</div>
-  `
-})
-
-logoutBtn.addEventListener('click', () => {
-  diditSDk.signOut()
 })
 
 diditSDk.subscribeTheme(theme => {
-  console.log('themeModeChanged...', theme.themeMode)
+  changeThemeBtnSvg(theme.themeMode)
 })
 
 const themeBtn = document.getElementById('theme-btn')
 
-const themeMode = diditSDk.getThemeMode()
-themeBtn.innerText = themeMode === 'light' ? 'Light' : 'Dark'
-
-themeBtn.addEventListener('click', () => {
+if (themeBtn) {
   const themeMode = diditSDk.getThemeMode()
-  const newThemeMode = themeMode === 'light' ? 'dark' : 'light'
-  console.log('newThemeMode', newThemeMode)
-  diditSDk.setThemeMode(newThemeMode)
-  themeBtn.innerText = newThemeMode === 'light' ? 'Light' : 'Dark'
-})
+  changeThemeBtnSvg(themeMode)
+  themeBtn.addEventListener('click', () => {
+    const themeMode = diditSDk.getThemeMode()
+    const newThemeMode = themeMode === 'light' ? 'dark' : 'light'
+    diditSDk.setThemeMode(newThemeMode)
+    changeThemeBtnSvg(newThemeMode)
+  })
+}
+
+function changeThemeBtnSvg(mode) {
+  if (mode === 'light') {
+    themeBtn.innerHTML =
+      '<img width="50" height="50" src="https://img.icons8.com/ios-filled/50/do-not-disturb-2.png" alt="do-not-disturb-2" />'
+  } else {
+    themeBtn.innerHTML =
+      '<img width="78" height="78" src="https://img.icons8.com/external-glyph-silhouettes-icons-papa-vector/78/external-Light-Mode-interface-glyph-silhouettes-icons-papa-vector.png" alt="external-Light-Mode-interface-glyph-silhouettes-icons-papa-vector" />'
+  }
+}

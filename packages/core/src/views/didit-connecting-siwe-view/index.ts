@@ -69,6 +69,7 @@ export class DiditConnectingSiweView extends LitElement {
         <ui-button
           ?loading=${this.status === 'signing'}
           textSize="lg"
+          ?centerText=${true}
           data-testid=${`sign-button`}
           @click=${this.onSign.bind(this)}
         >

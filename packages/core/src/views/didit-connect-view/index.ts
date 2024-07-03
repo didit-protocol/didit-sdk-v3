@@ -29,6 +29,7 @@ export class DiditConnectView extends LitElement {
           variant="primary"
           icon="connect"
           textSize="lg"
+          ?centerText=${true}
           data-testid=${`wallets-button`}
           @click=${this.onContinueWalletClick.bind(this)}
         >

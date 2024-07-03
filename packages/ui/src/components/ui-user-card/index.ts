@@ -3,6 +3,7 @@ import { property } from 'lit/decorators.js'
 import { elementStyles, resetStyles } from '../../utils/ThemeUtil.js'
 import { customElement } from '../../utils/WebComponentsUtil.js'
 import styles from './styles.js'
+import { avatarImg } from '../../assets/visuals/avatart.js'
 
 @customElement('ui-user-card')
 export class UiUserCard extends LitElement {
@@ -13,6 +14,8 @@ export class UiUserCard extends LitElement {
   @property() public identifier = ''
 
   @property() public name?: string
+
+  @property() public size?: 'md' | 'lg' = 'lg'
 
   @property() public picture?: string
 
@@ -27,11 +30,13 @@ export class UiUserCard extends LitElement {
   // -- Private ------------------------------------------- //
 
   private templateAvatar() {
-    if (this.picture) {
-      return html`<ui-image src=${this.picture} size="2xl" alt="user avatar"></ui-image>`
-    }
+    const size = this.size === 'md' ? 'xxl' : '2xl'
 
-    return html`<ui-icon size="2xl" color="inherit" name="didit"></ui-icon>`
+    return html`<ui-image
+      src=${this.picture || avatarImg}
+      size=${size}
+      alt="user avatar"
+    ></ui-image>`
   }
 
   private templateNames() {

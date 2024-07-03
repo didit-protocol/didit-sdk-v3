@@ -24,6 +24,8 @@ export class UiButton extends LitElement {
 
   @property({ type: Boolean }) public fullWidth = false
 
+  @property({ type: Boolean }) public centerText = false
+
   @property({ type: Boolean }) public loading = false
 
   @property({ type: Boolean }) public disabled = false
@@ -31,8 +33,8 @@ export class UiButton extends LitElement {
   // -- Render -------------------------------------------- //
   public override render() {
     this.style.cssText = `
-      --local-left-padding: ${this.icon || this.loading ? '38px' : ''};
-      --local-width: ${this.fullWidth ? '100%' : 'auto'}
+      --local-width: ${this.fullWidth ? '100%' : 'auto'};
+      --local-left-padding: ${this.centerText ? 'var(--ui-spacing-1xs)' : 'var(--ui-spacing-l)'};
     `
 
     const classes = {
@@ -41,9 +43,11 @@ export class UiButton extends LitElement {
 
     const textVariant = this.textSize === 'lg' ? 'button-1' : 'button-2'
 
+    const textAlign = this.centerText ? 'center' : 'left'
+
     return html`
       <button class=${classMap(classes)} ?disabled=${this.disabled} ontouchstart>
-        <ui-text variant=${textVariant} color="inherit">
+        <ui-text align=${textAlign} variant=${textVariant} color="inherit">
           <slot></slot>
         </ui-text>
         ${this.templateButtonIcon()}
@@ -53,11 +57,6 @@ export class UiButton extends LitElement {
 
   public override connectedCallback() {
     super.connectedCallback()
-    this.animateLoadingIcon()
-  }
-
-  public override updated() {
-    this.animateLoadingIcon()
   }
 
   // -- Private ------------------------------------------- //
@@ -67,25 +66,13 @@ export class UiButton extends LitElement {
       const _icon = this.loading ? 'loading' : this.icon
 
       return html`
-        <div class="icon-box">
+        <div class="icon-box" data-loading=${this.loading ? 'true' : 'false'}>
           <ui-icon class=${`icon-${this.variant}`} size="md" name=${_icon}></ui-icon>
         </div>
       `
     }
 
     return null
-  }
-
-  private animateLoadingIcon() {
-    if (this.loading) {
-      const icon = this.shadowRoot?.querySelector('ui-icon')
-      if (icon) {
-        icon.animate([{ transform: 'rotate(0deg)' }, { transform: 'rotate(360deg)' }], {
-          duration: 1000,
-          iterations: Infinity
-        })
-      }
-    }
   }
 }
 
