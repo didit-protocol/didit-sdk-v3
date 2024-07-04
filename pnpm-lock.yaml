@@ -19,7 +19,7 @@ importers:
         version: 19.2.2
       '@commitlint/cz-commitlint':
         specifier: ^19.2.0
-        version: 19.2.0(@types/node@20.14.9)(commitizen@4.3.0)(inquirer@9.3.2)(typescript@5.5.3)
+        version: 19.2.0(@types/node@20.14.9)(commitizen@4.3.0)(inquirer@9.3.3)(typescript@5.5.3)
       '@didit-sdk/eslint-config':
         specifier: workspace:*
         version: link:packages/eslint-config
@@ -58,7 +58,7 @@ importers:
         version: 9.0.11
       inquirer:
         specifier: '9'
-        version: 9.3.2
+        version: 9.3.3
       prettier:
         specifier: 3.1.1
         version: 3.1.1
@@ -1924,7 +1924,7 @@ packages:
       ajv: 8.16.0
     dev: false
 
-  /@commitlint/cz-commitlint@19.2.0(@types/node@20.14.9)(commitizen@4.3.0)(inquirer@9.3.2)(typescript@5.5.3):
+  /@commitlint/cz-commitlint@19.2.0(@types/node@20.14.9)(commitizen@4.3.0)(inquirer@9.3.3)(typescript@5.5.3):
     resolution: {integrity: sha512-kudzHMY9/GxflGyAWMiisiBq2UkyQL1D1eWjGKoC66qQ+5jxRYeDaiVwTdPxYMnmehftNcpksZATDYKqdPP0Wg==}
     engines: {node: '>=v18'}
     peerDependencies:
@@ -1936,7 +1936,7 @@ packages:
       '@commitlint/types': 19.0.3
       chalk: 5.3.0
       commitizen: 4.3.0(@types/node@20.14.9)(typescript@5.5.3)
-      inquirer: 9.3.2
+      inquirer: 9.3.3
       lodash.isplainobject: 4.0.6
       word-wrap: 1.2.5
     transitivePeerDependencies:
@@ -2546,7 +2546,7 @@ packages:
     resolution: {integrity: sha512-dwZPq8wx9yV3IX2caLi9q9xZBw2XeIoYqdyihDDDpuHVCEiqadJLwqM3zy+uwf6F1QYQ65A8aOMQg1Uw7LMLNg==}
     engines: {node: '>=16.0.0'}
     dependencies:
-      '@metamask/rpc-errors': 6.3.0
+      '@metamask/rpc-errors': 6.3.1
       '@metamask/safe-event-emitter': 3.1.1
       '@metamask/utils': 8.5.0
     transitivePeerDependencies:
@@ -2582,7 +2582,7 @@ packages:
       '@metamask/json-rpc-engine': 7.3.3
       '@metamask/json-rpc-middleware-stream': 6.0.2
       '@metamask/object-multiplex': 2.0.0
-      '@metamask/rpc-errors': 6.3.0
+      '@metamask/rpc-errors': 6.3.1
       '@metamask/safe-event-emitter': 3.1.1
       '@metamask/utils': 8.5.0
       detect-browser: 5.3.0
@@ -2594,11 +2594,11 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@metamask/rpc-errors@6.3.0:
-    resolution: {integrity: sha512-B1UIG/0xWkaDs/d6xrxsRf7kmFLdk8YE0HUToaFumjwQM36AjBsqEzVyemPTQv0SIrAPFnSmkLt053JOWcu5iw==}
+  /@metamask/rpc-errors@6.3.1:
+    resolution: {integrity: sha512-ugDY7cKjF4/yH5LtBaOIKHw/AiGGSAmzptAUEiAEGr/78LwuzcXAxmzEQfSfMIfI+f9Djr8cttq1pRJJKfTuCg==}
     engines: {node: '>=16.0.0'}
     dependencies:
-      '@metamask/utils': 8.5.0
+      '@metamask/utils': 9.0.0
       fast-safe-stringify: 2.1.1
     transitivePeerDependencies:
       - supports-color
@@ -2714,6 +2714,22 @@ packages:
 
   /@metamask/utils@8.5.0:
     resolution: {integrity: sha512-I6bkduevXb72TIM9q2LRO63JSsF9EXduh3sBr9oybNX2hNNpr/j1tEjXrsG0Uabm4MJ1xkGAQEMwifvKZIkyxQ==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@ethereumjs/tx': 4.2.0
+      '@metamask/superstruct': 3.1.0
+      '@noble/hashes': 1.4.0
+      '@scure/base': 1.1.7
+      '@types/debug': 4.1.12
+      debug: 4.3.5
+      pony-cause: 2.1.11
+      semver: 7.6.2
+      uuid: 9.0.1
+    transitivePeerDependencies:
+      - supports-color
+
+  /@metamask/utils@9.0.0:
+    resolution: {integrity: sha512-Q/PzQCm6rkmePxHghXgJuYEkVfSvwKLLFZwFtfmLAz4mxIPuFJSMawaJM7sfZsVybK5Bf9QaKAjgMvHk5iGGvA==}
     engines: {node: '>=16.0.0'}
     dependencies:
       '@ethereumjs/tx': 4.2.0
@@ -3484,7 +3500,7 @@ packages:
   /@scure/bip32@1.4.0:
     resolution: {integrity: sha512-sVUpc0Vq3tXCkDGYVWGIZTRfnvu8LoTDaev7vbwh0omSvVORONr960MQWdKqJDCReIEmTj3PAr73O3aoxz7OPg==}
     dependencies:
-      '@noble/curves': 1.4.2
+      '@noble/curves': 1.4.0
       '@noble/hashes': 1.4.0
       '@scure/base': 1.1.7
 
@@ -6185,8 +6201,8 @@ packages:
   /flow-enums-runtime@0.0.6:
     resolution: {integrity: sha512-3PYnM29RFXwvAN6Pc/scUfkI7RwhQ/xqyLUyPNlXUp9S40zI8nup9tUSrTLSVnWGBN38FNiGWbwZOB6uR4OGdw==}
 
-  /flow-parser@0.238.3:
-    resolution: {integrity: sha512-hNUhucq8V6KWSX1skXUS3vnDmrRNuKWzDvEVK5b+n97uMF32zj2y8pmcLDQEqlY5u926B0GYGWT/3XhwDJfLOQ==}
+  /flow-parser@0.239.0:
+    resolution: {integrity: sha512-U5dgOsS6cg4FGNzzTD/zHRDM4bliL6laUgD0LUCSMzI2zEfKMnRV2/wgDv8nKmO2Z1R8ri5pE1YoldmrSV7FOw==}
     engines: {node: '>=0.4.0'}
 
   /for-each@0.3.3:
@@ -6649,8 +6665,8 @@ packages:
       wrap-ansi: 7.0.0
     dev: false
 
-  /inquirer@9.3.2:
-    resolution: {integrity: sha512-+ynEbhWKhyomnaX0n2aLIMSkgSlGB5RrWbNXnEqj6mdaIydu6y40MdBjL38SAB0JcdmOaIaMua1azdjLEr3sdw==}
+  /inquirer@9.3.3:
+    resolution: {integrity: sha512-Z7lAi4XUBYRa6NPB0k+0+3dyhnyp2sAqVeiyogHyue93DvE9dPxp7oi7Gg8/KfWXSrGEsyBvZbl4PdBpS7ZKkg==}
     engines: {node: '>=18'}
     dependencies:
       '@inquirer/figures': 1.0.3
@@ -6664,7 +6680,7 @@ packages:
       string-width: 4.2.3
       strip-ansi: 6.0.1
       wrap-ansi: 6.2.0
-      yoctocolors-cjs: 2.1.1
+      yoctocolors-cjs: 2.1.2
     dev: false
 
   /invariant@2.2.4:
@@ -7021,7 +7037,7 @@ packages:
       '@babel/register': 7.24.6(@babel/core@7.24.7)
       babel-core: 7.0.0-bridge.0(@babel/core@7.24.7)
       chalk: 4.1.2
-      flow-parser: 0.238.3
+      flow-parser: 0.239.0
       graceful-fs: 4.2.11
       micromatch: 4.0.7
       neo-async: 2.6.2
@@ -10128,8 +10144,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: false
 
-  /yoctocolors-cjs@2.1.1:
-    resolution: {integrity: sha512-c6T13b6qYcJZvck7QbEFXrFX/Mu2KOjvAGiKHmYMUg96jxNpfP6i+psGW72BOPxOIDUJrORG+Kyu7quMX9CQBQ==}
+  /yoctocolors-cjs@2.1.2:
+    resolution: {integrity: sha512-cYVsTjKl8b+FrnidjibDWskAv7UKOfcwaVZdp/it9n1s9fU3IkgDbhdIRKCW4JDsAlECJY0ytoVPT3sK6kideA==}
     engines: {node: '>=18'}
     dev: false
 
