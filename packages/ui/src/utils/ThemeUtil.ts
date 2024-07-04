@@ -250,7 +250,6 @@ function createRootStyles(themeVariables?: ThemeVariables) {
     `,
     dark: css`
       :root {
-        --dark-mode: true;
         --dui-primary: ${unsafeCSS(
           getDiditThemeVariables(themeVariables, 'dark')['--dui-primary']
         )};

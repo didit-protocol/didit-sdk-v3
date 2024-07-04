@@ -1,6 +1,6 @@
 {
-  "name": "@didit-sdk/core",
-  "version": "1.0.0-alpha.1",
+  "name": "@didit-sdk/react",
+  "version": "0.0.1",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -20,39 +20,25 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@didit-sdk/polyfills": "workspace:*",
-    "@didit-sdk/ui": "workspace:*",
-    "@walletconnect/ethereum-provider": "^2.13.1",
-    "crypto-js": "^4.2.0",
-    "valtio": "1.11.2"
+    "@didit-sdk/core": "workspace:*"
   },
   "devDependencies": {
     "@didit-sdk/eslint-config": "workspace:*",
     "@didit-sdk/tsconfig": "workspace:*",
-    "@types/crypto-js": "^4.2.2",
-    "@wagmi/connectors": "^5.0.14",
-    "@wagmi/core": "^2.11.2",
     "react": "^18.3.1",
     "react-dom": "^18.2.0",
     "viem": "^2.15.1",
     "wagmi": "^2.10.8"
   },
   "peerDependencies": {
-    "@wagmi/connectors": ">=4",
-    "@wagmi/core": ">=2",
     "react": ">=18",
     "react-dom": ">=18",
-    "viem": ">=2"
-  },
-  "peerDependenciesMeta": {
-    "react": {
-      "optional": true
-    },
-    "react-dom": {
-      "optional": true
-    }
+    "viem": ">=2",
+    "wagmi": ">=2"
   },
   "keywords": [
+    "sdk",
+    "wagmi",
     "didit",
     "web3",
     "crypto",
