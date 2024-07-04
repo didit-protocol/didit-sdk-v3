@@ -4,6 +4,9 @@ on: [pull_request, push]
 jobs:
   ci:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -17,18 +20,16 @@ jobs:
             ${{ runner.os }}-turbo-
 
       - name: Cache pnpm setup
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
-          version: 8
-      - name: Setup Node.js environment
+          version: 9
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
       - name: Lint
         run: pnpm lint
       - name: Test
