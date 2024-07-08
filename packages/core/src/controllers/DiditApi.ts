@@ -12,6 +12,10 @@ import type { SocialConnectorType } from '../types/socials.js'
 
 // -- Helpers ------------------------------------------- //
 const diditAuthBaseUrl = ConstantsUtil.DIDIT_BASE_AUTH_URL
+const diditAuthStagingBaseUrl = ConstantsUtil.DIDIT_STAGING_BASE_AUTH_URL
+const diditWalletAuthPath = ConstantsUtil.DIDIT_WALLET_AUTH_PATH
+const diditWalletTokenPath = ConstantsUtil.DIDIT_WALLET_TOKEN_PATH
+const diditAuthRedirectUrl = ConstantsUtil.DIDIT_AUTH_REDIRECT_URL
 const walletGrantType = ConstantsUtil.DIDIT_WALLET_GRANNT_TYPE
 const refreshGrantType = ConstantsUtil.DIDIT_REFRESH_GRANT_TYPE
 const introspectPath = ConstantsUtil.DIDIT_INTROSPECT_PATH
@@ -32,7 +36,8 @@ export interface DiditApiControllerState {
   walletAuthorizationPath: string
   tokenAuthorizationPath: string
   redirectUri?: string
-  isAnalyticsEnabled: boolean
+  isAnalyticsEnabled?: boolean
+  isStaging?: boolean
 }
 
 type StateKey = keyof DiditApiControllerState
@@ -40,11 +45,12 @@ type StateKey = keyof DiditApiControllerState
 // -- State --------------------------------------------- //
 const state = proxy<DiditApiControllerState>({
   api: null,
-  walletAuthBaseUrl: ConstantsUtil.DIDIT_BASE_AUTH_URL,
-  walletAuthorizationPath: ConstantsUtil.DIDIT_WALLET_AUTH_PATH,
-  tokenAuthorizationPath: ConstantsUtil.DIDIT_WALLET_TOKEN_PATH,
-  redirectUri: ConstantsUtil.DIDIT_AUTH_REDIRECT_URL,
-  isAnalyticsEnabled: false
+  walletAuthBaseUrl: diditAuthBaseUrl,
+  walletAuthorizationPath: diditWalletAuthPath,
+  tokenAuthorizationPath: diditWalletTokenPath,
+  redirectUri: diditAuthRedirectUrl,
+  isAnalyticsEnabled: false,
+  isStaging: false
 })
 
 // -- Controller ---------------------------------------- //
@@ -65,8 +71,9 @@ export const DiditApiController = {
       state.walletAuthBaseUrl = baseUrl
       this._initializeApi(baseUrl)
     } else {
-      const { walletAuthBaseUrl } = state
-      this._initializeApi(walletAuthBaseUrl)
+      const baseUri = state.isStaging ? diditAuthStagingBaseUrl : diditAuthBaseUrl
+      state.walletAuthBaseUrl = baseUri
+      this._initializeApi(baseUri)
     }
   },
 
@@ -80,6 +87,14 @@ export const DiditApiController = {
 
   setRedirectUri(redirectUri: string) {
     state.redirectUri = redirectUri
+  },
+
+  setAnalyticsEnabled(isEnabled: boolean) {
+    state.isAnalyticsEnabled = isEnabled
+  },
+
+  setStaging(isStaging: boolean) {
+    state.isStaging = isStaging
   },
 
   _initializeApi(baseUrl: string) {
@@ -176,13 +191,10 @@ export const DiditApiController = {
     tokenBody.append('grant_type', emailGrantType)
     tokenBody.append('redirect_uri', state.redirectUri || '')
 
-    const response = await state.api?.postWithBaseUrl<DiditTokenAuthorization>(
-      ConstantsUtil.DIDIT_BASE_AUTH_URL,
-      {
-        path: emailTokenPath,
-        body: tokenBody
-      }
-    )
+    const response = await state.api?.postWithBaseUrl<DiditTokenAuthorization>(diditAuthBaseUrl, {
+      path: emailTokenPath,
+      body: tokenBody
+    })
 
     return response
   },

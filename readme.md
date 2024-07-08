@@ -6,33 +6,41 @@
 
 **The easiest way to connect to [Didit protocol](https://docs.didit.me/)**
 
-Didit-SDK is a [React](https://reactjs.org/) library that makes it easy to add wallet connection to your dapp.
+Didit-SDK is a library that makes it easy to add wallet connection to your dapp.
 
 - ✅ **Didit** User Authentication flow
+- 🎉 Support for multiple frameworks. Easily integrate with [React](https://reactjs.org/) and vanilla JavaScript. Vue and Svelte are comming soon...
 - 🔥 Out-of-the-box wallet management
-- ✅ Easily customizable
-- 🦄 Built on top of [rainbowkit](https://www.rainbowkit.com), [wagmi](https://wagmi.sh) and [viem](https://viem.sh)
+- 🚀 [EIP-6963](https://eips.ethereum.org/EIPS/eip-6963). support for browser extension wallets.
+- 🎨 Easily customizable UI. light/dark or make it match your brand
+- 🦄 Built on top of [wagmi](https://wagmi.sh)
 
 ## Repository
 
-Didit SDK [Github Repo](https://github.com/didit-protocol/didit-sdk)
+Didit SDK [Github Repo](https://github.com/didit-protocol/didit-sdk-v3)
 
 ## Try it out
 
 You can use the CodeSandbox links below try out **Didit** Sdk:
 
-- with [Vite-React](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite) // TODO: setup example on codesandbox
-- with [Create-React-Appp](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite) // TODO: setup example on codesandbox
+- with [js](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite) // TODO: setup example on codesandbox
+
+- with [react](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite) // TODO: setup example on codesandbox
+
+- with [nextjs](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite) // TODO: setup example on codesandbox
 
 ### Examples
 
 The following examples are provided in the [examples](./examples/) folder of this repo.
 
-- `with-vite-react`
-  The example contains a first view 'localhost:3000' where you can test the ConnetButton and a second view 'localhost:3000/status' where you can login, logout and check the auth status from with you own buttons and hooks!
+- `js`
+  example of @didit-sdk/js and how to integrate it with vanilla js
 
-- `with-create-react-app`
-  this one contains only connection button on home page
+- `react`
+  example of @didit-sdk/react and how to integrate it with vite/react.js
+
+- `next`
+  example of @didit-sdk/react and how to use it in next.js with ssr
 
 ### Running examples
 
@@ -42,43 +50,118 @@ To run an example locally, install dependencies.
 pnpm install
 ```
 
-Then go into an example directory, eg: `with-vite-react`.
+Then run the dev script. change examples:js with the example you want to run (examples:react/examples:next)
 
 ```bash
-cd examples/with-vite-react
-```
-
-Then run the dev script.
-
-```bash
-pnpm run dev
+pnpm watch && pnpm examples:js
 ```
 
 ### Installation
 
 #### Integrate didit-sdk into your project
 
-install didit-sdk and its peer dependencies, [wagmi](https://wagmi.sh) and [viem](https://viem.sh).
+#### Vannila JS
+
+install didit-sdk and its peer dependencies, @wagmi/core, viem and @wagmi/connectors. check [how install wagmi/core](https://1.x.wagmi.sh/core/getting-started) for more
 
 ```bash
-npm install didit-sdk wagmi viem
+npm @didit-sdk/js @wagmi/connectors @wagmi/core viem
 ```
 
-> Note: RainbowKit is a [React](https://reactjs.org/) library.
+#### Configure your didit app
 
-#### Import
+Create an app at [Didit Console](https://business.didit.me) and obtain your clientid and client secret
 
-Import `didit-sdk` and `wagmi``.
+#### Implementation
 
-All the components, providers, hooks and utils are exported from the main `didit-sdk` package.
+For a quick integration you can use defaultWagmiConfig function which wraps Wagmi's createConfig function with a predefined configuration. This includes WalletConnect, Coinbase and Injected connectors
+
+In your main.ts file set up the following configuration.
 
 ```tsx
-import 'didit-sdk/styles.css';
+import { arbitrum, mainnet } from '@wagmi/core/chains'
+import { createDiditSdk, defaultWagmiConfig } from '@didit-sdk/js'
+import { reconnect } from '@wagmi/core'
 
-import { DiditAuthProvider, DiditLoginButton, DiditAuthMethod, ... } from 'didit-sdk';
+
+// 1. Create wagmiConfig
+const wagmiConfig = defaultWagmiConfig({
+  projectId: 'wallet-connect-project-id-if-you-have-one'
+  chains: [mainnet, arbitrum],
+})
+
+reconnect(wagmiConfig)
+
+// 3. Create diditsdk istance
+const diditSdk = createDiditSdk({
+  wagmiConfig,
+  clientId
+  metadata: {
+    name: 'Js Example',
+    clientId: 'your-client-id-from-didit-console',
+    clientSecret: 'your-client-secret-from-didit-console',
+    redirectUri: 'yout-redirect-uri-from-didit-console',
+  },
+  themeMode: 'dark',
+})
+
 ```
 
-#### Configure
+#### Trigger the modal
+
+To open didit-sdk modal you can use our web component or build your own button with the sdk actions. In this example we are going to use the <didit-button /> component.
+
+Web components are global html elements that don't require importing.
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML Example</title>
+  </head>
+  <body>
+    <didit-button></didit-button>
+    <script type="module" src="main.ts"></script>
+  </body>
+</html>
+```
+
+### Actions
+
+Actions are functions that will help you control the modal, subscribe to status change
+
+#### Open and close the modal
+
+```js
+const diditSDk = createDiditSdk({ wagmiConfig, clientId })
+
+diditSDk.openModal()
+
+diditSDk.closeModal()
+```
+
+#### Signout
+
+```js
+diditSDk.signOut()
+```
+
+#### DiditState
+
+```js
+diditSDk.subscribeDiditState(({ isAuthenticated, accessToken, user }) => {
+  console.log({
+    isAuthenticated,
+    accessToken,
+    user
+  })
+})
+
+// or
+
+const { isAuthenticated, accessToken, user } = diditSDk.getDiditState()
+```
 
 ##### Configure Didit provider
 

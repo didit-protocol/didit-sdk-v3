@@ -1,14 +1,14 @@
 export type ThemeType = 'dark' | 'light'
 
 export interface ThemeVariables {
-  '--modal-font-family'?: string
-  '--modal-font-size-master'?: string
-  '--modal-border-radius-master'?: string
-  '--modal-color-primary'?: string
-  '--modal-color-soft'?: string
-  '--modal-color-background'?: string
-  '--modal-color-foreground'?: string
-  '--modal-z-index'?: number
+  fontFamily?: string
+  fontSizeMaster?: string
+  borderRadiusMaster?: string
+  primaryColor?: string
+  softColor?: string
+  backgroundColor?: string
+  foregroundColor?: string
+  zIndex?: number
 }
 
 export type SpacingType =

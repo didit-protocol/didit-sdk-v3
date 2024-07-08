@@ -73,22 +73,20 @@ const diditFontFamily = '"Roboto", sans-serif'
 function getDiditThemeVariables(themeVariables?: ThemeVariables, themeType?: ThemeType) {
   if (themeType === 'light') {
     return {
-      '--dui-primary': themeVariables?.['--modal-color-primary'] || diditColorScheme.light.primary,
-      '--dui-soft': themeVariables?.['--modal-color-soft'] || diditColorScheme.light.soft,
-      '--dui-background':
-        themeVariables?.['--modal-color-background'] || diditColorScheme.light.white,
-      '--dui-foreground':
-        themeVariables?.['--modal-color-foreground'] || diditColorScheme.light.black,
+      '--dui-primary': themeVariables?.primaryColor || diditColorScheme.light.primary,
+      '--dui-soft': themeVariables?.softColor || diditColorScheme.light.soft,
+      '--dui-background': themeVariables?.backgroundColor || diditColorScheme.light.white,
+      '--dui-foreground': themeVariables?.foregroundColor || diditColorScheme.light.black,
       '--dui-black': diditColorScheme.light.black,
       '--dui-white': diditColorScheme.light.white
     }
   }
 
   return {
-    '--dui-primary': themeVariables?.['--modal-color-primary'] || diditColorScheme.dark.primary,
-    '--dui-soft': themeVariables?.['--modal-color-soft'] || diditColorScheme.dark.soft,
-    '--dui-background': themeVariables?.['--modal-color-background'] || diditColorScheme.dark.black,
-    '--dui-foreground': themeVariables?.['--modal-color-foreground'] || diditColorScheme.dark.white,
+    '--dui-primary': themeVariables?.primaryColor || diditColorScheme.dark.primary,
+    '--dui-soft': themeVariables?.softColor || diditColorScheme.dark.soft,
+    '--dui-background': themeVariables?.backgroundColor || diditColorScheme.dark.black,
+    '--dui-foreground': themeVariables?.foregroundColor || diditColorScheme.dark.white,
     '--dui-black': diditColorScheme.dark.black,
     '--dui-white': diditColorScheme.dark.white
   }
@@ -100,14 +98,10 @@ function createRootStyles(themeVariables?: ThemeVariables) {
       @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
       :root {
         --dui-modal-width: 400px;
-        --dui-font-family: ${unsafeCSS(themeVariables?.['--modal-font-family'] || diditFontFamily)};
-        --dui-font-size-master: ${unsafeCSS(
-          themeVariables?.['--modal-font-size-master'] || '10px'
-        )};
-        --dui-border-radius-master: ${unsafeCSS(
-          themeVariables?.['--modal-border-radius-master'] || '4px'
-        )};
-        --dui-z-index: ${unsafeCSS(themeVariables?.['--modal-z-index'] || 999)};
+        --dui-font-family: ${unsafeCSS(themeVariables?.fontFamily || diditFontFamily)};
+        --dui-font-size-master: ${unsafeCSS(themeVariables?.fontSizeMaster || '10px')};
+        --dui-border-radius-master: ${unsafeCSS(themeVariables?.borderRadiusMaster || '4px')};
+        --dui-z-index: ${unsafeCSS(themeVariables?.zIndex || 999)};
 
         --ui-font-family: var(--dui-font-family);
 

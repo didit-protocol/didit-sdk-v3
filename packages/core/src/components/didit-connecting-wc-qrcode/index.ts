@@ -83,7 +83,6 @@ export class DiditConnectingWcQrcode extends DiditWeb3Connecting {
 
     const imageSrc = this.walletConnect ? this.getWalletConnectImageUrl() : this.wallet?.image_url
 
-    // TODOX: check if theme is needed for ui-qr-code background color
     return html`
       <ui-qr-code
         size=${size}
