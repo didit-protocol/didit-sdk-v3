@@ -1,6 +1,6 @@
 {
   "name": "@didit-sdk/core",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-test.2",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -34,6 +34,7 @@
     "@wagmi/core": "^2.11.2",
     "react": "^18.3.1",
     "react-dom": "^18.2.0",
+    "tsup": "^8.1.0",
     "viem": "^2.15.1",
     "wagmi": "^2.10.8"
   },

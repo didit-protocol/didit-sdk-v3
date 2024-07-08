@@ -1,6 +1,6 @@
 {
   "name": "@didit-sdk/js",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-test.2",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -27,6 +27,7 @@
     "@didit-sdk/tsconfig": "workspace:*",
     "@wagmi/connectors": "^5.0.14",
     "@wagmi/core": "^2.11.2",
+    "tsup": "^8.1.0",
     "viem": "^2.15.1"
   },
   "peerDependencies": {

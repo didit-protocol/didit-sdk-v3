@@ -1,6 +1,6 @@
 {
   "name": "@didit-sdk/polyfills",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-test.2",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -24,7 +24,8 @@
   },
   "devDependencies": {
     "@didit-sdk/eslint-config": "workspace:*",
-    "@didit-sdk/tsconfig": "workspace:*"
+    "@didit-sdk/tsconfig": "workspace:*",
+    "tsup": "^8.1.0"
   },
   "keywords": [
     "sdk",

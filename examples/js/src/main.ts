@@ -2,8 +2,8 @@ import { arbitrum, mainnet } from '@wagmi/core/chains'
 import { createDiditSdk, defaultWagmiConfig } from '@didit-sdk/js'
 import { reconnect } from '@wagmi/core'
 
-const clientId = '1liQDdfL2aKpZlSHQTjeNQ'
-const clientSecret = '-3GLo9bqc7Y3EXLF57Adna0J_mobab2g1vyzYnnENsQ'
+const clientId = import.meta.env.DIDIT_CLIENT_ID
+const clientSecret = import.meta.env.DIDIT_CLIENT_SECRET
 
 // 1. Create wagmiConfig
 const wagmiConfig = defaultWagmiConfig({
@@ -23,6 +23,7 @@ const diditSDk = createDiditSdk({
   wagmiConfig,
   clientId,
   clientSecret,
+  redirectUri: 'http://localhost:3000/callback',
   themeMode: 'light',
   themeVariables: {
     primaryColor: '#FF0000'

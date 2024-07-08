@@ -1,15 +1,17 @@
 {
-  "name": "@examples/react",
-  "private": true,
+  "name": "@examples/next",
   "version": "1.0.0-test.2",
-  "type": "module",
+  "private": true,
   "scripts": {
-    "dev:example": "vite --port 3002",
-    "build:example": "vite build"
+    "dev:example": "next dev --port 3003",
+    "build:example": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@didit-sdk/react": "workspace:*",
     "@tanstack/react-query": "^5.49.2",
+    "next": "14.2.3",
     "react": "^18.3.1",
     "react-dom": "^18.2.0",
     "viem": "^2.15.1",
@@ -18,7 +20,10 @@
   "devDependencies": {
     "@didit-sdk/eslint-config": "workspace:*",
     "@didit-sdk/tsconfig": "workspace:*",
-    "@vitejs/plugin-react": "4.2.1",
-    "vite": "^5.3.1"
+    "@types/node": "^20.12.12",
+    "esbuild": "0.21.1",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.1.0",
+    "typescript": "5.5.3"
   }
 }

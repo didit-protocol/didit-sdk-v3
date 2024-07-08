@@ -1,5 +1,13 @@
 # @didit-sdk/js
 
+## 1.0.0-test.2
+
+### Patch Changes
+
+- react support
+- Updated dependencies
+  - @didit-sdk/core@1.0.0-test.2
+
 ## 1.0.0-alpha.1
 
 ### Major Changes

@@ -1,6 +1,6 @@
 {
   "name": "@didit-sdk/ui",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-test.2",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -28,7 +28,8 @@
     "@didit-sdk/tsconfig": "workspace:*",
     "@types/qrcode": "^1.5.5",
     "eslint-plugin-lit": "^1.11.0",
-    "eslint-plugin-wc": "^2.0.4"
+    "eslint-plugin-wc": "^2.0.4",
+    "tsup": "^8.1.0"
   },
   "keywords": [
     "ui",

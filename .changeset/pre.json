@@ -1,17 +1,21 @@
 {
-  "mode": "exit",
-  "tag": "alpha",
+  "mode": "pre",
+  "tag": "test",
   "initialVersions": {
-    "@examples/js": "5.0.0-alpha.0",
-    "@didit-sdk/core": "1.0.0-alpha.0",
-    "@didit-sdk/eslint-config": "1.0.0-alpha.0",
-    "@didit-sdk/js": "1.0.0-alpha.0",
-    "@didit-sdk/polyfills": "1.0.0-alpha.0",
-    "@didit-sdk/tsconfig": "1.0.0-alpha.0",
-    "@didit-sdk/ui": "1.0.0-alpha.0"
+    "@examples/js": "1.0.0-alpha.1",
+    "@examples/next": "1.0.0-alpha.1",
+    "@examples/react": "1.0.0-alpha.1",
+    "@didit-sdk/core": "1.0.0-alpha.1",
+    "@didit-sdk/eslint-config": "1.0.0-alpha.1",
+    "@didit-sdk/js": "1.0.0-alpha.1",
+    "@didit-sdk/polyfills": "1.0.0-alpha.1",
+    "@didit-sdk/react": "0.0.1",
+    "@didit-sdk/tsconfig": "1.0.0-alpha.1",
+    "@didit-sdk/ui": "1.0.0-alpha.1"
   },
   "changesets": [
     "afraid-kiwis-talk",
-    "giant-timers-judge"
+    "giant-timers-judge",
+    "smart-cherries-suffer"
   ]
 }

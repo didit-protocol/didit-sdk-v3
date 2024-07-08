@@ -3,7 +3,8 @@
   "compilerOptions": {
     "jsx": "react",
     "noEmit": true,
-    "incremental": true
+    "incremental": true,
+    "types": ["node", "vite/client"]
   },
   "include": ["src"]
 }

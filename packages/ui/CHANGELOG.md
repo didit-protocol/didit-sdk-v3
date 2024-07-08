@@ -1,5 +1,11 @@
 # @didit-sdk/ui
 
+## 1.0.0-test.2
+
+### Patch Changes
+
+- react support
+
 ## 1.0.0-alpha.1
 
 ### Major Changes
