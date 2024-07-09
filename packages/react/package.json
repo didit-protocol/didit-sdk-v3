@@ -1,6 +1,6 @@
 {
   "name": "@didit-sdk/react",
-  "version": "1.0.0-test.1",
+  "version": "1.0.0",
   "type": "module",
   "main": "./dist/esm/exports/index.js",
   "types": "./dist/types/exports/index.d.ts",

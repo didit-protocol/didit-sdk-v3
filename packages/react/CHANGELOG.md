@@ -1,5 +1,23 @@
 # @didit-sdk/react
 
+## 1.0.0
+
+### Major Changes
+
+- 8245566: first major realease with react and next js ssr support
+- a293cea: react support and next js ssr
+
+### Patch Changes
+
+- 8245566: make all packages in the same version
+- 06cfd23: react support
+- Updated dependencies [add6bf9]
+- Updated dependencies [8245566]
+- Updated dependencies [add6bf9]
+- Updated dependencies [8245566]
+- Updated dependencies [06cfd23]
+  - @didit-sdk/core@1.0.0
+
 ## 1.0.0-test.1
 
 ### Major Changes
