@@ -1,0 +1,54 @@
+{
+  "name": "@didit-sdk/ui",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "!tsconfig.tsbuildinfo"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "watch": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "test": "vitest run --dir tests",
+    "clean:build": "rm -rf dist .tubro node_modules"
+  },
+  "dependencies": {
+    "lit": "^3.1.0",
+    "qrcode": "^1.5.3"
+  },
+  "devDependencies": {
+    "@didit-sdk/eslint-config": "workspace:*",
+    "@didit-sdk/tsconfig": "workspace:*",
+    "@types/qrcode": "^1.5.5",
+    "eslint-plugin-lit": "^1.11.0",
+    "eslint-plugin-wc": "^2.0.4"
+  },
+  "keywords": [
+    "ui",
+    "didit",
+    "web3",
+    "crypto",
+    "siwe",
+    "walletconnect",
+    "gamium",
+    "ethereum"
+  ],
+  "author": "Didit <didit.me>",
+  "license": "MIT",
+  "homepage": "https://docs.didit.me/docs/unified-access-sdk",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/didit-protocol/didit-sdk-v3.git"
+  },
+  "bugs": {
+    "url": "git+https://github.com/didit-protocol/didit-sdk-v3/issues"
+  }
+}

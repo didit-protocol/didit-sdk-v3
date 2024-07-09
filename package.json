@@ -1,38 +1,39 @@
 {
-  "name": "didit-protocol",
+  "name": "didit-sdk",
   "version": "0.0.0",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "build": "turbo run build --cache-dir=.turbo",
     "watch": "turbo run watch --concurrency=50 --continue",
+    "examples": "turbo run dev:example",
+    "examples:js": "turbo run dev:example --filter=@examples/js",
+    "examples:react": "turbo run dev:example --filter=@examples/react",
+    "examples:next": "turbo run dev:example --filter=@examples/next",
+    "examples:next-pages": "turbo run dev:example --filter=@examples/next-pages",
     "test": "turbo run test --cache-dir=.turbo",
     "typecheck": "turbo run typecheck --cache-dir=.turbo",
     "lint": "turbo run lint --cache-dir=.turbo",
+    "lint:fix": "turbo run lint:fix --cache-dir=.turbo",
     "prettier": "prettier --check .",
     "prettier:format": "prettier --write .",
     "build:clean": "turbo run build:clean",
-    "clean": "rm -rf `find . -type d -name node_modules -o -name dist -o -name .next -o -name out`; rm pnpm-lock.yaml",
+    "CI": "pnpm build; pnpm lint; pnpm typecheck; pnpm test",
+    "clean": "turbo run clean:build",
     "changeset:pre": "changeset pre enter",
     "changeset:pre:exit": "changeset pre exit",
+    "changeset:add": "changeset",
     "changeset:v": "changeset; changeset version",
-    "publish:latest": "changeset publish",
-    "publish:alpha": "pnpm install; turbo run build lint test; changeset publish --tag alpha",
-    "publish:beta": "pnpm install; turbo run build lint test; changeset publish --tag beta",
-    "publish:test": "pnpm install; turbo run build lint test; changeset publish --tag test",
+    "publish:latest": "pnpm install; pnpm build; changeset publish",
+    "publish:alpha": "pnpm install; pnpm build; changeset publish --tag alpha",
+    "publish:beta": "pnpm install; pnpm build; changeset publish --tag beta",
+    "publish:test": "pnpm install; pnpm build; changeset publish --tag test",
     "postinstall": "manypkg check",
     "manypkg:check": "manypkg check",
     "manypkg:fix": "manypkg fix",
     "prepare": "husky",
     "commit": "git-cz"
   },
-  "workspaces": [
-    "packages/eslint-config",
-    "packages/tsconfig",
-    "packages/core",
-    "apps/*",
-    "examples/*"
-  ],
   "keywords": [
     "didit",
     "web3",
@@ -43,16 +44,16 @@
     "ethereum"
   ],
   "author": "Didit <didit.me>",
-  "license": "ISC",
-  "homepage": "TODO: didit new repo",
+  "license": "MIT",
+  "homepage": "https://docs.didit.me/docs/unified-access-sdk",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/diditme/didit.git"
+    "url": "git+https://github.com/didit-protocol/didit-sdk-v3.git"
   },
   "bugs": {
-    "url": "git+https://github.com/diditme/didit/issues"
+    "url": "git+https://github.com/didit-protocol/didit-sdk-v3/issues"
   },
-  "packageManager": "pnpm@8.15.7",
+  "packageManager": "pnpm@8.15.8",
   "config": {
     "commitizen": {
       "path": "@commitlint/cz-commitlint"
@@ -63,16 +64,26 @@
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@commitlint/cz-commitlint": "^19.2.0",
-    "@didit-protocol/eslint-config": "workspace:*",
-    "@didit-protocol/tsconfig": "workspace:*",
+    "@didit-sdk/eslint-config": "workspace:*",
+    "@didit-sdk/tsconfig": "workspace:*",
     "@manypkg/cli": "^0.21.4",
     "@types/node": "^20.12.12",
+    "@types/react": "^18.3.3",
+    "@typescript-eslint/eslint-plugin": "^7.15.0",
+    "@typescript-eslint/parser": "^7.13.1",
     "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-require-extensions": "^0.1.3",
     "husky": "^9.0.11",
     "inquirer": "9",
     "prettier": "3.1.1",
-    "turbo": "1.13.3",
-    "typescript": "5.3.3",
+    "turbo": "2.0.6",
+    "typescript": "5.5.3",
     "vitest": "1.6.0"
+  },
+  "volta": {
+    "node": "20.14.0",
+    "pnpm": "8.15.8"
   }
 }

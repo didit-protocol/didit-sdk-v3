@@ -1,0 +1,12 @@
+{
+  "extends": "@didit-sdk/tsconfig/base.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "noEmit": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}

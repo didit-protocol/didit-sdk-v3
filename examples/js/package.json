@@ -1,0 +1,21 @@
+{
+  "name": "@examples/js",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev:example": "vite --port 3000",
+    "build:example": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@didit-sdk/js": "workspace:*",
+    "@wagmi/connectors": "^5.0.14",
+    "@wagmi/core": "^2.11.2",
+    "viem": "^2.15.1"
+  },
+  "devDependencies": {
+    "typescript": "5.5.3",
+    "vite": "^5.3.1"
+  }
+}

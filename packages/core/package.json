@@ -1,27 +1,57 @@
 {
-  "name": "@didit-protocol/core",
-  "version": "0.0.1",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "name": "@didit-sdk/core",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "!tsconfig.tsbuildinfo"
   ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts",
-    "watch": "npm run build -- --watch",
+    "build": "tsc --build",
+    "watch": "tsc --watch",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "test": "vitest run --dir tests",
-    "clean": "rm -rf dist"
+    "clean:build": "rm -rf dist .tubro node_modules"
+  },
+  "dependencies": {
+    "@didit-sdk/polyfills": "workspace:*",
+    "@didit-sdk/ui": "workspace:*",
+    "@walletconnect/ethereum-provider": "^2.13.1",
+    "crypto-js": "^4.2.0",
+    "valtio": "1.11.2"
   },
   "devDependencies": {
-    "@didit-protocol/eslint-config": "workspace:*",
-    "@didit-protocol/tsconfig": "workspace:*",
-    "tsup": "^8.0.2"
+    "@didit-sdk/eslint-config": "workspace:*",
+    "@didit-sdk/tsconfig": "workspace:*",
+    "@types/crypto-js": "^4.2.2",
+    "@wagmi/connectors": "^5.0.14",
+    "@wagmi/core": "^2.11.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.2.0",
+    "viem": "^2.15.1",
+    "wagmi": "^2.10.8"
+  },
+  "peerDependencies": {
+    "@wagmi/connectors": ">=4",
+    "@wagmi/core": ">=2",
+    "react": ">=18",
+    "react-dom": ">=18",
+    "viem": ">=2"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
   },
   "keywords": [
     "didit",
@@ -32,6 +62,14 @@
     "gamium",
     "ethereum"
   ],
-  "author": "",
-  "license": "MIT"
+  "author": "Didit <didit.me>",
+  "license": "MIT",
+  "homepage": "https://docs.didit.me/docs/unified-access-sdk",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/didit-protocol/didit-sdk-v3.git"
+  },
+  "bugs": {
+    "url": "git+https://github.com/didit-protocol/didit-sdk-v3/issues"
+  }
 }

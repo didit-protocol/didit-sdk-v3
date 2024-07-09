@@ -1,0 +1,83 @@
+{
+  "name": "@didit-sdk/react",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/esm/exports/index.js",
+  "types": "./dist/types/exports/index.d.ts",
+  "files": [
+    "dist",
+    "!tsconfig.tsbuildinfo"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/types/exports/index.d.ts",
+      "import": "./dist/esm/exports/index.js",
+      "default": "./dist/esm/exports/index.js"
+    },
+    "./config": {
+      "types": "./dist/types/exports/config.d.ts",
+      "import": "./dist/esm/exports/config.js",
+      "default": "./dist/esm/exports/config.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types/exports/index.d.ts"
+      ],
+      "config": [
+        "./dist/types/exports/config.d.ts"
+      ]
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "watch": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "test": "vitest run --dir tests",
+    "clean:build": "rm -rf dist .tubro node_modules"
+  },
+  "dependencies": {
+    "@didit-sdk/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@didit-sdk/eslint-config": "workspace:*",
+    "@didit-sdk/tsconfig": "workspace:*",
+    "react": "^18.3.1",
+    "react-dom": "^18.2.0",
+    "viem": "^2.15.1",
+    "wagmi": "^2.10.8"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18",
+    "viem": ">=2",
+    "wagmi": ">=2"
+  },
+  "keywords": [
+    "sdk",
+    "wagmi",
+    "didit",
+    "web3",
+    "crypto",
+    "siwe",
+    "walletconnect",
+    "gamium",
+    "ethereum"
+  ],
+  "author": "Didit <didit.me>",
+  "license": "MIT",
+  "homepage": "https://docs.didit.me/docs/unified-access-sdk",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/didit-protocol/didit-sdk-v3.git"
+  },
+  "bugs": {
+    "url": "git+https://github.com/didit-protocol/didit-sdk-v3/issues"
+  }
+}
