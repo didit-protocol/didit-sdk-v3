@@ -6,6 +6,6 @@
     "outDir": "./dist/esm",
     "declarationDir": "./dist/types"
   },
-  "include": ["exports", "src"],
+  "include": ["exports", "src", "tests"],
   "exclude": ["node_modules", "dist", ".turbo"]
 }
