@@ -7,6 +7,7 @@ declare global {
   namespace JSX {
     interface IntrinsicElements {
       'didit-button': Pick<DiditButton, 'disabled' | 'label' | 'loadingLabel'>
+      'didit-callback': Pick<DiditButton, 'disabled'>
     }
   }
 }

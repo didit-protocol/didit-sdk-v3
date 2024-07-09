@@ -2,8 +2,10 @@
   "extends": "@didit-sdk/tsconfig/base.json",
   "compilerOptions": {
     "jsx": "react",
-    "incremental": false,
+    "composite": true,
+    "outDir": "./dist/esm",
+    "declarationDir": "./dist/types"
   },
-  "include": ["src", "tests"],
+  "include": ["exports", "src", "tests"],
   "exclude": ["node_modules", "dist", ".turbo"]
 }

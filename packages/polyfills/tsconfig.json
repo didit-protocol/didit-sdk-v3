@@ -1,8 +1,9 @@
 {
   "extends": "@didit-sdk/tsconfig/base.json",
   "compilerOptions": {
-    "incremental": false,
+    "composite": true,
+    "outDir": "./dist/esm",
+    "declarationDir": "./dist/types"
   },
-  "include": ["src", "tests"],
-  "exclude": ["node_modules", "dist", ".turbo"]
+  "include": ["index.ts"],
 }

@@ -10,6 +10,7 @@
     "examples:js": "turbo run dev:example --filter=@examples/js",
     "examples:react": "turbo run dev:example --filter=@examples/react",
     "examples:next": "turbo run dev:example --filter=@examples/next",
+    "examples:next-pages": "turbo run dev:example --filter=@examples/next-pages",
     "test": "turbo run test --cache-dir=.turbo",
     "typecheck": "turbo run typecheck --cache-dir=.turbo",
     "lint": "turbo run lint --cache-dir=.turbo",
@@ -18,7 +19,7 @@
     "prettier:format": "prettier --write .",
     "build:clean": "turbo run build:clean",
     "CI": "pnpm build; pnpm lint; pnpm typecheck; pnpm test",
-    "clean": "rm -rf `find . -type d -name node_modules -o -name dist -o -name .next -o -name out`; rm pnpm-lock.yaml",
+    "clean": "turbo run clean:build",
     "changeset:pre": "changeset pre enter",
     "changeset:pre:exit": "changeset pre exit",
     "changeset:add": "changeset",
@@ -44,13 +45,13 @@
   ],
   "author": "Didit <didit.me>",
   "license": "MIT",
-  "homepage": "TODO: didit new repo",
+  "homepage": "https://docs.didit.me/docs/unified-access-sdk",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/diditme/didit.git"
+    "url": "git+https://github.com/didit-protocol/didit-sdk-v3.git"
   },
   "bugs": {
-    "url": "git+https://github.com/diditme/didit/issues"
+    "url": "git+https://github.com/didit-protocol/didit-sdk-v3/issues"
   },
   "packageManager": "pnpm@8.15.8",
   "config": {

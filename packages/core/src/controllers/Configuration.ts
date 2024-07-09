@@ -9,7 +9,6 @@ export interface ConfigurationControllerState {
   clientSecret?: string
   claims?: `${string}:${string}`
   scope?: string
-  enabledSocialLogins?: boolean
   metadata?: Metadata
   sdkVersion: DiditSdkVersion
 }

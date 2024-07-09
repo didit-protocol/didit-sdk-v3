@@ -24,8 +24,6 @@ import { profileSvg } from '../../assets/icons/profile.js'
 import { networkSvg } from '../../assets/icons/network.js'
 import { logoutSvg } from '../../assets/icons/logout.js'
 
-// TODOX: --local-color is not define
-
 const svgOptions: Record<IconType, TemplateResult<2>> = {
   apple: appleSvg,
   arrowLeft: arrowLeftSvg,

@@ -1,23 +1,24 @@
 {
   "name": "@didit-sdk/core",
-  "version": "1.0.0-alpha.1",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "version": "1.0.0-test.2",
+  "type": "module",
+  "main": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "!tsconfig.tsbuildinfo"
   ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts",
-    "watch": "npm run build -- --watch",
+    "build": "tsc --build",
+    "watch": "tsc --watch",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "test": "vitest run --dir tests",
-    "clean": "rm -rf dist"
+    "clean:build": "rm -rf dist .tubro node_modules"
   },
   "dependencies": {
     "@didit-sdk/polyfills": "workspace:*",
@@ -63,12 +64,12 @@
   ],
   "author": "Didit <didit.me>",
   "license": "MIT",
-  "homepage": "TODO: didit new repo",
+  "homepage": "https://docs.didit.me/docs/unified-access-sdk",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/diditme/didit.git"
+    "url": "git+https://github.com/didit-protocol/didit-sdk-v3.git"
   },
   "bugs": {
-    "url": "git+https://github.com/diditme/didit/issues"
+    "url": "git+https://github.com/didit-protocol/didit-sdk-v3/issues"
   }
 }

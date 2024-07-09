@@ -4,7 +4,7 @@ import { QrCodeUtil } from '../../utils/QrCode.js'
 import { resetStyles } from '../../utils/ThemeUtil.js'
 import { customElement } from '../../utils/WebComponentsUtil.js'
 import styles from './styles.js'
-import type { ThemeMode } from '../../index.js'
+import type { ThemeType } from '../../utils/TypeUtil.js'
 
 @customElement('ui-qr-code')
 export class UiQrCode extends LitElement {
@@ -17,7 +17,7 @@ export class UiQrCode extends LitElement {
 
   @property() public imageSrc?: string = undefined
 
-  @property() public theme?: ThemeMode = 'light'
+  @property() public theme?: ThemeType = 'light'
 
   @property() public alt?: string = undefined
 

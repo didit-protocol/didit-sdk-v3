@@ -1,5 +1,6 @@
 export const ConstantsUtil = {
   // Web3 wallets
+  WALLET_CONNECT_PROJECT_ID: 'b0337f8e2c56c722a1fb3a4cdf893249',
   WALLET_CONNECT_CONNECTOR_ID: 'walletConnect',
   INJECTED_CONNECTOR_ID: 'injected',
   COINBASE_CONNECTOR_ID: 'coinbaseWallet',
@@ -19,6 +20,8 @@ export const ConstantsUtil = {
   ONE_SEC_MS: 1_000,
 
   // DIDIT AUTH API
+  DIDIT_DOMAIN: 'didit.me',
+  DIDIT_STAGING_BASE_AUTH_URL: 'https://apx.staging.didit.me',
   DIDIT_BASE_AUTH_URL: 'https://apx.staging.didit.me',
   DIDIT_WALLET_AUTH_PATH: '/auth/v2/wallet-authorization/',
   DIDIT_WALLET_TOKEN_PATH: '/auth/v2/token/',

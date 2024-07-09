@@ -53,16 +53,18 @@ type Config = ReactConfig | CoreConfig
 interface DiditClientOptions<C extends Config> {
   connectionControllerClient: ConnectionControllerClient
   diditAuthControllerClient: DiditAuthControllerClient
-  projectId: ConfigurationControllerState['projectId']
   clientId: ConfigurationControllerState['clientId']
   clientSecret?: ConfigurationControllerState['clientSecret']
+  projectId?: ConfigurationControllerState['projectId']
   metadata?: ConfigurationControllerState['metadata']
+  authBaseUrl?: DiditApiControllerState['authBaseUrl']
   walletAuthBaseUrl?: DiditApiControllerState['walletAuthBaseUrl']
   walletAuthorizationPath?: DiditApiControllerState['walletAuthorizationPath']
   tokenAuthorizationPath?: DiditApiControllerState['tokenAuthorizationPath']
   redirectUri?: DiditApiControllerState['redirectUri']
   claims?: ConfigurationControllerState['claims']
   scope?: ConfigurationControllerState['scope']
+  isStaging?: DiditApiControllerState['isStaging']
   onSignIn?: DiditAuthControllerClient['onSignIn']
   onSignOut?: DiditAuthControllerClient['onSignOut']
   onError?: DiditAuthControllerClient['onError']
@@ -77,16 +79,18 @@ export type DiditSdkOptions<C extends Config> = Omit<
   'connectionControllerClient' | 'diditAuthControllerClient'
 >
 
+export interface DiditUser {
+  id: string
+  identifier: string
+  identifierType: DiditAuthMethod
+}
+
 export interface DiditSdkState
   extends Omit<
     AccountControllerState,
     'network' | 'requestedNetworks' | 'diditSession' | 'timeout'
   > {
-  user?: {
-    id: string
-    identifier: string
-    identifierType: DiditAuthMethod
-  }
+  user?: DiditUser
   status: DiditAuthStatus
   selectedNetworkId: number | undefined
   selectedNetworkName: string | undefined
@@ -109,9 +113,6 @@ export class DiditSdk {
     const { wagmiConfig, _sdkVersion, scope, claims, ...diditSdkOptions } = options
     if (!wagmiConfig) {
       throw new Error('diditsdk:constructor: wagmiConfig is required')
-    }
-    if (!diditSdkOptions.projectId) {
-      throw new Error('diditsdk:constructor: projectId is required')
     }
     if (!diditSdkOptions.clientId) {
       throw new Error('diditsdk:constructor: clientId is required')
@@ -150,8 +151,8 @@ export class DiditSdk {
           chainId,
           nonce: nonce.policy,
           version: '1',
-          domain: 'didit.me',
-          uri: 'https://apx.didit.me'
+          domain: ConstantsUtil.DIDIT_DOMAIN,
+          uri: ConstantsUtil.DIDIT_BASE_AUTH_URL
         })
         const signature = await ConnectionController.signMessage(message)
         const tokens = await diditAuthClientMethods.verifyMessage({
@@ -393,12 +394,15 @@ export class DiditSdk {
     ConnectorController.setWcWallets(wcWallets)
     ConnectionController.setClient(options.connectionControllerClient)
     DiditAuthController.setClient(options.diditAuthControllerClient)
-    ConfigurationController.setProjectId(options.projectId)
+    ConfigurationController.setProjectId(
+      options.projectId ?? ConstantsUtil.WALLET_CONNECT_PROJECT_ID
+    )
     ConfigurationController.setClientId(options.clientId)
     ConfigurationController.setClaims(options.claims ?? ConstantsUtil.DIDIT_CLAIMS)
     ConfigurationController.setScope(options.scope ?? ConstantsUtil.DIDIT_SCOPE)
     ConfigurationController.setSdkVersion(options._sdkVersion)
-    DiditApiController.setAuthBaseUrl(options.walletAuthBaseUrl)
+    DiditApiController.setAuthBaseUrl(options.authBaseUrl)
+    DiditApiController.setWalletAuthBaseUrl(options.walletAuthBaseUrl)
     if (options.walletAuthorizationPath) {
       DiditApiController.setWalletAuthorizationPath(options.walletAuthorizationPath)
     }
@@ -412,9 +416,15 @@ export class DiditSdk {
     if (options.redirectUri) {
       DiditApiController.setRedirectUri(options.redirectUri)
     }
+
+    if (options.isStaging) {
+      DiditApiController.setStaging(options.isStaging)
+    }
+
     if (options.metadata) {
       ConfigurationController.setMetadata(options.metadata)
     }
+
     if (options.themeMode) {
       ThemeController.setThemeMode(options.themeMode)
     }
