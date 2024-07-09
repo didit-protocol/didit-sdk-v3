@@ -1,7 +1,7 @@
 {
   "name": "@examples/js",
   "private": true,
-  "version": "1.0.0-test.2",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev:example": "vite --port 3000",
