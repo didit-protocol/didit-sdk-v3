@@ -57,6 +57,7 @@ interface DiditClientOptions<C extends Config> {
   clientSecret?: ConfigurationControllerState['clientSecret']
   projectId?: ConfigurationControllerState['projectId']
   metadata?: ConfigurationControllerState['metadata']
+  authBaseUrl?: DiditApiControllerState['authBaseUrl']
   walletAuthBaseUrl?: DiditApiControllerState['walletAuthBaseUrl']
   walletAuthorizationPath?: DiditApiControllerState['walletAuthorizationPath']
   tokenAuthorizationPath?: DiditApiControllerState['tokenAuthorizationPath']
@@ -400,7 +401,8 @@ export class DiditSdk {
     ConfigurationController.setClaims(options.claims ?? ConstantsUtil.DIDIT_CLAIMS)
     ConfigurationController.setScope(options.scope ?? ConstantsUtil.DIDIT_SCOPE)
     ConfigurationController.setSdkVersion(options._sdkVersion)
-    DiditApiController.setAuthBaseUrl(options.walletAuthBaseUrl)
+    DiditApiController.setAuthBaseUrl(options.authBaseUrl)
+    DiditApiController.setWalletAuthBaseUrl(options.walletAuthBaseUrl)
     if (options.walletAuthorizationPath) {
       DiditApiController.setWalletAuthorizationPath(options.walletAuthorizationPath)
     }

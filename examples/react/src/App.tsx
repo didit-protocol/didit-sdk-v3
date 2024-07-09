@@ -17,6 +17,7 @@ export default function App() {
         <ModalButton />
       </div>
       <UserStatus />
+      <didit-callback></didit-callback>
     </DiditSdkProvider>
   )
 }

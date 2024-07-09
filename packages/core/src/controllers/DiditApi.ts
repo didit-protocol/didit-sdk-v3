@@ -32,6 +32,7 @@ const wcAssetsApiUrl = ConstantsUtil.WC_ASSETS_API_URL
 // -- Types --------------------------------------------- //
 export interface DiditApiControllerState {
   api: FetchUtil | null
+  authBaseUrl: string
   walletAuthBaseUrl: string
   walletAuthorizationPath: string
   tokenAuthorizationPath: string
@@ -45,6 +46,7 @@ type StateKey = keyof DiditApiControllerState
 // -- State --------------------------------------------- //
 const state = proxy<DiditApiControllerState>({
   api: null,
+  authBaseUrl: diditAuthBaseUrl,
   walletAuthBaseUrl: diditAuthBaseUrl,
   walletAuthorizationPath: diditWalletAuthPath,
   tokenAuthorizationPath: diditWalletTokenPath,
@@ -67,6 +69,15 @@ export const DiditApiController = {
   },
 
   setAuthBaseUrl(baseUrl?: string) {
+    if (baseUrl) {
+      state.authBaseUrl = baseUrl
+    } else {
+      const baseUri = state.isStaging ? diditAuthStagingBaseUrl : diditAuthBaseUrl
+      state.authBaseUrl = baseUri
+    }
+  },
+
+  setWalletAuthBaseUrl(baseUrl?: string) {
     if (baseUrl) {
       state.walletAuthBaseUrl = baseUrl
       this._initializeApi(baseUrl)
@@ -157,7 +168,10 @@ export const DiditApiController = {
      * Introspect token should call didit api directly this.baseAuthUrl is
      * override by the user to implement custom auth endpoints
      */
-    const response = await state.api?.postWithBaseUrl<DiditTokenInfo>(diditAuthBaseUrl, {
+
+    const apiUrl = state.isStaging ? diditAuthStagingBaseUrl : diditAuthBaseUrl
+
+    const response = await state.api?.postWithBaseUrl<DiditTokenInfo>(apiUrl, {
       path: introspectPath,
       headers
     })
@@ -173,7 +187,8 @@ export const DiditApiController = {
       grant_type: refreshGrantType,
       refresh_token: refreshToken
     }
-    const response = await state.api?.postWithBaseUrl<DiditTokenAuthorization>(diditAuthBaseUrl, {
+    const apiUrl = state.isStaging ? diditAuthStagingBaseUrl : diditAuthBaseUrl
+    const response = await state.api?.postWithBaseUrl<DiditTokenAuthorization>(apiUrl, {
       path: refreshTokenPath,
       body: data,
       headers
@@ -191,7 +206,7 @@ export const DiditApiController = {
     tokenBody.append('grant_type', emailGrantType)
     tokenBody.append('redirect_uri', state.redirectUri || '')
 
-    const response = await state.api?.postWithBaseUrl<DiditTokenAuthorization>(diditAuthBaseUrl, {
+    const response = await state.api?.postWithBaseUrl<DiditTokenAuthorization>(state.authBaseUrl, {
       path: emailTokenPath,
       body: tokenBody
     })
@@ -200,7 +215,8 @@ export const DiditApiController = {
   },
 
   async logoutSocialProvider(accessToken: string) {
-    const res = await state.api?.getWithBaseUrl<null>(diditAuthBaseUrl, {
+    const apiUrl = state.isStaging ? diditAuthStagingBaseUrl : diditAuthBaseUrl
+    const res = await state.api?.getWithBaseUrl<null>(apiUrl, {
       path: emailLogoutPath,
       headers: {
         Authorization: `Bearer ${accessToken}`

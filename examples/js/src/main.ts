@@ -2,8 +2,8 @@ import { arbitrum, mainnet } from '@wagmi/core/chains'
 import { createDiditSdk, defaultWagmiConfig } from '@didit-sdk/js'
 import { reconnect } from '@wagmi/core'
 
-const clientId = import.meta.env.DIDIT_CLIENT_ID
-const clientSecret = import.meta.env.DIDIT_CLIENT_SECRET
+const clientId = import.meta.env.VITE_DIDIT_CLIENT_ID
+const clientSecret = import.meta.env.VITE_DIDIT_CLIENT_SECRET
 
 // 1. Create wagmiConfig
 const wagmiConfig = defaultWagmiConfig({

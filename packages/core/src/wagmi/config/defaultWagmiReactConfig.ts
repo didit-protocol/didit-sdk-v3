@@ -1,8 +1,7 @@
 import '@didit-sdk/polyfills'
 
-import { http } from 'viem'
 import type { CreateConfigParameters, CreateConnectorFn, Config } from 'wagmi'
-import { createConfig } from 'wagmi'
+import { createConfig, http } from 'wagmi'
 import { coinbaseWallet, walletConnect, injected } from 'wagmi/connectors'
 import { ConstantsUtil } from '../../utils/index.js'
 

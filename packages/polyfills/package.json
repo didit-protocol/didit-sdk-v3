@@ -1,31 +1,30 @@
 {
   "name": "@didit-sdk/polyfills",
   "version": "1.0.0-test.2",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "type": "module",
+  "main": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "!tsconfig.tsbuildinfo"
   ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts",
-    "watch": "npm run build -- --watch",
+    "build": "tsc --build",
+    "watch": "tsc --watch",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "test": "vitest run --dir tests",
-    "clean": "rm -rf dist"
+    "clean:build": "rm -rf dist .tubro node_modules"
   },
   "dependencies": {
     "buffer": "^6.0.3"
   },
   "devDependencies": {
     "@didit-sdk/eslint-config": "workspace:*",
-    "@didit-sdk/tsconfig": "workspace:*",
-    "tsup": "^8.1.0"
+    "@didit-sdk/tsconfig": "workspace:*"
   },
   "keywords": [
     "sdk",

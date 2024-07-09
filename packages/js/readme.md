@@ -39,7 +39,7 @@ npm i @didit-sdk/js @wagmi/connectors @wagmi/core viem
 
 ### Configure your didit app
 
-Create an app at [Didit Console](https://business.didit.me) and obtain your clientid and client secret
+Create an app at [Business Console](https://business.didit.me) and obtain your clientid and client secret
 
 ### Implementation
 

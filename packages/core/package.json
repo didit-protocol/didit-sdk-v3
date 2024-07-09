@@ -1,23 +1,24 @@
 {
   "name": "@didit-sdk/core",
   "version": "1.0.0-test.2",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "type": "module",
+  "main": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "!tsconfig.tsbuildinfo"
   ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts",
-    "watch": "npm run build -- --watch",
+    "build": "tsc --build",
+    "watch": "tsc --watch",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "test": "vitest run --dir tests",
-    "clean": "rm -rf dist"
+    "clean:build": "rm -rf dist .tubro node_modules"
   },
   "dependencies": {
     "@didit-sdk/polyfills": "workspace:*",
@@ -34,7 +35,6 @@
     "@wagmi/core": "^2.11.2",
     "react": "^18.3.1",
     "react-dom": "^18.2.0",
-    "tsup": "^8.1.0",
     "viem": "^2.15.1",
     "wagmi": "^2.10.8"
   },

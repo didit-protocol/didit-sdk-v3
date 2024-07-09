@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import { Inter as interFonts } from 'next/font/google'
 import { cookieToInitialState } from 'wagmi'
 import { headers } from 'next/headers'
-import { wagmiConfig } from '@/config'
 import DiditSdkProvider from '@/context'
 import './globals.css'
+import { wagmiConfig } from '@/config'
 
 const inter = interFonts({ subsets: ['latin'] })
 

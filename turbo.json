@@ -16,6 +16,9 @@
     "typecheck": {},
     "lint": {},
     "lint:fix": {},
+    "clean:build": {
+      "cache": false
+    },
     "dev:example": {
       "cache": false
     }
