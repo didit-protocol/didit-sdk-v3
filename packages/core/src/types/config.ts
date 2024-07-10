@@ -37,6 +37,9 @@ type EventKind =
   | 'EMAIL_SUBMITTED'
   | 'SWITCH_NETWORK'
   | 'CLICK_PROFILE_LINK'
+  | 'CLICK_HELP_LINK'
+  | 'SWITCH_NETWORK_SUCCESS'
+  | 'SWITCH_NETWORK_ERROR'
 
 export interface Event {
   type: 'track'

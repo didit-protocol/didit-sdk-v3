@@ -61,7 +61,7 @@ export default css`
   }
 
   .ui-font-title-5 {
-    font-size: var(--ui-font-size-small);
+    font-size: var(--ui-font-size-smallm);
     font-weight: var(--ui-font-weight-medium);
     letter-spacing: var(--ui-letter-spacing-medium);
   }
@@ -73,7 +73,7 @@ export default css`
   }
 
   .ui-font-paragraph-2 {
-    font-size: var(--ui-font-size-small);
+    font-size: var(--ui-font-size-smallx);
     font-weight: var(--ui-font-weight-light);
     letter-spacing: var(--ui-letter-spacing-mini);
   }

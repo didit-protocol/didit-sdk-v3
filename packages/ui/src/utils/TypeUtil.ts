@@ -107,6 +107,9 @@ export type IconType =
   | 'profile'
   | 'network'
   | 'logout'
+  | 'tokens'
+  | 'card'
+  | 'shield'
 
 export type TagType = 'default' | 'primary' | 'secondary' | 'error' | 'success'
 

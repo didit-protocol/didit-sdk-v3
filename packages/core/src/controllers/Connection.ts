@@ -100,6 +100,10 @@ export const ConnectionController = {
     return this._getClient().signMessage(message)
   },
 
+  async switchNetwork(networkId: number) {
+    await this._getClient().switchNetwork(networkId)
+  },
+
   checkInstalled(ids?: string[]) {
     return this._getClient().checkInstalled?.(ids)
   },

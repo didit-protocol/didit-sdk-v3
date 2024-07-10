@@ -11,6 +11,7 @@ import {
   NotificationsController,
   RouterController
 } from '../../controllers/index.js'
+import { CoreHelperUtil } from '../../utils/CoreHelperUtil.js'
 
 @customElement('didit-profile-view')
 export class diditProfileView extends LitElement {
@@ -134,7 +135,7 @@ export class diditProfileView extends LitElement {
 
   private onProfile() {
     EventsController.sendEvent({ type: 'track', event: 'CLICK_PROFILE_LINK' })
-    console.info('TODO: Open profile link')
+    CoreHelperUtil.openHref(`https://profile.didit.com/${this.identifier}`, '_blank')
   }
 
   private onNetworks() {

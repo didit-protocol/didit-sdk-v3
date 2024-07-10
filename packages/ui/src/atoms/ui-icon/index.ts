@@ -23,6 +23,9 @@ import { spinnerSvg } from '../../assets/icons/spinner.js'
 import { profileSvg } from '../../assets/icons/profile.js'
 import { networkSvg } from '../../assets/icons/network.js'
 import { logoutSvg } from '../../assets/icons/logout.js'
+import { tokensSvg } from '../../assets/icons/tokens.js'
+import { cardSvg } from '../../assets/icons/card.js'
+import { shieldSvg } from '../../assets/icons/shield.js'
 
 const svgOptions: Record<IconType, TemplateResult<2>> = {
   apple: appleSvg,
@@ -40,7 +43,10 @@ const svgOptions: Record<IconType, TemplateResult<2>> = {
   loading: spinnerSvg,
   profile: profileSvg,
   network: networkSvg,
-  logout: logoutSvg
+  logout: logoutSvg,
+  tokens: tokensSvg,
+  card: cardSvg,
+  shield: shieldSvg
 }
 
 @customElement('ui-icon')
@@ -57,8 +63,8 @@ export class UiIcon extends LitElement {
   // -- Render -------------------------------------------- //
   public override render() {
     this.style.cssText = `
-      ${this.color ? `--local-color: var(--ui-color-${this.color});` : ''}
       --local-width: var(--ui-icon-size-${this.size});
+      ${this.color ? `--local-color: var(--ui-color-${this.color});` : ''}
     `
 
     return html`${svgOptions[this.name]}`

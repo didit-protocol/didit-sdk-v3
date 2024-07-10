@@ -14,7 +14,6 @@ import { AccountController } from '../../controllers/Account.js'
 function headings(): { [key in RouterView]: string } {
   const connectorName = RouterController.state.data?.connector?.name
   const walletName = RouterController.state.data?.wallet?.name
-  const networkName = AccountController.state.network?.name
   const name = walletName ?? connectorName
 
   return {
@@ -24,9 +23,9 @@ function headings(): { [key in RouterView]: string } {
     ConnectWalletConnect: `Connecting ${name ?? 'wallet'}`,
     ConnectSocial: `Signin with ${name}`,
     ConnectingDiditSiwe: 'Signature request',
-    Help: 'How to signin with Didit',
+    Help: 'What is a Digital Wallet?',
     Profile: 'Profile',
-    Networks: `Switch Network: ${networkName}`
+    Networks: `Switch Network`
   }
 }
 
