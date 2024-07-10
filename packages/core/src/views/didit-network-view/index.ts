@@ -85,7 +85,7 @@ export class diditNetworkView extends LitElement {
         NotificationsController.showSuccess('Network switched successfully')
         EventsController.sendEvent({ type: 'track', event: 'SWITCH_NETWORK_SUCCESS' })
       } catch (error) {
-        NotificationsController.showError('Failed to switch network')
+        NotificationsController.showError('Switch Network Declined')
         EventsController.sendEvent({
           type: 'track',
           event: 'SWITCH_NETWORK_ERROR',

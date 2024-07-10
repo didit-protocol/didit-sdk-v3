@@ -28,3 +28,5 @@ You can use the CodeSandbox links below try out **Didit** Sdk:
 - with [react](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite) // TODO: setup example on codesandbox
 
 - with [nextjs](https://codesandbox.io/p/sandbox/github/rainbow-me/rainbowkit/tree/main/examples/with-vite) // TODO: setup example on codesandbox
+
+> For more readt [Didit Sdk docs](https://docs.didit.me/docs/sdk)

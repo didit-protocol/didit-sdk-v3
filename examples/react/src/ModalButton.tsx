@@ -12,10 +12,8 @@ export function ModalButton() {
   }
 
   return (
-    <>
-      <button type="button" id="modal-btn" onClick={handleClick}>
-        {isOpen ? 'Close Modal' : 'Open Modal'}
-      </button>
-    </>
+    <button type="button" id="modal-btn" onClick={handleClick}>
+      {isOpen ? 'Close Modal' : 'Open Modal'}
+    </button>
   )
 }

@@ -21,8 +21,8 @@ export const ConstantsUtil = {
 
   // DIDIT AUTH API
   DIDIT_DOMAIN: 'didit.me',
+  DIDIT_BASE_AUTH_URL: 'https://apx.didit.me',
   DIDIT_STAGING_BASE_AUTH_URL: 'https://apx.staging.didit.me',
-  DIDIT_BASE_AUTH_URL: 'https://apx.staging.didit.me',
   DIDIT_WALLET_AUTH_PATH: '/auth/v2/wallet-authorization/',
   DIDIT_WALLET_TOKEN_PATH: '/auth/v2/token/',
   DIDIT_WALLET_GRANNT_TYPE: 'connect_wallet',

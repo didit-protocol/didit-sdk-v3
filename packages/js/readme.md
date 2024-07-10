@@ -308,4 +308,4 @@ const themeMode = diditSdk.getThemeVariables()
 const unsubscribe = diditSdk.subscribeTheme(newTheme => console.log(newTheme))
 ```
 
-> for more check [didit Docs](https://docs.didit.me/docs/unified-access-sdk)
+> For more readt [Didit Sdk docs](https://docs.didit.me/docs/sdk)
