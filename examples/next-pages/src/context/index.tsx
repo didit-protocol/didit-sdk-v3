@@ -1,8 +1,8 @@
 import { arbitrum, mainnet } from 'wagmi/chains'
-import { createDiditSdk } from '@didit-sdk/react'
-import { defaultWagmiConfig } from '@didit-sdk/react/config'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiProvider } from 'wagmi'
+import { defaultWagmiConfig } from '@didit-sdk/react/config'
+import { createDiditSdk } from '@didit-sdk/react'
 
 const clientId = process.env['NEXT_PUBLIC_DIDIT_CLIENT_ID'] || ''
 
