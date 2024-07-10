@@ -1,5 +1,11 @@
 # @didit-sdk/ui
 
+## 1.0.2
+
+### Patch Changes
+
+- 712f93c: select netork and help views
+
 ## 1.0.1
 
 ### Patch Changes

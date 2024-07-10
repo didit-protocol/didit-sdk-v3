@@ -1,5 +1,13 @@
 # @examples/react
 
+## 1.0.2
+
+### Patch Changes
+
+- 712f93c: select netork and help views
+- Updated dependencies [712f93c]
+  - @didit-sdk/react@1.0.2
+
 ## 1.0.1
 
 ### Patch Changes
