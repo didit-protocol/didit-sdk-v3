@@ -22,9 +22,6 @@
   },
   "typesVersions": {
     "*": {
-      ".": [
-        "./dist/types/exports/index.d.ts"
-      ],
       "config": [
         "./dist/types/exports/config.d.ts"
       ]

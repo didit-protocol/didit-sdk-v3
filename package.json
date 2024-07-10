@@ -19,7 +19,7 @@
     "prettier:format": "prettier --write .",
     "build:clean": "turbo run build:clean",
     "CI": "pnpm build; pnpm lint; pnpm typecheck; pnpm test",
-    "clean": "turbo run clean:build",
+    "clean": "rm -rf node_modules .turbo; turbo run clean:build",
     "changeset:pre": "changeset pre enter",
     "changeset:pre:exit": "changeset pre exit",
     "changeset:add": "changeset",

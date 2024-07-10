@@ -7,7 +7,8 @@
     "dev:example": "next dev --port 3003",
     "build:example": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean:build": "rm -rf dist .tubro node_modules .next"
   },
   "dependencies": {
     "@didit-sdk/react": "workspace:*",

@@ -89,7 +89,7 @@ export default function DiditSdkProvider({ children }) {
 
 > `<didit-callback>` component is essential for socials auth to work check [components](/components#didit-callback-) for more
 
-## Next.js Installation
+## Next.js
 
 #### Wagmi config
 

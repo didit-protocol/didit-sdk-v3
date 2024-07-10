@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev:example": "vite --port 3001",
-    "build:example": "vite build"
+    "build:example": "vite build",
+    "clean:build": "rm -rf dist .tubro node_modules"
   },
   "dependencies": {
     "@didit-sdk/react": "workspace:*",
