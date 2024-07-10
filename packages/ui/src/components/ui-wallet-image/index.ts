@@ -12,7 +12,7 @@ export class UiWalletImage extends LitElement {
   public static override styles = [resetStyles, styles]
 
   // -- State & Properties -------------------------------- //
-  @property() public size: Exclude<SizeType, 'xs' | 'xxs'> = 'md'
+  @property() public size: Exclude<SizeType, 'xxs'> = 'md'
 
   @property() public name = ''
 

@@ -221,7 +221,7 @@ export class DiditWalletsView extends LitElement {
   private onConnector(connector: Connector) {
     RouterController.push('ConnectWallet', { connector })
     /*
-     * TODOX: coinbase popup is blocked by some browsers when opened programmatically
+     * Coinbase popup is blocked by some browsers when opened programmatically
      * https://developer.mozilla.org/en-US/docs/Web/API/Window/open#description
      * We should trigget connect from  this function and skip it on 'ConnectWallet' view
      */

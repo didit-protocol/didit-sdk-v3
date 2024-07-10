@@ -113,7 +113,9 @@ function createRootStyles(themeVariables?: ThemeVariables) {
         --ui-font-size-micro: var(--dui-font-size-master);
         --ui-font-size-tiny: calc(var(--dui-font-size-master) * 1.1);
         --ui-font-size-smaller: calc(var(--dui-font-size-master) * 1.2);
+        --ui-font-size-smallx: calc(var(--dui-font-size-master) * 1.3);
         --ui-font-size-small: calc(var(--dui-font-size-master) * 1.4);
+        --ui-font-size-smallm: calc(var(--dui-font-size-master) * 1.5);
         --ui-font-size-paragraph: calc(var(--dui-font-size-master) * 1.6);
         --ui-font-size-medium: calc(var(--dui-font-size-master) * 2.2);
         --ui-font-size-large: calc(var(--dui-font-size-master) * 3.2);

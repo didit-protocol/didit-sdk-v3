@@ -50,6 +50,7 @@ export default css`
     animation-fill-mode: backwards;
     animation-timing-function: var(--ui-ease-out-power-2);
     outline: none;
+    position: relative;
   }
 
   ui-flex {

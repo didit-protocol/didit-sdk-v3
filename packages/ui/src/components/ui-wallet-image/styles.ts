@@ -2,14 +2,13 @@ import { css } from 'lit'
 
 export default css`
   :host {
-    background-color: var(--ui-color-surface-lo);
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: inherit;
     border-radius: var(--local-border-radius);
-    backckground-color: var(--ui-color-surface-lo);
+    background-color: var(--ui-color-surface-lo);
     overflow: hidden;
   }
 

@@ -69,11 +69,11 @@ export class DiditRouter extends LitElement {
       case 'Profile':
         return html`<didit-profile-view></didit-profile-view>`
       case 'Networks':
-        return html`<div>Networks</div>`
+        return html`<didit-network-view></didit-network-view>`
       case 'Help':
-        return html`<div>Help</div>`
+        return html`<didit-help-view></didit-help-view>`
       default:
-        return html`<div>Connect</div>`
+        return html`<didit-connect-view></didit-connect-view>`
     }
   }
 

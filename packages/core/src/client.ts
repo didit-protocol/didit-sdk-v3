@@ -337,13 +337,11 @@ export class DiditSdk {
 
   // -- Private ------------------------------------------------------------------
   private syncRequestedNetworks(chains: Chain[]) {
-    // TODOX: generate network image url from chain id (walletConnect api)
     const requestedCaipNetworks: Web3Network[] = chains?.map(chain => ({
       id: chain.id.toString(),
       number: chain.id,
       name: chain.name,
-      imageUrl: 'X',
-      imageId: PresetsUtil.EIP155NetworkImageIds[chain.id]
+      imageUrl: PresetsUtil.EIP155NetworkImageIds[chain.id] ?? ''
     }))
 
     AccountController.setRequestedNetworks(requestedCaipNetworks)
@@ -444,8 +442,7 @@ export class DiditSdk {
         id: id.toString(),
         number: id,
         name,
-        imageId: PresetsUtil.EIP155NetworkImageIds[id],
-        imageUrl: 'TODO'
+        imageUrl: PresetsUtil.EIP155NetworkImageIds[id] ?? ''
       })
       if (isConnected && address && chainId) {
         if (chain?.blockExplorers?.default?.url) {

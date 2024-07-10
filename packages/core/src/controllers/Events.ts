@@ -77,10 +77,6 @@ export const EventsController = {
   sendEvent(data: EventsControllerState['data']) {
     state.timestamp = Date.now()
     state.data = data
-    console.info('sendEvent', {
-      timestamp: state.timestamp,
-      data: { ...state.data }
-    })
     /*
      * If (OptionsController.state.enableAnalytics) {
      * EventsController._sendAnalyticsEvent(state)

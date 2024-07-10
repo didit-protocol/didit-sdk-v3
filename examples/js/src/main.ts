@@ -26,7 +26,8 @@ const diditSDk = createDiditSdk({
   redirectUri: 'http://localhost:3000/callback',
   themeMode: 'light',
   themeVariables: {
-    primaryColor: '#FF0000'
+    primaryColor: '#007A78',
+    softColor: '#FFC745'
   },
   isStaging: true
 })
