@@ -80,11 +80,11 @@ export class DiditModal extends LitElement {
   }
 
   private async handleClose() {
+    ModalController.close()
+
     if (DiditAuthController.state.status !== 'success') {
       await ConnectionController.disconnect()
     }
-
-    ModalController.close()
   }
 
   private initializeTheming() {

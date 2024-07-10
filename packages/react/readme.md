@@ -414,3 +414,5 @@ function App() {
 ```
 
 > Check more on [wagmi](https://wagmi.sh/react/api/hooks/useConnect) docs
+
+> For more readt [Didit Sdk docs](https://docs.didit.me/docs/sdk)

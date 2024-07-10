@@ -84,11 +84,11 @@ export class DiditHeader extends LitElement {
   }
 
   private async onClose() {
+    ModalController.close()
+
     if (DiditAuthController.state.status !== 'success') {
       await ConnectionController.disconnect()
     }
-
-    ModalController.close()
   }
 
   private titleTemplate() {

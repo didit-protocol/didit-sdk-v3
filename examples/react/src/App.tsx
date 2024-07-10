@@ -9,11 +9,11 @@ export default function App() {
 
   return (
     <DiditSdkProvider>
-      <div className="row">
-        <didit-button />
+      <div className="header">
         <ThemeButton />
+        <didit-button />
       </div>
-      <div className="row">
+      <div className="modal-button">
         <ModalButton />
       </div>
       <UserStatus />

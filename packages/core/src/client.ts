@@ -307,10 +307,11 @@ export class DiditSdk {
     if (AccountController.state.isAuthenticated) {
       await DiditAuthController.signOut()
     }
+    ModalController.close()
+
     if (AccountController.state.isWalletConnected) {
       ConnectionController.disconnect()
     }
-    ModalController.close()
   }
 
   public getThemeMode() {
@@ -399,6 +400,7 @@ export class DiditSdk {
     ConfigurationController.setClaims(options.claims ?? ConstantsUtil.DIDIT_CLAIMS)
     ConfigurationController.setScope(options.scope ?? ConstantsUtil.DIDIT_SCOPE)
     ConfigurationController.setSdkVersion(options._sdkVersion)
+    DiditApiController.setStaging(options.isStaging ?? false)
     DiditApiController.setAuthBaseUrl(options.authBaseUrl)
     DiditApiController.setWalletAuthBaseUrl(options.walletAuthBaseUrl)
     if (options.walletAuthorizationPath) {
@@ -413,10 +415,6 @@ export class DiditSdk {
 
     if (options.redirectUri) {
       DiditApiController.setRedirectUri(options.redirectUri)
-    }
-
-    if (options.isStaging) {
-      DiditApiController.setStaging(options.isStaging)
     }
 
     if (options.metadata) {
