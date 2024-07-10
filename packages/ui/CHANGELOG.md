@@ -1,5 +1,12 @@
 # @didit-sdk/ui
 
+## 1.0.1
+
+### Patch Changes
+
+- 7e25502: fix @didit-sdk/react imports path
+- 162f8f7: fix @didit-sdk/react auto imports
+
 ## 1.0.0
 
 ### Major Changes
