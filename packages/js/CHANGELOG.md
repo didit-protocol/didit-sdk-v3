@@ -1,5 +1,15 @@
 # @didit-sdk/js
 
+## 1.0.1
+
+### Patch Changes
+
+- 7e25502: fix @didit-sdk/react imports path
+- 162f8f7: fix @didit-sdk/react auto imports
+- Updated dependencies [7e25502]
+- Updated dependencies [162f8f7]
+  - @didit-sdk/core@1.0.1
+
 ## 1.0.0
 
 ### Major Changes

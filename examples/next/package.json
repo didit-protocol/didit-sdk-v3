@@ -1,12 +1,13 @@
 {
   "name": "@examples/next",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "dev:example": "next dev --port 3002",
     "build:example": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean:build": "rm -rf dist .tubro node_modules .next"
   },
   "dependencies": {
     "@didit-sdk/react": "workspace:*",

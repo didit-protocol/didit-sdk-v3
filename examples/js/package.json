@@ -1,12 +1,13 @@
 {
   "name": "@examples/js",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev:example": "vite --port 3000",
     "build:example": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "clean:build": "rm -rf dist .tubro node_modules"
   },
   "dependencies": {
     "@didit-sdk/js": "workspace:*",
