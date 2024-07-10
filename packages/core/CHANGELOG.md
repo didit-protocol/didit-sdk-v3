@@ -1,5 +1,14 @@
 # @didit-sdk/core
 
+## 1.0.2
+
+### Patch Changes
+
+- 712f93c: select netork and help views
+- Updated dependencies [712f93c]
+  - @didit-sdk/ui@1.0.2
+  - @didit-sdk/polyfills@1.0.2
+
 ## 1.0.1
 
 ### Patch Changes
