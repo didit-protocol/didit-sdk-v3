@@ -1,5 +1,13 @@
 # @examples/react
 
+## 1.0.3
+
+### Patch Changes
+
+- 4717e96: fix didit api on production
+- Updated dependencies [4717e96]
+  - @didit-sdk/react@1.0.3
+
 ## 1.0.2
 
 ### Patch Changes

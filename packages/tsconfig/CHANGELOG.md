@@ -1,5 +1,11 @@
 # @didit-sdk/tsconfig
 
+## 1.0.3
+
+### Patch Changes
+
+- 4717e96: fix didit api on production
+
 ## 1.0.2
 
 ### Patch Changes
