@@ -165,5 +165,21 @@ export const CoreHelperUtil = {
     }
 
     return isAuthenticated === undefined ? 'loading' : 'unauthenticated'
+  },
+
+  isFullURL(url: string) {
+    // Regular expression to match a full URL
+    // eslint-disable-next-line prefer-named-capture-group, require-unicode-regexp
+    const urlPattern = /^(https?:\/\/)?((www\.)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,})(:\d+)?(\/.*)?$/
+
+    return urlPattern.test(url)
+  },
+
+  isPath(path: string) {
+    // Regular expression to match a file path (absolute or relative)
+    // eslint-disable-next-line require-unicode-regexp, prefer-named-capture-group
+    const pathPattern = /^(\/|\.\/|\.\.\/|([a-zA-Z]:\\)).*$/
+
+    return pathPattern.test(path)
   }
 }

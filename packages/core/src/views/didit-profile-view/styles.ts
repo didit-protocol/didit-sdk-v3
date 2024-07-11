@@ -7,9 +7,6 @@ export default css`
     background-color: var(--ui-color-surface-ulo);
     overflow: hidden;
   }
-  #profile-link {
-    display: none;
-  }
   .profile-button {
     background-color: transparent;
     border: none;

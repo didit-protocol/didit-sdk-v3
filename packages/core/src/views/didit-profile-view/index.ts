@@ -12,6 +12,7 @@ import {
   NotificationsController,
   RouterController
 } from '../../controllers/index.js'
+import { CoreHelperUtil } from '../../utils/CoreHelperUtil.js'
 
 @customElement('didit-profile-view')
 export class diditProfileView extends LitElement {
@@ -61,7 +62,6 @@ export class diditProfileView extends LitElement {
 
     return html`
       <ui-flex class="profile-container" flexDirection="column" padding="1xs" gap="xxs">
-        <a id="profile-link" href="${this.profileLink}"></a>
         <button
           class="profile-button"
           @click=${this.onProfile.bind(this)}
@@ -141,10 +141,13 @@ export class diditProfileView extends LitElement {
 
   private onProfile() {
     EventsController.sendEvent({ type: 'track', event: 'CLICK_PROFILE_LINK' })
-    const a = this.shadowRoot?.getElementById('profile-link')
-    a?.click()
 
-    ModalController.close()
+    if (CoreHelperUtil.isFullURL(this.profileLink)) {
+      CoreHelperUtil.openHref(this.profileLink, '_blank')
+    } else if (CoreHelperUtil.isPath(this.profileLink)) {
+      window.location.href = this.profileLink
+      ModalController.close()
+    }
   }
 
   private onNetworks() {
