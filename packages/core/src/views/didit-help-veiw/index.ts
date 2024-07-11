@@ -60,43 +60,45 @@ export class diditHelpView extends LitElement {
   // -- Private ------------------------------------------- //
 
   private hexToRgb(hex: string) {
-    let b = 0; let g = 0; let r = 0;
+    let b = 0
+    let g = 0
+    let r = 0
     if (hex.length === 4) {
-      const hex1 = hex[1] || '';
-      const hex2 = hex[2] || '';
-      const hex3 = hex[3] || '';
-      r = parseInt(hex1 + hex1, 16);
-      g = parseInt(hex2 + hex2, 16);
-      b = parseInt(hex3 + hex3, 16);
+      const hex1 = hex[1] || ''
+      const hex2 = hex[2] || ''
+      const hex3 = hex[3] || ''
+      r = parseInt(hex1 + hex1, 16)
+      g = parseInt(hex2 + hex2, 16)
+      b = parseInt(hex3 + hex3, 16)
     } else if (hex.length === 7) {
-      const hex1 = hex[1] || '';
-      const hex2 = hex[2] || '';
-      const hex3 = hex[3] || '';
-      const hex4 = hex[4] || '';
-      const hex5 = hex[5] || '';
-      const hex6 = hex[6] || '';
-      r = parseInt(hex1 + hex2, 16);
-      g = parseInt(hex3 + hex4, 16);
-      b = parseInt(hex5 + hex6, 16);
+      const hex1 = hex[1] || ''
+      const hex2 = hex[2] || ''
+      const hex3 = hex[3] || ''
+      const hex4 = hex[4] || ''
+      const hex5 = hex[5] || ''
+      const hex6 = hex[6] || ''
+      r = parseInt(hex1 + hex2, 16)
+      g = parseInt(hex3 + hex4, 16)
+      b = parseInt(hex5 + hex6, 16)
     }
 
-    return `${r}, ${g}, ${b}`;
+    return `${r}, ${g}, ${b}`
   }
 
   private setBaseColorFromEnv() {
     const baseColor = getComputedStyle(document.documentElement)
-      .getPropertyValue('--ui-color-background').trim();
-    let rgb = '';
+      .getPropertyValue('--ui-color-background')
+      .trim()
+    let rgb = ''
     if (baseColor.startsWith('#')) {
-      rgb = this.hexToRgb(baseColor);
+      rgb = this.hexToRgb(baseColor)
     } else if (baseColor.startsWith('rgb')) {
       // eslint-disable-next-line require-unicode-regexp
-      rgb = baseColor.match(/\d+/g)?.join(', ') || '';
+      rgb = baseColor.match(/\d+/g)?.join(', ') || ''
     }
 
-    return rgb;
+    return rgb
   }
-
 }
 
 declare global {
