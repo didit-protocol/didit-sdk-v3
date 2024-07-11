@@ -38,22 +38,6 @@ export const tokensSvg = svg`
 <path fill-rule="evenodd" clip-rule="evenodd" d="M398.65 132.185L408.596 115.682V115.69L408.598 115.682L418.543 132.182L418.548 132.185L408.602 138.064V138.062L408.598 138.064L408.596 138.062V138.064V138.064L398.65 132.185L398.65 132.185L398.65 132.185L398.65 132.185ZM408.596 148.081V148.088L398.65 134.072L408.596 139.948V139.951L408.599 139.948L418.551 134.072L408.599 148.088L408.596 148.081Z" fill="#FEFEFE"/>
 <path d="M0 48C0 33.0899 0 25.6348 2.43585 19.7541C5.68366 11.9132 11.9132 5.68366 19.7541 2.43585C25.6348 0 33.0899 0 48 0H177.5C192.41 0 199.865 0 205.746 2.43585C213.587 5.68366 219.816 11.9132 223.064 19.7541C225.5 25.6348 225.5 33.0899 225.5 48V91V141C225.5 155.91 225.5 163.365 223.064 169.246C219.816 177.087 213.587 183.316 205.746 186.564C199.865 189 192.41 189 177.5 189H48C33.0899 189 25.6348 189 19.7541 186.564C11.9132 183.316 5.68366 177.087 2.43585 169.246C0 163.365 0 155.91 0 141V48Z" fill="url(#paint3_linear_62_503)"/>
 <defs>
-<linearGradient id="paint0_linear_62_503" x1="181.114" y1="113.514" x2="180.391" y2="149.868" gradientUnits="userSpaceOnUse">
-<stop stop-color="#00FFA3"/>
-<stop offset="1" stop-color="#DC1FFF"/>
-</linearGradient>
-<linearGradient id="paint1_linear_62_503" x1="172.897" y1="109.224" x2="172.174" y2="145.578" gradientUnits="userSpaceOnUse">
-<stop stop-color="#00FFA3"/>
-<stop offset="1" stop-color="#DC1FFF"/>
-</linearGradient>
-<linearGradient id="paint2_linear_62_503" x1="176.979" y1="111.356" x2="176.257" y2="147.709" gradientUnits="userSpaceOnUse">
-<stop stop-color="#00FFA3"/>
-<stop offset="1" stop-color="#DC1FFF"/>
-</linearGradient>
-<linearGradient id="paint3_linear_62_503" x1="438.881" y1="-20" x2="437.948" y2="221.417" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FEFEFE" stop-opacity="0"/>
-<stop offset="0.845" stop-color="#FEFEFE"/>
-</linearGradient>
 </defs>
 </svg>
 
