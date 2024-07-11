@@ -1,5 +1,13 @@
 # @examples/react
 
+## 1.0.6
+
+### Patch Changes
+
+- 894586a: fix social login api
+- Updated dependencies [894586a]
+  - @didit-sdk/react@1.0.6
+
 ## 1.0.5
 
 ### Patch Changes
