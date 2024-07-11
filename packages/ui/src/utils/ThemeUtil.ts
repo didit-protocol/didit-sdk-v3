@@ -208,15 +208,15 @@ function createRootStyles(themeVariables?: ThemeVariables) {
     light: css`
       :root {
         --dui-primary: ${unsafeCSS(
-      getDiditThemeVariables(themeVariables, 'light')['--dui-primary']
-    )};
+          getDiditThemeVariables(themeVariables, 'light')['--dui-primary']
+        )};
         --dui-soft: ${unsafeCSS(getDiditThemeVariables(themeVariables, 'light')['--dui-soft'])};
         --dui-background: ${unsafeCSS(
-      getDiditThemeVariables(themeVariables, 'light')['--dui-background']
-    )};
+          getDiditThemeVariables(themeVariables, 'light')['--dui-background']
+        )};
         --dui-foreground: ${unsafeCSS(
-      getDiditThemeVariables(themeVariables, 'light')['--dui-foreground']
-    )};
+          getDiditThemeVariables(themeVariables, 'light')['--dui-foreground']
+        )};
         --dui-black: ${unsafeCSS(getDiditThemeVariables(themeVariables, 'light')['--dui-black'])};
         --dui-white: ${unsafeCSS(getDiditThemeVariables(themeVariables, 'light')['--dui-white'])};
 
@@ -247,15 +247,15 @@ function createRootStyles(themeVariables?: ThemeVariables) {
     dark: css`
       :root {
         --dui-primary: ${unsafeCSS(
-      getDiditThemeVariables(themeVariables, 'dark')['--dui-primary']
-    )};
+          getDiditThemeVariables(themeVariables, 'dark')['--dui-primary']
+        )};
         --dui-soft: ${unsafeCSS(getDiditThemeVariables(themeVariables, 'dark')['--dui-soft'])};
         --dui-background: ${unsafeCSS(
-      getDiditThemeVariables(themeVariables, 'dark')['--dui-background']
-    )};
+          getDiditThemeVariables(themeVariables, 'dark')['--dui-background']
+        )};
         --dui-foreground: ${unsafeCSS(
-      getDiditThemeVariables(themeVariables, 'dark')['--dui-foreground']
-    )};
+          getDiditThemeVariables(themeVariables, 'dark')['--dui-foreground']
+        )};
         --dui-black: ${unsafeCSS(getDiditThemeVariables(themeVariables, 'dark')['--dui-black'])};
         --dui-white: ${unsafeCSS(getDiditThemeVariables(themeVariables, 'dark')['--dui-white'])};
 
