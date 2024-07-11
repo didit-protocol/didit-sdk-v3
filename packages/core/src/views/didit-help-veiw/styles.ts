@@ -34,6 +34,17 @@ export default css`
     z-index: 1;
   }
 
+  .layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      181deg,
+      rgba(var(--local-color-backgound), 0.00) -10.47%,
+      var(--ui-color-background) 96.49%
+    );
+  }
+
   :host .tokens {
     width: 100% !important;
     height: 100% !important;

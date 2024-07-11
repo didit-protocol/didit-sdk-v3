@@ -31,7 +31,7 @@ createDiditSdk({
   clientSecret,
   redirectUri: 'http://localhost:3002/callback',
   metadata,
-  isStaging: true
+  isStaging: true,
 })
 
 interface DiditSdkProviderProps {
