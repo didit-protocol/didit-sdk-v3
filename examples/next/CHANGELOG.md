@@ -1,5 +1,15 @@
 # @examples/next
 
+## 1.0.4
+
+### Patch Changes
+
+- 408f2d3: add profile link in config. user can choose where profile link redirect
+- e75c684: code formating and patch release
+- Updated dependencies [408f2d3]
+- Updated dependencies [e75c684]
+  - @didit-sdk/react@1.0.4
+
 ## 1.0.3
 
 ### Patch Changes
