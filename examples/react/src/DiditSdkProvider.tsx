@@ -31,6 +31,7 @@ createDiditSdk({
   clientSecret,
   redirectUri: 'http://localhost:3002/callback',
   metadata,
+  profileLink: '/profile',
   isStaging: true
 })
 

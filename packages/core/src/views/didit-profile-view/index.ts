@@ -4,6 +4,7 @@ import { state } from 'lit/decorators.js'
 import styles from './styles.js'
 import {
   AccountController,
+  ConfigurationController,
   ConnectionController,
   DiditAuthController,
   EventsController,
@@ -11,7 +12,6 @@ import {
   NotificationsController,
   RouterController
 } from '../../controllers/index.js'
-import { CoreHelperUtil } from '../../utils/CoreHelperUtil.js'
 
 @customElement('didit-profile-view')
 export class diditProfileView extends LitElement {
@@ -27,6 +27,8 @@ export class diditProfileView extends LitElement {
 
   @state() private network = AccountController.state.network
 
+  @state() private profileLink = ConfigurationController.state.profileLink || ''
+
   public constructor() {
     super()
     this.unsubscribe.push(
@@ -34,6 +36,9 @@ export class diditProfileView extends LitElement {
         this.identifier = val.diditSession?.identifier
         this.authMethod = val.diditSession?.identifierType
         this.network = val.network
+      }),
+      ConfigurationController.subscribeKey('profileLink', val => {
+        this.profileLink = val || ''
       })
     )
   }
@@ -56,6 +61,7 @@ export class diditProfileView extends LitElement {
 
     return html`
       <ui-flex class="profile-container" flexDirection="column" padding="1xs" gap="xxs">
+        <a id="profile-link" href="${this.profileLink}"></a>
         <button
           class="profile-button"
           @click=${this.onProfile.bind(this)}
@@ -135,7 +141,10 @@ export class diditProfileView extends LitElement {
 
   private onProfile() {
     EventsController.sendEvent({ type: 'track', event: 'CLICK_PROFILE_LINK' })
-    CoreHelperUtil.openHref(`https://profile.didit.com/${this.identifier}`, '_blank')
+    const a = this.shadowRoot?.getElementById('profile-link')
+    a?.click()
+
+    ModalController.close()
   }
 
   private onNetworks() {

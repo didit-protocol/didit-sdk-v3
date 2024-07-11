@@ -4,7 +4,6 @@ import { useState } from 'react'
 export function UserStatus() {
   const signOut = useDiditSignOut()
   const diditAccount = useDiditState()
-  console.log('--->', diditAccount)
   const { user, status, isAuthenticated, accessToken, selectedNetworkName } = diditAccount
   const [isTokenCopied, setIsTokenCopied] = useState(false)
   const [isAddressCopied, setIsAddressCopied] = useState(false)

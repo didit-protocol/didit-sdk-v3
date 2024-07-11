@@ -62,6 +62,7 @@ interface DiditClientOptions<C extends Config> {
   walletAuthorizationPath?: DiditApiControllerState['walletAuthorizationPath']
   tokenAuthorizationPath?: DiditApiControllerState['tokenAuthorizationPath']
   redirectUri?: DiditApiControllerState['redirectUri']
+  profileLink?: ConfigurationControllerState['profileLink']
   claims?: ConfigurationControllerState['claims']
   scope?: ConfigurationControllerState['scope']
   isStaging?: DiditApiControllerState['isStaging']
@@ -403,18 +404,25 @@ export class DiditSdk {
     DiditApiController.setStaging(options.isStaging ?? false)
     DiditApiController.setAuthBaseUrl(options.authBaseUrl)
     DiditApiController.setWalletAuthBaseUrl(options.walletAuthBaseUrl)
+
     if (options.walletAuthorizationPath) {
       DiditApiController.setWalletAuthorizationPath(options.walletAuthorizationPath)
     }
+
     if (options.tokenAuthorizationPath) {
       DiditApiController.setTokenAuthorizationPath(options.tokenAuthorizationPath)
     }
+
     if (options.clientSecret) {
       ConfigurationController.setClientSecret(options.clientSecret)
     }
 
     if (options.redirectUri) {
       DiditApiController.setRedirectUri(options.redirectUri)
+    }
+
+    if (options.profileLink) {
+      ConfigurationController.setProfileLink(options.profileLink)
     }
 
     if (options.metadata) {

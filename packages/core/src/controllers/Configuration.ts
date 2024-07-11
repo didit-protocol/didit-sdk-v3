@@ -10,6 +10,7 @@ export interface ConfigurationControllerState {
   claims?: `${string}:${string}`
   scope?: string
   metadata?: Metadata
+  profileLink?: string
   sdkVersion: DiditSdkVersion
 }
 
@@ -59,6 +60,10 @@ export const ConfigurationController = {
 
   setMetadata(metadata: ConfigurationControllerState['metadata']) {
     state.metadata = metadata
+  },
+
+  setProfileLink(profileLink: ConfigurationControllerState['profileLink']) {
+    state.profileLink = profileLink
   },
 
   getSnapshot() {
