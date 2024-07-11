@@ -1,5 +1,13 @@
 # @examples/next-pages
 
+## 1.0.5
+
+### Patch Changes
+
+- 5bfbc53: open link bases on type (fullUrl/path)
+- Updated dependencies [5bfbc53]
+  - @didit-sdk/react@1.0.5
+
 ## 1.0.4
 
 ### Patch Changes
