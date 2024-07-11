@@ -206,13 +206,10 @@ export const DiditApiController = {
     tokenBody.append('grant_type', emailGrantType)
     tokenBody.append('redirect_uri', state.redirectUri || '')
 
-    const response = await state.api?.postWithBaseUrl<DiditTokenAuthorization>(
-      state.authBaseUrl,
-      {
-        path: emailTokenPath,
-        body: tokenBody
-      }
-    )
+    const response = await state.api?.postWithBaseUrl<DiditTokenAuthorization>(state.authBaseUrl, {
+      path: emailTokenPath,
+      body: tokenBody
+    })
 
     return response
   },
