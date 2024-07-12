@@ -158,6 +158,10 @@ export class DiditConnectingSocialView extends LitElement {
           this.error = true
           this.label = 'Connection failed'
           this.subLabel = 'Something went wrong! Please try again'
+          this.stopMonitoringPopupStatus()
+          if (this.popupWindow && !this.popupWindow.closed) {
+            this.popupWindow.close()
+          }
         }
         if (this.timeOut) {
           clearTimeout(this.timeOut)

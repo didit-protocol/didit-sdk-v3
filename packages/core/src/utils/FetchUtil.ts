@@ -1,3 +1,4 @@
+/* eslint-disable require-unicode-regexp */
 // -- Types ----------------------------------------------------------------------
 interface Options {
   baseUrl: string
@@ -34,21 +35,21 @@ export class FetchUtil {
   }
 
   public async get<T>({ headers, signal, ...args }: RequestArguments) {
-    const url = this.createUrl(args)
+    const url = this.createFullUrl(this.baseUrl, args)
     const response = await fetchData(url, { method: 'GET', headers, signal, cache: 'no-cache' })
 
     return response.json() as T
   }
 
   public async getBlob({ headers, signal, ...args }: RequestArguments) {
-    const url = this.createUrl(args)
+    const url = this.createFullUrl(this.baseUrl, args)
     const response = await fetchData(url, { method: 'GET', headers, signal })
 
     return response.blob()
   }
 
   public async post<T>({ body, headers, signal, ...args }: PostArguments) {
-    const url = this.createUrl(args)
+    const url = this.createFullUrl(this.baseUrl, args)
     let _body: URLSearchParams | string | undefined = undefined
     if (body instanceof URLSearchParams) {
       _body = body
@@ -66,7 +67,7 @@ export class FetchUtil {
   }
 
   public async put<T>({ body, headers, signal, ...args }: PostArguments) {
-    const url = this.createUrl(args)
+    const url = this.createFullUrl(this.baseUrl, args)
     let _body: URLSearchParams | string | undefined = undefined
     if (body instanceof URLSearchParams) {
       _body = body
@@ -84,7 +85,7 @@ export class FetchUtil {
   }
 
   public async delete<T>({ body, headers, signal, ...args }: PostArguments) {
-    const url = this.createUrl(args)
+    const url = this.createFullUrl(this.baseUrl, args)
     let _body: URLSearchParams | string | undefined = undefined
     if (body instanceof URLSearchParams) {
       _body = body
@@ -102,7 +103,7 @@ export class FetchUtil {
   }
 
   public async getWithBaseUrl<T>(baseUrl: string, { headers, signal, ...args }: RequestArguments) {
-    const url = this.createUrlWithBaseUrl(baseUrl, args)
+    const url = this.createFullUrl(baseUrl, args)
     const response = await fetchData(url, { method: 'GET', headers, signal, cache: 'no-cache' })
 
     const text = await response.text()
@@ -117,7 +118,7 @@ export class FetchUtil {
     baseUrl: string,
     { body, headers, signal, ...args }: PostArguments
   ) {
-    const url = this.createUrlWithBaseUrl(baseUrl, args)
+    const url = this.createFullUrl(baseUrl, args)
     let _body: URLSearchParams | string | undefined = undefined
     if (body instanceof URLSearchParams) {
       _body = body
@@ -134,21 +135,27 @@ export class FetchUtil {
     return response.json() as T
   }
 
-  public createUrlWithBaseUrl(baseUrl: string, { path, params }: RequestArguments) {
-    const url = new URL(path, baseUrl)
-    if (params) {
-      Object.entries(params).forEach(([key, value]) => {
-        if (value) {
-          url.searchParams.append(key, value)
-        }
-      })
+  createFullUrl(baseUrl: string, { path, params }: RequestArguments) {
+    // Remove any trailing slashes from the base URL
+    let _baseUrl = baseUrl.replace(/\/+$/, '')
+
+    // Handle cases where the base URL is just a path (e.g., /api)
+    if (!_baseUrl.match(/^https?:\/\//)) {
+      if (_baseUrl.startsWith('/')) {
+        _baseUrl = `${window.location.origin}${_baseUrl}`
+      } else {
+        _baseUrl = `${window.location.origin}/${_baseUrl}`
+      }
     }
 
-    return url
-  }
+    let _path = path
+    // Ensure the path starts with a slash
+    if (!path.startsWith('/')) {
+      _path = `/${path}`
+    }
 
-  private createUrl({ path, params }: RequestArguments) {
-    const url = new URL(path, this.baseUrl)
+    // Concatenate the base URL and the path
+    const url = new URL(_baseUrl + _path)
     if (params) {
       Object.entries(params).forEach(([key, value]) => {
         if (value) {
