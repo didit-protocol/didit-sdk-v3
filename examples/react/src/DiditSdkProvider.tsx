@@ -29,7 +29,7 @@ createDiditSdk({
   wagmiConfig,
   clientId,
   clientSecret,
-  redirectUri: 'http://localhost:3002/callback',
+  redirectUri: 'http://localhost:3001/callback',
   metadata,
   profileLink: '/profile',
   isStaging: true

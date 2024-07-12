@@ -59,15 +59,14 @@ export class DiditConnectingSiweView extends LitElement {
           </ui-didit-link>
           <ui-flex flexDirection="column" alignItems="center" gap="s">
             <ui-text variant="title-4" color=${this.status === 'error' ? 'error' : 'foreground'}>
-              ${this.status === 'error' ? 'Signature declined' :
-        `Connect your wallet to ${this.dappName}`
-      }
+              ${this.status === 'error'
+                ? 'Signature declined'
+                : `Connect your wallet to ${this.dappName}`}
             </ui-text>
             <ui-text align="center" variant="paragraph-1" color="surface-md">
-              ${this.status === 'error' ?
-        'Please try again or contact support if the issue persists' :
-        'Sign this message to connect. Canceling will disconnect your wallet.'
-      }
+              ${this.status === 'error'
+                ? 'Please try again or contact support if the issue persists'
+                : 'Sign this message to connect. Canceling will disconnect your wallet.'}
             </ui-text>
           </ui-flex>
         </ui-flex>
@@ -119,6 +118,8 @@ export class DiditConnectingSiweView extends LitElement {
         ModalController.close()
       }
     } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error)
       NotificationsController.showError('Signature declined')
       DiditAuthController.setStatus('error')
       this.status = 'error'
