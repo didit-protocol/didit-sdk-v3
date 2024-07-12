@@ -1,5 +1,11 @@
 # @didit-sdk/polyfills
 
+## 1.0.7
+
+### Patch Changes
+
+- 4582524: fix relative path on api config
+
 ## 1.0.6
 
 ### Patch Changes

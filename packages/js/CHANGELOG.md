@@ -1,5 +1,13 @@
 # @didit-sdk/js
 
+## 1.0.7
+
+### Patch Changes
+
+- 4582524: fix relative path on api config
+- Updated dependencies [4582524]
+  - @didit-sdk/core@1.0.7
+
 ## 1.0.6
 
 ### Patch Changes
