@@ -78,8 +78,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/js
       '@wagmi/connectors':
-        specifier: ^5.0.14
-        version: 5.0.21(@types/react@18.3.3)(@wagmi/core@2.11.6)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
+        specifier: ^5.0.22
+        version: 5.0.22(@types/react@18.3.3)(@wagmi/core@2.11.6)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
       '@wagmi/core':
         specifier: ^2.11.2
         version: 2.11.6(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
@@ -260,8 +260,8 @@ importers:
         specifier: ^4.2.2
         version: 4.2.2
       '@wagmi/connectors':
-        specifier: ^5.0.14
-        version: 5.0.21(@types/react@18.3.3)(@wagmi/core@2.11.6)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
+        specifier: ^5.0.22
+        version: 5.0.22(@types/react@18.3.3)(@wagmi/core@2.11.6)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
       '@wagmi/core':
         specifier: ^2.11.2
         version: 2.11.6(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
@@ -293,8 +293,8 @@ importers:
         specifier: workspace:*
         version: link:../tsconfig
       '@wagmi/connectors':
-        specifier: ^5.0.14
-        version: 5.0.21(@types/react@18.3.3)(@wagmi/core@2.11.6)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
+        specifier: ^5.0.22
+        version: 5.0.22(@types/react@18.3.3)(@wagmi/core@2.11.6)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
       '@wagmi/core':
         specifier: ^2.11.2
         version: 2.11.6(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
@@ -4476,6 +4476,52 @@ packages:
     resolution: {integrity: sha512-lbjXEv6HhOa9nXZ5r6NGFJdaadCt2Yj9hSWHjKuiTobrE6dEGQqG16mCQS17yXcvXpI62Q/sW6SL347JrBju/Q==}
     peerDependencies:
       '@wagmi/core': 2.11.6
+      typescript: '>=5.0.4'
+      viem: 2.x
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@coinbase/wallet-sdk': 4.0.4
+      '@metamask/sdk': 0.26.4(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)
+      '@safe-global/safe-apps-provider': 0.18.1(typescript@5.5.3)
+      '@safe-global/safe-apps-sdk': 8.1.0(typescript@5.5.3)
+      '@wagmi/core': 2.11.6(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
+      '@walletconnect/ethereum-provider': 2.13.0(@types/react@18.3.3)(react@18.3.1)
+      '@walletconnect/modal': 2.6.2(@types/react@18.3.3)(react@18.3.1)
+      cbw-sdk: /@coinbase/wallet-sdk@3.9.3
+      typescript: 5.5.3
+      viem: 2.17.3(typescript@5.5.3)
+    transitivePeerDependencies:
+      - '@azure/app-configuration'
+      - '@azure/cosmos'
+      - '@azure/data-tables'
+      - '@azure/identity'
+      - '@azure/keyvault-secrets'
+      - '@azure/storage-blob'
+      - '@capacitor/preferences'
+      - '@netlify/blobs'
+      - '@planetscale/database'
+      - '@react-native-async-storage/async-storage'
+      - '@types/react'
+      - '@upstash/redis'
+      - '@vercel/kv'
+      - bufferutil
+      - encoding
+      - ioredis
+      - react
+      - react-dom
+      - react-native
+      - rollup
+      - supports-color
+      - uWebSockets.js
+      - utf-8-validate
+      - zod
+
+  /@wagmi/connectors@5.0.22(@types/react@18.3.3)(@wagmi/core@2.11.6)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3):
+    resolution: {integrity: sha512-zIewJ+EpuL+RgcfUcPGbdWb+gJu64lK7xnhhve3E30rrjZfGjMWmuWM112X5CDjl1w3qeoZZQWzmSmrZq+d+7Q==}
+    peerDependencies:
+      '@wagmi/core': 2.11.7
       typescript: '>=5.0.4'
       viem: 2.x
     peerDependenciesMeta:
