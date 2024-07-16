@@ -100,8 +100,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/react
       '@tanstack/react-query':
-        specifier: ^5.50.1
-        version: 5.50.1(react@18.3.1)
+        specifier: ^5.51.1
+        version: 5.51.1(react@18.3.1)
       next:
         specifier: 14.2.5
         version: 14.2.5(@babel/core@7.24.7)(react-dom@18.3.1)(react@18.3.1)
@@ -116,7 +116,7 @@ importers:
         version: 2.17.3(typescript@5.5.3)
       wagmi:
         specifier: ^2.10.8
-        version: 2.10.9(@tanstack/react-query@5.50.1)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
+        version: 2.10.9(@tanstack/react-query@5.51.1)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
     devDependencies:
       '@didit-sdk/eslint-config':
         specifier: workspace:*
@@ -146,8 +146,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/react
       '@tanstack/react-query':
-        specifier: ^5.50.1
-        version: 5.50.1(react@18.3.1)
+        specifier: ^5.51.1
+        version: 5.51.1(react@18.3.1)
       axios:
         specifier: ^1.7.2
         version: 1.7.2
@@ -165,7 +165,7 @@ importers:
         version: 2.17.3(typescript@5.5.3)
       wagmi:
         specifier: ^2.10.8
-        version: 2.10.9(@tanstack/react-query@5.50.1)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
+        version: 2.10.9(@tanstack/react-query@5.51.1)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
     devDependencies:
       '@didit-sdk/eslint-config':
         specifier: workspace:*
@@ -204,8 +204,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/react
       '@tanstack/react-query':
-        specifier: ^5.50.1
-        version: 5.50.1(react@18.3.1)
+        specifier: ^5.51.1
+        version: 5.51.1(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -217,7 +217,7 @@ importers:
         version: 2.17.3(typescript@5.5.3)
       wagmi:
         specifier: ^2.10.8
-        version: 2.10.9(@tanstack/react-query@5.50.1)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
+        version: 2.10.9(@tanstack/react-query@5.51.1)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
     devDependencies:
       '@didit-sdk/eslint-config':
         specifier: workspace:*
@@ -276,7 +276,7 @@ importers:
         version: 2.17.3(typescript@5.5.3)
       wagmi:
         specifier: ^2.10.8
-        version: 2.10.9(@tanstack/react-query@5.50.1)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
+        version: 2.10.9(@tanstack/react-query@5.51.1)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
 
   packages/eslint-config: {}
 
@@ -338,7 +338,7 @@ importers:
         version: 2.17.3(typescript@5.5.3)
       wagmi:
         specifier: ^2.10.8
-        version: 2.10.9(@tanstack/react-query@5.50.1)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
+        version: 2.10.9(@tanstack/react-query@5.51.1)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
 
   packages/tsconfig: {}
 
@@ -4081,15 +4081,15 @@ packages:
       defer-to-connect: 2.0.1
     dev: false
 
-  /@tanstack/query-core@5.50.1:
-    resolution: {integrity: sha512-lpfhKPrJlyV2DSVcQb/HuozH3Av3kws4ge22agx+lNGpFkS4vLZ7St0l3GLwlAD+bqB+qXGex3JdRKUNtMviEQ==}
+  /@tanstack/query-core@5.51.1:
+    resolution: {integrity: sha512-fJBMQMpo8/KSsWW5ratJR5+IFr7YNJ3K2kfP9l5XObYHsgfVy1w3FJUWU4FT2fj7+JMaEg33zOcNDBo0LMwHnw==}
 
-  /@tanstack/react-query@5.50.1(react@18.3.1):
-    resolution: {integrity: sha512-s0DW3rVBDPReDDovUjVqItVa3R2nPfUANK9nqGvarO2DwTiY9U4EBTsqizMxItRCoGgK5apeM7D3mxlHrSKpdQ==}
+  /@tanstack/react-query@5.51.1(react@18.3.1):
+    resolution: {integrity: sha512-s47HKFnQ4HOJAHoIiXcpna/roMMPZJPy6fJ6p4ZNVn8+/onlLBEDd1+xc8OnDuwgvecqkZD7Z2mnSRbcWefrKw==}
     peerDependencies:
       react: ^18.0.0
     dependencies:
-      '@tanstack/query-core': 5.50.1
+      '@tanstack/query-core': 5.51.1
       react: 18.3.1
 
   /@types/babel__core@7.20.5:
@@ -11672,7 +11672,7 @@ packages:
   /vlq@1.0.1:
     resolution: {integrity: sha512-gQpnTgkubC6hQgdIcRdYGDSDc+SaujOdyesZQMv6JlfQee/9Mp0Qhnys6WxDWvQnL5WZdT7o2Ul187aSt0Rq+w==}
 
-  /wagmi@2.10.9(@tanstack/react-query@5.50.1)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3):
+  /wagmi@2.10.9(@tanstack/react-query@5.51.1)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3):
     resolution: {integrity: sha512-pYGTLmVIAC4q/a90i+vlrkJL86n5Kf/gwhhi65XtQklpsUQWrKDmn4dsY1/yFeAmZ/1yx1mpxYpX3LI97eTuWA==}
     peerDependencies:
       '@tanstack/react-query': '>=5.0.0'
@@ -11683,7 +11683,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@tanstack/react-query': 5.50.1(react@18.3.1)
+      '@tanstack/react-query': 5.51.1(react@18.3.1)
       '@wagmi/connectors': 5.0.21(@types/react@18.3.3)(@wagmi/core@2.11.6)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
       '@wagmi/core': 2.11.6(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
       react: 18.3.1
