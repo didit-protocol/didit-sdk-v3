@@ -79,10 +79,10 @@ importers:
         version: link:../../packages/js
       '@wagmi/connectors':
         specifier: ^5.0.22
-        version: 5.0.22(@types/react@18.3.3)(@wagmi/core@2.11.7)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
+        version: 5.0.22(@types/react@18.3.3)(@wagmi/core@2.12.2)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
       '@wagmi/core':
-        specifier: ^2.11.7
-        version: 2.11.7(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
+        specifier: ^2.12.2
+        version: 2.12.2(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
       viem:
         specifier: ^2.17.3
         version: 2.17.3(typescript@5.5.3)
@@ -261,10 +261,10 @@ importers:
         version: 4.2.2
       '@wagmi/connectors':
         specifier: ^5.0.22
-        version: 5.0.22(@types/react@18.3.3)(@wagmi/core@2.11.7)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
+        version: 5.0.22(@types/react@18.3.3)(@wagmi/core@2.12.2)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
       '@wagmi/core':
-        specifier: ^2.11.7
-        version: 2.11.7(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
+        specifier: ^2.12.2
+        version: 2.12.2(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -294,10 +294,10 @@ importers:
         version: link:../tsconfig
       '@wagmi/connectors':
         specifier: ^5.0.22
-        version: 5.0.22(@types/react@18.3.3)(@wagmi/core@2.11.7)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
+        version: 5.0.22(@types/react@18.3.3)(@wagmi/core@2.12.2)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
       '@wagmi/core':
-        specifier: ^2.11.7
-        version: 2.11.7(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
+        specifier: ^2.12.2
+        version: 2.12.2(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
       viem:
         specifier: ^2.17.3
         version: 2.17.3(typescript@5.5.3)
@@ -4534,7 +4534,7 @@ packages:
       - utf-8-validate
       - zod
 
-  /@wagmi/connectors@5.0.22(@types/react@18.3.3)(@wagmi/core@2.11.7)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3):
+  /@wagmi/connectors@5.0.22(@types/react@18.3.3)(@wagmi/core@2.12.2)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3):
     resolution: {integrity: sha512-zIewJ+EpuL+RgcfUcPGbdWb+gJu64lK7xnhhve3E30rrjZfGjMWmuWM112X5CDjl1w3qeoZZQWzmSmrZq+d+7Q==}
     peerDependencies:
       '@wagmi/core': 2.11.7
@@ -4548,7 +4548,7 @@ packages:
       '@metamask/sdk': 0.26.4(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)
       '@safe-global/safe-apps-provider': 0.18.1(typescript@5.5.3)
       '@safe-global/safe-apps-sdk': 8.1.0(typescript@5.5.3)
-      '@wagmi/core': 2.11.7(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
+      '@wagmi/core': 2.12.2(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3)
       '@walletconnect/ethereum-provider': 2.13.0(@types/react@18.3.3)(react@18.3.1)
       '@walletconnect/modal': 2.6.2(@types/react@18.3.3)(react@18.3.1)
       cbw-sdk: /@coinbase/wallet-sdk@3.9.3
@@ -4605,8 +4605,8 @@ packages:
       - utf-8-validate
       - zod
 
-  /@wagmi/core@2.11.7(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3):
-    resolution: {integrity: sha512-O9bMbh9VebCUwoOgNhn27bX/VU8Lge9noD/ypUw3qpGGDBOv0/kwHyxJsvQipyDn55cKxpqW2KKo/7sIDgqVzA==}
+  /@wagmi/core@2.12.2(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.3):
+    resolution: {integrity: sha512-V/KmuTOBHVdg5NG5EIzLyWuXJ3f8a8YwpXM7ywjuEnGkljxh+WROKKd+I/Qc5RHK59nEhFOYWQKXuyz1szmO9A==}
     peerDependencies:
       '@tanstack/query-core': '>=5.0.0'
       typescript: '>=5.0.4'
@@ -4618,17 +4618,14 @@ packages:
         optional: true
     dependencies:
       eventemitter3: 5.0.1
-      mipd: 0.0.5(typescript@5.5.3)
+      mipd: 0.0.7(typescript@5.5.3)
       typescript: 5.5.3
       viem: 2.17.3(typescript@5.5.3)
       zustand: 4.4.1(@types/react@18.3.3)(react@18.3.1)
     transitivePeerDependencies:
       - '@types/react'
-      - bufferutil
       - immer
       - react
-      - utf-8-validate
-      - zod
 
   /@walletconnect/core@2.13.0:
     resolution: {integrity: sha512-blDuZxQenjeXcVJvHxPznTNl6c/2DO4VNrFnus+qHmO6OtT5lZRowdMtlCaCNb1q0OxzgrmBDcTOCbFcCpio/g==}
@@ -9131,6 +9128,16 @@ packages:
       - bufferutil
       - utf-8-validate
       - zod
+
+  /mipd@0.0.7(typescript@5.5.3):
+    resolution: {integrity: sha512-aAPZPNDQ3uMTdKbuO2YmAw2TxLHO0moa4YKAyETM/DTj5FloZo+a+8tU+iv4GmW+sOxKLSRwcSFuczk+Cpt6fg==}
+    peerDependencies:
+      typescript: '>=5.0.4'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      typescript: 5.5.3
 
   /mkdirp@0.5.6:
     resolution: {integrity: sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==}
