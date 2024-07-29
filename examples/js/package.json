@@ -13,7 +13,7 @@
     "@didit-sdk/js": "workspace:*",
     "@wagmi/connectors": "^5.1.1",
     "@wagmi/core": "^2.13.1",
-    "viem": "^2.17.10"
+    "viem": "^2.18.4"
   },
   "devDependencies": {
     "typescript": "5.5.3",

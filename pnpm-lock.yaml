@@ -79,13 +79,13 @@ importers:
         version: link:../../packages/js
       '@wagmi/connectors':
         specifier: ^5.1.1
-        version: 5.1.1(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.10)
+        version: 5.1.1(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.18.4)
       '@wagmi/core':
         specifier: ^2.13.1
-        version: 2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.10)
+        version: 2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.18.4)
       viem:
-        specifier: ^2.17.10
-        version: 2.17.10(typescript@5.5.3)
+        specifier: ^2.18.4
+        version: 2.18.4(typescript@5.5.3)
     devDependencies:
       typescript:
         specifier: 5.5.3
@@ -112,11 +112,11 @@ importers:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
       viem:
-        specifier: ^2.17.10
-        version: 2.17.10(typescript@5.5.3)
+        specifier: ^2.18.4
+        version: 2.18.4(typescript@5.5.3)
       wagmi:
         specifier: ^2.12.1
-        version: 2.12.1(@tanstack/react-query@5.51.11)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.10)
+        version: 2.12.1(@tanstack/react-query@5.51.11)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.18.4)
     devDependencies:
       '@didit-sdk/eslint-config':
         specifier: workspace:*
@@ -161,11 +161,11 @@ importers:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
       viem:
-        specifier: ^2.17.10
-        version: 2.17.10(typescript@5.5.3)
+        specifier: ^2.18.4
+        version: 2.18.4(typescript@5.5.3)
       wagmi:
         specifier: ^2.12.1
-        version: 2.12.1(@tanstack/react-query@5.51.11)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.10)
+        version: 2.12.1(@tanstack/react-query@5.51.11)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.18.4)
     devDependencies:
       '@didit-sdk/eslint-config':
         specifier: workspace:*
@@ -213,11 +213,11 @@ importers:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
       viem:
-        specifier: ^2.17.10
-        version: 2.17.10(typescript@5.5.3)
+        specifier: ^2.18.4
+        version: 2.18.4(typescript@5.5.3)
       wagmi:
         specifier: ^2.12.1
-        version: 2.12.1(@tanstack/react-query@5.51.11)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.10)
+        version: 2.12.1(@tanstack/react-query@5.51.11)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.18.4)
     devDependencies:
       '@didit-sdk/eslint-config':
         specifier: workspace:*
@@ -261,10 +261,10 @@ importers:
         version: 4.2.2
       '@wagmi/connectors':
         specifier: ^5.1.1
-        version: 5.1.1(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.10)
+        version: 5.1.1(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.18.4)
       '@wagmi/core':
         specifier: ^2.13.1
-        version: 2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.10)
+        version: 2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.18.4)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -272,11 +272,11 @@ importers:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
       viem:
-        specifier: ^2.17.10
-        version: 2.17.10(typescript@5.5.3)
+        specifier: ^2.18.4
+        version: 2.18.4(typescript@5.5.3)
       wagmi:
         specifier: ^2.12.1
-        version: 2.12.1(@tanstack/react-query@5.51.11)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.10)
+        version: 2.12.1(@tanstack/react-query@5.51.11)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.18.4)
 
   packages/eslint-config: {}
 
@@ -294,13 +294,13 @@ importers:
         version: link:../tsconfig
       '@wagmi/connectors':
         specifier: ^5.1.1
-        version: 5.1.1(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.10)
+        version: 5.1.1(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.18.4)
       '@wagmi/core':
         specifier: ^2.13.1
-        version: 2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.10)
+        version: 2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.18.4)
       viem:
-        specifier: ^2.17.10
-        version: 2.17.10(typescript@5.5.3)
+        specifier: ^2.18.4
+        version: 2.18.4(typescript@5.5.3)
 
   packages/polyfills:
     dependencies:
@@ -334,11 +334,11 @@ importers:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
       viem:
-        specifier: ^2.17.10
-        version: 2.17.10(typescript@5.5.3)
+        specifier: ^2.18.4
+        version: 2.18.4(typescript@5.5.3)
       wagmi:
         specifier: ^2.12.1
-        version: 2.12.1(@tanstack/react-query@5.51.11)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.10)
+        version: 2.12.1(@tanstack/react-query@5.51.11)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.18.4)
 
   packages/tsconfig: {}
 
@@ -3894,7 +3894,7 @@ packages:
     resolution: {integrity: sha512-N5p/ulfnnA2Pi2M3YeWjULeWbjo7ei22JwU/IXnhoHzKq3pYCN6ynL9mJBOlvDVv892EgLPCWCOwQk/uBT2v0Q==}
     dependencies:
       '@safe-global/safe-gateway-typescript-sdk': 3.21.8
-      viem: 2.17.10(typescript@5.5.3)
+      viem: 2.18.4(typescript@5.5.3)
     transitivePeerDependencies:
       - bufferutil
       - typescript
@@ -4476,7 +4476,7 @@ packages:
       tinyrainbow: 1.2.0
     dev: false
 
-  /@wagmi/connectors@5.1.1(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.10):
+  /@wagmi/connectors@5.1.1(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.18.4):
     resolution: {integrity: sha512-jD+s3gMYhjsmFu9zROHCz4GoPHCMgNObnW5hCZGlWm8mx26zTE/eIe2fjg53n5LWI7nmMVJxuRAMP3m7oOC5Hw==}
     peerDependencies:
       '@wagmi/core': 2.13.1
@@ -4490,12 +4490,12 @@ packages:
       '@metamask/sdk': 0.26.5(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)
       '@safe-global/safe-apps-provider': 0.18.3(typescript@5.5.3)
       '@safe-global/safe-apps-sdk': 9.1.0(typescript@5.5.3)
-      '@wagmi/core': 2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.10)
+      '@wagmi/core': 2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.18.4)
       '@walletconnect/ethereum-provider': 2.13.0(@types/react@18.3.3)(react@18.3.1)
       '@walletconnect/modal': 2.6.2(@types/react@18.3.3)(react@18.3.1)
       cbw-sdk: /@coinbase/wallet-sdk@3.9.3
       typescript: 5.5.3
-      viem: 2.17.10(typescript@5.5.3)
+      viem: 2.18.4(typescript@5.5.3)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -4522,7 +4522,7 @@ packages:
       - utf-8-validate
       - zod
 
-  /@wagmi/core@2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.10):
+  /@wagmi/core@2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.18.4):
     resolution: {integrity: sha512-6ZdgI6dYfpa+IZPU0DZ3XQEQVzs003tKCERzSUNkxmt5cwSMg0XB1kvF5vU9MuPP96K6IcGkqSwAtgCmM5uy2w==}
     peerDependencies:
       '@tanstack/query-core': '>=5.0.0'
@@ -4537,7 +4537,7 @@ packages:
       eventemitter3: 5.0.1
       mipd: 0.0.7(typescript@5.5.3)
       typescript: 5.5.3
-      viem: 2.17.10(typescript@5.5.3)
+      viem: 2.18.4(typescript@5.5.3)
       zustand: 4.4.1(@types/react@18.3.3)(react@18.3.1)
     transitivePeerDependencies:
       - '@types/react'
@@ -11385,8 +11385,8 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
 
-  /viem@2.17.10(typescript@5.5.3):
-    resolution: {integrity: sha512-nubTeRBI3wsmYGemlg9PsbhunTSJSYUlq8VjzIQkbowCSPSd1bqzVeUU0qEOXsGtgRiFfBzXkkxFknZtBOAx/Q==}
+  /viem@2.18.4(typescript@5.5.3):
+    resolution: {integrity: sha512-JGdN+PgBnZMbm7fc9o0SfHvL0CKyfrlhBUtaz27V+PeHO43Kgc9Zd4WyIbM8Brafq4TvVcnriRFW/FVGOzwEJw==}
     peerDependencies:
       typescript: '>=5.0.4'
     peerDependenciesMeta:
@@ -11401,6 +11401,7 @@ packages:
       abitype: 1.0.5(typescript@5.5.3)
       isows: 1.0.4(ws@8.17.1)
       typescript: 5.5.3
+      webauthn-p256: 0.0.5
       ws: 8.17.1
     transitivePeerDependencies:
       - bufferutil
@@ -11521,7 +11522,7 @@ packages:
   /vlq@1.0.1:
     resolution: {integrity: sha512-gQpnTgkubC6hQgdIcRdYGDSDc+SaujOdyesZQMv6JlfQee/9Mp0Qhnys6WxDWvQnL5WZdT7o2Ul187aSt0Rq+w==}
 
-  /wagmi@2.12.1(@tanstack/react-query@5.51.11)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.10):
+  /wagmi@2.12.1(@tanstack/react-query@5.51.11)(@types/react@18.3.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.18.4):
     resolution: {integrity: sha512-NgsTGq6P9NkkeC/Dmj4FQEfCN2TN4K/iwCe7on8NyTCLWR8vnkQPExC3PwTPaKWy47YJ/NCOpfn75IoF/cgiqg==}
     peerDependencies:
       '@tanstack/react-query': '>=5.0.0'
@@ -11533,12 +11534,12 @@ packages:
         optional: true
     dependencies:
       '@tanstack/react-query': 5.51.11(react@18.3.1)
-      '@wagmi/connectors': 5.1.1(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.10)
-      '@wagmi/core': 2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.17.10)
+      '@wagmi/connectors': 5.1.1(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.3)(viem@2.18.4)
+      '@wagmi/core': 2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.3)(viem@2.18.4)
       react: 18.3.1
       typescript: 5.5.3
       use-sync-external-store: 1.2.0(react@18.3.1)
-      viem: 2.17.10(typescript@5.5.3)
+      viem: 2.18.4(typescript@5.5.3)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -11575,6 +11576,12 @@ packages:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}
     dependencies:
       defaults: 1.0.4
+
+  /webauthn-p256@0.0.5:
+    resolution: {integrity: sha512-drMGNWKdaixZNobeORVIqq7k5DsRC9FnG201K2QjeOoQLmtSDaSsVZdkg6n5jUALJKcAG++zBPJXmv6hy0nWFg==}
+    dependencies:
+      '@noble/curves': 1.4.2
+      '@noble/hashes': 1.4.0
 
   /webextension-polyfill@0.10.0:
     resolution: {integrity: sha512-c5s35LgVa5tFaHhrZDnr3FpQpjj1BB+RXhLTYUxGqBVN460HkbM8TBtEqdXWbpTKfzwCcjAZVF7zXCYSKtcp9g==}
