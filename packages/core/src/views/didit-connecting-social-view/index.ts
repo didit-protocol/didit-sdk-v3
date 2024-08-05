@@ -159,7 +159,7 @@ export class DiditConnectingSocialView extends LitElement {
           this.label = 'Connection failed'
           this.subLabel = 'Something went wrong! Please try again'
           this.stopMonitoringPopupStatus()
-          if (this.popupWindow && !this.popupWindow.closed) {
+          if (this.popupWindow) {
             this.popupWindow.close()
           }
         }
@@ -205,7 +205,7 @@ export class DiditConnectingSocialView extends LitElement {
     if (this.timeOut) {
       clearTimeout(this.timeOut)
     }
-    if (this.popupWindow && !this.popupWindow.closed) {
+    if (this.popupWindow) {
       this.popupWindow.close()
     }
     DiditAuthController.deleteCodeVerifier()

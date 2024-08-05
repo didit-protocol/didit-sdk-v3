@@ -34,6 +34,7 @@ createDiditSdk({
   tokenAuthorizationPath: '/api/token',
   scope: 'openid',
   claims: 'read:blockchain read:gender read:email read:phone read:picture',
+  providers: ['apple', 'google'],
   isStaging: true
 })
 
