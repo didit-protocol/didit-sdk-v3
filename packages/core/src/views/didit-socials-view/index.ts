@@ -8,12 +8,14 @@ import { RouterController } from '../../controllers/Router.js'
 import { CoreHelperUtil } from '../../utils/CoreHelperUtil.js'
 import { DiditAuthController } from '../../controllers/DiditAuth.js'
 import { ConnectionController } from '../../controllers/Connection.js'
+import { ConfigurationController } from '../../controllers/Configuration.js'
 
 @customElement('didit-socials-view')
 export class DiditSocialsView extends LitElement {
   public static override styles = styles
 
   // -- Members ------------------------------------------- //
+  private readonly socialProvides = ConfigurationController.state.providers
   private unsubscribe: (() => void)[] = []
 
   // -- State & Properties -------------------------------- //
@@ -42,7 +44,9 @@ export class DiditSocialsView extends LitElement {
   // -- Private ------------------------------------------- //
 
   private connectSocialsTemplate() {
-    const socialConnectors = this.connectors.filter(CoreHelperUtil.isSocialConnector)
+    const socialConnectors = this.connectors
+      .filter(CoreHelperUtil.isSocialConnector)
+      .filter(cnt => this.socialProvides.includes(cnt.provider))
 
     if (!socialConnectors.length) {
       return null

@@ -1,6 +1,6 @@
 import { subscribeKey as subKey } from 'valtio/vanilla/utils'
 import { proxy, snapshot } from 'valtio/vanilla'
-import type { DiditSdkVersion, Metadata, ProjectId } from '../types/index.js'
+import type { DiditAuthType, DiditSdkVersion, Metadata, ProjectId } from '../types/index.js'
 
 // -- Types --------------------------------------------- //
 export interface ConfigurationControllerState {
@@ -9,6 +9,7 @@ export interface ConfigurationControllerState {
   clientSecret?: string
   claims?: `${string}:${string}`
   scope?: string
+  providers: DiditAuthType[]
   metadata?: Metadata
   profileLink?: string
   sdkVersion: DiditSdkVersion
@@ -20,6 +21,7 @@ type StateKey = keyof ConfigurationControllerState
 const state = proxy<ConfigurationControllerState>({
   projectId: '',
   clientId: '',
+  providers: ['apple', 'google', 'wallet'],
   sdkVersion: 'didit-sdk-js-undefined'
 })
 
@@ -64,6 +66,10 @@ export const ConfigurationController = {
 
   setProfileLink(profileLink: ConfigurationControllerState['profileLink']) {
     state.profileLink = profileLink
+  },
+
+  setProviders(providers: ConfigurationControllerState['providers']) {
+    state.providers = providers
   },
 
   getSnapshot() {
