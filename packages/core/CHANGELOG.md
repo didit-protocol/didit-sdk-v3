@@ -1,5 +1,14 @@
 # @didit-sdk/core
 
+## 1.0.8
+
+### Patch Changes
+
+- ce49f4e: configure providers
+- Updated dependencies [ce49f4e]
+  - @didit-sdk/ui@1.0.8
+  - @didit-sdk/polyfills@1.0.8
+
 ## 1.0.7
 
 ### Patch Changes
