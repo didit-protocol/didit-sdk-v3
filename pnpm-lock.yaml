@@ -78,8 +78,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/js
       '@wagmi/connectors':
-        specifier: ^5.1.1
-        version: 5.1.1(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.4)
+        specifier: ^5.1.2
+        version: 5.1.2(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.4)
       '@wagmi/core':
         specifier: ^2.13.1
         version: 2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.4)
@@ -260,8 +260,8 @@ importers:
         specifier: ^4.2.2
         version: 4.2.2
       '@wagmi/connectors':
-        specifier: ^5.1.1
-        version: 5.1.1(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.4)
+        specifier: ^5.1.2
+        version: 5.1.2(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.4)
       '@wagmi/core':
         specifier: ^2.13.1
         version: 2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.4)
@@ -293,8 +293,8 @@ importers:
         specifier: workspace:*
         version: link:../tsconfig
       '@wagmi/connectors':
-        specifier: ^5.1.1
-        version: 5.1.1(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.4)
+        specifier: ^5.1.2
+        version: 5.1.2(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.4)
       '@wagmi/core':
         specifier: ^2.13.1
         version: 2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.4)
@@ -2964,6 +2964,28 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
+  /@metamask/sdk-communication-layer@0.27.0(cross-fetch@4.0.0)(eciesjs@0.3.19)(eventemitter2@6.4.9)(readable-stream@3.6.2)(socket.io-client@4.7.5):
+    resolution: {integrity: sha512-G9LCaQzIqp5WmUmvHN6UUdjWrBh67MbRobmbbs5fcc2+9XFhj3vBgtyleUYjun91jSlPHoZeo+f/Pj4/WoPIJg==}
+    peerDependencies:
+      cross-fetch: ^4.0.0
+      eciesjs: ^0.3.16
+      eventemitter2: ^6.4.7
+      readable-stream: ^3.6.2
+      socket.io-client: ^4.5.1
+    dependencies:
+      bufferutil: 4.0.8
+      cross-fetch: 4.0.0
+      date-fns: 2.30.0
+      debug: 4.3.5
+      eciesjs: 0.3.19
+      eventemitter2: 6.4.9
+      readable-stream: 3.6.2
+      socket.io-client: 4.7.5
+      utf-8-validate: 5.0.10
+      uuid: 8.3.2
+    transitivePeerDependencies:
+      - supports-color
+
   /@metamask/sdk-install-modal-web@0.26.5(i18next@23.11.5)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1):
     resolution: {integrity: sha512-qVA9Nk+NorGx5hXyODy5wskptE8R7RNYTYt49VbQpJogqbbVe1dnJ98+KaA43PBN4XYMCXmcIhULNiEHGsLynA==}
     peerDependencies:
@@ -2999,6 +3021,49 @@ packages:
       '@metamask/onboarding': 1.0.1
       '@metamask/providers': 16.1.0
       '@metamask/sdk-communication-layer': 0.26.4(cross-fetch@4.0.0)(eciesjs@0.3.19)(eventemitter2@6.4.9)(readable-stream@3.6.2)(socket.io-client@4.7.5)
+      '@metamask/sdk-install-modal-web': 0.26.5(i18next@23.11.5)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)
+      '@types/dom-screen-wake-lock': 1.0.3
+      bowser: 2.11.0
+      cross-fetch: 4.0.0
+      debug: 4.3.5
+      eciesjs: 0.3.19
+      eth-rpc-errors: 4.0.3
+      eventemitter2: 6.4.9
+      i18next: 23.11.5
+      i18next-browser-languagedetector: 7.1.0
+      obj-multiplex: 1.0.0
+      pump: 3.0.0
+      qrcode-terminal-nooctal: 0.12.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      react-native-webview: 11.26.1(react-native@0.74.3)(react@18.3.1)
+      readable-stream: 3.6.2
+      rollup-plugin-visualizer: 5.12.0
+      socket.io-client: 4.7.5
+      util: 0.12.5
+      uuid: 8.3.2
+    transitivePeerDependencies:
+      - bufferutil
+      - encoding
+      - react-native
+      - rollup
+      - supports-color
+      - utf-8-validate
+
+  /@metamask/sdk@0.27.0(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1):
+    resolution: {integrity: sha512-6sMjr/0qR700X1svPGEQ4rBdtccidBLeTC27fYQc7r9ROgSixB1DUUAyu/LoySVqt3Hu/Zm7NnAHXuT228ht7A==}
+    peerDependencies:
+      react: ^18.2.0
+      react-dom: ^18.2.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      '@metamask/onboarding': 1.0.1
+      '@metamask/providers': 16.1.0
+      '@metamask/sdk-communication-layer': 0.27.0(cross-fetch@4.0.0)(eciesjs@0.3.19)(eventemitter2@6.4.9)(readable-stream@3.6.2)(socket.io-client@4.7.5)
       '@metamask/sdk-install-modal-web': 0.26.5(i18next@23.11.5)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)
       '@types/dom-screen-wake-lock': 1.0.3
       bowser: 2.11.0
@@ -4522,6 +4587,52 @@ packages:
       - utf-8-validate
       - zod
 
+  /@wagmi/connectors@5.1.2(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.4):
+    resolution: {integrity: sha512-UX5LqDdGXrTdHBpL9wrJbcjK7/rtpOjx6YSIkO26TdPp6UyxQvEmY2XY6hdgBwHVx9xPaiVNIrWoexa5pRJUNA==}
+    peerDependencies:
+      '@wagmi/core': 2.13.1
+      typescript: '>=5.0.4'
+      viem: 2.x
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@coinbase/wallet-sdk': 4.0.4
+      '@metamask/sdk': 0.27.0(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)
+      '@safe-global/safe-apps-provider': 0.18.3(typescript@5.5.4)
+      '@safe-global/safe-apps-sdk': 9.1.0(typescript@5.5.4)
+      '@wagmi/core': 2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.4)
+      '@walletconnect/ethereum-provider': 2.14.0(@types/react@18.3.3)(react@18.3.1)
+      '@walletconnect/modal': 2.6.2(@types/react@18.3.3)(react@18.3.1)
+      cbw-sdk: /@coinbase/wallet-sdk@3.9.3
+      typescript: 5.5.4
+      viem: 2.18.4(typescript@5.5.4)
+    transitivePeerDependencies:
+      - '@azure/app-configuration'
+      - '@azure/cosmos'
+      - '@azure/data-tables'
+      - '@azure/identity'
+      - '@azure/keyvault-secrets'
+      - '@azure/storage-blob'
+      - '@capacitor/preferences'
+      - '@netlify/blobs'
+      - '@planetscale/database'
+      - '@react-native-async-storage/async-storage'
+      - '@types/react'
+      - '@upstash/redis'
+      - '@vercel/kv'
+      - bufferutil
+      - encoding
+      - ioredis
+      - react
+      - react-dom
+      - react-native
+      - rollup
+      - supports-color
+      - uWebSockets.js
+      - utf-8-validate
+      - zod
+
   /@wagmi/core@2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.4):
     resolution: {integrity: sha512-6ZdgI6dYfpa+IZPU0DZ3XQEQVzs003tKCERzSUNkxmt5cwSMg0XB1kvF5vU9MuPP96K6IcGkqSwAtgCmM5uy2w==}
     peerDependencies:
@@ -4621,7 +4732,6 @@ packages:
       - ioredis
       - uWebSockets.js
       - utf-8-validate
-    dev: false
 
   /@walletconnect/environment@1.0.1:
     resolution: {integrity: sha512-T426LLZtHj8e8rYnKfzsw1aG6+M0BT1ZxayMdv/p8yM0MU+eJDISqNY3/bccxRr4LrF9csq02Rhqt08Ibl0VRg==}
@@ -4695,7 +4805,6 @@ packages:
       - react
       - uWebSockets.js
       - utf-8-validate
-    dev: false
 
   /@walletconnect/events@1.0.1:
     resolution: {integrity: sha512-NPTqaoi0oPBVNuLv7qPaJazmGHs5JGyO8eEAk5VGKmJzDR7AHzD4k6ilox5kxk1iwiOnFopBOOMLs86Oa76HpQ==}
@@ -4892,7 +5001,6 @@ packages:
       - ioredis
       - uWebSockets.js
       - utf-8-validate
-    dev: false
 
   /@walletconnect/time@1.0.2:
     resolution: {integrity: sha512-uzdd9woDcJ1AaBZRhqy5rNC9laqWGErfc4dxA9a87mPdKOgWMD85mcFo9dIYIts/Jwocfwn07EC6EzclKubk/g==}
@@ -4948,7 +5056,6 @@ packages:
       - '@vercel/kv'
       - ioredis
       - uWebSockets.js
-    dev: false
 
   /@walletconnect/universal-provider@2.13.0:
     resolution: {integrity: sha512-B5QvO8pnk5Bqn4aIt0OukGEQn2Auk9VbHfhQb9cGwgmSCd1GlprX/Qblu4gyT5+TjHMb1Gz5UssUaZWTWbDhBg==}
@@ -5011,7 +5118,6 @@ packages:
       - ioredis
       - uWebSockets.js
       - utf-8-validate
-    dev: false
 
   /@walletconnect/utils@2.13.0:
     resolution: {integrity: sha512-q1eDCsRHj5iLe7fF8RroGoPZpdo2CYMZzQSrw1iqL+2+GOeqapxxuJ1vaJkmDUkwgklfB22ufqG6KQnz78sD4w==}
@@ -5078,7 +5184,6 @@ packages:
       - '@vercel/kv'
       - ioredis
       - uWebSockets.js
-    dev: false
 
   /@walletconnect/window-getters@1.0.1:
     resolution: {integrity: sha512-vHp+HqzGxORPAN8gY03qnbTMnhqIwjeRJNOMOAzePRg4xVEEE2WvYsI9G2NMjOknA8hnuYbU3/hwLcKbjhc8+Q==}
