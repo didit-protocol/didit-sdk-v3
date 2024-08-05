@@ -1,6 +1,6 @@
 {
   "name": "@examples/next",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "private": true,
   "scripts": {
     "dev:example": "next dev --port 3002",
