@@ -65,6 +65,7 @@ interface DiditClientOptions<C extends Config> {
   profileLink?: ConfigurationControllerState['profileLink']
   claims?: ConfigurationControllerState['claims']
   scope?: ConfigurationControllerState['scope']
+  providers?: ConfigurationControllerState['providers']
   isStaging?: DiditApiControllerState['isStaging']
   onSignIn?: DiditAuthControllerClient['onSignIn']
   onSignOut?: DiditAuthControllerClient['onSignOut']
@@ -111,7 +112,7 @@ export class DiditSdk {
   private wagmiConfig: DiditClientOptions<CoreConfig>['wagmiConfig']
 
   public constructor(options: DiditSdkOptions<CoreConfig>) {
-    const { wagmiConfig, _sdkVersion, scope, claims, ...diditSdkOptions } = options
+    const { wagmiConfig, _sdkVersion, scope, claims, providers, ...diditSdkOptions } = options
     if (!wagmiConfig) {
       throw new Error('diditsdk:constructor: wagmiConfig is required')
     }
@@ -125,6 +126,10 @@ export class DiditSdk {
 
     if (claims && !CoreHelperUtil.isValidClaimsString(claims)) {
       throw new Error('diditsdk:constructor: Invalid claims string')
+    }
+
+    if (providers && !providers.length) {
+      throw new Error('diditsdk:constructor: providers is required')
     }
 
     const connectionControllerClient = createConnectionControllerClient(wagmiConfig)
@@ -405,8 +410,8 @@ export class DiditSdk {
     DiditApiController.setAuthBaseUrl(options.authBaseUrl)
     DiditApiController.setWalletAuthBaseUrl(options.walletAuthBaseUrl)
 
-    if (options.walletAuthorizationPath) {
-      DiditApiController.setWalletAuthorizationPath(options.walletAuthorizationPath)
+    if (options.providers) {
+      ConfigurationController.setProviders(options.providers)
     }
 
     if (options.tokenAuthorizationPath) {
@@ -423,6 +428,10 @@ export class DiditSdk {
 
     if (options.profileLink) {
       ConfigurationController.setProfileLink(options.profileLink)
+    }
+
+    if (options.walletAuthorizationPath) {
+      DiditApiController.setWalletAuthorizationPath(options.walletAuthorizationPath)
     }
 
     if (options.metadata) {
