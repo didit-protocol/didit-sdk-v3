@@ -1,6 +1,6 @@
 {
   "name": "@didit-sdk/js",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "type": "module",
   "main": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
@@ -26,9 +26,9 @@
   "devDependencies": {
     "@didit-sdk/eslint-config": "workspace:*",
     "@didit-sdk/tsconfig": "workspace:*",
-    "@wagmi/connectors": "^5.1.1",
+    "@wagmi/connectors": "^5.1.2",
     "@wagmi/core": "^2.13.1",
-    "viem": "^2.18.4"
+    "viem": "^2.18.8"
   },
   "peerDependencies": {
     "@wagmi/connectors": ">=4",

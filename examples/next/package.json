@@ -1,6 +1,6 @@
 {
   "name": "@examples/next",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "private": true,
   "scripts": {
     "dev:example": "next dev --port 3002",
@@ -15,16 +15,16 @@
     "next": "14.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.2.0",
-    "viem": "^2.18.4",
-    "wagmi": "^2.12.1"
+    "viem": "^2.18.8",
+    "wagmi": "^2.12.4"
   },
   "devDependencies": {
     "@didit-sdk/eslint-config": "workspace:*",
     "@didit-sdk/tsconfig": "workspace:*",
-    "@types/node": "^22.0.0",
+    "@types/node": "^22.1.0",
     "esbuild": "0.23.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.5",
-    "typescript": "5.5.3"
+    "typescript": "5.5.4"
   }
 }
