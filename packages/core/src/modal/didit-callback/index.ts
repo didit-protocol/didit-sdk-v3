@@ -52,7 +52,9 @@ export class DiditCallback extends LitElement {
         windowLocation.origin
       )
     }
-    window?.close()
+    setTimeout(() => {
+      window?.close()
+    }, 2000)
   }
 }
 
