@@ -1,5 +1,11 @@
 # @didit-sdk/ui
 
+## 1.0.9
+
+### Patch Changes
+
+- a9dfb06: fix social auth error after login
+
 ## 1.0.8
 
 ### Patch Changes

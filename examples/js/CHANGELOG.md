@@ -1,5 +1,13 @@
 # @examples/js
 
+## 1.0.9
+
+### Patch Changes
+
+- a9dfb06: fix social auth error after login
+- Updated dependencies [a9dfb06]
+  - @didit-sdk/js@1.0.9
+
 ## 1.0.8
 
 ### Patch Changes
