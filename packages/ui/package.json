@@ -21,8 +21,8 @@
     "clean:build": "rm -rf dist .tubro node_modules"
   },
   "dependencies": {
-    "lit": "^3.1.0",
-    "qrcode": "^1.5.3"
+    "lit": "^3.2.0",
+    "qrcode": "^1.5.4"
   },
   "devDependencies": {
     "@didit-sdk/eslint-config": "workspace:*",
