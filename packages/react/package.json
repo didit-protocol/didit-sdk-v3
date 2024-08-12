@@ -47,7 +47,7 @@
     "@didit-sdk/tsconfig": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.2.0",
-    "viem": "^2.18.8",
+    "viem": "^2.19.4",
     "wagmi": "^2.12.4"
   },
   "peerDependencies": {
