@@ -12,7 +12,7 @@
   "dependencies": {
     "@didit-sdk/js": "workspace:*",
     "@wagmi/connectors": "^5.1.2",
-    "@wagmi/core": "^2.13.1",
+    "@wagmi/core": "^2.13.4",
     "viem": "^2.18.8"
   },
   "devDependencies": {
