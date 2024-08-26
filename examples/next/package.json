@@ -21,7 +21,7 @@
   "devDependencies": {
     "@didit-sdk/eslint-config": "workspace:*",
     "@didit-sdk/tsconfig": "workspace:*",
-    "@types/node": "^22.1.0",
+    "@types/node": "^22.5.0",
     "esbuild": "0.23.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.5",
