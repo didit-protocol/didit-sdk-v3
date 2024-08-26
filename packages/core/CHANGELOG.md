@@ -1,5 +1,14 @@
 # @didit-sdk/core
 
+## 1.0.11
+
+### Patch Changes
+
+- 6f80695: fix social button text
+- Updated dependencies [6f80695]
+  - @didit-sdk/polyfills@1.0.11
+  - @didit-sdk/ui@1.0.11
+
 ## 1.0.10
 
 ### Patch Changes
