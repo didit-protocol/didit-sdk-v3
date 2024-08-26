@@ -79,10 +79,10 @@ importers:
         version: link:../../packages/js
       '@wagmi/connectors':
         specifier: ^5.1.2
-        version: 5.1.2(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8)
+        version: 5.1.2(@types/react@18.3.3)(@wagmi/core@2.13.4)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8)
       '@wagmi/core':
-        specifier: ^2.13.1
-        version: 2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8)
+        specifier: ^2.13.4
+        version: 2.13.4(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8)
       viem:
         specifier: ^2.18.8
         version: 2.18.8(typescript@5.5.4)
@@ -261,10 +261,10 @@ importers:
         version: 4.2.2
       '@wagmi/connectors':
         specifier: ^5.1.2
-        version: 5.1.2(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8)
+        version: 5.1.2(@types/react@18.3.3)(@wagmi/core@2.13.4)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8)
       '@wagmi/core':
-        specifier: ^2.13.1
-        version: 2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8)
+        specifier: ^2.13.4
+        version: 2.13.4(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -294,10 +294,10 @@ importers:
         version: link:../tsconfig
       '@wagmi/connectors':
         specifier: ^5.1.2
-        version: 5.1.2(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8)
+        version: 5.1.2(@types/react@18.3.3)(@wagmi/core@2.13.4)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8)
       '@wagmi/core':
-        specifier: ^2.13.1
-        version: 2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8)
+        specifier: ^2.13.4
+        version: 2.13.4(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8)
       viem:
         specifier: ^2.18.8
         version: 2.18.8(typescript@5.5.4)
@@ -4476,7 +4476,7 @@ packages:
       tinyrainbow: 1.2.0
     dev: false
 
-  /@wagmi/connectors@5.1.2(@types/react@18.3.3)(@wagmi/core@2.13.1)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8):
+  /@wagmi/connectors@5.1.2(@types/react@18.3.3)(@wagmi/core@2.13.4)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8):
     resolution: {integrity: sha512-UX5LqDdGXrTdHBpL9wrJbcjK7/rtpOjx6YSIkO26TdPp6UyxQvEmY2XY6hdgBwHVx9xPaiVNIrWoexa5pRJUNA==}
     peerDependencies:
       '@wagmi/core': 2.13.1
@@ -4490,7 +4490,7 @@ packages:
       '@metamask/sdk': 0.27.0(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)
       '@safe-global/safe-apps-provider': 0.18.3(typescript@5.5.4)
       '@safe-global/safe-apps-sdk': 9.1.0(typescript@5.5.4)
-      '@wagmi/core': 2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8)
+      '@wagmi/core': 2.13.4(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8)
       '@walletconnect/ethereum-provider': 2.14.0(@types/react@18.3.3)(react@18.3.1)
       '@walletconnect/modal': 2.6.2(@types/react@18.3.3)(react@18.3.1)
       cbw-sdk: /@coinbase/wallet-sdk@3.9.3
@@ -4568,8 +4568,8 @@ packages:
       - utf-8-validate
       - zod
 
-  /@wagmi/core@2.13.1(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8):
-    resolution: {integrity: sha512-6ZdgI6dYfpa+IZPU0DZ3XQEQVzs003tKCERzSUNkxmt5cwSMg0XB1kvF5vU9MuPP96K6IcGkqSwAtgCmM5uy2w==}
+  /@wagmi/core@2.13.3(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8):
+    resolution: {integrity: sha512-4DqHTeqXHAjwWz6fftLm9zy8Bqy10D3nsCKtaluY0TPw+tSypDSxvzqTauPPasbmJOGfvx2rwXuoI/yqPwwG4w==}
     peerDependencies:
       '@tanstack/query-core': '>=5.0.0'
       typescript: '>=5.0.4'
@@ -4590,8 +4590,8 @@ packages:
       - immer
       - react
 
-  /@wagmi/core@2.13.3(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8):
-    resolution: {integrity: sha512-4DqHTeqXHAjwWz6fftLm9zy8Bqy10D3nsCKtaluY0TPw+tSypDSxvzqTauPPasbmJOGfvx2rwXuoI/yqPwwG4w==}
+  /@wagmi/core@2.13.4(@types/react@18.3.3)(react@18.3.1)(typescript@5.5.4)(viem@2.18.8):
+    resolution: {integrity: sha512-J6gfxHYr8SCc/BzEa712LnI+qLFs5K2nBLupwQqQl4WiAlCu8SdcpbZokqiwfCMYhIRMj0+YFEP9qe4ypcexmw==}
     peerDependencies:
       '@tanstack/query-core': '>=5.0.0'
       typescript: '>=5.0.4'
