@@ -1,5 +1,11 @@
 # @didit-sdk/ui
 
+## 1.0.11
+
+### Patch Changes
+
+- 6f80695: fix social button text
+
 ## 1.0.10
 
 ### Patch Changes
