@@ -1,5 +1,14 @@
 # @didit-sdk/core
 
+## 1.0.10
+
+### Patch Changes
+
+- 1c71c50: fix social login in mobile
+- Updated dependencies [1c71c50]
+  - @didit-sdk/polyfills@1.0.10
+  - @didit-sdk/ui@1.0.10
+
 ## 1.0.9
 
 ### Patch Changes
