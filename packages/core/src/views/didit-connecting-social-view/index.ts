@@ -9,6 +9,8 @@ import { ModalController } from '../../controllers/Modal.js'
 import { DiditAuthController } from '../../controllers/DiditAuth.js'
 import { ConstantsUtil } from '../../utils/ConstantsUtil.js'
 import styles from './styles.js'
+import { ConnectionController } from '../../controllers/Connection.js'
+import { CoreHelperUtil } from '../../utils/CoreHelperUtil.js'
 
 @customElement('didit-connecting-social-view')
 export class DiditConnectingSocialView extends LitElement {
@@ -108,7 +110,7 @@ export class DiditConnectingSocialView extends LitElement {
           </ui-flex>
         </ui-flex>
         <ui-flex class="buttons-container" flexDirection="column" alignItems="center" gap="xxl">
-          ${this.refreshButtonTemplate()}
+          ${this.connectButtobTemplate()} ${this.refreshButtonTemplate()}
         </ui-flex>
       </ui-flex>
     `
@@ -116,6 +118,10 @@ export class DiditConnectingSocialView extends LitElement {
 
   // -- Private ------------------------------------------- //
   private refreshButtonTemplate() {
+    if ((!this.error || this.connecting) && CoreHelperUtil.isMobile()) {
+      return null
+    }
+
     return html`
       <ui-link
         class="retry-button"
@@ -129,8 +135,35 @@ export class DiditConnectingSocialView extends LitElement {
     `
   }
 
+  private connectButtobTemplate() {
+    if (CoreHelperUtil.isMobile() && !this.error) {
+      return html`
+        <ui-button
+          variant="primary"
+          textSize="lg"
+          fullWidth=${true}
+          centerText=${true}
+          data-testid=${`connect-button`}
+          @click=${this.openPopupWindow.bind(this)}
+        >
+          Sign message
+        </ui-button>
+      `
+    }
+
+    return null
+  }
+
   private onTryAgain() {
     RouterController.goBack()
+  }
+
+  private openPopupWindow() {
+    if (this.socialProvider) {
+      const res = ConnectionController.connectSocialProvider(this.socialProvider)
+      DiditAuthController.setPopup(res.popupWindow)
+      DiditAuthController.setCodeVerifier(res.codeVerifier)
+    }
   }
 
   private handleSocialConnection = async (event: MessageEvent) => {
@@ -180,13 +213,7 @@ export class DiditConnectingSocialView extends LitElement {
   }
 
   private connectSocial() {
-    window.addEventListener(
-      'message',
-      event => {
-        this.handleSocialConnection(event)
-      },
-      false
-    )
+    window.addEventListener('message', this.handleSocialConnection, false)
     const to = setTimeout(() => {
       this.handleTimeout()
     }, ConstantsUtil.TWO_MINUTES_MS)

@@ -61,4 +61,8 @@ export default css`
     opacity: 1;
     pointer-events: auto;
   }
+
+  .buttons-container {
+    width: 100%;
+  }
 `

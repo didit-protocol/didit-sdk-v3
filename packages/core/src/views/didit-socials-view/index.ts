@@ -82,10 +82,16 @@ export class DiditSocialsView extends LitElement {
 
   private onConnector(connector: SocialConnector) {
     RouterController.push('ConnectSocial', { connector })
-    const res = ConnectionController.connectSocialProvider(connector.provider)
-    DiditAuthController.setPopup(res.popupWindow)
     DiditAuthController.setSocialProvider(connector.provider)
-    DiditAuthController.setCodeVerifier(res.codeVerifier)
+    /*
+     * Open popup only if it's not mobile. on mobile,
+     * we need to open the popup on user interaction
+     */
+    if (!CoreHelperUtil.isMobile()) {
+      const res = ConnectionController.connectSocialProvider(connector.provider)
+      DiditAuthController.setPopup(res.popupWindow)
+      DiditAuthController.setCodeVerifier(res.codeVerifier)
+    }
   }
 }
 

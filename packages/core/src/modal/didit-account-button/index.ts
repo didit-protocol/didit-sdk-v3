@@ -43,6 +43,16 @@ export class DiditAccountButton extends LitElement {
 
   // -- Render -------------------------------------------- //
   public override render() {
+    let identifier = this.address
+    if (this.authMethod === 'wallet_address') {
+      identifier = UiHelperUtil.getTruncateString({
+        string: this.address || '',
+        charsStart: 4,
+        charsEnd: 4,
+        truncate: 'middle'
+      })
+    }
+
     return html`
       <button
         class="account-button"
@@ -50,24 +60,13 @@ export class DiditAccountButton extends LitElement {
         @click=${this.onClick.bind(this)}
         data-testid="didit-account-button"
       >
-        <ui-user-card size="md" identifier=${
-          this.authMethod === 'email' ? this.address : this.getShortAddress(this.address || '')
-        }
+        <ui-user-card size="md" identifier=${identifier}
         /> </ui-user-card>
       </button>
     `
   }
 
   // -- Private ------------------------------------------- //
-
-  private getShortAddress(address: string) {
-    return UiHelperUtil.getTruncateString({
-      string: address,
-      charsStart: 4,
-      charsEnd: 6,
-      truncate: 'middle'
-    })
-  }
 
   private onClick() {
     ModalController.open()
