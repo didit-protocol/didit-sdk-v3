@@ -8,6 +8,8 @@ export default css`
     overflow: hidden;
   }
   .profile-button {
+    width: 100%;
+    overflow: hidden;
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -21,5 +23,15 @@ export default css`
 
   .profile-button:hover:enabled {
     background-color: var(--ui-color-background);
+  }
+
+  .profile-button .title {
+    max-width: 90%;
+  }
+
+  .title ui-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 `

@@ -67,13 +67,11 @@ export class diditProfileView extends LitElement {
           @click=${this.onProfile.bind(this)}
           data-testid="profile-external-link"
         >
-          <ui-flex gap="xs" alignItems="center">
+          <ui-flex class="title" gap="xs" alignItems="center">
             <ui-icon name="profile" size="md"></ui-icon>
             <ui-text variant="button-1" color="inherit">${address}</ui-text>
           </ui-flex>
-          <ui-flex gap="l" alignItems="center">
-            <ui-icon name="externalLink" size="md"></ui-icon>
-          </ui-flex>
+          <ui-icon name="externalLink" size="md"></ui-icon>
         </button>
         ${this.templateNetworkButton()}
         <button
