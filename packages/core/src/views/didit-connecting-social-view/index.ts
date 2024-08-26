@@ -146,7 +146,7 @@ export class DiditConnectingSocialView extends LitElement {
           data-testid=${`connect-button`}
           @click=${this.openPopupWindow.bind(this)}
         >
-          Sign message
+          Connect with ${this.socialProvider}
         </ui-button>
       `
     }
