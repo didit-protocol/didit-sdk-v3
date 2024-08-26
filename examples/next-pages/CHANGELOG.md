@@ -1,5 +1,13 @@
 # @examples/next-pages
 
+## 1.0.10
+
+### Patch Changes
+
+- 1c71c50: fix social login in mobile
+- Updated dependencies [1c71c50]
+  - @didit-sdk/react@1.0.10
+
 ## 1.0.9
 
 ### Patch Changes
