@@ -23,7 +23,7 @@
   "dependencies": {
     "@didit-sdk/polyfills": "workspace:*",
     "@didit-sdk/ui": "workspace:*",
-    "@walletconnect/ethereum-provider": "^2.14.0",
+    "@walletconnect/ethereum-provider": "^2.15.1",
     "crypto-js": "^4.2.0",
     "valtio": "1.11.2"
   },
@@ -31,12 +31,12 @@
     "@didit-sdk/eslint-config": "workspace:*",
     "@didit-sdk/tsconfig": "workspace:*",
     "@types/crypto-js": "^4.2.2",
-    "@wagmi/connectors": "^5.1.2",
-    "@wagmi/core": "^2.13.1",
+    "@wagmi/connectors": "^5.1.7",
+    "@wagmi/core": "^2.13.4",
     "react": "^18.3.1",
     "react-dom": "^18.2.0",
-    "viem": "^2.18.8",
-    "wagmi": "^2.12.4"
+    "viem": "^2.20.0",
+    "wagmi": "^2.12.7"
   },
   "peerDependencies": {
     "@wagmi/connectors": ">=4",

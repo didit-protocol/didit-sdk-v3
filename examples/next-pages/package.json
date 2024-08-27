@@ -12,24 +12,24 @@
   },
   "dependencies": {
     "@didit-sdk/react": "workspace:*",
-    "@tanstack/react-query": "^5.51.21",
-    "axios": "^1.7.3",
-    "next": "14.2.5",
+    "@tanstack/react-query": "^5.52.2",
+    "axios": "^1.7.5",
+    "next": "14.2.6",
     "react": "^18.3.1",
     "react-dom": "^18.2.0",
-    "viem": "^2.18.8",
-    "wagmi": "^2.12.4"
+    "viem": "^2.20.0",
+    "wagmi": "^2.12.7"
   },
   "devDependencies": {
     "@didit-sdk/eslint-config": "workspace:*",
     "@didit-sdk/tsconfig": "workspace:*",
-    "@types/node": "^22.1.0",
-    "@types/react": "^18.3.3",
+    "@types/node": "^22.5.0",
+    "@types/react": "^18.3.4",
     "@types/react-dom": "^18",
     "eslint": "^8.57.0",
-    "eslint-config-next": "14.2.5",
+    "eslint-config-next": "14.2.6",
     "postcss": "^8",
-    "tailwindcss": "^3.4.7",
+    "tailwindcss": "^3.4.10",
     "typescript": "5.5.4"
   }
 }

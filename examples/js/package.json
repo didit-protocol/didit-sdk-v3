@@ -11,12 +11,12 @@
   },
   "dependencies": {
     "@didit-sdk/js": "workspace:*",
-    "@wagmi/connectors": "^5.1.2",
-    "@wagmi/core": "^2.13.1",
-    "viem": "^2.18.8"
+    "@wagmi/connectors": "^5.1.7",
+    "@wagmi/core": "^2.13.4",
+    "viem": "^2.20.0"
   },
   "devDependencies": {
     "typescript": "5.5.4",
-    "vite": "^5.3.5"
+    "vite": "^5.4.2"
   }
 }
