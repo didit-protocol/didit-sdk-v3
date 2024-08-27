@@ -29,7 +29,7 @@
     "@didit-sdk/tsconfig": "workspace:*",
     "@types/qrcode": "^1.5.5",
     "eslint-plugin-lit": "^1.11.0",
-    "eslint-plugin-wc": "^2.0.4"
+    "eslint-plugin-wc": "^2.1.1"
   },
   "keywords": [
     "ui",
