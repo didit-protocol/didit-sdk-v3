@@ -115,8 +115,8 @@ importers:
         specifier: ^2.20.0
         version: 2.20.0(typescript@5.5.4)
       wagmi:
-        specifier: ^2.12.4
-        version: 2.12.4(@tanstack/react-query@5.51.21)(@types/react@18.3.4)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0)
+        specifier: ^2.12.7
+        version: 2.12.7(@tanstack/react-query@5.51.21)(@types/react@18.3.4)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0)
     devDependencies:
       '@didit-sdk/eslint-config':
         specifier: workspace:*
@@ -164,8 +164,8 @@ importers:
         specifier: ^2.20.0
         version: 2.20.0(typescript@5.5.4)
       wagmi:
-        specifier: ^2.12.4
-        version: 2.12.4(@tanstack/react-query@5.51.21)(@types/react@18.3.4)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0)
+        specifier: ^2.12.7
+        version: 2.12.7(@tanstack/react-query@5.51.21)(@types/react@18.3.4)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0)
     devDependencies:
       '@didit-sdk/eslint-config':
         specifier: workspace:*
@@ -216,8 +216,8 @@ importers:
         specifier: ^2.20.0
         version: 2.20.0(typescript@5.5.4)
       wagmi:
-        specifier: ^2.12.4
-        version: 2.12.4(@tanstack/react-query@5.51.21)(@types/react@18.3.4)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0)
+        specifier: ^2.12.7
+        version: 2.12.7(@tanstack/react-query@5.51.21)(@types/react@18.3.4)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0)
     devDependencies:
       '@didit-sdk/eslint-config':
         specifier: workspace:*
@@ -275,8 +275,8 @@ importers:
         specifier: ^2.20.0
         version: 2.20.0(typescript@5.5.4)
       wagmi:
-        specifier: ^2.12.4
-        version: 2.12.4(@tanstack/react-query@5.51.21)(@types/react@18.3.4)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0)
+        specifier: ^2.12.7
+        version: 2.12.7(@tanstack/react-query@5.51.21)(@types/react@18.3.4)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0)
 
   packages/eslint-config: {}
 
@@ -337,8 +337,8 @@ importers:
         specifier: ^2.20.0
         version: 2.20.0(typescript@5.5.4)
       wagmi:
-        specifier: ^2.12.4
-        version: 2.12.4(@tanstack/react-query@5.51.21)(@types/react@18.3.4)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0)
+        specifier: ^2.12.7
+        version: 2.12.7(@tanstack/react-query@5.51.21)(@types/react@18.3.4)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0)
 
   packages/tsconfig: {}
 
@@ -4522,10 +4522,10 @@ packages:
       - utf-8-validate
       - zod
 
-  /@wagmi/connectors@5.1.4(@types/react@18.3.4)(@wagmi/core@2.13.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0):
-    resolution: {integrity: sha512-LY8RAHy5ichhc7zknFrfrQ3RYZ/fHGgojBz0zMFae5rRrjkR3fG4gRQ9mauPwykGJmOSZshGiFryG1F1gLBm3A==}
+  /@wagmi/connectors@5.1.7(@types/react@18.3.4)(@wagmi/core@2.13.4)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0):
+    resolution: {integrity: sha512-sFoxkxl1ltUkDT5wA2liuQ4LRjfVfkNGMAocGHRyik+8i2Tlr+3SjDAUKjDrcq6sqMQVd40hpcBVbxs2HeRosw==}
     peerDependencies:
-      '@wagmi/core': 2.13.3
+      '@wagmi/core': 2.13.4
       typescript: '>=5.0.4'
       viem: 2.x
     peerDependenciesMeta:
@@ -4536,8 +4536,8 @@ packages:
       '@metamask/sdk': 0.27.0(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)
       '@safe-global/safe-apps-provider': 0.18.3(typescript@5.5.4)
       '@safe-global/safe-apps-sdk': 9.1.0(typescript@5.5.4)
-      '@wagmi/core': 2.13.3(@types/react@18.3.4)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0)
-      '@walletconnect/ethereum-provider': 2.14.0(@types/react@18.3.4)(react@18.3.1)
+      '@wagmi/core': 2.13.4(@types/react@18.3.4)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0)
+      '@walletconnect/ethereum-provider': 2.15.1(@types/react@18.3.4)(react@18.3.1)
       '@walletconnect/modal': 2.6.2(@types/react@18.3.4)(react@18.3.1)
       cbw-sdk: /@coinbase/wallet-sdk@3.9.3
       typescript: 5.5.4
@@ -4567,28 +4567,6 @@ packages:
       - uWebSockets.js
       - utf-8-validate
       - zod
-
-  /@wagmi/core@2.13.3(@types/react@18.3.4)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0):
-    resolution: {integrity: sha512-4DqHTeqXHAjwWz6fftLm9zy8Bqy10D3nsCKtaluY0TPw+tSypDSxvzqTauPPasbmJOGfvx2rwXuoI/yqPwwG4w==}
-    peerDependencies:
-      '@tanstack/query-core': '>=5.0.0'
-      typescript: '>=5.0.4'
-      viem: 2.x
-    peerDependenciesMeta:
-      '@tanstack/query-core':
-        optional: true
-      typescript:
-        optional: true
-    dependencies:
-      eventemitter3: 5.0.1
-      mipd: 0.0.7(typescript@5.5.4)
-      typescript: 5.5.4
-      viem: 2.20.0(typescript@5.5.4)
-      zustand: 4.4.1(@types/react@18.3.4)(react@18.3.1)
-    transitivePeerDependencies:
-      - '@types/react'
-      - immer
-      - react
 
   /@wagmi/core@2.13.4(@types/react@18.3.4)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0):
     resolution: {integrity: sha512-J6gfxHYr8SCc/BzEa712LnI+qLFs5K2nBLupwQqQl4WiAlCu8SdcpbZokqiwfCMYhIRMj0+YFEP9qe4ypcexmw==}
@@ -4688,7 +4666,6 @@ packages:
       - ioredis
       - uWebSockets.js
       - utf-8-validate
-    dev: false
 
   /@walletconnect/environment@1.0.1:
     resolution: {integrity: sha512-T426LLZtHj8e8rYnKfzsw1aG6+M0BT1ZxayMdv/p8yM0MU+eJDISqNY3/bccxRr4LrF9csq02Rhqt08Ibl0VRg==}
@@ -4762,7 +4739,6 @@ packages:
       - react
       - uWebSockets.js
       - utf-8-validate
-    dev: false
 
   /@walletconnect/events@1.0.1:
     resolution: {integrity: sha512-NPTqaoi0oPBVNuLv7qPaJazmGHs5JGyO8eEAk5VGKmJzDR7AHzD4k6ilox5kxk1iwiOnFopBOOMLs86Oa76HpQ==}
@@ -4887,7 +4863,6 @@ packages:
     resolution: {integrity: sha512-tLPErkze/HmC9aCmdZOhtVmYZq1wKfWTJtygQHoWtgg722Jd4homo54Cs4ak2RUFUZIGO2RsOpIcWipaua5D5Q==}
     dependencies:
       '@walletconnect/jsonrpc-types': 1.0.4
-    dev: false
 
   /@walletconnect/relay-auth@1.0.4:
     resolution: {integrity: sha512-kKJcS6+WxYq5kshpPaxGHdwf5y98ZwbfuS4EE/NkQzqrDFm5Cj+dP8LofzWvjrrLkZq7Afy7WrQMXdLy8Sx7HQ==}
@@ -4964,7 +4939,6 @@ packages:
       - ioredis
       - uWebSockets.js
       - utf-8-validate
-    dev: false
 
   /@walletconnect/time@1.0.2:
     resolution: {integrity: sha512-uzdd9woDcJ1AaBZRhqy5rNC9laqWGErfc4dxA9a87mPdKOgWMD85mcFo9dIYIts/Jwocfwn07EC6EzclKubk/g==}
@@ -5020,7 +4994,6 @@ packages:
       - '@vercel/kv'
       - ioredis
       - uWebSockets.js
-    dev: false
 
   /@walletconnect/universal-provider@2.14.0:
     resolution: {integrity: sha512-Mr8uoTmD6H0+Hh+3gxBu4l3T2uP/nNPR02sVtwEujNum++F727mMk+ifPRIpkVo21V/bvXFEy8sHTs5hqyq5iA==}
@@ -5083,7 +5056,6 @@ packages:
       - ioredis
       - uWebSockets.js
       - utf-8-validate
-    dev: false
 
   /@walletconnect/utils@2.14.0:
     resolution: {integrity: sha512-vRVomYQEtEAyCK2c5bzzEvtgxaGGITF8mWuIL+WYSAMyEJLY97mirP2urDucNwcUczwxUgI+no9RiNFbUHreQQ==}
@@ -5150,7 +5122,6 @@ packages:
       - '@vercel/kv'
       - ioredis
       - uWebSockets.js
-    dev: false
 
   /@walletconnect/window-getters@1.0.1:
     resolution: {integrity: sha512-vHp+HqzGxORPAN8gY03qnbTMnhqIwjeRJNOMOAzePRg4xVEEE2WvYsI9G2NMjOknA8hnuYbU3/hwLcKbjhc8+Q==}
@@ -11621,8 +11592,8 @@ packages:
   /vlq@1.0.1:
     resolution: {integrity: sha512-gQpnTgkubC6hQgdIcRdYGDSDc+SaujOdyesZQMv6JlfQee/9Mp0Qhnys6WxDWvQnL5WZdT7o2Ul187aSt0Rq+w==}
 
-  /wagmi@2.12.4(@tanstack/react-query@5.51.21)(@types/react@18.3.4)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0):
-    resolution: {integrity: sha512-qDyVISKHxqnX87LlkHwBMpfsp6yC7D7Er9BSI8IZlsNthQLN1I3Ih1+JzTBJg1DiLpazxmW8h7Yi4+qYhCgo6Q==}
+  /wagmi@2.12.7(@tanstack/react-query@5.51.21)(@types/react@18.3.4)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0):
+    resolution: {integrity: sha512-E7f+2fd+rZPJ3ggBZmVj064gYuCi/Z32x9WMfSDvj5jmGHDkAmTfSi9isKkjJrTf0I+sNxd3PCWku7pndFYsIw==}
     peerDependencies:
       '@tanstack/react-query': '>=5.0.0'
       react: '>=18'
@@ -11633,8 +11604,8 @@ packages:
         optional: true
     dependencies:
       '@tanstack/react-query': 5.51.21(react@18.3.1)
-      '@wagmi/connectors': 5.1.4(@types/react@18.3.4)(@wagmi/core@2.13.3)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0)
-      '@wagmi/core': 2.13.3(@types/react@18.3.4)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0)
+      '@wagmi/connectors': 5.1.7(@types/react@18.3.4)(@wagmi/core@2.13.4)(react-dom@18.3.1)(react-native@0.74.3)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0)
+      '@wagmi/core': 2.13.4(@types/react@18.3.4)(react@18.3.1)(typescript@5.5.4)(viem@2.20.0)
       react: 18.3.1
       typescript: 5.5.4
       use-sync-external-store: 1.2.0(react@18.3.1)
