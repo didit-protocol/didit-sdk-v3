@@ -60,7 +60,7 @@
     }
   },
   "dependencies": {
-    "@changesets/cli": "^2.27.4",
+    "@changesets/cli": "^2.27.8",
     "@commitlint/cli": "^19.4.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@commitlint/cz-commitlint": "^19.4.0",
