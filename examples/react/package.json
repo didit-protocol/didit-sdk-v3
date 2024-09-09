@@ -20,6 +20,6 @@
     "@didit-sdk/eslint-config": "workspace:*",
     "@didit-sdk/tsconfig": "workspace:*",
     "@vitejs/plugin-react": "4.3.1",
-    "vite": "^5.4.2"
+    "vite": "^5.4.3"
   }
 }
