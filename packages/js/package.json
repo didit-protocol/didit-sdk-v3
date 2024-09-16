@@ -28,7 +28,7 @@
     "@didit-sdk/tsconfig": "workspace:*",
     "@wagmi/connectors": "^5.1.7",
     "@wagmi/core": "^2.13.4",
-    "viem": "^2.20.0"
+    "viem": "^2.21.7"
   },
   "peerDependencies": {
     "@wagmi/connectors": ">=4",
