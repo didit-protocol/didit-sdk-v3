@@ -1,4 +1,4 @@
-import { customElement, UiHelperUtil } from '@didit-sdk/ui'
+import { customElement } from '@didit-sdk/ui'
 import { LitElement, html } from 'lit'
 import { state } from 'lit/decorators.js'
 import styles from './styles.js'
@@ -50,29 +50,8 @@ export class diditProfileView extends LitElement {
 
   // -- Render -------------------------------------------- //
   public override render() {
-    let address = this.identifier
-    if (this.authMethod === 'wallet_address') {
-      address = UiHelperUtil.getTruncateString({
-        string: this.identifier ? this.identifier : '',
-        charsStart: 4,
-        charsEnd: 4,
-        truncate: 'middle'
-      })
-    }
-
     return html`
       <ui-flex class="profile-container" flexDirection="column" padding="1xs" gap="xxs">
-        <button
-          class="profile-button"
-          @click=${this.onProfile.bind(this)}
-          data-testid="profile-external-link"
-        >
-          <ui-flex class="title" gap="xs" alignItems="center">
-            <ui-icon name="profile" size="md"></ui-icon>
-            <ui-text variant="button-1" color="inherit">${address}</ui-text>
-          </ui-flex>
-          <ui-icon name="externalLink" size="md"></ui-icon>
-        </button>
         ${this.templateNetworkButton()}
         <button
           class="profile-button"
