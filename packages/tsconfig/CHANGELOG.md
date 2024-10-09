@@ -1,5 +1,11 @@
 # @didit-sdk/tsconfig
 
+## 1.0.13
+
+### Patch Changes
+
+- bc4edeb: now we can use social buttons alone
+
 ## 1.0.12
 
 ### Patch Changes

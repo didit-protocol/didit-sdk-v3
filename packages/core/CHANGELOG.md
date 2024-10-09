@@ -1,5 +1,14 @@
 # @didit-sdk/core
 
+## 1.0.13
+
+### Patch Changes
+
+- bc4edeb: now we can use social buttons alone
+- Updated dependencies [bc4edeb]
+  - @didit-sdk/polyfills@1.0.13
+  - @didit-sdk/ui@1.0.13
+
 ## 1.0.12
 
 ### Patch Changes
