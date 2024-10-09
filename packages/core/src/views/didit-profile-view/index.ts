@@ -4,7 +4,7 @@ import { state } from 'lit/decorators.js'
 import styles from './styles.js'
 import {
   AccountController,
-  ConfigurationController,
+  // ConfigurationController,
   ConnectionController,
   DiditAuthController,
   EventsController,
@@ -12,7 +12,7 @@ import {
   NotificationsController,
   RouterController
 } from '../../controllers/index.js'
-import { CoreHelperUtil } from '../../utils/CoreHelperUtil.js'
+// Import { CoreHelperUtil } from '../../utils/CoreHelperUtil.js'
 
 @customElement('didit-profile-view')
 export class diditProfileView extends LitElement {
@@ -28,7 +28,7 @@ export class diditProfileView extends LitElement {
 
   @state() private network = AccountController.state.network
 
-  @state() private profileLink = ConfigurationController.state.profileLink || ''
+  // @state() private profileLink = ConfigurationController.state.profileLink || ''
 
   public constructor() {
     super()
@@ -37,10 +37,12 @@ export class diditProfileView extends LitElement {
         this.identifier = val.diditSession?.identifier
         this.authMethod = val.diditSession?.identifierType
         this.network = val.network
-      }),
-      ConfigurationController.subscribeKey('profileLink', val => {
-        this.profileLink = val || ''
       })
+      /*
+       * ConfigurationController.subscribeKey('profileLink', val => {
+       *   this.profileLink = val || ''
+       * })
+       */
     )
   }
 
@@ -116,16 +118,17 @@ export class diditProfileView extends LitElement {
    * }
    */
 
-  private onProfile() {
-    EventsController.sendEvent({ type: 'track', event: 'CLICK_PROFILE_LINK' })
-
-    if (CoreHelperUtil.isFullURL(this.profileLink)) {
-      CoreHelperUtil.openHref(this.profileLink, '_blank')
-    } else if (CoreHelperUtil.isPath(this.profileLink)) {
-      window.location.href = this.profileLink
-      ModalController.close()
-    }
-  }
+  /*
+   * Private onProfile() {
+   *   EventsController.sendEvent({ type: 'track', event: 'CLICK_PROFILE_LINK' })
+   *   if (CoreHelperUtil.isFullURL(this.profileLink)) {
+   *     CoreHelperUtil.openHref(this.profileLink, '_blank')
+   *   } else if (CoreHelperUtil.isPath(this.profileLink)) {
+   *     window.location.href = this.profileLink
+   *     ModalController.close()
+   *   }
+   * }
+   */
 
   private onNetworks() {
     EventsController.sendEvent({ type: 'track', event: 'CLICK_NETWORKS' })

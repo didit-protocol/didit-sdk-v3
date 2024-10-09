@@ -33,7 +33,7 @@ createDiditSdk({
   walletAuthorizationPath: '/api/wallet-auth',
   tokenAuthorizationPath: '/api/token',
   scope: 'openid',
-  claims: 'read:blockchain read:gender read:email read:phone read:picture',
+  claims: 'read:email',
   providers: ['apple', 'google'],
   isStaging: true
 })
