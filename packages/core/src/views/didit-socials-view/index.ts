@@ -10,6 +10,7 @@ import { DiditAuthController } from '../../controllers/DiditAuth.js'
 import { ConnectionController } from '../../controllers/Connection.js'
 import { ConfigurationController } from '../../controllers/Configuration.js'
 import { property } from 'lit/decorators.js'
+import { ModalController } from '../../controllers/Modal.js'
 
 @customElement('didit-socials-view')
 export class DiditSocialsView extends LitElement {
@@ -22,7 +23,7 @@ export class DiditSocialsView extends LitElement {
   // -- State & Properties -------------------------------- //
   @state() private connectors = ConnectorController.state.connectors
 
-  @property({ type: String }) private socialButtonPrefix = 'Signin with'
+  @property({ type: String }) public socialButtonPrefix? = 'Signin with'
 
   public constructor() {
     super()
@@ -84,6 +85,9 @@ export class DiditSocialsView extends LitElement {
   }
 
   private onConnector(connector: SocialConnector) {
+    if (!ModalController.state.open) {
+      ModalController.open()
+    }
     RouterController.push('ConnectSocial', { connector })
     DiditAuthController.setSocialProvider(connector.provider)
     /*
