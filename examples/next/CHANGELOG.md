@@ -1,20 +1,20 @@
 # @examples/next
 
-## 1.0.13
+## 1.0.11
 
 ### Patch Changes
 
 - bc4edeb: now we can use social buttons alone
 - Updated dependencies [bc4edeb]
-  - @didit-sdk/react@1.0.13
+  - @didit-sdk/react@1.0.11
 
-## 1.0.12
+## 1.0.11
 
 ### Patch Changes
 
 - 5fc0beb: added socialbuttonprefix property on diditsocialview component
 - Updated dependencies [5fc0beb]
-  - @didit-sdk/react@1.0.12
+  - @didit-sdk/react@1.0.11
 
 ## 1.0.11
 

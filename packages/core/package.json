@@ -1,6 +1,6 @@
 {
   "name": "@didit-sdk/core",
-  "version": "1.0.13",
+  "version": "1.0.11",
   "type": "module",
   "main": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
