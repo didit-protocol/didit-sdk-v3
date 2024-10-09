@@ -1,13 +1,19 @@
 // Import { useEffect, useState, useSyncExternalStore } from 'react'
 import { DiditButton, DiditSdk } from '@didit-sdk/core'
 import type { ThemeMode, ThemeVariables, DiditSdkState, DiditSdkModalState } from '@didit-sdk/core'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, type CSSProperties } from 'react'
 
 declare global {
   namespace JSX {
     interface IntrinsicElements {
       'didit-button': Pick<DiditButton, 'disabled' | 'label' | 'loadingLabel'>
       'didit-callback': Pick<DiditButton, 'disabled'>
+      'didit-socials-view': Partial<{
+        socialButtonPrefix: string
+        className: string
+        style: CSSProperties
+        id: string
+      }>
     }
   }
 }
