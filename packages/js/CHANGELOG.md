@@ -1,5 +1,13 @@
 # @didit-sdk/js
 
+## 1.0.12
+
+### Patch Changes
+
+- 5fc0beb: added socialbuttonprefix property on diditsocialview component
+- Updated dependencies [5fc0beb]
+  - @didit-sdk/core@1.0.12
+
 ## 1.0.11
 
 ### Patch Changes
