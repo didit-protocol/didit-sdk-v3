@@ -1,10 +1,10 @@
-import { customElement, UiHelperUtil } from '@didit-sdk/ui'
+import { customElement } from '@didit-sdk/ui'
 import { LitElement, html } from 'lit'
 import { state } from 'lit/decorators.js'
 import styles from './styles.js'
 import {
   AccountController,
-  ConfigurationController,
+  // ConfigurationController,
   ConnectionController,
   DiditAuthController,
   EventsController,
@@ -12,7 +12,7 @@ import {
   NotificationsController,
   RouterController
 } from '../../controllers/index.js'
-import { CoreHelperUtil } from '../../utils/CoreHelperUtil.js'
+// Import { CoreHelperUtil } from '../../utils/CoreHelperUtil.js'
 
 @customElement('didit-profile-view')
 export class diditProfileView extends LitElement {
@@ -28,7 +28,7 @@ export class diditProfileView extends LitElement {
 
   @state() private network = AccountController.state.network
 
-  @state() private profileLink = ConfigurationController.state.profileLink || ''
+  // @state() private profileLink = ConfigurationController.state.profileLink || ''
 
   public constructor() {
     super()
@@ -37,10 +37,12 @@ export class diditProfileView extends LitElement {
         this.identifier = val.diditSession?.identifier
         this.authMethod = val.diditSession?.identifierType
         this.network = val.network
-      }),
-      ConfigurationController.subscribeKey('profileLink', val => {
-        this.profileLink = val || ''
       })
+      /*
+       * ConfigurationController.subscribeKey('profileLink', val => {
+       *   this.profileLink = val || ''
+       * })
+       */
     )
   }
 
@@ -50,29 +52,8 @@ export class diditProfileView extends LitElement {
 
   // -- Render -------------------------------------------- //
   public override render() {
-    let address = this.identifier
-    if (this.authMethod === 'wallet_address') {
-      address = UiHelperUtil.getTruncateString({
-        string: this.identifier ? this.identifier : '',
-        charsStart: 4,
-        charsEnd: 4,
-        truncate: 'middle'
-      })
-    }
-
     return html`
       <ui-flex class="profile-container" flexDirection="column" padding="1xs" gap="xxs">
-        <button
-          class="profile-button"
-          @click=${this.onProfile.bind(this)}
-          data-testid="profile-external-link"
-        >
-          <ui-flex class="title" gap="xs" alignItems="center">
-            <ui-icon name="profile" size="md"></ui-icon>
-            <ui-text variant="button-1" color="inherit">${address}</ui-text>
-          </ui-flex>
-          <ui-icon name="externalLink" size="md"></ui-icon>
-        </button>
         ${this.templateNetworkButton()}
         <button
           class="profile-button"
@@ -137,16 +118,17 @@ export class diditProfileView extends LitElement {
    * }
    */
 
-  private onProfile() {
-    EventsController.sendEvent({ type: 'track', event: 'CLICK_PROFILE_LINK' })
-
-    if (CoreHelperUtil.isFullURL(this.profileLink)) {
-      CoreHelperUtil.openHref(this.profileLink, '_blank')
-    } else if (CoreHelperUtil.isPath(this.profileLink)) {
-      window.location.href = this.profileLink
-      ModalController.close()
-    }
-  }
+  /*
+   * Private onProfile() {
+   *   EventsController.sendEvent({ type: 'track', event: 'CLICK_PROFILE_LINK' })
+   *   if (CoreHelperUtil.isFullURL(this.profileLink)) {
+   *     CoreHelperUtil.openHref(this.profileLink, '_blank')
+   *   } else if (CoreHelperUtil.isPath(this.profileLink)) {
+   *     window.location.href = this.profileLink
+   *     ModalController.close()
+   *   }
+   * }
+   */
 
   private onNetworks() {
     EventsController.sendEvent({ type: 'track', event: 'CLICK_NETWORKS' })

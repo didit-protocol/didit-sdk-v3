@@ -9,6 +9,7 @@ import { CoreHelperUtil } from '../../utils/CoreHelperUtil.js'
 import { DiditAuthController } from '../../controllers/DiditAuth.js'
 import { ConnectionController } from '../../controllers/Connection.js'
 import { ConfigurationController } from '../../controllers/Configuration.js'
+import { property } from 'lit/decorators.js'
 
 @customElement('didit-socials-view')
 export class DiditSocialsView extends LitElement {
@@ -20,6 +21,8 @@ export class DiditSocialsView extends LitElement {
 
   // -- State & Properties -------------------------------- //
   @state() private connectors = ConnectorController.state.connectors
+
+  @property({ type: String }) private socialButtonPrefix = 'Signin with'
 
   public constructor() {
     super()
@@ -62,7 +65,7 @@ export class DiditSocialsView extends LitElement {
             data-testid=${`socail-selector-${connector.id}`}
             @click=${() => this.onConnector(connector)}
           >
-            ${`Signin with ${connector.name}`}
+            ${`${this.socialButtonPrefix} ${connector.name}`}
           </ui-button>
         `
       )}
