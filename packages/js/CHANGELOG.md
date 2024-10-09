@@ -1,5 +1,13 @@
 # @didit-sdk/js
 
+## 1.0.12
+
+### Patch Changes
+
+- 1f809f7: @1.0.12
+- Updated dependencies [1f809f7]
+  - @didit-sdk/core@1.0.12
+
 ## 1.0.11
 
 ### Patch Changes
