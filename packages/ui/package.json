@@ -28,7 +28,7 @@
     "@didit-sdk/eslint-config": "workspace:*",
     "@didit-sdk/tsconfig": "workspace:*",
     "@types/qrcode": "^1.5.5",
-    "eslint-plugin-lit": "^1.11.0",
+    "eslint-plugin-lit": "^1.15.0",
     "eslint-plugin-wc": "^2.1.1"
   },
   "keywords": [
