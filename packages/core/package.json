@@ -23,7 +23,7 @@
   "dependencies": {
     "@didit-sdk/polyfills": "workspace:*",
     "@didit-sdk/ui": "workspace:*",
-    "@walletconnect/ethereum-provider": "^2.15.1",
+    "@walletconnect/ethereum-provider": "^2.17.0",
     "crypto-js": "^4.2.0",
     "valtio": "1.11.2"
   },
