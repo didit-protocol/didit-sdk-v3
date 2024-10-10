@@ -61,7 +61,7 @@
   },
   "dependencies": {
     "@changesets/cli": "^2.27.4",
-    "@commitlint/cli": "^19.4.0",
+    "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@commitlint/cz-commitlint": "^19.4.0",
     "@didit-sdk/eslint-config": "workspace:*",
