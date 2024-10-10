@@ -23,7 +23,11 @@ export class DiditSocialsView extends LitElement {
   // -- State & Properties -------------------------------- //
   @state() private connectors = ConnectorController.state.connectors
 
-  @property({ type: String }) public socialButtonPrefix? = 'Signin with'
+  @property({ type: String, attribute: 'social-button-prefix' })
+  public socialButtonPrefix? = 'Signin with'
+
+  @property({ type: String, attribute: 'custom-style' })
+  public customStyle?: string
 
   public constructor() {
     super()
@@ -38,11 +42,7 @@ export class DiditSocialsView extends LitElement {
 
   // -- Render -------------------------------------------- //
   public override render() {
-    return html`
-      <ui-flex gap="s" flexWrap="wrap" alignItems="center">
-        ${this.connectSocialsTemplate()}
-      </ui-flex>
-    `
+    return html` ${this.connectSocialsTemplate()} `
   }
 
   // -- Private ------------------------------------------- //
@@ -56,21 +56,45 @@ export class DiditSocialsView extends LitElement {
       return null
     }
 
+    const customStyle = this.customStyle ? JSON.parse(this.customStyle) : null
+
     return html`
       ${socialConnectors.map(
         connector => html`
-          <ui-button
-            data-provider=${connector.provider}
-            variant=${this.getButtonVariant(connector.type)}
-            icon=${connector.type}
-            data-testid=${`socail-selector-${connector.id}`}
-            @click=${() => this.onConnector(connector)}
+          <ui-flex
+            custom-style=${this.getUiStyle(customStyle, connector.name, 'ui-flex')}
           >
-            ${`${this.socialButtonPrefix} ${connector.name}`}
-          </ui-button>
+            <ui-button
+              custom-style=${this.getUiStyle(customStyle, connector.name, 'ui-button')}
+              data-provider=${connector.provider}
+              variant=${this.getButtonVariant(connector.type)}
+              icon=${connector.type}
+              data-testid=${`socail-selector-${connector.id}`}
+              @click=${() => this.onConnector(connector)}
+            >
+              ${`${this.socialButtonPrefix} ${connector.name}`}
+            </button>
+          </ui-flex>
         `
       )}
     `
+  }
+
+  private getUiStyle(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    customStyle: Record<string, any>,
+    connectorName: string,
+    element: string
+  ): string {
+    if (
+      customStyle &&
+      connectorName.toLowerCase() in customStyle &&
+      element in customStyle[connectorName.toLowerCase()]
+    ) {
+      return JSON.stringify(customStyle[connectorName.toLowerCase()][element])
+    }
+
+    return ''
   }
 
   private getButtonVariant(type: SocialConnectorType) {
