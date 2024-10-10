@@ -25,7 +25,7 @@
     "@didit-sdk/ui": "workspace:*",
     "@walletconnect/ethereum-provider": "^2.15.1",
     "crypto-js": "^4.2.0",
-    "valtio": "1.11.2"
+    "valtio": "2.0.0"
   },
   "devDependencies": {
     "@didit-sdk/eslint-config": "workspace:*",
