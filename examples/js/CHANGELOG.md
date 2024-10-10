@@ -1,5 +1,13 @@
 # @examples/js
 
+## 1.0.13
+
+### Patch Changes
+
+- 99df669: ui-button and ui-flex with custom styles, didit socials view with custom style
+- Updated dependencies [99df669]
+  - @didit-sdk/js@1.0.13
+
 ## 1.0.12
 
 ### Patch Changes
