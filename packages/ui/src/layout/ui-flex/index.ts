@@ -20,6 +20,9 @@ export class UiFlex extends LitElement {
   public static override styles = [resetStyles, styles]
 
   // -- State & Properties -------------------------------- //
+  @property({ attribute: 'custom-style' })
+  public customStyle?: string
+
   @property() public flexDirection?: FlexDirectionType
 
   @property() public flexWrap?: FlexWrapType
@@ -66,6 +69,19 @@ export class UiFlex extends LitElement {
       margin-bottom: ${this.margin && UiHelperUtil.getSpacingStyles(this.margin, 2)};
       margin-left: ${this.margin && UiHelperUtil.getSpacingStyles(this.margin, 3)};
     `
+    if (this.customStyle) {
+      const customStyle = JSON.parse(this.customStyle)
+
+      const customStyleString = Object.keys(customStyle).reduce((acc, key) => {
+        const cssKey = key.replace(/[A-Z]/gu, m => `-${m.toLowerCase()}`)
+
+        return `${acc}${acc ? '; ' : ''}${cssKey}: ${customStyle[key]}`
+      }, '')
+
+      if (customStyleString) {
+        this.style.cssText += this.style.cssText ? `; ${customStyleString}` : customStyleString
+      }
+    }
 
     return html`<slot></slot>`
   }

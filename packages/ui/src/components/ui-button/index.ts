@@ -16,6 +16,9 @@ export class UiButton extends LitElement {
 
   // -- State & Properties -------------------------------- //
 
+  @property({ attribute: 'custom-style' })
+  public customStyle?: string
+
   @property() public variant: ButtonVariant = 'default'
 
   @property() public icon?: IconType
@@ -36,6 +39,16 @@ export class UiButton extends LitElement {
       --local-width: ${this.fullWidth ? '100%' : 'auto'};
       --local-left-padding: ${this.centerText ? 'var(--ui-spacing-1xs)' : 'var(--ui-spacing-l)'};
     `
+    let customStyleString = ''
+    if (this.customStyle) {
+      const customStyle = JSON.parse(this.customStyle)
+
+      customStyleString = Object.keys(customStyle).reduce((acc, key) => {
+        const cssKey = key.replace(/[A-Z]/gu, m => `-${m.toLowerCase()}`)
+
+        return `${acc}${acc ? '; ' : ''}${cssKey}: ${customStyle[key]}`
+      }, '')
+    }
 
     const classes = {
       [`button-${this.variant}`]: true
@@ -46,7 +59,12 @@ export class UiButton extends LitElement {
     const textAlign = this.centerText ? 'center' : 'left'
 
     return html`
-      <button class=${classMap(classes)} ?disabled=${this.disabled} ontouchstart>
+      <button
+        style=${customStyleString}
+        class=${classMap(classes)}
+        ?disabled=${this.disabled}
+        ontouchstart
+      >
         <ui-text align=${textAlign} variant=${textVariant} color="inherit">
           <slot></slot>
         </ui-text>
