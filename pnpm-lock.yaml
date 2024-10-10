@@ -361,8 +361,8 @@ importers:
         specifier: ^1.5.5
         version: 1.5.5
       eslint-plugin-lit:
-        specifier: ^1.11.0
-        version: 1.14.0(eslint@8.57.0)
+        specifier: ^1.15.0
+        version: 1.15.0(eslint@8.57.0)
       eslint-plugin-wc:
         specifier: ^2.1.1
         version: 2.1.1(eslint@8.57.0)
@@ -6617,8 +6617,8 @@ packages:
       string.prototype.includes: 2.0.0
     dev: true
 
-  /eslint-plugin-lit@1.14.0(eslint@8.57.0):
-    resolution: {integrity: sha512-J4w+CgO31621GreLFCdTUbTr5yeV2/RJ/M0myw0dykD5p9FGGIRLityQiNa6SG+JpVbmeQTQPJy4pNFmiurJ/w==}
+  /eslint-plugin-lit@1.15.0(eslint@8.57.0):
+    resolution: {integrity: sha512-Yhr2MYNz6Ln8megKcX503aVZQln8wsywCG49g0heiJ/Qr5UjkE4pGr4Usez2anNcc7NvlvHbQWMYwWcgH3XRKA==}
     engines: {node: '>= 12'}
     peerDependencies:
       eslint: '>= 5'
