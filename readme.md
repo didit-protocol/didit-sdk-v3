@@ -1,6 +1,5 @@
-<a href="https://docs.didit.me/docs/sdk">
-  <img alt="didit-sdk" src="https://docs.didit.me/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fsdk_works.5dcf3190.png&w=3840&q=75" />
-</a>
+![Group 1707479681](https://github.com/user-attachments/assets/ad341fa7-c405-43b0-b8cd-1331f278e208)
+
 
 # Didit-SDK
 
